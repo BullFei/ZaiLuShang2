@@ -2773,26 +2773,10 @@
 		12E9AAFD1B0499D00084490E /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				12E9AAFE1B0499D00084490E /* model */,
 				12E9AAFF1B0499D00084490E /* SquareVC.h */,
 				12E9AB001B0499D00084490E /* SquareVC.m */,
-				12E9AB011B0499D00084490E /* view */,
 			);
 			path = controller;
-			sourceTree = "<group>";
-		};
-		12E9AAFE1B0499D00084490E /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		12E9AB011B0499D00084490E /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		12E9AB021B0499D00084490E /* model */ = {
