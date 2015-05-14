@@ -9,7 +9,6 @@
 #import "SFSceneryCellTableViewCell.h"
 #import "SFSearchDisplayModule.h"
 #import "UIImageView+WebCache.h"
-#import "SFImageView.h"
 @interface SFSceneryCellTableViewCell ()
 - (IBAction)leftBtnClick:(id)sender;
 
@@ -44,8 +43,7 @@
         _displayModuleLeft = displayModuleLeft;
         NSString * url =[NSString stringWithFormat:@"%@/f1400/%@",
                          displayModuleLeft.picdomain, displayModuleLeft.coverpic];
-        //[self.leftImageView sd_setImageWithURL:[NSURL URLWithString:url]];
-        [self.leftImageView setImageWithUrl:url  withPlaceHolderImage:nil];
+        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"bg_pic_placeholder_small.9"]];
         self.leftTitleLabel.text =displayModuleLeft.name;
         self.leftSubLabel.text =displayModuleLeft.describe;
         if (displayModuleLeft.pgcCnt>0) {
@@ -58,7 +56,7 @@
 {
     if (displayModuleRight) {
         _displayModuleRight = displayModuleRight;
-        [self.rightImageView setImageWithUrl: [NSString stringWithFormat:@"%@/f1400/%@",displayModuleRight.picdomain, displayModuleRight.coverpic]withPlaceHolderImage:nil];
+        [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/f1400/%@",displayModuleRight.picdomain, displayModuleRight.coverpic]] placeholderImage:[UIImage imageNamed:@"bg_pic_placeholder_small.9"]];
         self.rightTtileLabel.text =displayModuleRight.name;
         self.rightSubLabel.text =displayModuleRight.describe;
         if (displayModuleRight.pgcCnt>0) {

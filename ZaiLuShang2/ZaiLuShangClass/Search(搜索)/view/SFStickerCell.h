@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SFCityTypeHead;
+@class SFCityTypeHead,SFSceneryObjModel;
 @interface SFStickerCell : UITableViewCell
 
 @property (nonatomic,strong) SFCityTypeHead * cityTypeHead;
-
+@property (nonatomic,strong) SFSceneryObjModel * sceneryObjModel;
 +(SFStickerCell *)cellWithTableView:(UITableView *)tableView;
 @end

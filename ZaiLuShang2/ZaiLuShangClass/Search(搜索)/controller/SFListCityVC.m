@@ -30,6 +30,9 @@
 #import "SFSceneryTypeFivtyCell.h"
 #import "SFTour.h"
 #import "SFExctingTourCell.h"
+#import "SFProduct.h"
+#import "SFProductCell.h"
+#import "SFTactick.h"
 #define  TITLE_TYPE 88 //标题
 #define TYPE_50  50 //旅行地
 #define TYPE_4  4 //精彩游记
@@ -52,6 +55,7 @@
     [self createNav];
     [self createTableView];
     [self loadData];
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 #pragma mark -创建nav
 -(void)createNav{
@@ -130,7 +134,20 @@
                     [mulList addObject:linkTitleList];
                 }
                 
-            }else if(TYPE_50 ==[listDic[@"type"] integerValue]){
+            }else if (TACTICK_TYPE ==[listDic[@"type"] integerValue]){
+                //攻略
+                for (NSDictionary * listDic  in tempList) {
+                    SFTactick * tractic = [[SFTactick alloc]init];
+                    [tractic setValuesForKeysWithDictionary:listDic];
+                    NSDictionary * tempBanners = listDic[@"banners"];
+                    SFTactickBanners * banners = [[SFTactickBanners alloc]init];
+                    [banners setValuesForKeysWithDictionary:tempBanners];
+                    tractic.banner =banners;
+                    [mulList addObject:tractic];
+                }
+
+            }
+            else if(TYPE_50 ==[listDic[@"type"] integerValue]){
                 //其他
                 for (NSDictionary * listDic  in tempList) {
                     SFCityTypeListModel * cityTypeListModel = [[SFCityTypeListModel alloc]init];
@@ -201,6 +218,12 @@
                     [mulList addObject:tour];
                    
                 }
+            }else if (TYPE_102 == [listDic[@"type"] integerValue]){
+                for (NSDictionary * dic  in tempList){
+                    SFProduct * product = [[SFProduct alloc]init];
+                    [product setValuesForKeysWithDictionary:dic];
+                    [mulList addObject:product];
+                }
             }
             searchModel.listArray =mulList;
             [_dataArray addObject:searchModel];
@@ -248,6 +271,8 @@
             return searchModel.listArray.count/3;
         }else if (TYPE_4==searchModel.type){
             return searchModel.listArray.count/2;
+        }else if (TYPE_102==searchModel.type){
+             return searchModel.listArray.count/2;
         }
         return searchModel.listArray.count;
     }
@@ -288,14 +313,10 @@
             SFExctingTourCell * cell =[SFExctingTourCell cellWithTableView:tableView];
             cell.searchModel =searchModel;
             return cell;
-        }
-        else{
-            static NSString *ID  =@"";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID]
-            ;
-            if(cell==nil){
-                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-            }
+        }else if (TYPE_102==searchModel.type){
+            //相关体验
+            SFProductCell * cell = [SFProductCell cellWithTableView:tableView];
+            cell.searchModel =searchModel;
             return cell;
         }
         return nil;
@@ -312,12 +333,15 @@
     }else{
         SFSearchModel * searchModel = _dataArray[indexPath.section];
         if (TACTICK_TYPE==searchModel.type) {
-            return SCREEN_WIDTH*HUANGJINGSHU;
+            return SCREEN_WIDTH*HUANGJINGSHU*0.5;
         }else if (TYPE_50 ==searchModel.type){
              //旅行地
             return (SCREEN_WIDTH-2*6)/3+3;
         }else if (TYPE_4 ==searchModel.type){
-            return (SCREEN_WIDTH-6)*HUANGJINGSHU*HUANGJINGSHU;
+            //精彩游记
+            return (SCREEN_WIDTH-6)*HUANGJINGSHU*0.5;
+        }else if (TYPE_102==searchModel.type){
+            return (SCREEN_WIDTH-6)*HUANGJINGSHU*HUANGJINGSHU+72;
         }
     }
     return 44;

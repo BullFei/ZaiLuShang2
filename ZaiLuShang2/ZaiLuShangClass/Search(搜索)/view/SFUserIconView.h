@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SFCityTypeHeadTipUser;
 
 @interface SFUserIconView : UIView
+{
+    UIButton * iconBtn;
+}
+@property (nonatomic,strong) SFCityTypeHeadTipUser * user;
 
 @end
