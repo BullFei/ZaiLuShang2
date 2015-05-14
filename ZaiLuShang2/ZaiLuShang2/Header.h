@@ -31,10 +31,10 @@
 
 
 
-#define BIG_HEAD "ava"      //  头像图
-#define SMALL_HEAD "ava102" //  小头像图
-#define SMALL_IMAGE "b300"  //  缩略图
-#define BIG_IMAGE "f1400"   //  大图
+#define BIG_HEAD "ava/"      //  头像图
+#define SMALL_HEAD "ava102/" //  小头像图
+#define SMALL_IMAGE "b300/"  //  缩略图
+#define BIG_IMAGE "f1400/"   //  大图
 /**
  基本宏定义
  */
