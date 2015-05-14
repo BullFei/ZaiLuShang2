@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SFCityTypeHead;
+@class SFCityTypeHead,SFSceneryObjModel;
 @interface SFHeaderView : UIView
 +(SFHeaderView *)headerView;
 @property (nonatomic,strong) SFCityTypeHead * cityTypeHead;
-
+@property (nonatomic,strong) SFSceneryObjModel * sceneryObjModel;
 @end

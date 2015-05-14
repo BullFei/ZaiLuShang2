@@ -20,9 +20,12 @@
 #import "SFDetailTactickController.h"
 #import "SFListTactickController.h"
 #import "SFListCityVC.h"
+#import "SFSceneryListVC.h"
 #define  TITLE_TYPE 88 //标题
 #define  TACTICK_TYPE 90 //攻略
 #define  OTHER_TYPE 18 //其他
+#define PUSH_TYPE_2  2//有图
+#define PUSH_TYPE_3  3//无图
 #define  SHOW_TYPE_SECENER  @"tag_2_1"
 #define  SHOW_TYPE_COUNTRY  @"tag_2_3"
 #define TACTICK_URL @"http://www.117go.com/article/osaka-koutsu?refer=DiscoverHome&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0&vc=anzhuo&vd=a1c9d9b8a69b4bf4&userid=22506751"
@@ -200,10 +203,20 @@
 #pragma mark - 代理方法  五月推荐
 -(void)sceneryCellTableViewCellPushController:(SFSceneryCellTableViewCell *)sceneryCellTableViewCell withSearchDisplayModule:(SFSearchDisplayModule *)searchModule
 {
-    SFListCityVC * listVC = [[SFListCityVC alloc]init];
-    listVC.displayModule =searchModule;
-    listVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:listVC animated:YES];
+    if (PUSH_TYPE_2 ==searchModule.type) {
+        //有图模型
+        SFListCityVC * listVC = [[SFListCityVC alloc]init];
+        listVC.displayModule =searchModule;
+        listVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:listVC animated:YES];
+    }else if(PUSH_TYPE_3 == searchModule.type){
+        //无图
+        SFSceneryListVC * listVC = [[SFSceneryListVC alloc]init];
+        listVC.displayModule =searchModule;
+        listVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:listVC animated:YES];
+    }
+   
 }
 
 @end

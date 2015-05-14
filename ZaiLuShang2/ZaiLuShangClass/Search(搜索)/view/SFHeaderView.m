@@ -12,6 +12,8 @@
 #import "SFCityTypeHeadLocality.h"
 #import "SFCityTypeHead.h"
 #import "SFCityTypeHeaderPath.h"
+#import "SFCityTypeListModel.h"
+#import "SFSceneryObjModel.h"
 @interface SFHeaderView ()
 @property (weak, nonatomic) IBOutlet UIView *titleView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -53,15 +55,41 @@
     }
 }
 
--(void)layoutSubviews
+-(void)setSceneryObjModel:(SFSceneryObjModel *)sceneryObjModel
 {
-    [super layoutSubviews];
-    self.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*HUANGJINGSHU*HUANGJINGSHU);
+    if (sceneryObjModel) {
+        _sceneryObjModel =sceneryObjModel;
+        SFCityTypeListModel * cityTypeListModel =sceneryObjModel.scenery;
+        SFCityTypeHeaderPicShow * cityTypeHeaderPicShow =cityTypeListModel.cityTypeHeaderPicShow;
+        //大图
+        NSString * url = [NSString stringWithFormat:@"%@/f1400/%@",cityTypeHeaderPicShow.picdomain,cityTypeHeaderPicShow.picfile];
+        [self.photoImge sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"bg_pic_placeholder"]];
     
-    
+        
+        self.titleLabel.text =cityTypeListModel.name;
+        self.englishLabel.text =cityTypeListModel.name_en;
+        NSArray * array =cityTypeListModel.pathArray;
+        NSMutableArray * cityArray = [[NSMutableArray alloc]init];
+        for (SFCityTypeHeaderPath * path  in array) {
+            [cityArray addObject: path.dispname];
+        }
+        self.cityLabel.text = [cityArray componentsJoinedByString:@","];
+        self.nameLabel.text =cityTypeListModel.copyright;
+        
+        //评分
+
+    }
 }
+
+
 - (IBAction)smallBtnClick:(id)sender {
 }
 - (IBAction)photoBtnClick:(id)sender {
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+    self.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*HUANGJINGSHU*HUANGJINGSHU);
+    self.titleView.center =CGPointMake(self.center.x, self.center.y-20);
 }
 @end
