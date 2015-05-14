@@ -21,7 +21,6 @@
 #import "SFHeaderView.h"
 #import "SFCityWantedCell.h"
 #import "SFStickerCell.h"
-#import "SFCustomeButton.h"
 #define URL @"http://app6.117go.com/demo27/php/stickerAction.php?submit=getSceneryHome&sceneryid=%d&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
 @interface SFSceneryListVC ()<UITableViewDataSource,UITableViewDelegate>
 {
