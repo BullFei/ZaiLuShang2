@@ -24,6 +24,8 @@
 		12E9AB2E1B0499D00084490E /* TripTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB1C1B0499D00084490E /* TripTopicCell.m */; };
 		12E9AB2F1B0499D00084490E /* TripTopicCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB1E1B0499D00084490E /* TripTopicCollectionCell.m */; };
 		12E9AB301B0499D00084490E /* triptopiccollectioncell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12E9AB1F1B0499D00084490E /* triptopiccollectioncell.xib */; };
+		12E9AB331B04BD800084490E /* TripTopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB321B04BD800084490E /* TripTopicModel.m */; };
+		12E9AB361B04C45D0084490E /* MoreThemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB351B04C45D0084490E /* MoreThemeModel.m */; };
 		BC32E0B61B049115001B6804 /* RootTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC32E0B51B049114001B6804 /* RootTableViewCell.m */; };
 		BC32E0B91B04928D001B6804 /* LYAttention.m in Sources */ = {isa = PBXBuildFile; fileRef = BC32E0B81B04928D001B6804 /* LYAttention.m */; };
 		BC629A8C1B0496C3006FD0C0 /* SFProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = BC629A891B0496C3006FD0C0 /* SFProduct.m */; };
@@ -1344,6 +1346,10 @@
 		12E9AB1D1B0499D00084490E /* TripTopicCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripTopicCollectionCell.h; sourceTree = "<group>"; };
 		12E9AB1E1B0499D00084490E /* TripTopicCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripTopicCollectionCell.m; sourceTree = "<group>"; };
 		12E9AB1F1B0499D00084490E /* triptopiccollectioncell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = triptopiccollectioncell.xib; sourceTree = "<group>"; };
+		12E9AB311B04BD800084490E /* TripTopicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripTopicModel.h; sourceTree = "<group>"; };
+		12E9AB321B04BD800084490E /* TripTopicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripTopicModel.m; sourceTree = "<group>"; };
+		12E9AB341B04C45D0084490E /* MoreThemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreThemeModel.h; sourceTree = "<group>"; };
+		12E9AB351B04C45D0084490E /* MoreThemeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreThemeModel.m; sourceTree = "<group>"; };
 		BC32E0B41B049114001B6804 /* RootTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTableViewCell.h; sourceTree = "<group>"; };
 		BC32E0B51B049114001B6804 /* RootTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTableViewCell.m; sourceTree = "<group>"; };
 		BC32E0B71B04928D001B6804 /* LYAttention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYAttention.h; sourceTree = "<group>"; };
@@ -2788,6 +2794,10 @@
 				12E9AB061B0499D00084490E /* JingXuanModel.m */,
 				12E9AB071B0499D00084490E /* Section2ItemModel.h */,
 				12E9AB081B0499D00084490E /* Section2ItemModel.m */,
+				12E9AB311B04BD800084490E /* TripTopicModel.h */,
+				12E9AB321B04BD800084490E /* TripTopicModel.m */,
+				12E9AB341B04C45D0084490E /* MoreThemeModel.h */,
+				12E9AB351B04C45D0084490E /* MoreThemeModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -5826,6 +5836,7 @@
 				BC7F99EA1B04801F00900595 /* SFSearchModel.m in Sources */,
 				BC7F99A01B04801F00900595 /* AFNetworkReachabilityManager.m in Sources */,
 				BC7F99F81B04801F00900595 /* SFSearchCountryCell.m in Sources */,
+				12E9AB361B04C45D0084490E /* MoreThemeModel.m in Sources */,
 				BC7F99D01B04801F00900595 /* LYAttentionModel.m in Sources */,
 				BC7F99981B04801F00900595 /* MainNavigationC.m in Sources */,
 				BC7F99CD1B04801F00900595 /* TextSizeTools.m in Sources */,
@@ -5914,6 +5925,7 @@
 				BC7F99D81B04801F00900595 /* SFDetailTactickController.m in Sources */,
 				BC7F99921B04801F00900595 /* CXCollectionVCellOwnerModel.m in Sources */,
 				BC7F99D31B04801F00900595 /* LYOwner.m in Sources */,
+				12E9AB331B04BD800084490E /* TripTopicModel.m in Sources */,
 				BC7F99E11B04801F00900595 /* SFCityTypeHeadTipUser.m in Sources */,
 				BC7F99C91B04801F00900595 /* UIView+WebCacheOperation.m in Sources */,
 				BC7F99D21B04801F00900595 /* LYItem.m in Sources */,

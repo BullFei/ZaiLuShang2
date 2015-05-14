@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Section2ItemModel.h"
 @interface Section2CollectionCell : UICollectionViewCell
 
 +(Section2CollectionCell *)getSection2CollectionCellWithCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
-
+@property (nonatomic,weak)Section2ItemModel * section2ItemModel;
 @end

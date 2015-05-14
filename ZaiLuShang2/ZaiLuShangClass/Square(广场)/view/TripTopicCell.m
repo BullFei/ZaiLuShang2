@@ -8,6 +8,7 @@
 
 #import "TripTopicCell.h"
 #import "TripTopicCollectionCell.h"
+#import "TripTopicModel.h"
 @interface TripTopicCell()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UICollectionViewDelegate>
 {
     UICollectionView * _collectionView;
@@ -30,9 +31,22 @@
     [layout setMinimumInteritemSpacing:0];
     [layout setMinimumLineSpacing:0];
     
-    _collectionView =[[UICollectionView alloc]initWithFrame:self.contentView.bounds collectionViewLayout:layout];
+    _collectionView =[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, 375, 80*3) collectionViewLayout:layout];
+    _collectionView.delegate =self;
+    _collectionView.dataSource =self;
+    _collectionView.backgroundColor=[UIColor whiteColor];
+    
+    UINib * nib =[UINib nibWithNibName:@"triptopiccollectioncell" bundle:nil];
+    [_collectionView registerNib: nib forCellWithReuseIdentifier:@"triptopiccollection"];
+    
+
     [self.contentView addSubview:_collectionView];
     
+}
+-(void)setTripTopicModelArray:(NSArray *)TripTopicModelArray
+{
+    _TripTopicModelArray =TripTopicModelArray;
+    [_collectionView reloadData];
 }
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -42,11 +56,18 @@
 {
     return 6;
 }
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return  CGSizeMake(187, 80);
+}
+
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [TripTopicCollectionCell getTripTopicCollectionCellWithCollectionView:collectionView cellForItemAtIndexPath:indexPath];
     
-    
+   TripTopicCollectionCell * itemCell =[TripTopicCollectionCell getTripTopicCollectionCellWithCollectionView:collectionView cellForItemAtIndexPath:indexPath];
+    TripTopicModel * mm =[_TripTopicModelArray objectAtIndex:indexPath.row];
+    itemCell.tripTopicModel =mm;
+    return itemCell;
 }
 //-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 //{

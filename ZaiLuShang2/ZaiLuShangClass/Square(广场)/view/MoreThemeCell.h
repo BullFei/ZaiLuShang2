@@ -10,4 +10,5 @@
 
 @interface MoreThemeCell : UITableViewCell
 +(MoreThemeCell *)getMoreThemeCellWithTableView:(UITableView *)tableview;
+@property (nonatomic,weak)NSArray * moreThemeModelArray;
 @end

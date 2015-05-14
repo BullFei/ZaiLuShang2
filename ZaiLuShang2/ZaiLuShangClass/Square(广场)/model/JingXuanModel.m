@@ -9,5 +9,8 @@
 #import "JingXuanModel.h"
 
 @implementation JingXuanModel
-
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    
+}
 @end

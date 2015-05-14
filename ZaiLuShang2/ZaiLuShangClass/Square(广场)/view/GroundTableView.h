@@ -11,4 +11,8 @@
 @interface GroundTableView : UIView <UITableViewDataSource,UITableViewDelegate>
 +(GroundTableView *)createTableViewWithFrame:(CGRect)frame;
 @property (nonatomic,weak)NSArray * ADModelArray;
+@property (nonatomic,weak)NSArray * JingXuanModelArray;
+@property (nonatomic,weak)NSArray * Section2ItemModelArray;
+@property (nonatomic,weak)NSArray * TripTopicModelArray;
+@property (nonatomic,weak)NSArray * MoreThemeModelArray;
 @end

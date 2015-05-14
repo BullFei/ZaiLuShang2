@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "JingXuanModel.h"
 @interface JingXuanCell : UITableViewCell
 +(JingXuanCell *)GetJingXuanCellWithTableView:(UITableView *)tableview;
-
+@property (nonatomic,weak)JingXuanModel * jingXuanModel;
 @end

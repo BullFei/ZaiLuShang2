@@ -10,5 +10,5 @@
 
 @interface Section2Cell : UITableViewCell
 +(Section2Cell *)getSection2ViewWithTableView:(UITableView *)tableview;
-
+@property (nonatomic,weak)NSArray * Section2ItemModelArray;
 @end

@@ -8,6 +8,7 @@
 
 #import "MoreThemeCell.h"
 #import "MoreThemeCollectionCell.h"
+#import "MoreThemeModel.h"
 @interface MoreThemeCell ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UICollectionViewDelegate>
 {
     
@@ -22,6 +23,11 @@
     }
     return self;
 }
+-(void)setMoreThemeModelArray:(NSArray *)moreThemeModelArray
+{
+    _moreThemeModelArray =moreThemeModelArray;
+    [_collectionView reloadData];
+}
 -(void)createCollectionView
 {
     UICollectionViewFlowLayout * layout =[[UICollectionViewFlowLayout alloc]init];
@@ -29,7 +35,13 @@
     [layout setMinimumInteritemSpacing:0];
     [layout setMinimumLineSpacing:7];
     
-    _collectionView =[[UICollectionView alloc]initWithFrame:self.contentView.bounds collectionViewLayout:layout];
+    _collectionView =[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, 375, 80*4+3*7) collectionViewLayout:layout];
+    _collectionView.delegate =self;
+    _collectionView.dataSource =self;
+    _collectionView.backgroundColor =[UIColor whiteColor];
+    UINib * nib =[UINib nibWithNibName:@"morethemecollectioncell" bundle:nil];
+    [_collectionView registerNib: nib forCellWithReuseIdentifier:@"morethemecollection"];
+    
     [self.contentView addSubview:_collectionView];
     
 }
@@ -41,9 +53,17 @@
 {
     return 8;
 }
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return  CGSizeMake(184, 80);
+}
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [MoreThemeCollectionCell getTripTopicCollectionCellWithCollectionView:collectionView cellForItemAtIndexPath:indexPath];
+    
+   MoreThemeCollectionCell * itemCell = [MoreThemeCollectionCell getTripTopicCollectionCellWithCollectionView:collectionView cellForItemAtIndexPath:indexPath];
+    MoreThemeModel *mm =[_moreThemeModelArray objectAtIndex:indexPath.row];
+    itemCell.moreThemeModel =mm;
+    return itemCell;
     
     
 }
