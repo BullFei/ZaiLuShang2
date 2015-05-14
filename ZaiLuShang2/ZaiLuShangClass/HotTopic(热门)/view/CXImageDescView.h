@@ -12,6 +12,8 @@
 @interface CXImageDescView : UIView
 @property (nonatomic ,strong) CXCollectViewCellModel *model;
 
+@property (nonatomic ,weak) SFImageView *imageView;
+
 - (void)setModel:(CXCollectViewCellModel *)model isLoadImage:(BOOL)is;
 
 - (void)setModel:(CXCollectViewCellModel *)model isLoadImage:(BOOL)is success:(void (^)())success;

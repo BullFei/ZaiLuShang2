@@ -15,4 +15,5 @@
 -(void)setImageWithUrl:(NSString *)url withPlaceHolderImage:(NSString *)placeHolder;
 
 -(void)setImageWithUrl:(NSString *)url withPlaceHolderImage:(NSString *)placeHolder  success:(void (^)())success;
+
 @end
