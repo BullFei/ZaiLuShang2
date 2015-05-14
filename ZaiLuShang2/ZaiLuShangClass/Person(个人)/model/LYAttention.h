@@ -21,11 +21,29 @@
 // 头像的frame
 @property (nonatomic, assign) CGRect icon;
 
+// 作者
+@property (nonatomic, assign) CGRect author;
+
+// 中间连接的事件
+@property (nonatomic, assign) CGRect event;
+
 // 头部标题
 @property (nonatomic, assign) CGRect titleName;
 
 // 图片
+@property (nonatomic, assign) CGRect ig;
 
 // 正文
+@property (nonatomic, assign) CGRect content;
 
+// 喜欢
+@property (nonatomic, assign) CGRect likeCnt;
+
+// 评论
+@property (nonatomic, assign) CGRect cmtCnt;
+
+// 发布时间
+@property (nonatomic, assign) CGRect createAt;
+
+- (instancetype)initWithLYAttentionModel:(LYAttentionModel *)model;
 @end
