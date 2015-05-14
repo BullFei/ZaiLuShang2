@@ -7,8 +7,8 @@
 //
 
 #import "JingXuanCell.h"
-
-
+#import "UIImageView+WebCache.h"
+#import "SFImageView.h"
 @interface  JingXuanCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *contentImageView;
 
@@ -45,6 +45,18 @@
     }
     return cell;
     
+}
+-(void)setJingXuanModel:(JingXuanModel *)jingXuanModel
+{
+    _jingXuanModel =jingXuanModel;
+    
+    //增添数据
+    NSString * contentPURL =[NSString stringWithFormat:@"%@f1400/%@",_jingXuanModel.picdomain,_jingXuanModel.coverpic];
+    [_contentImageView sd_setImageWithURL:[NSURL URLWithString:contentPURL]];
+    
+    _titleLabel.text =_jingXuanModel.title;
+    _collectionCountLabel.text =_jingXuanModel.likeCnt;
+    _pictureCountLabel.text =_jingXuanModel.cntP;
 }
 - (void)awakeFromNib {
     // Initialization code

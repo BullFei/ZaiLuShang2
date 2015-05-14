@@ -11,4 +11,5 @@
 @interface ADView : UIView <UIScrollViewDelegate>
 +(ADView *)createADViewWithFrame:(CGRect)frame;
 @property (nonatomic,weak)NSArray * ADModelArray;
+-(void)refresh;
 @end

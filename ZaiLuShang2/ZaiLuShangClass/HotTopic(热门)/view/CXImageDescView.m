@@ -18,7 +18,7 @@
 #define ICONIMAGEVIEW_WIDTH 60
 #define ICONIMAGEVIEW_INTERVAL 20
 @interface CXImageDescView ()
-@property (nonatomic ,weak) SFImageView *imageView;
+
 @property (nonatomic ,weak) UIImageView *userImageView;
 @property (nonatomic ,weak) UILabel *titleLabel;
 @property (nonatomic ,weak) UILabel *userLabel;
@@ -30,7 +30,8 @@
 {
     if (self = [super initWithFrame:frame]) {
         CGFloat width = frame.size.width;
-        SFImageView *imageView = [[SFImageView alloc] initWithFrame:CGRectMake(0, (frame.size.height-width*BILI)/2, width, width*BILI)];
+        CGFloat height = frame.size.height;
+        SFImageView *imageView = [[SFImageView alloc] initWithFrame:CGRectMake(0, (frame.size.height-width*BILI)/2, width, height*BILI)];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
 //        imageView.center = self.center;
         imageView.userInteractionEnabled = YES;
@@ -42,7 +43,7 @@
         [imageView addGestureRecognizer:pan];
         
         self.imageView = imageView;
-        
+        [self addSubview:imageView];
         
         UIImageView *iconView = [[UIImageView alloc] initWithFrame:CGRectMake(INTERVAL_CELL_BORDER, CGH(self) - ICONIMAGEVIEW_WIDTH - ICONIMAGEVIEW_INTERVAL,ICONIMAGEVIEW_WIDTH, ICONIMAGEVIEW_WIDTH)];
         iconView.layer.cornerRadius = ICONIMAGEVIEW_WIDTH/2;
@@ -63,7 +64,7 @@
         self.userLabel = userLabel;
         
         
-        [self addSubview:imageView];
+        
     }
     return self;
 }

@@ -15,6 +15,7 @@
 @implementation GroundTableView
 {
     UITableView * _tableView;
+    ADView * adview;
 }
 
 +(GroundTableView *)createTableViewWithFrame:(CGRect)frame
@@ -25,12 +26,33 @@
 {
     if (self=[super initWithFrame:frame]) {
         [self createTableViewUIWithFrame:frame];
+        //[self createADView];
     }
     return self;
 }
 -(void)setADModelArray:(NSArray *)ADModelArray
 {
     _ADModelArray =ADModelArray;
+    [_tableView reloadData];
+}
+-(void)setJingXuanModelArray:(NSArray *)JingXuanModelArray
+{
+    _JingXuanModelArray =JingXuanModelArray;
+    [_tableView reloadData];
+}
+-(void)setSection2ItemModelArray:(NSArray *)Section2ItemModelArray
+{
+    _Section2ItemModelArray =Section2ItemModelArray;
+    [_tableView reloadData];
+}
+-(void)setTripTopicModelArray:(NSArray *)TripTopicModelArray
+{
+    _TripTopicModelArray =TripTopicModelArray;
+    [_tableView reloadData];
+}
+-(void)setMoreThemeModelArray:(NSArray *)MoreThemeModelArray
+{
+    _MoreThemeModelArray =MoreThemeModelArray;
     [_tableView reloadData];
 }
 
@@ -40,7 +62,13 @@
     _tableView=[[UITableView alloc]initWithFrame:frame style:UITableViewStyleGrouped];
     _tableView.delegate =self;
     _tableView.dataSource =self;
+    _tableView.bounces =NO;
     [self addSubview:_tableView];
+}
+-(void)createADView
+{
+     adview =[ADView createADViewWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, 200)];
+    adview.tag = 1;
 }
 #pragma mark TableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -117,15 +145,15 @@
             if (!cell) {
                 
                cell =[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-                
-                
+                [self createADView];
+                [cell.contentView addSubview:adview];
+
                 
             }
-            ADView * adview =[ADView createADViewWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, 200)];
             
             adview.ADModelArray =self.ADModelArray;
             
-            [cell.contentView addSubview:adview];
+            //[cell.contentView addSubview:adview];
             
             return cell;
             
@@ -135,12 +163,15 @@
         case 1:
         {
             JingXuanCell * cell =[JingXuanCell GetJingXuanCellWithTableView:tableView];
+            JingXuanModel * mm =[_JingXuanModelArray objectAtIndex:indexPath.row];
+            cell.jingXuanModel =mm;
             return cell;
             break;
         }
         case 2:
         {
             Section2Cell  * cell =[Section2Cell  getSection2ViewWithTableView:tableView];
+            cell.Section2ItemModelArray =_Section2ItemModelArray;
             return cell;
             break;
         }
@@ -148,13 +179,14 @@
         {
             
             TripTopicCell * cell =[TripTopicCell getTripTopicCellWithTableView:tableView];
-
+            cell.TripTopicModelArray = _TripTopicModelArray;
             return cell;
             break;
         }
         case 4:
         {
             MoreThemeCell * cell =[MoreThemeCell getMoreThemeCellWithTableView:tableView];
+            cell.moreThemeModelArray =_MoreThemeModelArray;
             return cell;
             break;
         }

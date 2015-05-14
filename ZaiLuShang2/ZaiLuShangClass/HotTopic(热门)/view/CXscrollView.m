@@ -9,6 +9,10 @@
 #import "CXscrollView.h"
 #import "UIImageView+WebCache.h"
 #import "CXImageDescView.h"
+#import "CXScrollViewBarBtn.h"
+#import "MBProgressHUD+MJ.h"
+#import "CXCollectionVCell.h"
+#import "CXCollectViewCellModel.h"
 
 #define STARTTIME_DELAY 2
 #define IMAGEVIEW_COUNT 3
@@ -21,6 +25,10 @@
 #define BOTTOM_HEIGHT 2
 
 #define BOTTOM_BAR_HEIGHT 49
+
+#define BARBTN_TAG 100
+
+#define START_ANIMATION 2
 
 @interface CXscrollView ()<UIScrollViewDelegate>
 // 主scrollView
@@ -41,9 +49,21 @@
 @property (nonatomic ,weak) UIView *bottomScrollView;
 @property (nonatomic ,weak) UIView *bottomView;
 
+@property (nonatomic ,weak) UIView *bar;
+
+@property (nonatomic ,strong) NSMutableArray *barBtnArr;
+
 @end
 
 @implementation CXscrollView
+
+- (NSMutableArray *)barBtnArr
+{
+    if (_barBtnArr == nil) {
+        _barBtnArr = [[NSMutableArray alloc] init];
+    }
+    return _barBtnArr;
+}
 - (NSMutableArray *)imageViews
 {
     if (_imageViews == nil) {
@@ -107,9 +127,13 @@
         self.bottomScrollView = scrollBottom;
         
         UIView *bar = [[UIView alloc] initWithFrame:CGRectMake(0, CGH(self)-BOTTOM_BAR_HEIGHT, CGW(self), BOTTOM_BAR_HEIGHT)];
+        self.bar = bar;
+        [self createBar];
         [self addSubview:bar];
-        bar.backgroundColor = CXColorP(200, 0, 0, 0.6);
-          
+        
+        
+//        bar.backgroundColor = CXColorP(200, 0, 0, 0.6);
+        
     }
     return self;
 }
@@ -175,8 +199,11 @@
 // 创建定时器
 - (void)createTime:(NSTimeInterval)animationDuration
 {
+    if (self.time) {
+        return;
+    }
     self.time = [NSTimer scheduledTimerWithTimeInterval:animationDuration target:self selector:@selector(timing) userInfo:nil repeats:YES];
-    self.time.fireDate = [NSDate distantFuture];
+    [self startTimeWithDelay:2];
     [[NSRunLoop mainRunLoop] addTimer:self.time forMode:NSRunLoopCommonModes];
 }
 // 定时方法
@@ -213,12 +240,21 @@
     }
 }
 
+- (void)endTime
+{
+    if (self.time) {
+        
+        [self.time invalidate];
+        self.time = nil;
+    }
+}
+
 - (void)refreshImage
 {
     if (self.imageUrls.count > 0) {
         [self refreshContentImageUrls];
         [self refreshImageView];
-        
+        [self setComAndZhan];
     }
 }
 
@@ -229,6 +265,7 @@
         [self refreshImage];
         [self refreshLocation];
         [self refreshPage];
+        
     }
     
 }
@@ -257,7 +294,11 @@
 // 刷新imageView的图片 使用sdwebimage第三方加载图片
 - (void)refreshImageView
 {
+    // 停止定时器
     [self pauseTime];
+    CXScrollViewBarBtn *btn = self.barBtnArr[4];
+//    btn.userInteractionEnabled = NO;
+    btn.isLoading = YES;
     
     CXImageDescView *imageView1 = self.imageViews[1];
     CXImageDescView *imageView2 = self.imageViews[2];
@@ -272,9 +313,17 @@
 //    imageView0.model = self.contentImageUrls[0];
     // 随着库代码更改 需要更改下面代码
     [imageView1 setModel:self.contentImageUrls[1] isLoadImage:YES success:^{
+            [self startTimeWithDelay:5];
+        CXScrollViewBarBtn *btn = self.barBtnArr[4];
+        
+//        btn.userInteractionEnabled = YES;
+        btn.isLoading = NO;
+        
         [imageView2 setModel:self.contentImageUrls[2] isLoadImage:YES success:^{
-            [imageView0 setModel:self.contentImageUrls[0] isLoadImage:YES];
+            [self startTimeWithDelay:START_ANIMATION];
+            
         }];
+        [imageView0 setModel:self.contentImageUrls[0] isLoadImage:YES];
     }];
     
 }
@@ -308,6 +357,119 @@
     }
 }
 
+#pragma mark - bar的创建
+- (void)createBar
+{
+    NSArray *imageUrl = @[@"icon_like_white_32", @"icon_comment_white_32", @"icon_cloud_white_32", @"icon_share_line_white_40", @"icon_edit_white_32"];
+    NSArray *disImageUrl = @[@"", @"", @"", @"", @"icon_edit_gray_32"];
+    NSArray *selImageUrl = @[@"icon_like_32_red", @"", @"icon_cloud_stop_line_32_blue", @"", @"icon_edit_blue_32"];
+    NSArray *titles = @[@"赞", @"评论", @"自动播放", @"进入游记", @"保存图片"];
+    NSArray *selTitle = @[@"赞", @"评论", @"停止播放", @"进入游记", @"已保存"];
+    for (int i = 0; i < titles.count; i++) {
+        CGFloat W = (CGW(self.cycleScrollView)-2*INTERVAL_CELL_BORDER)/titles.count;
+        CGFloat H = BOTTOM_BAR_HEIGHT;
+        CGFloat X = INTERVAL_CELL_BORDER + i*W;
+        CGFloat Y = 0;
+        CXScrollViewBarBtn *btn = [[CXScrollViewBarBtn alloc] initWithFrame:CGRectMake(X, Y, W, H)];
+        [btn setImage:[UIImage imageNamed:imageUrl[i]] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:selImageUrl[i]] forState:UIControlStateSelected];
+        [btn setImage:[UIImage imageNamed:disImageUrl[i]] forState:UIControlStateDisabled];
+        [btn setTitle:titles[i] forState:UIControlStateNormal];
+        [btn setTitle:selTitle[i] forState:UIControlStateSelected];
+        [btn addTarget:self action:@selector(barBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.barBtnArr addObject:btn];
+        btn.tag = i+BARBTN_TAG;
+        [self.bar addSubview:btn];
+    }
+}
 
+
+
+- (void)barBtnClick:(CXScrollViewBarBtn *)btn
+{
+    switch (btn.tag-BARBTN_TAG) {
+        case 0:
+            [self zhan:btn];
+            break;
+        case 1:
+            [self comment:btn];
+            break;
+        case 2:
+            [self playVideo:btn];
+            break;
+        case 3:
+            [self gotoTrip:btn];
+            break;
+        case 4:
+            [self save:btn];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)zhan:(CXScrollViewBarBtn *)btn
+{
+    
+}
+
+- (void)comment:(CXScrollViewBarBtn *)btn
+{
+    
+}
+- (void)playVideo:(UIButton *)btn
+{
+    btn.selected = !btn.selected;
+    if (btn.selected == YES) {
+        [self createTime:START_ANIMATION];
+    } else {
+        [self endTime];
+    }
+    
+}
+- (void)gotoTrip:(CXScrollViewBarBtn *)btn
+{
+    
+}
+- (void)save:(CXScrollViewBarBtn *)btn
+{
+    if (btn.selected) {
+        [MBProgressHUD showSuccess:@"已经保存"];
+        return;
+    }
+    if (btn.isLoading == YES) {
+        [MBProgressHUD showError:@"正在加载"];
+        return;
+    }
+    CXImageDescView *imageView1 = self.imageViews[1];
+    UIImage *image = imageView1.imageView.image;
+    UIImageWriteToSavedPhotosAlbum(image, self, @selector(imageSavedToPhotosAlbum:didFinishSavingWithError:contextInfo:), nil);
+}
+
+- (void)imageSavedToPhotosAlbum:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    NSString *message = nil;
+    if (error) {
+        message = [error description];
+        [MBProgressHUD showError:message];
+        return;
+    }
+    message = @"保存成功";
+    [MBProgressHUD showSuccess:message];
+    
+    [self.barBtnArr[4] setSelected:YES];
+}
+
+- (void)setComAndZhan
+{
+    [self.barBtnArr[4] setSelected:NO];
+    CXCollectViewCellModel *model = self.imageUrls[self.currentPageIndex];
+    CXCollectionVCellModel *cellmodel = model.pic;
+    NSString *like = [cellmodel.likeCnt isEqualToString:@"0"]?@"赞":cellmodel.likeCnt;
+    NSString *cmt = [cellmodel.cntcmt isEqualToString:@"0"]?@"评论":cellmodel.cntcmt;
+    [self.barBtnArr[0] setTitle:like forState:UIControlStateNormal];
+    [self.barBtnArr[1] setTitle:cmt forState:UIControlStateNormal];
+}
 
 @end

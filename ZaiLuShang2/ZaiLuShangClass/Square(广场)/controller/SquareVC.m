@@ -7,16 +7,30 @@
 //
 
 #import "SquareVC.h"
+
 #import "GroundTableView.h"
+#import "ADView.h"
+
 #import "AFNetworking.h"
-#import "ADModel.h"
 #import "MJExtension.h"
+
+#import "ADModel.h"
+#import "JingXuanModel.h"
+#import "Section2ItemModel.h"
+#import "TripTopicModel.h"
+#import "MoreThemeModel.h"
+
+
 #define  GROUND_URL @"http://app6.117go.com/demo27/php/interestAction.php?submit=getPlaza&length=20&vc=anzhuo&vd=f7393db54aeaedec&token=27f3f6568d2faf418538f66d72330a23&v=a6.1.0"
 @interface SquareVC ()
 {
     NSTimer * _timer;
     GroundTableView * _groundTableView;
     NSMutableArray * _ADModelArray;
+    NSMutableArray * _JingXuanMModelArray;
+    NSMutableArray * _section2ItemModelArray;
+    NSMutableArray * _tripTopicModelArray;
+    NSMutableArray * _moreThemeModelArray;
 }
 @end
 
@@ -41,6 +55,11 @@
 -(void)initDataArray
 {
     _ADModelArray =[[NSMutableArray alloc]init];
+    _JingXuanMModelArray =[[NSMutableArray alloc]init];
+    _section2ItemModelArray =[[NSMutableArray alloc]init];
+    _tripTopicModelArray =[[NSMutableArray alloc]init];
+    _moreThemeModelArray =[[NSMutableArray alloc]init];
+    
 }
 
 -(void)createData
@@ -57,14 +76,52 @@
         //首先拿到ADModel的数组
         NSDictionary * ADModelDict = [array firstObject];
         NSArray * ADModelTempArray = ADModelDict[@"list"];
-//        for (NSDictionary * ddd in ADModelTempArray) {
-//            ADModel * model =[[ADModel alloc]init];
-//            [model setValuesForKeysWithDictionary:ddd];
-//            [_ADModelArray addObject:model];
-//        }
+
         NSArray * tempADModelArray =[ADModel objectArrayWithKeyValuesArray:ADModelTempArray];
         [_ADModelArray addObjectsFromArray:tempADModelArray];
         _groundTableView.ADModelArray =_ADModelArray;
+        //拿到JingXuanModel的数组
+        for (int i =2; i<7; i++) {
+            NSDictionary * dict =[array objectAtIndex:i];
+            NSArray * tempArray =dict[@"list"];
+            JingXuanModel * mm =[JingXuanModel objectArrayWithKeyValuesArray:tempArray].firstObject ;
+            [_JingXuanMModelArray addObject:mm];
+        }
+        
+        _groundTableView.JingXuanModelArray =_JingXuanMModelArray;
+        //拿到Section2ItemModel
+        {
+            NSDictionary * dict =[array objectAtIndex:8];
+            NSArray * tempArray1 =dict[@"list"];
+            NSArray * ttArr1 =[Section2ItemModel objectArrayWithKeyValuesArray:tempArray1];
+            [_section2ItemModelArray addObjectsFromArray:ttArr1];
+            
+        }
+        {
+            NSDictionary * dict =[array objectAtIndex:9];
+            NSArray * tempArray1 =dict[@"list"];
+            NSArray * ttArr1 =[Section2ItemModel objectArrayWithKeyValuesArray:tempArray1];
+            [_section2ItemModelArray addObjectsFromArray:ttArr1];
+        }
+        _groundTableView.Section2ItemModelArray =_section2ItemModelArray;
+        
+        //拿到triptopicmodel
+        for (int i =23; i<26; i++) {
+            NSDictionary * dict =[array objectAtIndex:i];
+            NSArray * tempArray =dict[@"list"];
+            NSArray * ttArr =[TripTopicModel objectArrayWithKeyValuesArray:tempArray];
+            [_tripTopicModelArray addObjectsFromArray:ttArr];
+            
+        }
+        _groundTableView.TripTopicModelArray =_tripTopicModelArray;
+        //拿到
+        for (int i =27; i<=30; i++) {
+            NSDictionary * dict =[array objectAtIndex:i];
+            NSArray * tempArray =dict[@"list"];
+            NSArray * ttArr =[MoreThemeModel objectArrayWithKeyValuesArray:tempArray];
+            [_moreThemeModelArray addObjectsFromArray:ttArr];
+        }
+        _groundTableView.MoreThemeModelArray =_moreThemeModelArray;
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -79,11 +136,14 @@
 }
 -(void)createTimer
 {
-    _timer =[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
+    _timer =[NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
 }
 
 -(void)refresh
 {
+   ADView * adv =(id)[self.view viewWithTag:1];
+    
+    [adv refresh];
     
 }
 

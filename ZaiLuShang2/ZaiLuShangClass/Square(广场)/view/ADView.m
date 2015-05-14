@@ -8,6 +8,8 @@
 
 #import "ADView.h"
 #define BUTTON_INIT_TAG 100
+#define SCROLLVIEW_INIT_TAG 1
+#define PAGECONTROL_INIT_TAG 2
 #import "UIButton+WebCache.h"
 @implementation ADView
 {
@@ -66,6 +68,7 @@
     _scrollView.delegate =self;
     _scrollView.pagingEnabled=YES;
     _scrollView.bounces =NO;
+    //_scrollView.tag =SCROLLVIEW_INIT_TAG;
     [self addSubview:_scrollView];
 }
 
@@ -79,6 +82,7 @@
    // _pageControl.backgroundColor =[UIColor redColor];
     _pageControl.numberOfPages =totalPage;
     [_pageControl addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+   // _pageControl.tag =PAGECONTROL_INIT_TAG;
     [self addSubview:_pageControl];
     
     
@@ -107,6 +111,16 @@
 {
     NSLog(@"~~%ld",button.tag);
 }
+
+#pragma mark 时间刷新
+-(void)refresh
+{
+    CGPoint pp =_scrollView.contentOffset;
+    pp.x +=375;
+    _scrollView.contentOffset =pp;
+    [self scrollViewDidEndDecelerating:_scrollView];
+}
+
 
 #pragma mark UIScrollViewDelegate
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

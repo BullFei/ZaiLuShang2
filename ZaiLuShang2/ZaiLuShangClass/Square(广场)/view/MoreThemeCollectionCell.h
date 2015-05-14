@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MoreThemeModel.h"
 @interface MoreThemeCollectionCell : UICollectionViewCell
 +(MoreThemeCollectionCell *)getTripTopicCollectionCellWithCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
+@property (nonatomic,weak)MoreThemeModel * moreThemeModel;
 @end

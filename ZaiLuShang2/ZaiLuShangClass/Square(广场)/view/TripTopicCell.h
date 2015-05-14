@@ -11,4 +11,5 @@
 @interface TripTopicCell : UITableViewCell
 
 +(TripTopicCell *)getTripTopicCellWithTableView:(UITableView *)tableview;
+@property (nonatomic,weak)NSArray * TripTopicModelArray;
 @end

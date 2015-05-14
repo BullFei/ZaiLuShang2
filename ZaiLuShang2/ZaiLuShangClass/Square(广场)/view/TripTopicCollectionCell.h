@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TripTopicModel.h"
 @interface TripTopicCollectionCell : UICollectionViewCell
 +(TripTopicCollectionCell *)getTripTopicCollectionCellWithCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
+@property (nonatomic,weak)TripTopicModel * tripTopicModel;
 @end
