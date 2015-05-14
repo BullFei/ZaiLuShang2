@@ -33,13 +33,15 @@
 #import "SFProduct.h"
 #import "SFProductCell.h"
 #import "SFTactick.h"
+#import "SFWantPeopleVC.h"
+#import "SFTourListVC.h"
 #define  TITLE_TYPE 88 //标题
 #define TYPE_50  50 //旅行地
 #define TYPE_4  4 //精彩游记
 #define TYPE_102  102 //相关体验
 #define  TACTICK_TYPE 90 //攻略
-#define  MAIN_URL @"http://app6.117go.com/demo27/php/interestAction.php?submit=localityHome&locid=%d&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
-@interface SFListCityVC ()<UITableViewDelegate,UITableViewDataSource>
+#define  MAIN_URL @"http://app6.117go.com/demo27/php/interestAction.php?submit=localityHome&locid=%ld&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
+@interface SFListCityVC ()<UITableViewDelegate,UITableViewDataSource,SFStickerCellDelegate>
 {
     SFCityType * _cityType;
     SFCityTypeHead * cityTypeHead;
@@ -287,6 +289,7 @@
         return cell;
     }else if(indexPath.section==1){
         SFStickerCell * cell = [SFStickerCell cellWithTableView:tableView];
+        cell.delegate = self;
          cell.cityTypeHead = _dataArray[indexPath.section];
         return cell;
         
@@ -346,5 +349,31 @@
     }
     return 44;
 }
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==0) {
+        //
+        
+        SFWantPeopleVC * wantPeopleVC = [[SFWantPeopleVC alloc]init];
+        wantPeopleVC.displayModule =self.displayModule;
+        wantPeopleVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:wantPeopleVC animated:YES];
+    }
+}
+
+
+-(void)stickerCell:(SFStickerCell *)stickerCell withID:(NSInteger)locid withSign:(NSString *)sign
+{
+    if ([sign isEqualToString:@"tour"]) {
+        //游记
+        SFTourListVC * tourListVC = [[SFTourListVC alloc]init];
+        tourListVC.locid =locid;
+        tourListVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:tourListVC animated:YES];
+    }
+}
+
 
 @end
