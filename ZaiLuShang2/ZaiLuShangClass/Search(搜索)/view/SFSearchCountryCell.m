@@ -8,10 +8,10 @@
 
 #import "SFSearchCountryCell.h"
 #import "SFSearchDisplayModule.h"
-#import "SFImageView.h"
+#import "UIImageView+WebCache.h"
 @interface SFSearchCountryCell()
-@property (weak, nonatomic) IBOutlet SFImageView *leftImageView;
-@property (weak, nonatomic) IBOutlet SFImageView *rightImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *leftImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *rightImageView;
 - (IBAction)rightBtnClick:(id)sender;
 - (IBAction)leftBtnClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *leftTitleLabel;
@@ -38,7 +38,7 @@
     if (displayModuleLeft) {
         _displayModuleLeft = displayModuleLeft;
         NSString * url =[NSString stringWithFormat:@"%@/f1400/%@",displayModuleLeft.picdomain, displayModuleLeft.coverpic];
-        [self.leftImageView setImageWithUrl:url  withPlaceHolderImage:nil];
+        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"bg_pic_placeholder_small.9"]];
         self.leftTitleLabel.text=displayModuleLeft.name;
     }
 }
@@ -47,18 +47,12 @@
 {
     if (displayModuleRight) {
         _displayModuleRight = displayModuleRight;
-        [self.rightImageView setImageWithUrl:[NSString stringWithFormat:@"%@/f1400/%@",displayModuleRight.picdomain, displayModuleRight.coverpic] withPlaceHolderImage:nil];
+        [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/f1400/%@",displayModuleRight.picdomain, displayModuleRight.coverpic]] placeholderImage:[UIImage imageNamed:@"bg_pic_placeholder_small.9"]];
         self.rightLabelLabel.text =displayModuleRight.name;
     }
     
 }
 
--(void)layoutSubviews
-{
-    [super layoutSubviews];
-    self.leftTitleLabel.center = self.leftImageView.center;
-    self.rightLabelLabel.center = self.rightImageView.center;
-}
 
 - (IBAction)rightBtnClick:(id)sender {
     if ([self.delegate respondsToSelector:@selector(searchCountryCellPushController:withSearchDisplayModule:)]) {

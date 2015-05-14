@@ -14,14 +14,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="eqp-Fr-2m8">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eqp-Fr-2m8">
                         <rect key="frame" x="0.0" y="60" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.79607843137254897" green="0.79607843137254897" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="C1b-Vk-2AZ"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="jpE-NJ-fHP">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jpE-NJ-fHP">
                         <rect key="frame" x="160" y="15" width="1" height="30"/>
+                        <color key="backgroundColor" red="0.79607843137254897" green="0.79607843137254897" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="HXY-TW-1T2"/>
                         </constraints>
@@ -59,6 +61,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="eqp-Fr-2m8" secondAttribute="trailing" constant="-8" id="yOT-Lk-vXd"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.79607843137254897" green="0.79607843137254897" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="leftBtn" destination="3d1-oE-CiP" id="p1Y-kD-wF2"/>
                 <outlet property="rightBtn" destination="9sI-IH-aAY" id="rxn-c3-QeR"/>
@@ -66,7 +69,4 @@
             <point key="canvasLocation" x="253" y="215.5"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="tab_shadow.png" width="480" height="10"/>
-    </resources>
 </document>

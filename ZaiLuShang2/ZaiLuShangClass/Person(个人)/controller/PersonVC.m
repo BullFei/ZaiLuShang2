@@ -15,8 +15,8 @@
 #import "LYTour.h"
 #import "LYComment.h"
 #import "LYAttentionModel.h"
-#define ZLS_PERSON_URL @""
-@interface PersonVC ()
+#define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=0&fetchNewer=1&length=40&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
+@interface PersonVC ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic ,weak) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray * dataArray;
 @end
@@ -29,6 +29,8 @@
     [self createTableView];
     
     [self createTitleView];
+    
+    [self requestData];
 }
 
 - (void)createTitleView
@@ -37,9 +39,14 @@
 }
 - (void)createTableView
 {
-    UITableView *table = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    UITableView *table = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [self.view addSubview:table];
     self.tableView = table;
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    self.tableView.separatorColor = [UIColor lightGrayColor];
     
     
 }
@@ -136,12 +143,20 @@
                     [_dataArray addObject:model];
                 }
             }
-            
         }
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         NSLog(@"数据请求失败");
     }];
 }
-
+#pragma mark - tableView代理方法
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _dataArray.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [[UITableViewCell alloc] init];
+}
 @end

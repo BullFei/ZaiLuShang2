@@ -11,6 +11,8 @@
 #import "SFCityTypeHead.h"
 #import "UIImageView+WebCache.h"
 #import "SFCityTypeHeadTipUser.h"
+#import "SFCityTypeListModel.h"
+#import "SFSceneryObjModel.h"
 @interface SFCityWantedCell ()
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView1;
@@ -51,10 +53,27 @@
     }
 }
 
+-(void)setSceneryObjModel:(SFSceneryObjModel *)sceneryObjModel
+{
+    if (sceneryObjModel) {
+        _sceneryObjModel = sceneryObjModel;
+        
+        SFCityTypeListModel * cityTypeListModel = sceneryObjModel.scenery;
+        self.label.text = [NSString stringWithFormat:@"%d人去过/%d人想去",cityTypeListModel.goneCnt,cityTypeListModel.wantCnt];
+        NSArray  * array =sceneryObjModel.tipUserArray;
+        SFCityTypeHeadTipUser * cityTypeHeadTipUser1 = array[0];
+        SFCityTypeHeadTipUser * cityTypeHeadTipUser2 = array[1];
+        SFCityTypeHeadTipUser * cityTypeHeadTipUser3 = array[2];
+        [self.imageView1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%s/%@",cityTypeHeadTipUser1.picdomain,SMALL_HEAD,cityTypeHeadTipUser1.avatar]]];
+        
+        [self.imageView2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%s/%@",cityTypeHeadTipUser1.picdomain,SMALL_HEAD,cityTypeHeadTipUser2.avatar]]];
+        [self.imageView3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%s/%@",cityTypeHeadTipUser1.picdomain,SMALL_HEAD,cityTypeHeadTipUser3.avatar]]];
+    }
+}
+
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    NSLog(@"%@",NSStringFromCGRect(self.frame));
     CGFloat r =self.imageView1.frame.size.width*0.5;
     self.imageView1.layer.cornerRadius = r;
     self.imageView1.layer.masksToBounds = YES;
