@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC32E0B61B049115001B6804 /* RootTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC32E0B51B049114001B6804 /* RootTableViewCell.m */; };
+		BC32E0B91B04928D001B6804 /* LYAttention.m in Sources */ = {isa = PBXBuildFile; fileRef = BC32E0B81B04928D001B6804 /* LYAttention.m */; };
 		BC7F98721B047FD100900595 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7F98711B047FD100900595 /* main.m */; };
 		BC7F98771B047FD100900595 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7F98761B047FD100900595 /* Images.xcassets */; };
 		BC7F98861B047FD100900595 /* ZaiLuShang2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7F98851B047FD100900595 /* ZaiLuShang2Tests.m */; };
@@ -1290,6 +1292,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC32E0B41B049114001B6804 /* RootTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTableViewCell.h; sourceTree = "<group>"; };
+		BC32E0B51B049114001B6804 /* RootTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTableViewCell.m; sourceTree = "<group>"; };
+		BC32E0B71B04928D001B6804 /* LYAttention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYAttention.h; sourceTree = "<group>"; };
+		BC32E0B81B04928D001B6804 /* LYAttention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYAttention.m; sourceTree = "<group>"; };
 		BC7F986C1B047FD100900595 /* ZaiLuShang2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZaiLuShang2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7F98701B047FD100900595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC7F98711B047FD100900595 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -3094,6 +3100,8 @@
 				BC7F99361B04801F00900595 /* LYRec.m */,
 				BC7F99371B04801F00900595 /* LYTour.h */,
 				BC7F99381B04801F00900595 /* LYTour.m */,
+				BC32E0B71B04928D001B6804 /* LYAttention.h */,
+				BC32E0B81B04928D001B6804 /* LYAttention.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -3103,6 +3111,8 @@
 			children = (
 				BC7F993A1B04801F00900595 /* TripCell.h */,
 				BC7F993B1B04801F00900595 /* TripCell.m */,
+				BC32E0B41B049114001B6804 /* RootTableViewCell.h */,
+				BC32E0B51B049114001B6804 /* RootTableViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -5682,6 +5692,7 @@
 				BC7F99E41B04801F00900595 /* SFCityTypeListStaticMap.m in Sources */,
 				BC7F99F61B04801F00900595 /* SFSceneryTypeFivtyCollectionViewCell.m in Sources */,
 				BC7F99C41B04801F00900595 /* UIImage+GIF.m in Sources */,
+				BC32E0B91B04928D001B6804 /* LYAttention.m in Sources */,
 				BC7F999C1B04801F00900595 /* MainTabBarButten.m in Sources */,
 				BC7F99BA1B04801F00900595 /* MKAnnotationView+WebCache.m in Sources */,
 				BC7F99B71B04801F00900595 /* MJRefreshConst.m in Sources */,
@@ -5782,6 +5793,7 @@
 				BC7F99C01B04801F00900595 /* SDWebImageDownloaderOperation.m in Sources */,
 				BC7F998E1B04801F00900595 /* CXColltionView.m in Sources */,
 				BC7F99BF1B04801F00900595 /* SDWebImageDownloader.m in Sources */,
+				BC32E0B61B049115001B6804 /* RootTableViewCell.m in Sources */,
 				BC7F99AC1B04801F00900595 /* MJArgument.m in Sources */,
 				BC7F9A041B04804300900595 /* AppDelegate.m in Sources */,
 			);
@@ -5959,6 +5971,7 @@
 				BC7F988B1B047FD100900595 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC7F988C1B047FD100900595 /* Build configuration list for PBXNativeTarget "ZaiLuShang2Tests" */ = {
 			isa = XCConfigurationList;
@@ -5967,6 +5980,7 @@
 				BC7F988E1B047FD100900595 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
