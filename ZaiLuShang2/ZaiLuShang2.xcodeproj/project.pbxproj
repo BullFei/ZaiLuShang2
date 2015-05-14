@@ -1303,6 +1303,7 @@
 		BC7FA3041B0485FB00900595 /* logo_statusbar.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7F9E861B0485FA00900595 /* logo_statusbar.png */; };
 		BC7FA3051B0485FB00900595 /* map_pop_single.9.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7F9E871B0485FA00900595 /* map_pop_single.9.png */; };
 		BC7FA3061B0485FB00900595 /* subscription_pop.9.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7F9E881B0485FA00900595 /* subscription_pop.9.png */; };
+		BC7FA3091B04AC1100900595 /* CXScrollViewBarBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7FA3081B04AC1100900595 /* CXScrollViewBarBtn.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2746,6 +2747,8 @@
 		BC7F9E861B0485FA00900595 /* logo_statusbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_statusbar.png; sourceTree = "<group>"; };
 		BC7F9E871B0485FA00900595 /* map_pop_single.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pop_single.9.png; sourceTree = "<group>"; };
 		BC7F9E881B0485FA00900595 /* subscription_pop.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subscription_pop.9.png; sourceTree = "<group>"; };
+		BC7FA3071B04AC1100900595 /* CXScrollViewBarBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXScrollViewBarBtn.h; sourceTree = "<group>"; };
+		BC7FA3081B04AC1100900595 /* CXScrollViewBarBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXScrollViewBarBtn.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2948,6 +2951,8 @@
 				BC7F98A41B04801F00900595 /* CXImageDescView.m */,
 				BC7F98A51B04801F00900595 /* CXscrollView.h */,
 				BC7F98A61B04801F00900595 /* CXscrollView.m */,
+				BC7FA3071B04AC1100900595 /* CXScrollViewBarBtn.h */,
+				BC7FA3081B04AC1100900595 /* CXScrollViewBarBtn.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -5870,6 +5875,7 @@
 				BC7F99961B04801F00900595 /* CXImageDescView.m in Sources */,
 				BC7F99AD1B04801F00900595 /* MJIvar.m in Sources */,
 				BC7F99F01B04801F00900595 /* SFExctingTourCell.m in Sources */,
+				BC7FA3091B04AC1100900595 /* CXScrollViewBarBtn.m in Sources */,
 				BC7F99901B04801F00900595 /* HotTopicVC.m in Sources */,
 				BC629A951B0497F6006FD0C0 /* AttributedLabel.m in Sources */,
 				BC7F99CF1B04801F00900595 /* LYAchv.m in Sources */,
