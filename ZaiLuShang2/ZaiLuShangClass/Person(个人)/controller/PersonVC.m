@@ -15,10 +15,16 @@
 #import "LYTour.h"
 #import "LYComment.h"
 #import "LYAttentionModel.h"
+#import "TripCell.h"
+#import "LYAttention.h"
+
 #define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=0&fetchNewer=1&length=40&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
-@interface PersonVC ()<UITableViewDataSource, UITableViewDelegate>
+
+@interface PersonVC ()<UITableViewDataSource, UITableViewDelegate, TripCellDelegate>
+
 @property (nonatomic ,weak) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray * dataArray;
+
 @end
 
 @implementation PersonVC
@@ -154,9 +160,20 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _dataArray.count;
+    return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [[UITableViewCell alloc] init];
+    LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:_dataArray[1]];
+    TripCell *cell = [[TripCell alloc] initWithLYAttention:att];
+    cell.delegate = self;
+    return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 500;
+}
+
+#pragma mark - 事件的回调方法
+- (void)iconTapped:(UITapGestureRecognizer *)tgr {
+    NSLog(@"点击了头像");
 }
 @end

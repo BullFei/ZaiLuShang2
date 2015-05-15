@@ -21,8 +21,10 @@
 #import "SFHeaderView.h"
 #import "SFCityWantedCell.h"
 #import "SFStickerCell.h"
-#define URL @"http://app6.117go.com/demo27/php/stickerAction.php?submit=getSceneryHome&sceneryid=%d&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
-@interface SFSceneryListVC ()<UITableViewDataSource,UITableViewDelegate>
+#import "SFWantPeopleVC.h"
+#import "SFTourListVC.h"
+#define URL @"http://app6.117go.com/demo27/php/stickerAction.php?submit=getSceneryHome&sceneryid=%ld&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
+@interface SFSceneryListVC ()<UITableViewDataSource,UITableViewDelegate,SFStickerCellDelegate>
 {
 //    SFCityType * _cityType;
     SFSceneryObjModel * sceneryObjModel;
@@ -63,6 +65,7 @@
 -(void)createBottomView
 {
     UIView * bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49)];
+    bottomView.backgroundColor = [UIColor redColor];
     
     [self.view addSubview:bottomView];
     
@@ -85,15 +88,6 @@
         
         [bottomView addSubview:button];
     }
-    
-    UIButton * writeBtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-10-100, 10, 100, 25)];
-    [bottomView addSubview:writeBtn];
-    [writeBtn setImage:[UIImage imageNamed:@"icon_edit_green_32"] forState:UIControlStateNormal];
-    [writeBtn setTitle:@"写贴士" forState:UIControlStateNormal];
-    [writeBtn setBackgroundColor:[UIColor colorWithRed:127/255.0 green:194/255.0 blue:0/255.0 alpha:1]];
-    writeBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    writeBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [bottomView addSubview:writeBtn];
     
 }
 
@@ -207,6 +201,7 @@
         return cell;
     }else if (indexPath.row==1){
         SFStickerCell * cell = [SFStickerCell cellWithTableView:tableView];
+        cell.delegate =self;
         cell.sceneryObjModel = sceneryObjModel;
         return cell;
     }
@@ -229,6 +224,30 @@
         return 60;
     }
     return 44;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==0) {
+        //
+        
+        SFWantPeopleVC * wantPeopleVC = [[SFWantPeopleVC alloc]init];
+        wantPeopleVC.displayModule =self.displayModule;
+        wantPeopleVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:wantPeopleVC animated:YES];
+    }
+}
+
+
+-(void)stickerCell:(SFStickerCell *)stickerCell withID:(NSInteger)locid withSign:(NSString *)sign
+{
+    if ([sign isEqualToString:@"tour"]) {
+        //游记
+        SFTourListVC * tourListVC = [[SFTourListVC alloc]init];
+        tourListVC.locid =locid;
+        tourListVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:tourListVC animated:YES];
+    }
 }
 
 
