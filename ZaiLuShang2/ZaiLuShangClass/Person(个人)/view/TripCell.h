@@ -13,6 +13,8 @@
 @protocol TripCellDelegate <NSObject>
 
 - (void)iconTapped:(UITapGestureRecognizer *)tgr;
+- (void)titleTapped:(UITapGestureRecognizer *)tgr;
+- (void)igTapped:(UITapGestureRecognizer *)tgr;
 
 @end
 
@@ -31,7 +33,6 @@
 @property (nonatomic, strong) UILabel *author;
 @property (nonatomic, strong) UILabel *title;
 // 标题
-@property (nonatomic, strong) STTweetLabel *titleName;
 // 图片
 @property (nonatomic, strong) UIImageView *ig;
 // 正文内容

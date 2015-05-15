@@ -14,6 +14,9 @@
 
 #define LYZLS_BLANK_WIDTH 5
 
+#define LYZLS_BUTTON_HEIGHT 20
+#define LYZLS_BUTTON_WIDTH 56
+
 @implementation LYAttention
 
 - (instancetype)initWithLYAttentionModel:(LYAttentionModel *)model {
@@ -49,25 +52,56 @@
     CGSize eventSize = [eventString sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:12], NSFontAttributeName, nil]];
     self.event = (CGRect){{eventX, eventY}, eventSize};
     
-    // 获取authorString的长度
-    int len = authorString.length;
-    int len1 = eventString.length;
-    
+
+    // 标题另起一行
     NSString *titleString = rec.tourtitle;
-    NSMutableString *titleString1 = [[NSMutableString alloc] init];
-    for (int i = 0; i < len + len1; i++) {
-        [titleString1 insertString:@"　" atIndex:0];
-    }
-    if (titleString != nil) {
-        [titleString1 insertString:titleString atIndex:titleString1.length];
+    CGFloat titleX = authorX;
+    CGFloat titleY = CGRectGetMaxY(self.author) + LYZLS_BLANK_WIDTH;
+    CGSize titleSize = [titleString boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 2*LYZLS_BLANK_WIDTH - self.icon.size.width, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:12] forKey:NSFontAttributeName] context:nil].size;
+    self.titleName = (CGRect){{titleX, titleY}, titleSize};
+    
+    // 图片 先检测是否有图片
+    if (rec.picfile != nil) {
+        // 有图片 图片宽度是固定的 根据比例求出高度
+        CGFloat igX = authorX;
+        CGFloat igY = CGRectGetMaxY(self.titleName) + LYZLS_BLANK_WIDTH;
+        CGFloat igW = SCREEN_WIDTH - self.icon.size.width - 4 * LYZLS_BLANK_WIDTH;
+        
+        //图片的比例
+        double igScale = rec.pich.doubleValue / rec.picw.doubleValue;
+        // 图片的高度
+        CGFloat igH = igW * igScale;
+        self.ig = CGRectMake(igX, igY, igW, igH);
+    } else {
+        // 没有图片,赋值为零
+        self.ig = CGRectZero;
     }
     
-    NSLog(@"%@", titleString1);
-    CGFloat titleX = authorX;
-    CGFloat titleY = authorY;
-    CGSize titleSize = [titleString1 boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 3*LYZLS_BLANK_WIDTH - self.icon.size.width, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:12] forKey:NSFontAttributeName] context:nil].size;
-    NSLog(@"%@", NSStringFromCGRect(self.icon));
-    self.titleName = (CGRect){{titleX, titleY}, titleSize};
-// 这个label的内容
+    // 内容
+    CGFloat contentX = authorX;
+    // 标题的Y最大值,加上图片的高度,加上两个空白行的距离==内容的Y值
+    CGFloat contentY = CGRectGetMaxY(self.titleName) + self.ig.size.height + 2 * LYZLS_BLANK_WIDTH;
+    // 计算content的Size
+    CGSize contentSize = [rec.words boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 4*LYZLS_BLANK_WIDTH - self.icon.size.width, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:12] forKey:NSFontAttributeName] context:nil].size;
+    self.content = (CGRect){{contentX, contentY}, contentSize};
+    
+    // 两个按钮
+    
+    // 喜欢按钮
+    CGFloat likeX = authorX;
+    CGFloat likeY = CGRectGetMaxY(self.content) + 2 * LYZLS_BLANK_WIDTH;
+    CGFloat likeW = LYZLS_BUTTON_WIDTH;
+    CGFloat likeH = LYZLS_BUTTON_HEIGHT;
+    self.likeCnt = CGRectMake(likeX, likeY, likeW, likeH);
+    
+    // 评论按钮
+    CGFloat cmtX = CGRectGetMaxX(self.likeCnt) + 2 * LYZLS_BLANK_WIDTH;
+    CGFloat cmtY = likeY;
+    CGFloat cmtW = likeW;
+    CGFloat cmtH = likeH;
+    self.cmtCnt = CGRectMake(cmtX, cmtY, cmtW, cmtH);
+    
+  
+    
 }
 @end

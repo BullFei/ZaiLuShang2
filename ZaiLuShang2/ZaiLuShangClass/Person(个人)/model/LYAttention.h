@@ -45,5 +45,12 @@
 // 发布时间
 @property (nonatomic, assign) CGRect createAt;
 
+/**
+ *  用数据模型来初始化一个frame模型
+ *
+ *  @param model LYAttentionModel类型
+ *
+ *  @return 返回一个对应的frame模型
+ */
 - (instancetype)initWithLYAttentionModel:(LYAttentionModel *)model;
 @end
