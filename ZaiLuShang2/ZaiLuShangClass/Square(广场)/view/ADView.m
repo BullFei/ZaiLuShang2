@@ -16,16 +16,20 @@
     UIScrollView * _scrollView;
     UIPageControl * _pageControl;
     NSInteger totalPage;
+    BOOL isLoadData;//是否已经加载数据
 }
 -(void)setADModelArray:(NSArray *)ADModelArray
 {
+   
     _ADModelArray =ADModelArray;
-    totalPage =_ADModelArray.count;
-    [self createScrollView];
-    [self createPageControl];
-    [self createButton];
-    
-    //第一个button
+    if (isLoadData==NO&&ADModelArray!=nil) {
+        totalPage =_ADModelArray.count;
+        [self createScrollView];
+        [self createPageControl];
+        [self createButton];
+        isLoadData =YES;
+    }
+        //第一个button
     ADModel * admlast =[ADModelArray lastObject];
     
     UIButton * button0 =(id)[self viewWithTag:BUTTON_INIT_TAG];
@@ -49,8 +53,8 @@
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self=[super initWithFrame:frame]) {
-        
-        [self createScrollView];
+//        
+       [self createScrollView];
         [self createPageControl];
         //[self createButton];
     }

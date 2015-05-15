@@ -14,6 +14,7 @@
 @property (nonatomic,copy)NSString * coverpic;
 @property (nonatomic,copy)NSString * likeCnt;
 @property (nonatomic,copy)NSString * cntP;
+@property (nonatomic,strong)NSArray * cmt;//评论model的数组
 //@property (nonatomic,copy)发布者（用户）model
 //@property (nonatomic,copy)评论者（用户）model
 @end

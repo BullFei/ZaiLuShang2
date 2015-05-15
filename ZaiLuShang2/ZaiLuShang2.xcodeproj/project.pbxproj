@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12A8E7161B05C76300766D01 /* SpecialColumnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A8E7151B05C76300766D01 /* SpecialColumnModel.m */; };
+		12A8E7191B05CA2E00766D01 /* SpecialColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A8E7181B05CA2E00766D01 /* SpecialColumnView.m */; };
+		12A8E71C1B05EE3D00766D01 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A8E71B1B05EE3D00766D01 /* CommentModel.m */; };
+		12A8E71F1B05FD9500766D01 /* ReviewerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A8E71E1B05FD9500766D01 /* ReviewerModel.m */; };
 		12E9AB201B0499D00084490E /* SquareVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB001B0499D00084490E /* SquareVC.m */; };
 		12E9AB211B0499D00084490E /* ADModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB041B0499D00084490E /* ADModel.m */; };
 		12E9AB221B0499D00084490E /* JingXuanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB061B0499D00084490E /* JingXuanModel.m */; };
@@ -1318,6 +1322,10 @@
 		BC8FD3821B05E7200085D159 /* TimeIntervalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */; };
 		BC8042CF1B05D2AA00831527 /* CXCmtTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */; };
 		BC8042D11B05D2C100831527 /* CXCmtTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */; };
+<<<<<<< HEAD
+=======
+		BC8042D41B05F1B800831527 /* NSString+CXDataStr.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */; };
+>>>>>>> origin/master
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1331,6 +1339,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12A8E7141B05C76300766D01 /* SpecialColumnModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialColumnModel.h; sourceTree = "<group>"; };
+		12A8E7151B05C76300766D01 /* SpecialColumnModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialColumnModel.m; sourceTree = "<group>"; };
+		12A8E7171B05CA2E00766D01 /* SpecialColumnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialColumnView.h; sourceTree = "<group>"; };
+		12A8E7181B05CA2E00766D01 /* SpecialColumnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialColumnView.m; sourceTree = "<group>"; };
+		12A8E71A1B05EE3D00766D01 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
+		12A8E71B1B05EE3D00766D01 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
+		12A8E71D1B05FD9500766D01 /* ReviewerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewerModel.h; sourceTree = "<group>"; };
+		12A8E71E1B05FD9500766D01 /* ReviewerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewerModel.m; sourceTree = "<group>"; };
 		12E9AAFF1B0499D00084490E /* SquareVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareVC.h; sourceTree = "<group>"; };
 		12E9AB001B0499D00084490E /* SquareVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareVC.m; sourceTree = "<group>"; };
 		12E9AB031B0499D00084490E /* ADModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADModel.h; sourceTree = "<group>"; };
@@ -2788,6 +2804,11 @@
 		BC8042CD1B05D2AA00831527 /* CXCmtTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtTableHeaderView.h; sourceTree = "<group>"; };
 		BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtTableHeaderView.m; sourceTree = "<group>"; };
 		BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CXCmtTableHeaderView.xib; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
+		BC8042D21B05F1B800831527 /* NSString+CXDataStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CXDataStr.h"; sourceTree = "<group>"; };
+		BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CXDataStr.m"; sourceTree = "<group>"; };
+>>>>>>> origin/master
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2840,6 +2861,12 @@
 				12E9AB321B04BD800084490E /* TripTopicModel.m */,
 				12E9AB341B04C45D0084490E /* MoreThemeModel.h */,
 				12E9AB351B04C45D0084490E /* MoreThemeModel.m */,
+				12A8E7141B05C76300766D01 /* SpecialColumnModel.h */,
+				12A8E7151B05C76300766D01 /* SpecialColumnModel.m */,
+				12A8E71A1B05EE3D00766D01 /* CommentModel.h */,
+				12A8E71B1B05EE3D00766D01 /* CommentModel.m */,
+				12A8E71D1B05FD9500766D01 /* ReviewerModel.h */,
+				12A8E71E1B05FD9500766D01 /* ReviewerModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2869,6 +2896,8 @@
 				12E9AB1D1B0499D00084490E /* TripTopicCollectionCell.h */,
 				12E9AB1E1B0499D00084490E /* TripTopicCollectionCell.m */,
 				12E9AB1F1B0499D00084490E /* triptopiccollectioncell.xib */,
+				12A8E7171B05CA2E00766D01 /* SpecialColumnView.h */,
+				12A8E7181B05CA2E00766D01 /* SpecialColumnView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3061,6 +3090,8 @@
 		BC7F98B61B04801F00900595 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				BC8042D21B05F1B800831527 /* NSString+CXDataStr.h */,
+				BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -5930,6 +5961,7 @@
 				BC7F99DB1B04801F00900595 /* SFCityType.m in Sources */,
 				BC7F99DA1B04801F00900595 /* SFListTactickController.m in Sources */,
 				BC7F99AF1B04801F00900595 /* MJMethod.m in Sources */,
+				12A8E7161B05C76300766D01 /* SpecialColumnModel.m in Sources */,
 				BC7F99C61B04801F00900595 /* UIImage+WebP.m in Sources */,
 				12E9AB291B0499D00084490E /* MoreThemeCollectionCell.m in Sources */,
 				BC7F99E91B04801F00900595 /* SFSearchDisplayModule.m in Sources */,
@@ -5937,6 +5969,7 @@
 				BC7F99A11B04801F00900595 /* AFNTool.m in Sources */,
 				BC7F99AB1B04801F00900595 /* MyMD5.m in Sources */,
 				BC629A8C1B0496C3006FD0C0 /* SFProduct.m in Sources */,
+				BC8042D41B05F1B800831527 /* NSString+CXDataStr.m in Sources */,
 				BC7F99DF1B04801F00900595 /* SFCityTypeHeadLocality.m in Sources */,
 				BC7F99991B04801F00900595 /* MainTabBarController.m in Sources */,
 				BC7F99931B04801F00900595 /* CXCollectViewCellModel.m in Sources */,
@@ -5963,6 +5996,7 @@
 				BC7F99B91B04801F00900595 /* MJRefreshHeaderView.m in Sources */,
 				BC7F99B61B04801F00900595 /* MJRefreshBaseView.m in Sources */,
 				BC7F99C81B04801F00900595 /* UIImageView+WebCache.m in Sources */,
+				12A8E71C1B05EE3D00766D01 /* CommentModel.m in Sources */,
 				BC7F99CA1B04801F00900595 /* SFImageView.m in Sources */,
 				BC7F99D11B04801F00900595 /* LYComment.m in Sources */,
 				12E9AB2B1B0499D00084490E /* Section2Cell.m in Sources */,
@@ -5970,6 +6004,7 @@
 				12E9AB241B0499D00084490E /* ADView.m in Sources */,
 				BC7F99C31B04801F00900595 /* UIButton+WebCache.m in Sources */,
 				BC7F99D71B04801F00900595 /* SearchVC.m in Sources */,
+				12A8E71F1B05FD9500766D01 /* ReviewerModel.m in Sources */,
 				BC7F99AE1B04801F00900595 /* MJMember.m in Sources */,
 				BC7F99B11B04801F00900595 /* MJTypeEncoding.m in Sources */,
 				12E9AB201B0499D00084490E /* SquareVC.m in Sources */,
@@ -6028,6 +6063,7 @@
 				BC7F99E61B04801F00900595 /* SFLinkTitleList.m in Sources */,
 				BC7F999D1B04801F00900595 /* AFHTTPRequestOperation.m in Sources */,
 				BC7F99A21B04801F00900595 /* AFSecurityPolicy.m in Sources */,
+				12A8E7191B05CA2E00766D01 /* SpecialColumnView.m in Sources */,
 				BC7F99FA1B04801F00900595 /* SFStickerCell.m in Sources */,
 				BC7F99C01B04801F00900595 /* SDWebImageDownloaderOperation.m in Sources */,
 				BC7F998E1B04801F00900595 /* CXColltionView.m in Sources */,
