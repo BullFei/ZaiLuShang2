@@ -3,10 +3,14 @@
    type = "1"
    version = "2.0">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -143,10 +147,25 @@
             startingLineNumber = "81"
             endingLineNumber = "81"
             landmarkName = "-willRemoveSubview:"
+=======
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZaiLuShangClass/Other(&#x5176;&#x4ed6;)/Category/NSDate+CXTime.m"
+            timestampString = "453382344.712329"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "-daysOfDataToNow"
+>>>>>>> origin/master
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
 </Bucket>

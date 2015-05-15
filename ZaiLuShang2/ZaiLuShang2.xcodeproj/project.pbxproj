@@ -1340,12 +1340,21 @@
 		BC8042C81B05900100831527 /* CXCmtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C61B05900100831527 /* CXCmtCell.m */; };
 		BC8042CC1B05992A00831527 /* CXCmtFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CB1B05992A00831527 /* CXCmtFrameModel.m */; };
 
+
 		BC8FD37E1B05DB2A0085D159 /* LYLCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */; };
 		BC8FD3821B05E7200085D159 /* TimeIntervalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */; };
 
 
 		BC8042CF1B05D2AA00831527 /* CXCmtTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */; };
 		BC8042D11B05D2C100831527 /* CXCmtTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */; };
+
+
+		BC8FD37E1B05DB2A0085D159 /* LYLCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */; };
+		BC8FD3821B05E7200085D159 /* TimeIntervalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */; };
+		BC8042CF1B05D2AA00831527 /* CXCmtTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */; };
+		BC8042D11B05D2C100831527 /* CXCmtTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */; };
+
+		BC8042D41B05F1B800831527 /* NSString+CXDataStr.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */; };
 
 /* End PBXBuildFile section */
 
@@ -2858,9 +2867,17 @@
 		BC8FD3801B05E7200085D159 /* TimeIntervalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeIntervalTool.h; sourceTree = "<group>"; };
 		BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeIntervalTool.m; sourceTree = "<group>"; };
 
+
 		BC8042CD1B05D2AA00831527 /* CXCmtTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtTableHeaderView.h; sourceTree = "<group>"; };
 		BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtTableHeaderView.m; sourceTree = "<group>"; };
 		BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CXCmtTableHeaderView.xib; sourceTree = "<group>"; };
+
+		BC8042CD1B05D2AA00831527 /* CXCmtTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtTableHeaderView.h; sourceTree = "<group>"; };
+		BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtTableHeaderView.m; sourceTree = "<group>"; };
+		BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CXCmtTableHeaderView.xib; sourceTree = "<group>"; };
+
+		BC8042D21B05F1B800831527 /* NSString+CXDataStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CXDataStr.h"; sourceTree = "<group>"; };
+		BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CXDataStr.m"; sourceTree = "<group>"; };
 
 /* End PBXFileReference section */
 
@@ -3143,6 +3160,8 @@
 		BC7F98B61B04801F00900595 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				BC8042D21B05F1B800831527 /* NSString+CXDataStr.h */,
+				BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -6061,8 +6080,12 @@
 				BC7F99A11B04801F00900595 /* AFNTool.m in Sources */,
 				BC7F99AB1B04801F00900595 /* MyMD5.m in Sources */,
 				BC629A8C1B0496C3006FD0C0 /* SFProduct.m in Sources */,
+
 				BCA98F901B05B9C9005E26BF /* SFTourDayTitleView.m in Sources */,
 				BCCE499E1B058DE800982593 /* SFTourDay.m in Sources */,
+
+				BC8042D41B05F1B800831527 /* NSString+CXDataStr.m in Sources */,
+
 				BC7F99DF1B04801F00900595 /* SFCityTypeHeadLocality.m in Sources */,
 				BC7F99991B04801F00900595 /* MainTabBarController.m in Sources */,
 				BC7F99931B04801F00900595 /* CXCollectViewCellModel.m in Sources */,
