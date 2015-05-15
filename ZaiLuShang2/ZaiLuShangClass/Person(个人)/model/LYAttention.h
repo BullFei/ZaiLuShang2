@@ -45,5 +45,20 @@
 // 发布时间
 @property (nonatomic, assign) CGRect createAt;
 
+/*****************************************************/
+// 评论(只展示两条)
+@property (nonatomic, assign) CGRect commentatorIcon1;
+@property (nonatomic, assign) CGRect commentatorIcon2;
+
+@property (nonatomic, assign) CGRect  commentContent1;
+@property (nonatomic, assign) CGRect  commmentContent2;
+
+/**
+ *  用数据模型来初始化一个frame模型
+ *
+ *  @param model LYAttentionModel类型
+ *
+ *  @return 返回一个对应的frame模型
+ */
 - (instancetype)initWithLYAttentionModel:(LYAttentionModel *)model;
 @end

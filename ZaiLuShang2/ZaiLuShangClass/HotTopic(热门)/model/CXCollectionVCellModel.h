@@ -27,5 +27,6 @@
 @property (nonatomic, copy) NSString *cntcmt;
 @property (nonatomic, copy) NSString *likeCnt;
 @property (nonatomic, copy) NSString *tourtitle;
+@property (nonatomic, copy) NSString *timestamp;
 
 @end

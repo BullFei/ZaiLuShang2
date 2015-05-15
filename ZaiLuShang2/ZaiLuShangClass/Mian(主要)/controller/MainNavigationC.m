@@ -27,6 +27,7 @@
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
+    
     [super pushViewController:viewController animated:animated];
     if (self.viewControllers.count > 1) {
         // 隐藏tabbar
@@ -43,13 +44,12 @@
         // 隐藏nav
 //        [self.navigationBar.subviews[0] setHidden:YES];
     }
-
 }
 // 返回
 - (void)back
 {
     [self popViewControllerAnimated:YES];
-    if (self.viewControllers.count <= 2) {
+    if (self.viewControllers.count < 2) {
         [self.navigationBar.subviews[0] setHidden:NO];
         self.tabBarController.tabBar.hidden = NO;
     }
