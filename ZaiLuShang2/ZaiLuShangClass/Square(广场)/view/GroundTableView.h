@@ -15,4 +15,6 @@
 @property (nonatomic,weak)NSArray * Section2ItemModelArray;
 @property (nonatomic,weak)NSArray * TripTopicModelArray;
 @property (nonatomic,weak)NSArray * MoreThemeModelArray;
+@property (nonatomic,weak)NSArray * SpecialColumnModelArray;
+//@property (nonatomic,weak)NSArray * CommentModelArray;
 @end

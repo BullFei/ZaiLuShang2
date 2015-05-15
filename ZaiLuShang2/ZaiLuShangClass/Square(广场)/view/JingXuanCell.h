@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "JingXuanModel.h"
+#import "CommentModel.h"
 @interface JingXuanCell : UITableViewCell
 +(JingXuanCell *)GetJingXuanCellWithTableView:(UITableView *)tableview;
 @property (nonatomic,weak)JingXuanModel * jingXuanModel;
+@property (nonatomic,weak)NSArray * CommentModelArray;
 @end

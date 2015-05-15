@@ -8,6 +8,10 @@
 
 #import "GroundTableView.h"
 #import "ADView.h"
+#import "SpecialColumnView.h"
+
+#import "MJExtension.h"
+
 #import "JingXuanCell.h"
 #import "Section2Cell.h"
 #import "TripTopicCell.h"
@@ -16,6 +20,11 @@
 {
     UITableView * _tableView;
     ADView * adview;
+    SpecialColumnView * scv1;//精选
+    SpecialColumnView * scv2;//打手牵小手
+    SpecialColumnView * scv3;//旅行话题
+    
+    SpecialColumnView * scv4;//更多专题
 }
 
 +(GroundTableView *)createTableViewWithFrame:(CGRect)frame
@@ -38,6 +47,8 @@
 -(void)setJingXuanModelArray:(NSArray *)JingXuanModelArray
 {
     _JingXuanModelArray =JingXuanModelArray;
+//    JingXuanModel * jxm =_JingXuanModelArray.firstObject;
+//    NSLog(@"~~~~%@",jxm.cmt);
     [_tableView reloadData];
 }
 -(void)setSection2ItemModelArray:(NSArray *)Section2ItemModelArray
@@ -55,6 +66,11 @@
     _MoreThemeModelArray =MoreThemeModelArray;
     [_tableView reloadData];
 }
+-(void)setSpecialColumnModelArray:(NSArray *)SpecialColumnModelArray
+{
+    _SpecialColumnModelArray =SpecialColumnModelArray;
+    [_tableView reloadData];
+}
 
 #pragma mark UI部分
 -(void)createTableViewUIWithFrame:(CGRect)frame
@@ -63,12 +79,30 @@
     _tableView.delegate =self;
     _tableView.dataSource =self;
     _tableView.bounces =NO;
+    [self createSpecialColumnViews];
     [self addSubview:_tableView];
 }
 -(void)createADView
 {
      adview =[ADView createADViewWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, 200)];
     adview.tag = 1;
+}
+-(void)createSpecialColumnViews
+{
+    CGRect rect =CGRectMake(0, 0, SCREEN_WIDTH, 30) ;
+    if (scv1==nil) {
+        scv1 =[SpecialColumnView getSpecialColumnViewWithFrame:rect];
+    }
+    if (scv2==nil) {
+        scv2 =[SpecialColumnView getSpecialColumnViewWithFrame:rect];
+    }
+    if (scv3==nil) {
+        scv3 =[SpecialColumnView getSpecialColumnViewWithFrame:rect];
+    }
+    if (scv4==nil) {
+        scv4 =[SpecialColumnView getSpecialColumnViewWithFrame:rect];
+    }
+    
 }
 #pragma mark TableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -122,11 +156,45 @@
 #pragma mark UITableViewDataSource
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    
     if (section ==0) {
         return nil; //广告部分没有头视图索引
     }
     else
     {
+        switch (section) {
+            case 1:
+            {
+                SpecialColumnModel * mm =[_SpecialColumnModelArray objectAtIndex:0];
+                scv1.specialColumnModel =mm;
+                return scv1;
+                break;
+            }
+            case 2:
+            {
+                SpecialColumnModel * mm =[_SpecialColumnModelArray objectAtIndex:1];
+                scv2.specialColumnModel =mm;
+                return scv2;
+            }
+                break;
+            case 3:
+            {
+                SpecialColumnModel * mm =[_SpecialColumnModelArray objectAtIndex:2];
+                scv3.specialColumnModel =mm;
+                return scv3;
+                break;
+            }
+            case 4:
+            {
+                SpecialColumnModel * mm =[_SpecialColumnModelArray objectAtIndex:3];
+                scv4.specialColumnModel =mm;
+                return scv4;
+                break;
+            }
+            default:
+                return nil;
+                break;
+        }
         
         return nil;
     }
@@ -151,7 +219,10 @@
                 
             }
             
-            adview.ADModelArray =self.ADModelArray;
+            NSLog(@"~~~~%@",self.ADModelArray);
+                adview.ADModelArray =self.ADModelArray;
+
+            
             
             //[cell.contentView addSubview:adview];
             
@@ -164,6 +235,13 @@
         {
             JingXuanCell * cell =[JingXuanCell GetJingXuanCellWithTableView:tableView];
             JingXuanModel * mm =[_JingXuanModelArray objectAtIndex:indexPath.row];
+           // NSLog(@"~~~%@",mm.cmt);
+            NSArray * tempArr;
+            if (mm.cmt) {
+                tempArr =[CommentModel objectArrayWithKeyValuesArray:mm.cmt];
+
+            }
+            cell.CommentModelArray =tempArr;
             cell.jingXuanModel =mm;
             return cell;
             break;
