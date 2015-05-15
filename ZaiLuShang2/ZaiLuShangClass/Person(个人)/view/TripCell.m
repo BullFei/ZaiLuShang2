@@ -10,7 +10,10 @@
 #import "UIImageView+WebCache.h"
 #import "LYRec.h"
 #import "LYOwner.h"
+#import "TimeIntervalTool.h"
+#import "LYComment.h"
 
+#define LYZLS_TEXTSIZE 12
 
 @implementation TripCell
 - (instancetype)initWithLYAttention:(LYAttention *)attention {
@@ -38,7 +41,7 @@
     self.icon = [[UIImageView alloc] init];
     self.icon.frame = self.attFrame.icon;
     // 拼接头像的URL地址
-    NSString *url = [NSString stringWithFormat:@"%@%s%@", rec.owner.picdomain, SMALL_HEAD, rec.owner.avatar];
+    NSString *url = [NSString stringWithFormat:@"%@%@%@", rec.owner.picdomain, SMALL_HEAD, rec.owner.avatar];
     // 头像切圆角
     self.icon.layer.cornerRadius = 102/4;
     self.icon.layer.masksToBounds = YES;
@@ -58,7 +61,7 @@
     self.author = [[UILabel alloc] init];
     self.author.frame = self.attFrame.author;
     self.author.textColor = [UIColor blueColor];
-    self.author.font = [UIFont systemFontOfSize:12];
+    self.author.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
     self.author.text = rec.owner.nickname;
     self.author.userInteractionEnabled = YES;
     [self.contentView addSubview:self.author];
@@ -72,12 +75,12 @@
     UILabel *eveLabel = [[UILabel alloc] init];
     eveLabel.frame = self.attFrame.event;
     eveLabel.textColor = [UIColor blackColor];
-    eveLabel.font = [UIFont systemFontOfSize:12];
+    eveLabel.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
     eveLabel.text = eve;
     [self.contentView addSubview:eveLabel];
     
     self.title = [[UILabel alloc] init];
-    self.title.font = [UIFont systemFontOfSize:12];
+    self.title.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
     self.title.frame = self.attFrame.titleName;
     self.title.numberOfLines = 0;
     self.title.textColor = [UIColor blueColor];
@@ -94,7 +97,7 @@
         self.ig = [[UIImageView alloc] initWithFrame:self.attFrame.ig];
         // 拼接URL
         self.ig.backgroundColor = [UIColor cyanColor];
-        NSString *imageURL = [NSString stringWithFormat:@"%@%s%@",rec.picdomain, BIG_IMAGE, rec.picfile];
+        NSString *imageURL = [NSString stringWithFormat:@"%@%@%@",rec.picdomain, BIG_IMAGE, rec.picfile];
         [self.ig sd_setImageWithURL:[NSURL URLWithString:imageURL]];
         [self.contentView addSubview:self.ig];
         
@@ -109,18 +112,12 @@
     self.contentLabel.frame = self.attFrame.content;
     self.contentLabel.numberOfLines = 0;
     self.contentLabel.text = rec.words;
-    self.contentLabel.font = [UIFont systemFontOfSize:12];
+    self.contentLabel.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
     [self.contentView addSubview:self.contentLabel];
     
     // 两个按钮
-    self.likeButton = [[UIButton alloc] init];
+    self.likeButton = [[LYLCButton alloc] init];
     self.likeButton.frame = self.attFrame.likeCnt;
-    self.likeButton.layer.cornerRadius = 5;
-    self.likeButton.layer.masksToBounds = YES;
-    self.likeButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.likeButton.layer.borderWidth = 1;
-    self.likeButton.titleLabel.font = [UIFont systemFontOfSize:12];
-    [self.likeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     // 将图片处理为缩小版
     UIImage *likeImage = [UIImage imageNamed:@"icon_like_line_red_24"];
     NSData *likeData = UIImagePNGRepresentation(likeImage);
@@ -135,14 +132,8 @@
     [self.contentView addSubview:self.likeButton];
     
     
-    self.commentButton = [[UIButton alloc] init];
+    self.commentButton = [[LYLCButton alloc] init];
     self.commentButton.frame = self.attFrame.cmtCnt;
-    self.commentButton.layer.cornerRadius = 5;
-    self.commentButton.layer.masksToBounds = YES;
-    self.commentButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.commentButton.layer.borderWidth = 1;
-    self.commentButton.titleLabel.font = [UIFont systemFontOfSize:12];
-    [self.commentButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
     UIImage *cmtImage = [UIImage imageNamed:@"icon_comment_line_blue_24"];
     NSData *cmtData = UIImagePNGRepresentation(cmtImage);
@@ -154,8 +145,50 @@
         [self.commentButton setTitle:rec.cntcmt forState:UIControlStateNormal];
     }
     [self.commentButton setImage:cmtImage forState:UIControlStateNormal];
-    
     [self.contentView addSubview:self.commentButton];
+    
+    // 创建时间
+    if (self.attFrame.lyam.timestamp != nil) {
+        NSString *t = [TimeIntervalTool timeIntervalFromTimeString:self.attFrame.lyam.timestamp];
+        
+        self.createAtLabel = [[UILabel alloc] init];
+        self.createAtLabel.frame = self.attFrame.createAt;
+        self.createAtLabel.text = t;
+        self.createAtLabel.textColor = [UIColor lightGrayColor];
+        self.createAtLabel.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
+        [self.contentView addSubview:self.createAtLabel];
+    }
+    
+    // 评论,如果有的话,
+    if (rec.comments != nil) {
+        // 添加分割线
+//        UILabel *sep1 = [[UILabel alloc] initWithFrame:CGRectMake(self.ig.frame.origin.x, CGRectGetMaxY(self.likeButton.frame) + 2 * 5, SCREEN_HEIGHT - self.icon.frame.size.width - 2*5, 1)];
+//        sep1.backgroundColor = [UIColor lightGrayColor];
+//        [self.contentView addSubview:sep1];
+        
+        // 头像
+        LYComment *cmt1 = rec.comments[0];
+        self.commentatorIcon1 = [[UIImageView alloc] init];
+        self.commentatorIcon1.frame = self.attFrame.commentatorIcon1;
+        self.commentatorIcon1.layer.cornerRadius = self.attFrame.commentatorIcon1.size.width/2;
+        self.commentatorIcon1.layer.masksToBounds = YES;
+        NSString *url = [NSString stringWithFormat:@"%@%@%@", cmt1.user.picdomain,SMALL_HEAD, cmt1.user.avatar];
+        [self.commentatorIcon1 sd_setImageWithURL:[NSURL URLWithString:url]];
+        [self.contentView addSubview:self.commentatorIcon1];
+        
+        // 文字
+        NSString *cnt = [NSString stringWithFormat:@"%@:%@",cmt1.user.nickname, cmt1.words];
+        self.commentContent1 = [[UILabel alloc] init];
+        self.commentContent1.frame = self.attFrame.commentContent1;
+        self.commentContent1.text = cnt;
+        self.commentContent1.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
+        [self.contentView addSubview:self.commentContent1];
+        
+        
+    }
+    
+    
+    
     
     
 }

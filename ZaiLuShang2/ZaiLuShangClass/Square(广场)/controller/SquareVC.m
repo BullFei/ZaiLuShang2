@@ -19,7 +19,7 @@
 #import "Section2ItemModel.h"
 #import "TripTopicModel.h"
 #import "MoreThemeModel.h"
-
+#import "SpecialColumnModel.h"
 
 #define  GROUND_URL @"http://app6.117go.com/demo27/php/interestAction.php?submit=getPlaza&length=20&vc=anzhuo&vd=f7393db54aeaedec&token=27f3f6568d2faf418538f66d72330a23&v=a6.1.0"
 @interface SquareVC ()
@@ -31,6 +31,7 @@
     NSMutableArray * _section2ItemModelArray;
     NSMutableArray * _tripTopicModelArray;
     NSMutableArray * _moreThemeModelArray;
+    NSMutableArray * _specialColumnModelArray;
 }
 @end
 
@@ -59,7 +60,7 @@
     _section2ItemModelArray =[[NSMutableArray alloc]init];
     _tripTopicModelArray =[[NSMutableArray alloc]init];
     _moreThemeModelArray =[[NSMutableArray alloc]init];
-    
+    _specialColumnModelArray =[[NSMutableArray alloc]init];
 }
 
 -(void)createData
@@ -85,6 +86,7 @@
             NSDictionary * dict =[array objectAtIndex:i];
             NSArray * tempArray =dict[@"list"];
             JingXuanModel * mm =[JingXuanModel objectArrayWithKeyValuesArray:tempArray].firstObject ;
+            
             [_JingXuanMModelArray addObject:mm];
         }
         
@@ -92,16 +94,16 @@
         //拿到Section2ItemModel
         {
             NSDictionary * dict =[array objectAtIndex:8];
-            NSArray * tempArray1 =dict[@"list"];
-            NSArray * ttArr1 =[Section2ItemModel objectArrayWithKeyValuesArray:tempArray1];
-            [_section2ItemModelArray addObjectsFromArray:ttArr1];
+            NSArray * tempArray =dict[@"list"];
+            NSArray * ttArr =[Section2ItemModel objectArrayWithKeyValuesArray:tempArray];
+            [_section2ItemModelArray addObjectsFromArray:ttArr];
             
         }
         {
             NSDictionary * dict =[array objectAtIndex:9];
-            NSArray * tempArray1 =dict[@"list"];
-            NSArray * ttArr1 =[Section2ItemModel objectArrayWithKeyValuesArray:tempArray1];
-            [_section2ItemModelArray addObjectsFromArray:ttArr1];
+            NSArray * tempArray=dict[@"list"];
+            NSArray * ttArr =[Section2ItemModel objectArrayWithKeyValuesArray:tempArray];
+            [_section2ItemModelArray addObjectsFromArray:ttArr];
         }
         _groundTableView.Section2ItemModelArray =_section2ItemModelArray;
         
@@ -114,7 +116,7 @@
             
         }
         _groundTableView.TripTopicModelArray =_tripTopicModelArray;
-        //拿到
+        //拿到morethememodel
         for (int i =27; i<=30; i++) {
             NSDictionary * dict =[array objectAtIndex:i];
             NSArray * tempArray =dict[@"list"];
@@ -122,7 +124,37 @@
             [_moreThemeModelArray addObjectsFromArray:ttArr];
         }
         _groundTableView.MoreThemeModelArray =_moreThemeModelArray;
-        
+        //拿到specialcolumnmodel
+        {
+            NSDictionary * dict =[array objectAtIndex:1];
+            NSArray * tempArray =dict[@"list"];
+            NSArray * ttArr =[SpecialColumnModel objectArrayWithKeyValuesArray:tempArray];
+            [_specialColumnModelArray addObjectsFromArray:ttArr];
+            
+        }
+        {
+            
+            NSDictionary * dict =[array objectAtIndex:7];
+            NSArray * tempArray =dict[@"list"];
+            NSArray * ttArr =[SpecialColumnModel objectArrayWithKeyValuesArray:tempArray];
+            [_specialColumnModelArray addObjectsFromArray:ttArr];
+            
+        }
+        {
+            
+            NSDictionary * dict =[array objectAtIndex:22];
+            NSArray * tempArray =dict[@"list"];
+            NSArray * ttArr =[SpecialColumnModel objectArrayWithKeyValuesArray:tempArray];
+            [_specialColumnModelArray addObjectsFromArray:ttArr];
+        }
+        {
+            
+            NSDictionary * dict =[array objectAtIndex:26];
+            NSArray * tempArray =dict[@"list"];
+            NSArray * ttArr =[SpecialColumnModel objectArrayWithKeyValuesArray:tempArray];
+            [_specialColumnModelArray addObjectsFromArray:ttArr];
+        }
+        _groundTableView.SpecialColumnModelArray =_specialColumnModelArray;
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error:%@",error.localizedDescription);

@@ -125,6 +125,11 @@
                     for (NSDictionary *dic in smallDict[@"item"][@"rec"][@"comments"]) {
                         LYComment *cmt = [[LYComment alloc] init];
                         [cmt setValuesForKeysWithDictionary:dic];
+                        
+                        LYOwner *on = [[LYOwner alloc] init];
+                        [on setValuesForKeysWithDictionary:dic[@"user"]];
+                        cmt.user = on;
+                        
                         [array addObject:cmt];
                     }
                     rec.comments = array;
@@ -162,7 +167,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // 还需要判断model的类型选择不同的cell,后续增加上
-    LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:_dataArray[14]];
+    LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:_dataArray[3]];
     TripCell *cell = [[TripCell alloc] initWithLYAttention:att];
     cell.delegate = self;
     return cell;
