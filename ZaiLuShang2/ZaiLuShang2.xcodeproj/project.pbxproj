@@ -1304,6 +1304,10 @@
 		BC7FA3051B0485FB00900595 /* map_pop_single.9.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7F9E871B0485FA00900595 /* map_pop_single.9.png */; };
 		BC7FA3061B0485FB00900595 /* subscription_pop.9.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7F9E881B0485FA00900595 /* subscription_pop.9.png */; };
 		BC7FA3091B04AC1100900595 /* CXScrollViewBarBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7FA3081B04AC1100900595 /* CXScrollViewBarBtn.m */; };
+		BC8042C11B0582E500831527 /* CXCmtVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C01B0582E500831527 /* CXCmtVC.m */; };
+		BC8042C41B058D9700831527 /* CXCmtModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C31B058D9700831527 /* CXCmtModel.m */; };
+		BC8042C81B05900100831527 /* CXCmtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C61B05900100831527 /* CXCmtCell.m */; };
+		BC8042CC1B05992A00831527 /* CXCmtFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CB1B05992A00831527 /* CXCmtFrameModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2749,6 +2753,14 @@
 		BC7F9E881B0485FA00900595 /* subscription_pop.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subscription_pop.9.png; sourceTree = "<group>"; };
 		BC7FA3071B04AC1100900595 /* CXScrollViewBarBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXScrollViewBarBtn.h; sourceTree = "<group>"; };
 		BC7FA3081B04AC1100900595 /* CXScrollViewBarBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXScrollViewBarBtn.m; sourceTree = "<group>"; };
+		BC8042BF1B0582E500831527 /* CXCmtVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtVC.h; sourceTree = "<group>"; };
+		BC8042C01B0582E500831527 /* CXCmtVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtVC.m; sourceTree = "<group>"; };
+		BC8042C21B058D9700831527 /* CXCmtModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtModel.h; sourceTree = "<group>"; };
+		BC8042C31B058D9700831527 /* CXCmtModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtModel.m; sourceTree = "<group>"; };
+		BC8042C51B05900100831527 /* CXCmtCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtCell.h; sourceTree = "<group>"; };
+		BC8042C61B05900100831527 /* CXCmtCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtCell.m; sourceTree = "<group>"; };
+		BC8042CA1B05992A00831527 /* CXCmtFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtFrameModel.h; sourceTree = "<group>"; };
+		BC8042CB1B05992A00831527 /* CXCmtFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtFrameModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2924,6 +2936,8 @@
 				BC7F98951B04801F00900595 /* CXPhotoVC.m */,
 				BC7F98961B04801F00900595 /* HotTopicVC.h */,
 				BC7F98971B04801F00900595 /* HotTopicVC.m */,
+				BC8042BF1B0582E500831527 /* CXCmtVC.h */,
+				BC8042C01B0582E500831527 /* CXCmtVC.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2937,6 +2951,10 @@
 				BC7F989C1B04801F00900595 /* CXCollectionVCellOwnerModel.m */,
 				BC7F989D1B04801F00900595 /* CXCollectViewCellModel.h */,
 				BC7F989E1B04801F00900595 /* CXCollectViewCellModel.m */,
+				BC8042C21B058D9700831527 /* CXCmtModel.h */,
+				BC8042C31B058D9700831527 /* CXCmtModel.m */,
+				BC8042CA1B05992A00831527 /* CXCmtFrameModel.h */,
+				BC8042CB1B05992A00831527 /* CXCmtFrameModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2953,6 +2971,8 @@
 				BC7F98A61B04801F00900595 /* CXscrollView.m */,
 				BC7FA3071B04AC1100900595 /* CXScrollViewBarBtn.h */,
 				BC7FA3081B04AC1100900595 /* CXScrollViewBarBtn.m */,
+				BC8042C51B05900100831527 /* CXCmtCell.h */,
+				BC8042C61B05900100831527 /* CXCmtCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -5833,6 +5853,7 @@
 				BC32E0B91B04928D001B6804 /* LYAttention.m in Sources */,
 				BC7F999C1B04801F00900595 /* MainTabBarButten.m in Sources */,
 				BC7F99BA1B04801F00900595 /* MKAnnotationView+WebCache.m in Sources */,
+				BC8042CC1B05992A00831527 /* CXCmtFrameModel.m in Sources */,
 				BC7F99B71B04801F00900595 /* MJRefreshConst.m in Sources */,
 				BC7F99E21B04801F00900595 /* SFCityTypeListLoc.m in Sources */,
 				12E9AB221B0499D00084490E /* JingXuanModel.m in Sources */,
@@ -5914,6 +5935,7 @@
 				BC7F99D51B04801F00900595 /* LYTour.m in Sources */,
 				BC7F99A31B04801F00900595 /* AFURLConnectionOperation.m in Sources */,
 				BC7F99C71B04801F00900595 /* UIImageView+HighlightedWebCache.m in Sources */,
+				BC8042C41B058D9700831527 /* CXCmtModel.m in Sources */,
 				BC7F99B41B04801F00900595 /* NSObject+MJMember.m in Sources */,
 				BC7F99A51B04801F00900595 /* AFURLResponseSerialization.m in Sources */,
 				BC7F99DD1B04801F00900595 /* SFCityTypeHeaderPath.m in Sources */,
@@ -5949,7 +5971,9 @@
 				BC7F99C01B04801F00900595 /* SDWebImageDownloaderOperation.m in Sources */,
 				BC7F998E1B04801F00900595 /* CXColltionView.m in Sources */,
 				BC7F99BF1B04801F00900595 /* SDWebImageDownloader.m in Sources */,
+				BC8042C11B0582E500831527 /* CXCmtVC.m in Sources */,
 				BC32E0B61B049115001B6804 /* RootTableViewCell.m in Sources */,
+				BC8042C81B05900100831527 /* CXCmtCell.m in Sources */,
 				BC7F99AC1B04801F00900595 /* MJArgument.m in Sources */,
 				BC7F9A041B04804300900595 /* AppDelegate.m in Sources */,
 			);

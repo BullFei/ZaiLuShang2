@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CXCollectionVCellModel;
+
+@protocol CXscrollViewDelegate <NSObject>
+
+- (void)scrollViweBarCmtButtenClick:(CXCollectionVCellModel *)model;
+
+@end
 
 @interface CXscrollView : UIView
 
+@property (nonatomic ,weak) id<CXscrollViewDelegate> delegate;
 
 // 设置数据源 没有自动滚动功能 不创建定时器
 - (void)setImageUrlNames:(NSArray *)ImageUrlNames index:(NSIndexPath *)index;
