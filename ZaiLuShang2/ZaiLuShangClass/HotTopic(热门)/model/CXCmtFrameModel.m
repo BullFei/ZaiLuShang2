@@ -10,7 +10,7 @@
 #import "CXCmtModel.h"
 #import "CXCollectionVCellOwnerModel.h"
 
-#define ICONIMAGE_WIDTH 35
+#define ICONIMAGE_WIDTH 40
 
 
 @implementation CXCmtFrameModel
@@ -42,12 +42,12 @@
     
     // 正文
     CGSize textMaxSize = CGSizeMake(cellW - CGRectGetMidX(_imageViewF)-IMAGEVIEW_BORDER, CGFLOAT_MAX);
-    CGRect contentLabelRect = [cmtModel.words boundingRectWithSize:textMaxSize options:0 attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:TEXT_FONT]} context:nil];
+    CGRect contentLabelRect = [cmtModel.words boundingRectWithSize:textMaxSize options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:TEXT_FONT]} context:nil];
     CGFloat contentLabelX = CGRectGetMidX(_imageViewF);
-    CGFloat contentLabelY = CGRectGetMaxY(_imageViewF)+5;
+    CGFloat contentLabelY = CGRectGetMaxY(_imageViewF)+10;
     _textLabelF = (CGRect){contentLabelX, contentLabelY, textMaxSize.width, contentLabelRect.size.height};
     
-    _cellH = CGRectGetMaxY(_textLabelF) + INTERVAL_CELL_BORDER;
+    _cellH = CGRectGetMaxY(_textLabelF) + 10;
         
 }
 

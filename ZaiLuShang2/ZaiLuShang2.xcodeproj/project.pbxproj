@@ -1314,8 +1314,13 @@
 		BC8042C41B058D9700831527 /* CXCmtModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C31B058D9700831527 /* CXCmtModel.m */; };
 		BC8042C81B05900100831527 /* CXCmtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C61B05900100831527 /* CXCmtCell.m */; };
 		BC8042CC1B05992A00831527 /* CXCmtFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CB1B05992A00831527 /* CXCmtFrameModel.m */; };
+<<<<<<< HEAD
 		BC8FD37E1B05DB2A0085D159 /* LYLCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */; };
 		BC8FD3821B05E7200085D159 /* TimeIntervalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */; };
+=======
+		BC8042CF1B05D2AA00831527 /* CXCmtTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */; };
+		BC8042D11B05D2C100831527 /* CXCmtTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */; };
+>>>>>>> origin/master
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2779,10 +2784,16 @@
 		BC8042C61B05900100831527 /* CXCmtCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtCell.m; sourceTree = "<group>"; };
 		BC8042CA1B05992A00831527 /* CXCmtFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtFrameModel.h; sourceTree = "<group>"; };
 		BC8042CB1B05992A00831527 /* CXCmtFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtFrameModel.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		BC8FD37C1B05DB2A0085D159 /* LYLCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLCButton.h; sourceTree = "<group>"; };
 		BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLCButton.m; sourceTree = "<group>"; };
 		BC8FD3801B05E7200085D159 /* TimeIntervalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeIntervalTool.h; sourceTree = "<group>"; };
 		BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeIntervalTool.m; sourceTree = "<group>"; };
+=======
+		BC8042CD1B05D2AA00831527 /* CXCmtTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtTableHeaderView.h; sourceTree = "<group>"; };
+		BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtTableHeaderView.m; sourceTree = "<group>"; };
+		BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CXCmtTableHeaderView.xib; sourceTree = "<group>"; };
+>>>>>>> origin/master
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2995,6 +3006,9 @@
 				BC7FA3081B04AC1100900595 /* CXScrollViewBarBtn.m */,
 				BC8042C51B05900100831527 /* CXCmtCell.h */,
 				BC8042C61B05900100831527 /* CXCmtCell.m */,
+				BC8042CD1B05D2AA00831527 /* CXCmtTableHeaderView.h */,
+				BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */,
+				BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -5383,6 +5397,7 @@
 				BC7FA0D51B0485FA00900595 /* button_login_qq_96_white.png in Resources */,
 				BC7FA0231B0485FA00900595 /* bg_feed.jpg in Resources */,
 				BC7FA2F61B0485FB00900595 /* bg_refresh_snail_3.png in Resources */,
+				BC8042D11B05D2C100831527 /* CXCmtTableHeaderView.xib in Resources */,
 				BC7FA12D1B0485FB00900595 /* icon_cancel_white_32.png in Resources */,
 				BC7FA1A01B0485FB00900595 /* icon_link_3.png in Resources */,
 				BC7F9F271B0485FA00900595 /* marker_g_red_9.png in Resources */,
@@ -5985,6 +6000,7 @@
 				BC8FD3821B05E7200085D159 /* TimeIntervalTool.m in Sources */,
 				BC7F99C71B04801F00900595 /* UIImageView+HighlightedWebCache.m in Sources */,
 				BC8042C41B058D9700831527 /* CXCmtModel.m in Sources */,
+				BC8042CF1B05D2AA00831527 /* CXCmtTableHeaderView.m in Sources */,
 				BC7F99B41B04801F00900595 /* NSObject+MJMember.m in Sources */,
 				BC7F99A51B04801F00900595 /* AFURLResponseSerialization.m in Sources */,
 				BC7F99DD1B04801F00900595 /* SFCityTypeHeaderPath.m in Sources */,
