@@ -15,7 +15,7 @@
 
 
 #define BILI 0.8
-#define ICONIMAGEVIEW_WIDTH 60
+#define ICONIMAGEVIEW_WIDTH 50
 #define ICONIMAGEVIEW_INTERVAL 20
 @interface CXImageDescView ()
 
@@ -30,8 +30,8 @@
 {
     if (self = [super initWithFrame:frame]) {
         CGFloat width = frame.size.width;
-        CGFloat height = frame.size.height;
-        SFImageView *imageView = [[SFImageView alloc] initWithFrame:CGRectMake(0, (frame.size.height-width*BILI)/2, width, height*BILI)];
+        CGFloat height = width/BILI;
+        SFImageView *imageView = [[SFImageView alloc] initWithFrame:CGRectMake(0, (frame.size.height-height)/2, width, height)];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
 //        imageView.center = self.center;
         imageView.userInteractionEnabled = YES;
@@ -87,7 +87,8 @@
 - (void)setUpLocation
 {
     CGFloat width = CGW(self);
-    self.imageView.frame = CGRectMake(0, (CGH(self)-width*BILI)/2, width, width*BILI);
+    CGFloat height = width/BILI;
+    self.imageView.frame = CGRectMake(0, (CGH(self)-height)/2, width, height);
 }
 
 - (void)setModel:(CXCollectViewCellModel *)model isLoadImage:(BOOL)is

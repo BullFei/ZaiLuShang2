@@ -19,6 +19,8 @@
 @property (nonatomic ,weak) UILabel *timeLabel;
 @property (nonatomic ,weak) UILabel *text;
 
+@property (nonatomic ,weak) UIView *bottemView;
+
 @end
 
 @implementation CXCmtCell
@@ -28,6 +30,7 @@
     CXCmtCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CXCmtCell"];
     if (cell == nil) {
         cell = [[CXCmtCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"CXCmtCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
 }
@@ -58,6 +61,11 @@
     UILabel *textLabel = [self createLabel];
     textLabel.font = [UIFont systemFontOfSize:TEXT_FONT];
     self.text = textLabel;
+    
+    UIView *bottemView = [[UIView alloc] init];
+    bottemView.backgroundColor = CXColorP(200, 200, 200, 0.5);
+    self.bottemView = bottemView;
+    [self addSubview:bottemView];
 }
 
 - (UILabel *)createLabel
@@ -93,6 +101,12 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+    [super willMoveToSuperview:newSuperview];
+    self.bottemView.frame = CGRectMake(self.text.frame.origin.x, CGH(self)-1, CGW(self), 1);
 }
 
 @end

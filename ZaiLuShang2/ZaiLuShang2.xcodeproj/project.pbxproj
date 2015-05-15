@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC21D4681B04A3E800B80A46 /* SFWantPeopleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D4671B04A3E800B80A46 /* SFWantPeopleVC.m */; };
-		BC21D46C1B04B15E00B80A46 /* SFUserListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D46A1B04B15E00B80A46 /* SFUserListCell.m */; };
-		BC21D46D1B04B15E00B80A46 /* SFUserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC21D46B1B04B15E00B80A46 /* SFUserListCell.xib */; };
-		BC21D4731B04D4C900B80A46 /* SFTourListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D4721B04D4C900B80A46 /* SFTourListVC.m */; };
-		BC21D4771B04D8B900B80A46 /* SFTourListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D4751B04D8B900B80A46 /* SFTourListCell.m */; };
-		BC21D4781B04D8B900B80A46 /* SFTourListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC21D4761B04D8B900B80A46 /* SFTourListCell.xib */; };
 		12E9AB201B0499D00084490E /* SquareVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB001B0499D00084490E /* SquareVC.m */; };
 		12E9AB211B0499D00084490E /* ADModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB041B0499D00084490E /* ADModel.m */; };
 		12E9AB221B0499D00084490E /* JingXuanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB061B0499D00084490E /* JingXuanModel.m */; };
@@ -32,7 +26,12 @@
 		12E9AB301B0499D00084490E /* triptopiccollectioncell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12E9AB1F1B0499D00084490E /* triptopiccollectioncell.xib */; };
 		12E9AB331B04BD800084490E /* TripTopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB321B04BD800084490E /* TripTopicModel.m */; };
 		12E9AB361B04C45D0084490E /* MoreThemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB351B04C45D0084490E /* MoreThemeModel.m */; };
-
+		BC21D4681B04A3E800B80A46 /* SFWantPeopleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D4671B04A3E800B80A46 /* SFWantPeopleVC.m */; };
+		BC21D46C1B04B15E00B80A46 /* SFUserListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D46A1B04B15E00B80A46 /* SFUserListCell.m */; };
+		BC21D46D1B04B15E00B80A46 /* SFUserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC21D46B1B04B15E00B80A46 /* SFUserListCell.xib */; };
+		BC21D4731B04D4C900B80A46 /* SFTourListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D4721B04D4C900B80A46 /* SFTourListVC.m */; };
+		BC21D4771B04D8B900B80A46 /* SFTourListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D4751B04D8B900B80A46 /* SFTourListCell.m */; };
+		BC21D4781B04D8B900B80A46 /* SFTourListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC21D4761B04D8B900B80A46 /* SFTourListCell.xib */; };
 		BC32E0B61B049115001B6804 /* RootTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC32E0B51B049114001B6804 /* RootTableViewCell.m */; };
 		BC32E0B91B04928D001B6804 /* LYAttention.m in Sources */ = {isa = PBXBuildFile; fileRef = BC32E0B81B04928D001B6804 /* LYAttention.m */; };
 		BC629A8C1B0496C3006FD0C0 /* SFProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = BC629A891B0496C3006FD0C0 /* SFProduct.m */; };
@@ -1315,6 +1314,8 @@
 		BC8042C41B058D9700831527 /* CXCmtModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C31B058D9700831527 /* CXCmtModel.m */; };
 		BC8042C81B05900100831527 /* CXCmtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C61B05900100831527 /* CXCmtCell.m */; };
 		BC8042CC1B05992A00831527 /* CXCmtFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CB1B05992A00831527 /* CXCmtFrameModel.m */; };
+		BC8042CF1B05D2AA00831527 /* CXCmtTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */; };
+		BC8042D11B05D2C100831527 /* CXCmtTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1328,17 +1329,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC21D4661B04A3E800B80A46 /* SFWantPeopleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWantPeopleVC.h; sourceTree = "<group>"; };
-		BC21D4671B04A3E800B80A46 /* SFWantPeopleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWantPeopleVC.m; sourceTree = "<group>"; };
-		BC21D4691B04B15E00B80A46 /* SFUserListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUserListCell.h; sourceTree = "<group>"; };
-		BC21D46A1B04B15E00B80A46 /* SFUserListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUserListCell.m; sourceTree = "<group>"; };
-		BC21D46B1B04B15E00B80A46 /* SFUserListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFUserListCell.xib; sourceTree = "<group>"; };
-		BC21D4711B04D4C900B80A46 /* SFTourListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourListVC.h; sourceTree = "<group>"; };
-		BC21D4721B04D4C900B80A46 /* SFTourListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourListVC.m; sourceTree = "<group>"; };
-		BC21D4741B04D8B900B80A46 /* SFTourListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourListCell.h; sourceTree = "<group>"; };
-		BC21D4751B04D8B900B80A46 /* SFTourListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourListCell.m; sourceTree = "<group>"; };
-		BC21D4761B04D8B900B80A46 /* SFTourListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTourListCell.xib; sourceTree = "<group>"; };
-
 		12E9AAFF1B0499D00084490E /* SquareVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareVC.h; sourceTree = "<group>"; };
 		12E9AB001B0499D00084490E /* SquareVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareVC.m; sourceTree = "<group>"; };
 		12E9AB031B0499D00084490E /* ADModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADModel.h; sourceTree = "<group>"; };
@@ -1373,7 +1363,16 @@
 		12E9AB321B04BD800084490E /* TripTopicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripTopicModel.m; sourceTree = "<group>"; };
 		12E9AB341B04C45D0084490E /* MoreThemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreThemeModel.h; sourceTree = "<group>"; };
 		12E9AB351B04C45D0084490E /* MoreThemeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreThemeModel.m; sourceTree = "<group>"; };
-
+		BC21D4661B04A3E800B80A46 /* SFWantPeopleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWantPeopleVC.h; sourceTree = "<group>"; };
+		BC21D4671B04A3E800B80A46 /* SFWantPeopleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWantPeopleVC.m; sourceTree = "<group>"; };
+		BC21D4691B04B15E00B80A46 /* SFUserListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUserListCell.h; sourceTree = "<group>"; };
+		BC21D46A1B04B15E00B80A46 /* SFUserListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUserListCell.m; sourceTree = "<group>"; };
+		BC21D46B1B04B15E00B80A46 /* SFUserListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFUserListCell.xib; sourceTree = "<group>"; };
+		BC21D4711B04D4C900B80A46 /* SFTourListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourListVC.h; sourceTree = "<group>"; };
+		BC21D4721B04D4C900B80A46 /* SFTourListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourListVC.m; sourceTree = "<group>"; };
+		BC21D4741B04D8B900B80A46 /* SFTourListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourListCell.h; sourceTree = "<group>"; };
+		BC21D4751B04D8B900B80A46 /* SFTourListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourListCell.m; sourceTree = "<group>"; };
+		BC21D4761B04D8B900B80A46 /* SFTourListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTourListCell.xib; sourceTree = "<group>"; };
 		BC32E0B41B049114001B6804 /* RootTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTableViewCell.h; sourceTree = "<group>"; };
 		BC32E0B51B049114001B6804 /* RootTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTableViewCell.m; sourceTree = "<group>"; };
 		BC32E0B71B04928D001B6804 /* LYAttention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYAttention.h; sourceTree = "<group>"; };
@@ -2780,6 +2779,9 @@
 		BC8042C61B05900100831527 /* CXCmtCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtCell.m; sourceTree = "<group>"; };
 		BC8042CA1B05992A00831527 /* CXCmtFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtFrameModel.h; sourceTree = "<group>"; };
 		BC8042CB1B05992A00831527 /* CXCmtFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtFrameModel.m; sourceTree = "<group>"; };
+		BC8042CD1B05D2AA00831527 /* CXCmtTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtTableHeaderView.h; sourceTree = "<group>"; };
+		BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtTableHeaderView.m; sourceTree = "<group>"; };
+		BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CXCmtTableHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2992,6 +2994,9 @@
 				BC7FA3081B04AC1100900595 /* CXScrollViewBarBtn.m */,
 				BC8042C51B05900100831527 /* CXCmtCell.h */,
 				BC8042C61B05900100831527 /* CXCmtCell.m */,
+				BC8042CD1B05D2AA00831527 /* CXCmtTableHeaderView.h */,
+				BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */,
+				BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -5368,6 +5373,7 @@
 				BC7FA0D51B0485FA00900595 /* button_login_qq_96_white.png in Resources */,
 				BC7FA0231B0485FA00900595 /* bg_feed.jpg in Resources */,
 				BC7FA2F61B0485FB00900595 /* bg_refresh_snail_3.png in Resources */,
+				BC8042D11B05D2C100831527 /* CXCmtTableHeaderView.xib in Resources */,
 				BC7FA12D1B0485FB00900595 /* icon_cancel_white_32.png in Resources */,
 				BC7FA1A01B0485FB00900595 /* icon_link_3.png in Resources */,
 				BC7F9F271B0485FA00900595 /* marker_g_red_9.png in Resources */,
@@ -5968,6 +5974,7 @@
 				BC7F99A31B04801F00900595 /* AFURLConnectionOperation.m in Sources */,
 				BC7F99C71B04801F00900595 /* UIImageView+HighlightedWebCache.m in Sources */,
 				BC8042C41B058D9700831527 /* CXCmtModel.m in Sources */,
+				BC8042CF1B05D2AA00831527 /* CXCmtTableHeaderView.m in Sources */,
 				BC7F99B41B04801F00900595 /* NSObject+MJMember.m in Sources */,
 				BC7F99A51B04801F00900595 /* AFURLResponseSerialization.m in Sources */,
 				BC7F99DD1B04801F00900595 /* SFCityTypeHeaderPath.m in Sources */,

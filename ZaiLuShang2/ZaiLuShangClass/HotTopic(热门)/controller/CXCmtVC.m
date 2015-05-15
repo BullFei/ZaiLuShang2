@@ -15,6 +15,7 @@
 #import "CXCmtModel.h"
 #import "CXCmtCell.h"
 #import "CXCmtFrameModel.h"
+#import "CXCmtTableHeaderView.h"
 
 
 @interface CXCmtVC () <UITableViewDelegate, UITableViewDataSource, MJRefreshBaseViewDelegate>
@@ -71,32 +72,39 @@
     }];
 }
 
-// 创建collectionView
+// 创建
 - (void)createUI
 {
-    
+    // tabelview
     UITableView *view = [[UITableView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:view];
     view.delegate = self;
     view.dataSource = self;
+    view.separatorStyle = UITableViewCellSeparatorStyleNone;
     view.backgroundColor = [UIColor whiteColor];
     self.tableView = view;
     
+    // headerView
+    CXCmtTableHeaderView *tableHeaderView = [CXCmtTableHeaderView tableHeaderView];
+    tableHeaderView.model = self.model;
+    self.tableView.tableHeaderView = tableHeaderView;
+    
+    // 下啦加载
     MJRefreshHeaderView *header = [MJRefreshHeaderView header];
     header.scrollView = view;
     header.delegate = self;
     self.header = header;
     
-    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
-    footer.scrollView = view;
-    footer.delegate = self;
-    self.footer = footer;
+//    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
+//    footer.scrollView = view;
+//    footer.delegate = self;
+//    self.footer = footer;
     
 }
 
 - (void)dealloc
 {
-    [self.footer free];
+//    [self.footer free];
     [self.header free];
 }
 // 开始刷新
