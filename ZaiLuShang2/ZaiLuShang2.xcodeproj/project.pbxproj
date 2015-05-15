@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC21D4681B04A3E800B80A46 /* SFWantPeopleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D4671B04A3E800B80A46 /* SFWantPeopleVC.m */; };
-		BC21D46C1B04B15E00B80A46 /* SFUserListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D46A1B04B15E00B80A46 /* SFUserListCell.m */; };
-		BC21D46D1B04B15E00B80A46 /* SFUserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC21D46B1B04B15E00B80A46 /* SFUserListCell.xib */; };
-		BC21D4731B04D4C900B80A46 /* SFTourListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D4721B04D4C900B80A46 /* SFTourListVC.m */; };
-		BC21D4771B04D8B900B80A46 /* SFTourListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D4751B04D8B900B80A46 /* SFTourListCell.m */; };
-		BC21D4781B04D8B900B80A46 /* SFTourListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC21D4761B04D8B900B80A46 /* SFTourListCell.xib */; };
 		12E9AB201B0499D00084490E /* SquareVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB001B0499D00084490E /* SquareVC.m */; };
 		12E9AB211B0499D00084490E /* ADModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB041B0499D00084490E /* ADModel.m */; };
 		12E9AB221B0499D00084490E /* JingXuanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB061B0499D00084490E /* JingXuanModel.m */; };
@@ -32,7 +26,12 @@
 		12E9AB301B0499D00084490E /* triptopiccollectioncell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12E9AB1F1B0499D00084490E /* triptopiccollectioncell.xib */; };
 		12E9AB331B04BD800084490E /* TripTopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB321B04BD800084490E /* TripTopicModel.m */; };
 		12E9AB361B04C45D0084490E /* MoreThemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB351B04C45D0084490E /* MoreThemeModel.m */; };
-
+		BC21D4681B04A3E800B80A46 /* SFWantPeopleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D4671B04A3E800B80A46 /* SFWantPeopleVC.m */; };
+		BC21D46C1B04B15E00B80A46 /* SFUserListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D46A1B04B15E00B80A46 /* SFUserListCell.m */; };
+		BC21D46D1B04B15E00B80A46 /* SFUserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC21D46B1B04B15E00B80A46 /* SFUserListCell.xib */; };
+		BC21D4731B04D4C900B80A46 /* SFTourListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D4721B04D4C900B80A46 /* SFTourListVC.m */; };
+		BC21D4771B04D8B900B80A46 /* SFTourListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC21D4751B04D8B900B80A46 /* SFTourListCell.m */; };
+		BC21D4781B04D8B900B80A46 /* SFTourListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC21D4761B04D8B900B80A46 /* SFTourListCell.xib */; };
 		BC32E0B61B049115001B6804 /* RootTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC32E0B51B049114001B6804 /* RootTableViewCell.m */; };
 		BC32E0B91B04928D001B6804 /* LYAttention.m in Sources */ = {isa = PBXBuildFile; fileRef = BC32E0B81B04928D001B6804 /* LYAttention.m */; };
 		BC629A8C1B0496C3006FD0C0 /* SFProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = BC629A891B0496C3006FD0C0 /* SFProduct.m */; };
@@ -1311,6 +1310,23 @@
 		BC7FA3051B0485FB00900595 /* map_pop_single.9.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7F9E871B0485FA00900595 /* map_pop_single.9.png */; };
 		BC7FA3061B0485FB00900595 /* subscription_pop.9.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7F9E881B0485FA00900595 /* subscription_pop.9.png */; };
 		BC7FA3091B04AC1100900595 /* CXScrollViewBarBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7FA3081B04AC1100900595 /* CXScrollViewBarBtn.m */; };
+		BCA98F6D1B058E96005E26BF /* SFPathMap.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F6C1B058E96005E26BF /* SFPathMap.m */; };
+		BCA98F701B058ED0005E26BF /* SFItinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F6F1B058ED0005E26BF /* SFItinerary.m */; };
+		BCA98F731B058F43005E26BF /* SFCity.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F721B058F43005E26BF /* SFCity.m */; };
+		BCA98F761B058FCD005E26BF /* SFItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F751B058FCD005E26BF /* SFItem.m */; };
+		BCA98F791B059521005E26BF /* SFTourDayInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F781B059521005E26BF /* SFTourDayInfo.m */; };
+		BCA98F7F1B05979B005E26BF /* SFRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F7E1B05979B005E26BF /* SFRecord.m */; };
+		BCA98F821B059806005E26BF /* SFLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F811B059806005E26BF /* SFLocation.m */; };
+		BCA98F851B059C80005E26BF /* SFTourDayCustomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F841B059C80005E26BF /* SFTourDayCustomeModel.m */; };
+		BCA98F881B059F84005E26BF /* SFTourDayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F871B059F84005E26BF /* SFTourDayHeaderView.m */; };
+		BCA98F8A1B059F98005E26BF /* SFTourDayHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA98F891B059F98005E26BF /* SFTourDayHeaderView.xib */; };
+		BCA98F8D1B05A914005E26BF /* SFOwner.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F8C1B05A914005E26BF /* SFOwner.m */; };
+		BCA98F901B05B9C9005E26BF /* SFTourDayTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F8F1B05B9C9005E26BF /* SFTourDayTitleView.m */; };
+		BCA98F921B05B9E3005E26BF /* SFTourDayTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA98F911B05B9E3005E26BF /* SFTourDayTitleView.xib */; };
+		BCCE49961B0587A500982593 /* SFTourDayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCE49951B0587A500982593 /* SFTourDayVC.m */; };
+		BCCE499A1B05892100982593 /* SFTourDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCE49981B05892100982593 /* SFTourDayCell.m */; };
+		BCCE499B1B05892100982593 /* SFTourDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCE49991B05892100982593 /* SFTourDayCell.xib */; };
+		BCCE499E1B058DE800982593 /* SFTourDay.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCE499D1B058DE800982593 /* SFTourDay.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1324,17 +1340,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC21D4661B04A3E800B80A46 /* SFWantPeopleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWantPeopleVC.h; sourceTree = "<group>"; };
-		BC21D4671B04A3E800B80A46 /* SFWantPeopleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWantPeopleVC.m; sourceTree = "<group>"; };
-		BC21D4691B04B15E00B80A46 /* SFUserListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUserListCell.h; sourceTree = "<group>"; };
-		BC21D46A1B04B15E00B80A46 /* SFUserListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUserListCell.m; sourceTree = "<group>"; };
-		BC21D46B1B04B15E00B80A46 /* SFUserListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFUserListCell.xib; sourceTree = "<group>"; };
-		BC21D4711B04D4C900B80A46 /* SFTourListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourListVC.h; sourceTree = "<group>"; };
-		BC21D4721B04D4C900B80A46 /* SFTourListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourListVC.m; sourceTree = "<group>"; };
-		BC21D4741B04D8B900B80A46 /* SFTourListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourListCell.h; sourceTree = "<group>"; };
-		BC21D4751B04D8B900B80A46 /* SFTourListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourListCell.m; sourceTree = "<group>"; };
-		BC21D4761B04D8B900B80A46 /* SFTourListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTourListCell.xib; sourceTree = "<group>"; };
-
 		12E9AAFF1B0499D00084490E /* SquareVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareVC.h; sourceTree = "<group>"; };
 		12E9AB001B0499D00084490E /* SquareVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareVC.m; sourceTree = "<group>"; };
 		12E9AB031B0499D00084490E /* ADModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADModel.h; sourceTree = "<group>"; };
@@ -1369,7 +1374,16 @@
 		12E9AB321B04BD800084490E /* TripTopicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripTopicModel.m; sourceTree = "<group>"; };
 		12E9AB341B04C45D0084490E /* MoreThemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreThemeModel.h; sourceTree = "<group>"; };
 		12E9AB351B04C45D0084490E /* MoreThemeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreThemeModel.m; sourceTree = "<group>"; };
-
+		BC21D4661B04A3E800B80A46 /* SFWantPeopleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWantPeopleVC.h; sourceTree = "<group>"; };
+		BC21D4671B04A3E800B80A46 /* SFWantPeopleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWantPeopleVC.m; sourceTree = "<group>"; };
+		BC21D4691B04B15E00B80A46 /* SFUserListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUserListCell.h; sourceTree = "<group>"; };
+		BC21D46A1B04B15E00B80A46 /* SFUserListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUserListCell.m; sourceTree = "<group>"; };
+		BC21D46B1B04B15E00B80A46 /* SFUserListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFUserListCell.xib; sourceTree = "<group>"; };
+		BC21D4711B04D4C900B80A46 /* SFTourListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourListVC.h; sourceTree = "<group>"; };
+		BC21D4721B04D4C900B80A46 /* SFTourListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourListVC.m; sourceTree = "<group>"; };
+		BC21D4741B04D8B900B80A46 /* SFTourListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourListCell.h; sourceTree = "<group>"; };
+		BC21D4751B04D8B900B80A46 /* SFTourListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourListCell.m; sourceTree = "<group>"; };
+		BC21D4761B04D8B900B80A46 /* SFTourListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTourListCell.xib; sourceTree = "<group>"; };
 		BC32E0B41B049114001B6804 /* RootTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTableViewCell.h; sourceTree = "<group>"; };
 		BC32E0B51B049114001B6804 /* RootTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTableViewCell.m; sourceTree = "<group>"; };
 		BC32E0B71B04928D001B6804 /* LYAttention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYAttention.h; sourceTree = "<group>"; };
@@ -2768,6 +2782,37 @@
 		BC7F9E881B0485FA00900595 /* subscription_pop.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subscription_pop.9.png; sourceTree = "<group>"; };
 		BC7FA3071B04AC1100900595 /* CXScrollViewBarBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXScrollViewBarBtn.h; sourceTree = "<group>"; };
 		BC7FA3081B04AC1100900595 /* CXScrollViewBarBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXScrollViewBarBtn.m; sourceTree = "<group>"; };
+		BCA98F6B1B058E96005E26BF /* SFPathMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPathMap.h; sourceTree = "<group>"; };
+		BCA98F6C1B058E96005E26BF /* SFPathMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPathMap.m; sourceTree = "<group>"; };
+		BCA98F6E1B058ED0005E26BF /* SFItinerary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFItinerary.h; sourceTree = "<group>"; };
+		BCA98F6F1B058ED0005E26BF /* SFItinerary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFItinerary.m; sourceTree = "<group>"; };
+		BCA98F711B058F43005E26BF /* SFCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCity.h; sourceTree = "<group>"; };
+		BCA98F721B058F43005E26BF /* SFCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFCity.m; sourceTree = "<group>"; };
+		BCA98F741B058FCD005E26BF /* SFItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFItem.h; sourceTree = "<group>"; };
+		BCA98F751B058FCD005E26BF /* SFItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFItem.m; sourceTree = "<group>"; };
+		BCA98F771B059521005E26BF /* SFTourDayInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourDayInfo.h; sourceTree = "<group>"; };
+		BCA98F781B059521005E26BF /* SFTourDayInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourDayInfo.m; sourceTree = "<group>"; };
+		BCA98F7D1B05979B005E26BF /* SFRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFRecord.h; sourceTree = "<group>"; };
+		BCA98F7E1B05979B005E26BF /* SFRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFRecord.m; sourceTree = "<group>"; };
+		BCA98F801B059806005E26BF /* SFLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLocation.h; sourceTree = "<group>"; };
+		BCA98F811B059806005E26BF /* SFLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLocation.m; sourceTree = "<group>"; };
+		BCA98F831B059C80005E26BF /* SFTourDayCustomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourDayCustomeModel.h; sourceTree = "<group>"; };
+		BCA98F841B059C80005E26BF /* SFTourDayCustomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourDayCustomeModel.m; sourceTree = "<group>"; };
+		BCA98F861B059F84005E26BF /* SFTourDayHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourDayHeaderView.h; sourceTree = "<group>"; };
+		BCA98F871B059F84005E26BF /* SFTourDayHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourDayHeaderView.m; sourceTree = "<group>"; };
+		BCA98F891B059F98005E26BF /* SFTourDayHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTourDayHeaderView.xib; sourceTree = "<group>"; };
+		BCA98F8B1B05A914005E26BF /* SFOwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFOwner.h; sourceTree = "<group>"; };
+		BCA98F8C1B05A914005E26BF /* SFOwner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFOwner.m; sourceTree = "<group>"; };
+		BCA98F8E1B05B9C9005E26BF /* SFTourDayTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourDayTitleView.h; sourceTree = "<group>"; };
+		BCA98F8F1B05B9C9005E26BF /* SFTourDayTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourDayTitleView.m; sourceTree = "<group>"; };
+		BCA98F911B05B9E3005E26BF /* SFTourDayTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTourDayTitleView.xib; sourceTree = "<group>"; };
+		BCCE49941B0587A500982593 /* SFTourDayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourDayVC.h; sourceTree = "<group>"; };
+		BCCE49951B0587A500982593 /* SFTourDayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourDayVC.m; sourceTree = "<group>"; };
+		BCCE49971B05892100982593 /* SFTourDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFTourDayCell.h; path = ../model/SFTourDayCell.h; sourceTree = "<group>"; };
+		BCCE49981B05892100982593 /* SFTourDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFTourDayCell.m; path = ../model/SFTourDayCell.m; sourceTree = "<group>"; };
+		BCCE49991B05892100982593 /* SFTourDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SFTourDayCell.xib; path = ../model/SFTourDayCell.xib; sourceTree = "<group>"; };
+		BCCE499C1B058DE800982593 /* SFTourDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourDay.h; sourceTree = "<group>"; };
+		BCCE499D1B058DE800982593 /* SFTourDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourDay.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3302,6 +3347,8 @@
 				BC21D4671B04A3E800B80A46 /* SFWantPeopleVC.m */,
 				BC21D4711B04D4C900B80A46 /* SFTourListVC.h */,
 				BC21D4721B04D4C900B80A46 /* SFTourListVC.m */,
+				BCCE49941B0587A500982593 /* SFTourDayVC.h */,
+				BCCE49951B0587A500982593 /* SFTourDayVC.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -3350,6 +3397,26 @@
 				BC7F99691B04801F00900595 /* SFTactickBanners.m */,
 				BC7F996A1B04801F00900595 /* SFTour.h */,
 				BC7F996B1B04801F00900595 /* SFTour.m */,
+				BCCE499C1B058DE800982593 /* SFTourDay.h */,
+				BCCE499D1B058DE800982593 /* SFTourDay.m */,
+				BCA98F6B1B058E96005E26BF /* SFPathMap.h */,
+				BCA98F6C1B058E96005E26BF /* SFPathMap.m */,
+				BCA98F6E1B058ED0005E26BF /* SFItinerary.h */,
+				BCA98F6F1B058ED0005E26BF /* SFItinerary.m */,
+				BCA98F711B058F43005E26BF /* SFCity.h */,
+				BCA98F721B058F43005E26BF /* SFCity.m */,
+				BCA98F741B058FCD005E26BF /* SFItem.h */,
+				BCA98F751B058FCD005E26BF /* SFItem.m */,
+				BCA98F771B059521005E26BF /* SFTourDayInfo.h */,
+				BCA98F781B059521005E26BF /* SFTourDayInfo.m */,
+				BCA98F7D1B05979B005E26BF /* SFRecord.h */,
+				BCA98F7E1B05979B005E26BF /* SFRecord.m */,
+				BCA98F801B059806005E26BF /* SFLocation.h */,
+				BCA98F811B059806005E26BF /* SFLocation.m */,
+				BCA98F831B059C80005E26BF /* SFTourDayCustomeModel.h */,
+				BCA98F841B059C80005E26BF /* SFTourDayCustomeModel.m */,
+				BCA98F8B1B05A914005E26BF /* SFOwner.h */,
+				BCA98F8C1B05A914005E26BF /* SFOwner.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -3357,6 +3424,9 @@
 		BC7F996C1B04801F00900595 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BCCE49971B05892100982593 /* SFTourDayCell.h */,
+				BCCE49981B05892100982593 /* SFTourDayCell.m */,
+				BCCE49991B05892100982593 /* SFTourDayCell.xib */,
 				BC629A8E1B0496DF006FD0C0 /* SFProductCell.h */,
 				BC629A8F1B0496DF006FD0C0 /* SFProductCell.m */,
 				BC629A901B0496DF006FD0C0 /* SFProductCell.xib */,
@@ -3395,6 +3465,12 @@
 				BC21D4741B04D8B900B80A46 /* SFTourListCell.h */,
 				BC21D4751B04D8B900B80A46 /* SFTourListCell.m */,
 				BC21D4761B04D8B900B80A46 /* SFTourListCell.xib */,
+				BCA98F861B059F84005E26BF /* SFTourDayHeaderView.h */,
+				BCA98F871B059F84005E26BF /* SFTourDayHeaderView.m */,
+				BCA98F891B059F98005E26BF /* SFTourDayHeaderView.xib */,
+				BCA98F8E1B05B9C9005E26BF /* SFTourDayTitleView.h */,
+				BCA98F8F1B05B9C9005E26BF /* SFTourDayTitleView.m */,
+				BCA98F911B05B9E3005E26BF /* SFTourDayTitleView.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -4977,6 +5053,7 @@
 				BC7F9F8C1B0485FA00900595 /* umeng_xp_back_click.png in Resources */,
 				BC7FA0EF1B0485FA00900595 /* button_spot_on.9.png in Resources */,
 				BC7FA08B1B0485FA00900595 /* btn_check_off_disabled_focused_holo_light.png in Resources */,
+				BCA98F921B05B9E3005E26BF /* SFTourDayTitleView.xib in Resources */,
 				BC7F9EA81B0485FA00900595 /* btn_check_off_disabled_holo_light.png in Resources */,
 				BC7FA1C31B0485FB00900595 /* icon_myprofile_pgc.png in Resources */,
 				BC7FA23B1B0485FB00900595 /* icon_tag_food_white_40.png in Resources */,
@@ -5130,6 +5207,7 @@
 				BC7F9F121B0485FA00900595 /* logo_statusbar.png in Resources */,
 				BC7FA05E1B0485FA00900595 /* bg_record_pic.9.png in Resources */,
 				BC7F9FC21B0485FA00900595 /* btn_radio_on_focused_holo_light.png in Resources */,
+				BCA98F8A1B059F98005E26BF /* SFTourDayHeaderView.xib in Resources */,
 				BC7FA2D81B0485FB00900595 /* switch_handle.png in Resources */,
 				BC7F9FEE1B0485FA00900595 /* anime_trip_download0016.png in Resources */,
 				BC7FA2E51B0485FB00900595 /* tab_search_48_on.png in Resources */,
@@ -5799,6 +5877,7 @@
 				BC7F9ED01B0485FA00900595 /* filter_28.png in Resources */,
 				BC7FA0EA1B0485FA00900595 /* button_seg_right.9.png in Resources */,
 				BC7FA0F81B0485FB00900595 /* button_sticker_shopping.png in Resources */,
+				BCCE499B1B05892100982593 /* SFTourDayCell.xib in Resources */,
 				BC7FA26D1B0485FB00900595 /* icon_time_white_24.png in Resources */,
 				BC7FA1E91B0485FB00900595 /* icon_profile_pin_red_64.png in Resources */,
 				BC7FA0871B0485FA00900595 /* bg_trip_tzls.9.png in Resources */,
@@ -5872,6 +5951,7 @@
 				BC7F999F1B04801F00900595 /* AFHTTPSessionManager.m in Sources */,
 				BC7F99EA1B04801F00900595 /* SFSearchModel.m in Sources */,
 				BC7F99A01B04801F00900595 /* AFNetworkReachabilityManager.m in Sources */,
+				BCA98F821B059806005E26BF /* SFLocation.m in Sources */,
 				BC7F99F81B04801F00900595 /* SFSearchCountryCell.m in Sources */,
 				12E9AB361B04C45D0084490E /* MoreThemeModel.m in Sources */,
 				BC7F99D01B04801F00900595 /* LYAttentionModel.m in Sources */,
@@ -5879,12 +5959,15 @@
 				BC7F99CD1B04801F00900595 /* TextSizeTools.m in Sources */,
 				12E9AB2E1B0499D00084490E /* TripTopicCell.m in Sources */,
 				BC7F99A81B04801F00900595 /* MBProgressHUD+MJ.m in Sources */,
+				BCA98F8D1B05A914005E26BF /* SFOwner.m in Sources */,
 				BC7F99DC1B04801F00900595 /* SFCityTypeHead.m in Sources */,
 				BC7F99B81B04801F00900595 /* MJRefreshFooterView.m in Sources */,
 				BC7F99F41B04801F00900595 /* SFSceneryCellTableViewCell.m in Sources */,
+				BCCE49961B0587A500982593 /* SFTourDayVC.m in Sources */,
 				BC7F99DB1B04801F00900595 /* SFCityType.m in Sources */,
 				BC7F99DA1B04801F00900595 /* SFListTactickController.m in Sources */,
 				BC7F99AF1B04801F00900595 /* MJMethod.m in Sources */,
+				BCA98F6D1B058E96005E26BF /* SFPathMap.m in Sources */,
 				BC7F99C61B04801F00900595 /* UIImage+WebP.m in Sources */,
 				12E9AB291B0499D00084490E /* MoreThemeCollectionCell.m in Sources */,
 				BC7F99E91B04801F00900595 /* SFSearchDisplayModule.m in Sources */,
@@ -5892,6 +5975,8 @@
 				BC7F99A11B04801F00900595 /* AFNTool.m in Sources */,
 				BC7F99AB1B04801F00900595 /* MyMD5.m in Sources */,
 				BC629A8C1B0496C3006FD0C0 /* SFProduct.m in Sources */,
+				BCA98F901B05B9C9005E26BF /* SFTourDayTitleView.m in Sources */,
+				BCCE499E1B058DE800982593 /* SFTourDay.m in Sources */,
 				BC7F99DF1B04801F00900595 /* SFCityTypeHeadLocality.m in Sources */,
 				BC7F99991B04801F00900595 /* MainTabBarController.m in Sources */,
 				BC7F99931B04801F00900595 /* CXCollectViewCellModel.m in Sources */,
@@ -5906,9 +5991,12 @@
 				BC7F99D41B04801F00900595 /* LYRec.m in Sources */,
 				BC7F99961B04801F00900595 /* CXImageDescView.m in Sources */,
 				BC7F99AD1B04801F00900595 /* MJIvar.m in Sources */,
+				BCA98F731B058F43005E26BF /* SFCity.m in Sources */,
 				BC7F99F01B04801F00900595 /* SFExctingTourCell.m in Sources */,
 				BC7FA3091B04AC1100900595 /* CXScrollViewBarBtn.m in Sources */,
+				BCA98F881B059F84005E26BF /* SFTourDayHeaderView.m in Sources */,
 				BC7F99901B04801F00900595 /* HotTopicVC.m in Sources */,
+				BCA98F791B059521005E26BF /* SFTourDayInfo.m in Sources */,
 				BC629A951B0497F6006FD0C0 /* AttributedLabel.m in Sources */,
 				BC7F99CF1B04801F00900595 /* LYAchv.m in Sources */,
 				BC7F99ED1B04801F00900595 /* SFTour.m in Sources */,
@@ -5920,6 +6008,7 @@
 				BC7F99CA1B04801F00900595 /* SFImageView.m in Sources */,
 				BC7F99D11B04801F00900595 /* LYComment.m in Sources */,
 				12E9AB2B1B0499D00084490E /* Section2Cell.m in Sources */,
+				BCA98F851B059C80005E26BF /* SFTourDayCustomeModel.m in Sources */,
 				BC7F99FC1B04801F00900595 /* SFTactickCell.m in Sources */,
 				12E9AB241B0499D00084490E /* ADView.m in Sources */,
 				BC7F99C31B04801F00900595 /* UIButton+WebCache.m in Sources */,
@@ -5939,6 +6028,7 @@
 				12E9AB261B0499D00084490E /* JingXuanCell.m in Sources */,
 				BC7F99C51B04801F00900595 /* UIImage+MultiFormat.m in Sources */,
 				BC7F99BE1B04801F00900595 /* SDWebImageDecoder.m in Sources */,
+				BCA98F761B058FCD005E26BF /* SFItem.m in Sources */,
 				BC7F999E1B04801F00900595 /* AFHTTPRequestOperationManager.m in Sources */,
 				BC7F99B21B04801F00900595 /* NSObject+MJCoding.m in Sources */,
 				BC7F99D91B04801F00900595 /* SFListCityVC.m in Sources */,
@@ -5949,7 +6039,9 @@
 				BC7F99B41B04801F00900595 /* NSObject+MJMember.m in Sources */,
 				BC7F99A51B04801F00900595 /* AFURLResponseSerialization.m in Sources */,
 				BC7F99DD1B04801F00900595 /* SFCityTypeHeaderPath.m in Sources */,
+				BCA98F701B058ED0005E26BF /* SFItinerary.m in Sources */,
 				12E9AB2C1B0499D00084490E /* Section2CollectionCell.m in Sources */,
+				BCA98F7F1B05979B005E26BF /* SFRecord.m in Sources */,
 				BC7F999B1B04801F00900595 /* MainTabBar.m in Sources */,
 				BC7F99A41B04801F00900595 /* AFURLRequestSerialization.m in Sources */,
 				BC629A8D1B0496C3006FD0C0 /* SFSceneryObjModel.m in Sources */,
@@ -5973,6 +6065,7 @@
 				BC7F98721B047FD100900595 /* main.m in Sources */,
 				BC7F99A71B04801F00900595 /* GXCycleScrollView.m in Sources */,
 				BC7F99F21B04801F00900595 /* SFHeaderView.m in Sources */,
+				BCCE499A1B05892100982593 /* SFTourDayCell.m in Sources */,
 				BC21D46C1B04B15E00B80A46 /* SFUserListCell.m in Sources */,
 				BC7F99BB1B04801F00900595 /* NSData+ImageContentType.m in Sources */,
 				BC21D4681B04A3E800B80A46 /* SFWantPeopleVC.m in Sources */,

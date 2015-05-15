@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SFSearchModel;
+@class SFSearchModel,SFSceneryTypeFivtyCell;
+
+@protocol SFSceneryTypeFivtyCellDelegate <NSObject>
+
+-(void)sceneryTypeFivtyCell:(SFSceneryTypeFivtyCell *)cell pushController:(UIViewController *)controller;
+
+@end
 @interface SFSceneryTypeFivtyCell : UITableViewCell
 @property (nonatomic,strong) SFSearchModel * searchModel;
-
+@property (nonatomic,assign) id<SFSceneryTypeFivtyCellDelegate> delegate;
 +(SFSceneryTypeFivtyCell *)cellWthTableView:(UITableView *)tableView;
 @end

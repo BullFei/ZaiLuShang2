@@ -156,6 +156,7 @@
             SFSearchDisplayModule * displayModelRight =displayModelArray[2*indexPath.row+1];
             cell.displayModuleLeft =displayModelLeft;
             cell.displayModuleRight =displayModelRight;
+            cell.delegate = self;
             return cell;
             
         }
@@ -217,6 +218,14 @@
         [self.navigationController pushViewController:listVC animated:YES];
     }
    
+}
+
+-(void)searchCountryCellPushController:(SFSearchCountryCell *)searchCountryCell withSearchDisplayModule:(SFSearchDisplayModule *)searchModule
+{
+    SFListCityVC * listVC = [[SFListCityVC alloc]init];
+    listVC.displayModule =searchModule;
+    listVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:listVC animated:YES];
 }
 
 @end

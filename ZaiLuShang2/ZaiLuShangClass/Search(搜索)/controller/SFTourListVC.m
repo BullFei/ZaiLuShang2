@@ -13,8 +13,11 @@
 #import "SFTour.h"
 #import "SFCityTypeHeadTipUser.h"
 #import "SFTourListCell.h"
+#import "SFTourDayVC.h"
 #define LENGTH 20
-#define URL @"http://app6.117go.com/demo27/php/discoverAction.php?submit=getLocalityTours&locid=%ld&badge=-1&subtype=-1&length=%ld&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
+#define PIC_URL @"http://app6.117go.com/demo27/php/discoverAction.php?submit=getLocalityTours&locid=%ld&badge=-1&subtype=-1&length=%ld&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
+
+#define NOPIC_URL @"http://app6.117go.com/demo27/php/discoverAction.php?submit=getSceneryTours&sceneryid=%ld&badge=-1&subtype=-1&length=%ld&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
 @interface SFTourListVC ()<MJRefreshBaseViewDelegate>
 {
     MJRefreshHeaderView * header;
@@ -29,7 +32,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createNav];
+    [self createRefreshing];
     [header beginRefreshing];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
 }
 #pragma mark -创建nav
@@ -40,6 +45,8 @@
     backBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [backBtn addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"%@的游记",self.tag];
 }
 
 
@@ -103,8 +110,13 @@
     if (nil ==_dataArray) {
         _dataArray = [[NSMutableArray alloc]init];
     }
-    NSString * url = [NSString stringWithFormat:URL,self.locid,LENGTH*self.index];
-    [RequestTool GET:url parameters:nil success:^(id responseObject) {
+    NSString * url = @"";
+    if (self.locid>0) {
+       url = [NSString stringWithFormat:PIC_URL,self.locid,LENGTH*self.index];
+    }else if (self.sceneryid>0){
+        url = [NSString stringWithFormat:NOPIC_URL,self.locid,LENGTH*self.index];
+    }
+        [RequestTool GET:url parameters:nil success:^(id responseObject) {
         NSArray * array = responseObject[@"obj"][@"list"];
         for (NSInteger i=(self.index-1)*20; i<self.index*20; i++) {
             SFTour * tour = [[SFTour alloc]init];
@@ -152,6 +164,20 @@
     SFTourListCell * cell = [SFTourListCell cellWithTableView:tableView];
     cell.tour = _dataArray[indexPath.row];
     return cell;
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return SCREEN_WIDTH*HUANGJINGSHU*HUANGJINGSHU;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SFTourDayVC * tourDayVC = [[SFTourDayVC alloc]init];
+    tourDayVC.hidesBottomBarWhenPushed = YES;
+    tourDayVC.tour = _dataArray[indexPath.row];
+    [self.navigationController pushViewController:tourDayVC animated:YES];
 }
 
 

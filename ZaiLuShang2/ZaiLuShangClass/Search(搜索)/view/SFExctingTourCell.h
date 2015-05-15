@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SFSearchModel;
+@class SFSearchModel,SFExctingTourCell;
+@protocol SFExctingTourCellDelegate <NSObject>
+
+-(void)exctingTourCell:(SFExctingTourCell *)cell pushController:(UIViewController *)controller;
+
+@end
 @interface SFExctingTourCell : UITableViewCell
 +(SFExctingTourCell *)cellWithTableView:(UITableView *)tableView;
-
+@property (nonatomic,assign) id<SFExctingTourCellDelegate> delegate;
 @property (nonatomic,strong) SFSearchModel * searchModel;
 
 @end

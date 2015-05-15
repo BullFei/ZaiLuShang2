@@ -35,13 +35,15 @@
 #import "SFTactick.h"
 #import "SFWantPeopleVC.h"
 #import "SFTourListVC.h"
+#import "SFDetailTactickController.h"
+#import "SFSceneryListVC.h"
 #define  TITLE_TYPE 88 //标题
 #define TYPE_50  50 //旅行地
 #define TYPE_4  4 //精彩游记
 #define TYPE_102  102 //相关体验
 #define  TACTICK_TYPE 90 //攻略
 #define  MAIN_URL @"http://app6.117go.com/demo27/php/interestAction.php?submit=localityHome&locid=%ld&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
-@interface SFListCityVC ()<UITableViewDelegate,UITableViewDataSource,SFStickerCellDelegate>
+@interface SFListCityVC ()<UITableViewDelegate,UITableViewDataSource,SFStickerCellDelegate,SFSceneryTypeFivtyCellDelegate>
 {
     SFCityType * _cityType;
     SFCityTypeHead * cityTypeHead;
@@ -309,6 +311,7 @@
             //旅行地
             SFSceneryTypeFivtyCell * cell = [SFSceneryTypeFivtyCell cellWthTableView:tableView];
             cell.searchModel =searchModel;
+            cell.delegate = self;
             return cell;
             
         }else if (TYPE_4==searchModel.type){
@@ -353,26 +356,41 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==0) {
-        //
-        
+    if (indexPath.section==0) {
+
         SFWantPeopleVC * wantPeopleVC = [[SFWantPeopleVC alloc]init];
         wantPeopleVC.displayModule =self.displayModule;
         wantPeopleVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:wantPeopleVC animated:YES];
+    }else{
+        SFSearchModel * searchModel = _dataArray[indexPath.section];
+        if (TACTICK_TYPE==searchModel.type) {
+            //
+            SFDetailTactickController * vc= [[SFDetailTactickController alloc]init];
+            vc.searchModel =searchModel;
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
 }
 
-
--(void)stickerCell:(SFStickerCell *)stickerCell withID:(NSInteger)locid withSign:(NSString *)sign
+#pragma mark - 贴士.游记 delegate
+-(void)stickerCell:(SFStickerCell *)stickerCell withID:(NSInteger)locid withTitle:(NSString *)title withSign:(NSString *)sign
 {
     if ([sign isEqualToString:@"tour"]) {
         //游记
         SFTourListVC * tourListVC = [[SFTourListVC alloc]init];
         tourListVC.locid =locid;
+        tourListVC.tag =title;
         tourListVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:tourListVC animated:YES];
     }
+}
+
+#pragma mark -旅行地
+-(void)sceneryTypeFivtyCell:(SFSceneryTypeFivtyCell *)cell pushController:(UIViewController *)controller
+{
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 

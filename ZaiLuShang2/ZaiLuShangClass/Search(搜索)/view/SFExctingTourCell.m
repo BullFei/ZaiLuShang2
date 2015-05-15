@@ -12,6 +12,9 @@
 #import "SFCityTypeHeadTipUser.h"
 #import "UIImageView+WebCache.h"
 #import "SFUserIconView.h"
+#import "SFTourDayVC.h"
+#define LEFT_TAG 10
+#define RIGHT_TAG 20
 @interface SFExctingTourCell()
 @property (weak, nonatomic) IBOutlet UIImageView *leftBgImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *rightBgImageView;
@@ -64,7 +67,29 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    //self.frame = CGRectMake(0, 0, SCREEN_HEIGHT, (SCREEN_WIDTH-6)*HUANGJINGSHU*HUANGJINGSHU);
+    [self.rightBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.leftBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)btnClick:(UIButton *)btn
+{
+    if([self.delegate respondsToSelector:@selector(exctingTourCell:pushController:)]){
+        //游记
+        SFTourDayVC * tourDayVC  = [[SFTourDayVC alloc]init];
+        tourDayVC.hidesBottomBarWhenPushed = YES;
+        
+        if (LEFT_TAG==btn.tag) {
+            //左边按钮
+            tourDayVC.tour =_searchModel.listArray[0];
+            
+        }else if (RIGHT_TAG==btn.tag){
+            //右边按钮
+            tourDayVC.tour =_searchModel.listArray[1];
+        }
+        [self.delegate exctingTourCell:self pushController:tourDayVC];
+    
+    }
+    
 }
 
 @end

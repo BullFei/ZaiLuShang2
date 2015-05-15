@@ -10,7 +10,8 @@
 @class SFCityTypeHead,SFSceneryObjModel,SFStickerCell;
 @protocol SFStickerCellDelegate <NSObject>
 
--(void)stickerCell:(SFStickerCell *)stickerCell withID:(NSInteger)locid withSign:(NSString *)sign;
+-(void)stickerCell:(SFStickerCell *)stickerCell withID:(NSInteger)locid
+         withTitle:(NSString *)title withSign:(NSString *)sign;
 
 @end
 

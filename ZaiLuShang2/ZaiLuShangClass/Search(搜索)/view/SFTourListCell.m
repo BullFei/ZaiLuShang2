@@ -47,7 +47,7 @@
         
         self.picNumLabel.text = tour.cntP;
         if ([tour.cntFav integerValue]/1000>0) {
-            self.eyeLabel.text = [NSString stringWithFormat:@"%ldk",[tour.cntFav integerValue]/1000];
+            self.likeLabel.text = [NSString stringWithFormat:@"%ldk",[tour.cntFav integerValue]/1000];
         }else{
             self.likeLabel.text = tour.cntFav;
         }
@@ -59,6 +59,14 @@
         }else{
             self.eyeLabel.text =tour.viewCnt;
         }
+        
+        if ([tour.subtype isEqualToString:@"2"]) {
+            //热
+            self.LabelImageView.image = [UIImage imageNamed:@"badge_hot"];
+        }else if ([tour.subtype isEqualToString:@"3"]){
+            //精
+            self.LabelImageView.image = [UIImage imageNamed:@"badge_choice"];
+        }
     }
 }
 
@@ -68,5 +76,14 @@
     CGRect frame = self.frame;
     frame.size.height = frame.size.width*HUANGJINGSHU*HUANGJINGSHU;
     self.frame =frame;
+}
+
+
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.iconImagView.layer.cornerRadius = self.iconImagView.frame.size.width*0.5;
+    self.iconImagView.layer.masksToBounds = YES;
+    
 }
 @end

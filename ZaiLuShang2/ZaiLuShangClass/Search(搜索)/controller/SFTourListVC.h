@@ -10,4 +10,6 @@
 
 @interface SFTourListVC : UITableViewController
 @property (nonatomic,assign) NSInteger locid;
+@property (nonatomic,assign) NSInteger sceneryid;
+@property (nonatomic,copy) NSString *tag;
 @end

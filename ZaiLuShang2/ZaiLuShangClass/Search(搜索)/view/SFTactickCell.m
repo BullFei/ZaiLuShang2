@@ -48,12 +48,12 @@
     [self addSubview:view];
     
     //字体设置
-    CGSize titleSize = [TextSizeTools sizeWithString:tactick.title withMaxSize:CGSizeMake(SCREEN_WIDTH, 20) withFont:TextFont_17];
-    CGSize subTitleSize = [TextSizeTools sizeWithString:tactick.subtitle withMaxSize:CGSizeMake(SCREEN_WIDTH, 20) withFont:TextFont_15];
+    CGSize titleSize = [TextSizeTools sizeWithString:tactick.title withMaxSize:CGSizeMake(SCREEN_WIDTH, 20) withFont:[UIFont boldSystemFontOfSize:20]];
+    CGSize subTitleSize = [TextSizeTools sizeWithString:tactick.subtitle withMaxSize:CGSizeMake(SCREEN_WIDTH, 20) withFont:[UIFont boldSystemFontOfSize:15]];
     
     CGFloat titleViewW =(titleSize.width>subTitleSize.width?titleSize.width:subTitleSize.width)+10;
     UILabel * titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 0, titleViewW, 20)];
-    titleLabel.font = [UIFont boldSystemFontOfSize:17];
+    titleLabel.font = [UIFont boldSystemFontOfSize:20];
     titleLabel.text =tactick.title;
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -67,7 +67,7 @@
     
     UILabel * subTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, CGRectGetMaxY(lineImageView.frame)+5,titleViewW, 20)];
     subTitleLabel.text =tactick.subtitle;
-    subTitleLabel.font = [UIFont systemFontOfSize:15];
+    subTitleLabel.font = [UIFont boldSystemFontOfSize:15];
     subTitleLabel.textAlignment = NSTextAlignmentCenter;
     subTitleLabel.textColor = [UIColor whiteColor];
     [view addSubview:subTitleLabel];
