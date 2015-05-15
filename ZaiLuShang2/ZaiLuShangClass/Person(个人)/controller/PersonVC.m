@@ -53,8 +53,6 @@
     self.tableView.dataSource = self;
     
     self.tableView.separatorColor = [UIColor lightGrayColor];
-    
-    
 }
 /**
  *  请求数据,解析数据
@@ -163,7 +161,8 @@
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:_dataArray[1]];
+    // 还需要判断model的类型选择不同的cell,后续增加上
+    LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:_dataArray[14]];
     TripCell *cell = [[TripCell alloc] initWithLYAttention:att];
     cell.delegate = self;
     return cell;
@@ -175,5 +174,11 @@
 #pragma mark - 事件的回调方法
 - (void)iconTapped:(UITapGestureRecognizer *)tgr {
     NSLog(@"点击了头像");
+}
+- (void)titleTapped:(UITapGestureRecognizer *)tgr {
+    NSLog(@"点击了标题");
+}
+- (void)igTapped:(UITapGestureRecognizer *)tgr {
+    NSLog(@"点击了图片");
 }
 @end

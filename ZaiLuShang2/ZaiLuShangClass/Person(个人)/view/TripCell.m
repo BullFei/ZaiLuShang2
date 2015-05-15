@@ -76,25 +76,86 @@
     eveLabel.text = eve;
     [self.contentView addSubview:eveLabel];
     
-    int len1 = self.author.text.length;
-    int len2 = eve.length;
-    NSMutableString *nsms = [[NSMutableString alloc] init];
-    for (int i = 0; i < len1 + len2 + 1; i++) {// 这里+2意思指空白多出来的地方,
-        [nsms insertString:@"　" atIndex:0];
-    }
-    if (rec.tourtitle != nil) {
-        [nsms insertString:rec.tourtitle atIndex:nsms.length];
-    }
-    
     self.title = [[UILabel alloc] init];
     self.title.font = [UIFont systemFontOfSize:12];
     self.title.frame = self.attFrame.titleName;
     self.title.numberOfLines = 0;
     self.title.textColor = [UIColor blueColor];
-    self.title.text = nsms;
-    
+    self.title.text = rec.tourtitle;
     [self.contentView addSubview:self.title];
     
+    // 添加事件
+    self.title.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapTitle = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(titleAction:)];
+    [self.title addGestureRecognizer:tapTitle];
+    
+    // 图片
+    if (rec.picfile != nil) {
+        self.ig = [[UIImageView alloc] initWithFrame:self.attFrame.ig];
+        // 拼接URL
+        self.ig.backgroundColor = [UIColor cyanColor];
+        NSString *imageURL = [NSString stringWithFormat:@"%@%s%@",rec.picdomain, BIG_IMAGE, rec.picfile];
+        [self.ig sd_setImageWithURL:[NSURL URLWithString:imageURL]];
+        [self.contentView addSubview:self.ig];
+        
+        // 给图片添加事件
+        self.ig.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapIg = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(igAction:)];
+        [self.ig addGestureRecognizer:tapIg];
+    }
+    
+    // 正文内容
+    self.contentLabel = [[UILabel alloc] init];
+    self.contentLabel.frame = self.attFrame.content;
+    self.contentLabel.numberOfLines = 0;
+    self.contentLabel.text = rec.words;
+    self.contentLabel.font = [UIFont systemFontOfSize:12];
+    [self.contentView addSubview:self.contentLabel];
+    
+    // 两个按钮
+    self.likeButton = [[UIButton alloc] init];
+    self.likeButton.frame = self.attFrame.likeCnt;
+    self.likeButton.layer.cornerRadius = 5;
+    self.likeButton.layer.masksToBounds = YES;
+    self.likeButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.likeButton.layer.borderWidth = 1;
+    self.likeButton.titleLabel.font = [UIFont systemFontOfSize:12];
+    [self.likeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    // 将图片处理为缩小版
+    UIImage *likeImage = [UIImage imageNamed:@"icon_like_line_red_24"];
+    NSData *likeData = UIImagePNGRepresentation(likeImage);
+    likeImage = [UIImage imageWithData:likeData scale:2];
+    
+    if (rec.likeCnt.intValue == 0) {
+        self.likeButton.imageView.contentMode = UIViewContentModeCenter;
+    } else {
+        [self.likeButton setTitle:rec.likeCnt forState:UIControlStateNormal];
+    }
+    [self.likeButton setImage:likeImage forState:UIControlStateNormal];
+    [self.contentView addSubview:self.likeButton];
+    
+    
+    self.commentButton = [[UIButton alloc] init];
+    self.commentButton.frame = self.attFrame.cmtCnt;
+    self.commentButton.layer.cornerRadius = 5;
+    self.commentButton.layer.masksToBounds = YES;
+    self.commentButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.commentButton.layer.borderWidth = 1;
+    self.commentButton.titleLabel.font = [UIFont systemFontOfSize:12];
+    [self.commentButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    UIImage *cmtImage = [UIImage imageNamed:@"icon_comment_line_blue_24"];
+    NSData *cmtData = UIImagePNGRepresentation(cmtImage);
+    cmtImage = [UIImage imageWithData:cmtData scale:2];
+    
+    if (rec.cntcmt.integerValue == 0) {
+        self.commentButton.imageView.contentMode = UIViewContentModeCenter;
+    } else {
+        [self.commentButton setTitle:rec.cntcmt forState:UIControlStateNormal];
+    }
+    [self.commentButton setImage:cmtImage forState:UIControlStateNormal];
+    
+    [self.contentView addSubview:self.commentButton];
     
     
 }
@@ -102,5 +163,13 @@
 // 头像被点击的方法
 - (void)iconAction:(UITapGestureRecognizer *)tgr {
     [self.delegate performSelector:@selector(iconTapped:) withObject:tgr];
+}
+// 标题被点击的方法
+- (void)titleAction:(UITapGestureRecognizer *)tgr {
+    [self.delegate performSelector:@selector(titleTapped:) withObject:tgr];
+}
+// 图片被点击的方法
+- (void)igAction:(UITapGestureRecognizer *)tgr {
+    [self.delegate performSelector:@selector(igTapped:) withObject:tgr];
 }
 @end
