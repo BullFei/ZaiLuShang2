@@ -1317,7 +1317,6 @@
 		BC8042CF1B05D2AA00831527 /* CXCmtTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */; };
 		BC8042D11B05D2C100831527 /* CXCmtTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */; };
 		BC8042D41B05F1B800831527 /* NSString+CXDataStr.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */; };
-		BC8042D71B06015900831527 /* NSDate+CXTime.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042D61B06015900831527 /* NSDate+CXTime.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2786,8 +2785,6 @@
 		BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CXCmtTableHeaderView.xib; sourceTree = "<group>"; };
 		BC8042D21B05F1B800831527 /* NSString+CXDataStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CXDataStr.h"; sourceTree = "<group>"; };
 		BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CXDataStr.m"; sourceTree = "<group>"; };
-		BC8042D51B06015900831527 /* NSDate+CXTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CXTime.h"; sourceTree = "<group>"; };
-		BC8042D61B06015900831527 /* NSDate+CXTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CXTime.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3063,8 +3060,6 @@
 			children = (
 				BC8042D21B05F1B800831527 /* NSString+CXDataStr.h */,
 				BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */,
-				BC8042D51B06015900831527 /* NSDate+CXTime.h */,
-				BC8042D61B06015900831527 /* NSDate+CXTime.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -6026,7 +6021,6 @@
 				BC8042C11B0582E500831527 /* CXCmtVC.m in Sources */,
 				BC32E0B61B049115001B6804 /* RootTableViewCell.m in Sources */,
 				BC8042C81B05900100831527 /* CXCmtCell.m in Sources */,
-				BC8042D71B06015900831527 /* NSDate+CXTime.m in Sources */,
 				BC7F99AC1B04801F00900595 /* MJArgument.m in Sources */,
 				BC21D4771B04D8B900B80A46 /* SFTourListCell.m in Sources */,
 				BC7F9A041B04804300900595 /* AppDelegate.m in Sources */,

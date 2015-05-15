@@ -7,7 +7,6 @@
 //
 
 #import "NSString+CXDataStr.h"
-#import "NSDate+CXTime.h"
 
 @implementation NSString (CXDataStr)
 
