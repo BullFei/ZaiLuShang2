@@ -8,10 +8,11 @@
 
 #import "CXPhotoVC.h"
 #import "CXscrollView.h"
+#import "CXCmtVC.h"
 
 #define BOTTEM_HEIGHT 49
 
-@interface CXPhotoVC ()
+@interface CXPhotoVC () <CXscrollViewDelegate>
 @property (nonatomic ,weak) UIView *scrollView;
 @end
 
@@ -28,8 +29,16 @@
     CXscrollView *view = [[CXscrollView alloc] initWithFrame:CGRectMake(0, 0, CGW(self.view), CGH(self.view))];
     [view setImageUrlNames:self.dataArr index:self.indexPath];
 //    view.backgroundColor = [UIColor blueColor];
+    view.delegate = self;
     self.scrollView = view;
     [self.view addSubview:view];
+}
+
+- (void)scrollViweBarCmtButtenClick:(CXCollectionVCellModel *)model
+{
+    CXCmtVC *vc = [[CXCmtVC alloc] init];
+    vc.model = model;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated

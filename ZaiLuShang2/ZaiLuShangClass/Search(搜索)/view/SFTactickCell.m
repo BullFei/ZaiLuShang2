@@ -86,7 +86,8 @@
         view.frame = CGRectMake(logoX-5-titleViewW-10 ,logoY , titleViewW+10, logoH);
     }else{
         view.frame = CGRectMake(0, 0, titleViewW+10, CGRectGetMaxY(subTitleLabel.frame));
-        view.center = self.center;    }
+        view.center = CGPointMake(self.center.x+20, self.center.y);
+    }
     
     
 

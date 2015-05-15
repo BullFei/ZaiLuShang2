@@ -13,6 +13,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "MJExtension.h"
 #import "CXPhotoVC.h"
+#import "MJRefresh.h"
 
 
 #define ITEM_INTERVAL INTERVAL_CELL_CELL
@@ -165,6 +166,7 @@
     cell.model = model.pic;
     return cell;
 }
+
 #pragma mark - 代理
 // 点击选择
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -173,6 +175,12 @@
     vc.dataArr = self.dataArr;
     vc.indexPath = indexPath;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)dealloc
+{
+    [self.footer free];
+    [self.header free];
 }
 
 @end

@@ -33,7 +33,7 @@
 @property (nonatomic,copy) NSString *mtime;
 @property (nonatomic,copy) NSString *recmtime;
 @property (nonatomic,copy) NSString *UUID;
-@property (nonatomic,strong) NSArray * dispCities;
+@property (nonatomic,strong) NSArray * dispCitieArray;
 @property (nonatomic,assign) BOOL *isCurrTrip;
 @property (nonatomic,assign) BOOL *isMyFav;
 @property (nonatomic,assign) BOOL *isLiked;
