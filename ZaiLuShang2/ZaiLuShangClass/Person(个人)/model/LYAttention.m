@@ -13,12 +13,9 @@
 #import "LYComment.h"
 
 #define LYZLS_ICON_WIDTH 102
-
 #define LYZLS_BLANK_WIDTH 5
-
 #define LYZLS_BUTTON_HEIGHT 20
 #define LYZLS_BUTTON_WIDTH 56
-
 #define LYZLS_TEXTSIZE 12
 
 @implementation LYAttention
@@ -65,7 +62,7 @@
     self.titleName = (CGRect){{titleX, titleY}, titleSize};
     
     // 图片 先检测是否有图片
-    if (rec.picfile != nil) {
+    if (rec.picfile.length != 0) {
         // 有图片 图片宽度是固定的 根据比例求出高度
         CGFloat igX = authorX;
         CGFloat igY = CGRectGetMaxY(self.titleName) + LYZLS_BLANK_WIDTH;
@@ -128,13 +125,27 @@
         CGSize size1 = [cnt boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 4*LYZLS_BLANK_WIDTH - self.icon.size.width - self.icon.size.width/2, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:LYZLS_TEXTSIZE] forKey:NSFontAttributeName] context:nil].size;
         self.commentContent1 = (CGRect){{CGRectGetMaxX(self.commentatorIcon1) + 2*LYZLS_BLANK_WIDTH, self.commentatorIcon1.origin.y}, size1 };
         
-//        // 第二个评论
-//        if (rec.comments.count >= 2) {
-//            
-//        }
+        // 如果运行到此处,cell的高度会改变
+        self.cellHeight = CGRectGetMaxY(self.commentatorIcon1) + 2 * LYZLS_BLANK_WIDTH;
+        
+        // 第二个评论, 如果评论数量大于等于2的话
+        if (rec.comments.count >= 2) {
+            // 第二个评论的头像的frame
+            self.commentatorIcon2 = CGRectMake(authorX, CGRectGetMaxY(self.commentatorIcon1) + 4 * LYZLS_BLANK_WIDTH, LYZLS_ICON_WIDTH/4, LYZLS_ICON_WIDTH/4);
+            // 第二个评论内容拼接
+            LYComment *commentModel2 = rec.comments[1];
+            NSString *cnt1 = [NSString stringWithFormat:@"%@:%@",commentModel2.user.nickname, commentModel2.words];
+            // 计算Size
+            CGSize size2 = [cnt1 boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 4*LYZLS_BLANK_WIDTH - self.icon.size.width - self.icon.size.width/2, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:LYZLS_TEXTSIZE] forKey:NSFontAttributeName] context:nil].size;
+            
+            self.commmentContent2 = (CGRect){{CGRectGetMaxX(self.commentatorIcon2) + 2*LYZLS_BLANK_WIDTH, self.commentatorIcon2.origin.y}, size2 };
+            self.cellHeight = CGRectGetMaxY(self.commentatorIcon2) + 2 * LYZLS_BLANK_WIDTH;
+            // 评论的数量不止2条的话
+            if (rec.cntcmt.integerValue != 2) {
+                self.cellHeight = CGRectGetMaxY(self.commentatorIcon2) + 20 + 4 * LYZLS_BLANK_WIDTH;
+//                self.cellHeight += 20 + 2*LYZLS_BLANK_WIDTH;
+            }
+        }
     }
-    
-  
-    
 }
 @end
