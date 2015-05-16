@@ -1341,13 +1341,12 @@
 		BC8042C41B058D9700831527 /* CXCmtModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C31B058D9700831527 /* CXCmtModel.m */; };
 		BC8042C81B05900100831527 /* CXCmtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C61B05900100831527 /* CXCmtCell.m */; };
 		BC8042CC1B05992A00831527 /* CXCmtFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CB1B05992A00831527 /* CXCmtFrameModel.m */; };
-<<<<<<< HEAD
+
 		BC8042CF1B05D2AA00831527 /* CXCmtTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */; };
 		BC8042D11B05D2C100831527 /* CXCmtTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */; };
 		BC8042D41B05F1B800831527 /* NSString+CXDataStr.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */; };
 		BC8FD37E1B05DB2A0085D159 /* LYLCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */; };
 		BC8FD3821B05E7200085D159 /* TimeIntervalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */; };
-=======
 
 
 		BC8FD37E1B05DB2A0085D159 /* LYLCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */; };
@@ -1365,7 +1364,6 @@
 
 		BC8042D41B05F1B800831527 /* NSString+CXDataStr.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */; };
 
->>>>>>> origin/master
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2875,7 +2873,6 @@
 		BC8042C61B05900100831527 /* CXCmtCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtCell.m; sourceTree = "<group>"; };
 		BC8042CA1B05992A00831527 /* CXCmtFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtFrameModel.h; sourceTree = "<group>"; };
 		BC8042CB1B05992A00831527 /* CXCmtFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtFrameModel.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		BC8042CD1B05D2AA00831527 /* CXCmtTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtTableHeaderView.h; sourceTree = "<group>"; };
 		BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtTableHeaderView.m; sourceTree = "<group>"; };
 		BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CXCmtTableHeaderView.xib; sourceTree = "<group>"; };
@@ -2885,7 +2882,6 @@
 		BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLCButton.m; sourceTree = "<group>"; };
 		BC8FD3801B05E7200085D159 /* TimeIntervalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeIntervalTool.h; sourceTree = "<group>"; };
 		BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeIntervalTool.m; sourceTree = "<group>"; };
-=======
 
 		BC8FD37C1B05DB2A0085D159 /* LYLCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLCButton.h; sourceTree = "<group>"; };
 		BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLCButton.m; sourceTree = "<group>"; };
@@ -2904,7 +2900,6 @@
 		BC8042D21B05F1B800831527 /* NSString+CXDataStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CXDataStr.h"; sourceTree = "<group>"; };
 		BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CXDataStr.m"; sourceTree = "<group>"; };
 
->>>>>>> origin/master
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

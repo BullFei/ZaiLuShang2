@@ -166,20 +166,43 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return _dataArray.count;
    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // 还需要判断model的类型选择不同的cell,后续增加上
-    LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:_dataArray[0]];
-    MedalCell *cell = [[MedalCell alloc] initWithLYAttention:ach];
-//    cell.delegate = self;
-    return cell;
+    id heihei = _dataArray[indexPath.row];
+    if ([heihei class] == [LYAttentionModel class]) {
+        LYAttentionModel *haha = (LYAttentionModel *)_dataArray[indexPath.row];
+        if ([haha.item class] == [LYRec class]) {
+            LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:haha];
+            TripCell *cell = [[TripCell alloc] initWithLYAttention:att];
+            return cell;
+        } else {
+            LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:haha];
+            MedalCell *cell = [[MedalCell alloc] initWithLYAttention:ach];
+            return cell;
+        }
+    } else {
+        // 第三种,未完待续
+        return [[UITableViewCell alloc] init];
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:_dataArray[13]];
-    LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:_dataArray[0]];
-    return ach.cellHeight;
+    id heihei = _dataArray[indexPath.row];
+    if ([heihei class] == [LYAttentionModel class]) {
+        LYAttentionModel *haha = (LYAttentionModel *)_dataArray[indexPath.row];
+        if ([haha.item class] == [LYRec class]) {
+            LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:haha];
+            return att.cellHeight;
+        } else {
+            LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:haha];
+            return ach.cellHeight;
+        }
+    } else {
+        // 第三种,未完待续
+        return 0;
+    }
 }
 
 #pragma mark - cell事件代理方法
