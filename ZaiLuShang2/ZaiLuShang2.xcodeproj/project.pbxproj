@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
 		12A8E7161B05C76300766D01 /* SpecialColumnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A8E7151B05C76300766D01 /* SpecialColumnModel.m */; };
 		12A8E7191B05CA2E00766D01 /* SpecialColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A8E7181B05CA2E00766D01 /* SpecialColumnView.m */; };
 		12A8E71C1B05EE3D00766D01 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A8E71B1B05EE3D00766D01 /* CommentModel.m */; };
 		12A8E71F1B05FD9500766D01 /* ReviewerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A8E71E1B05FD9500766D01 /* ReviewerModel.m */; };
-
 		12E9AB201B0499D00084490E /* SquareVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB001B0499D00084490E /* SquareVC.m */; };
 		12E9AB211B0499D00084490E /* ADModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB041B0499D00084490E /* ADModel.m */; };
 		12E9AB221B0499D00084490E /* JingXuanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9AB061B0499D00084490E /* JingXuanModel.m */; };
@@ -1318,7 +1316,15 @@
 		BC7FA3051B0485FB00900595 /* map_pop_single.9.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7F9E871B0485FA00900595 /* map_pop_single.9.png */; };
 		BC7FA3061B0485FB00900595 /* subscription_pop.9.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7F9E881B0485FA00900595 /* subscription_pop.9.png */; };
 		BC7FA3091B04AC1100900595 /* CXScrollViewBarBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7FA3081B04AC1100900595 /* CXScrollViewBarBtn.m */; };
-
+		BC8042C11B0582E500831527 /* CXCmtVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C01B0582E500831527 /* CXCmtVC.m */; };
+		BC8042C41B058D9700831527 /* CXCmtModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C31B058D9700831527 /* CXCmtModel.m */; };
+		BC8042C81B05900100831527 /* CXCmtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C61B05900100831527 /* CXCmtCell.m */; };
+		BC8042CC1B05992A00831527 /* CXCmtFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CB1B05992A00831527 /* CXCmtFrameModel.m */; };
+		BC8042CF1B05D2AA00831527 /* CXCmtTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */; };
+		BC8042D11B05D2C100831527 /* CXCmtTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */; };
+		BC8042D41B05F1B800831527 /* NSString+CXDataStr.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */; };
+		BC8FD37E1B05DB2A0085D159 /* LYLCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */; };
+		BC8FD3821B05E7200085D159 /* TimeIntervalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */; };
 		BCA98F6D1B058E96005E26BF /* SFPathMap.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F6C1B058E96005E26BF /* SFPathMap.m */; };
 		BCA98F701B058ED0005E26BF /* SFItinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F6F1B058ED0005E26BF /* SFItinerary.m */; };
 		BCA98F731B058F43005E26BF /* SFCity.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F721B058F43005E26BF /* SFCity.m */; };
@@ -1336,34 +1342,6 @@
 		BCCE499A1B05892100982593 /* SFTourDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCE49981B05892100982593 /* SFTourDayCell.m */; };
 		BCCE499B1B05892100982593 /* SFTourDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCE49991B05892100982593 /* SFTourDayCell.xib */; };
 		BCCE499E1B058DE800982593 /* SFTourDay.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCE499D1B058DE800982593 /* SFTourDay.m */; };
-
-		BC8042C11B0582E500831527 /* CXCmtVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C01B0582E500831527 /* CXCmtVC.m */; };
-		BC8042C41B058D9700831527 /* CXCmtModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C31B058D9700831527 /* CXCmtModel.m */; };
-		BC8042C81B05900100831527 /* CXCmtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042C61B05900100831527 /* CXCmtCell.m */; };
-		BC8042CC1B05992A00831527 /* CXCmtFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CB1B05992A00831527 /* CXCmtFrameModel.m */; };
-
-		BC8042CF1B05D2AA00831527 /* CXCmtTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */; };
-		BC8042D11B05D2C100831527 /* CXCmtTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */; };
-		BC8042D41B05F1B800831527 /* NSString+CXDataStr.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */; };
-		BC8FD37E1B05DB2A0085D159 /* LYLCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */; };
-		BC8FD3821B05E7200085D159 /* TimeIntervalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */; };
-
-
-		BC8FD37E1B05DB2A0085D159 /* LYLCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */; };
-		BC8FD3821B05E7200085D159 /* TimeIntervalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */; };
-
-
-		BC8042CF1B05D2AA00831527 /* CXCmtTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */; };
-		BC8042D11B05D2C100831527 /* CXCmtTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */; };
-
-
-		BC8FD37E1B05DB2A0085D159 /* LYLCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */; };
-		BC8FD3821B05E7200085D159 /* TimeIntervalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */; };
-		BC8042CF1B05D2AA00831527 /* CXCmtTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */; };
-		BC8042D11B05D2C100831527 /* CXCmtTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */; };
-
-		BC8042D41B05F1B800831527 /* NSString+CXDataStr.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1377,7 +1355,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-
 		12A8E7141B05C76300766D01 /* SpecialColumnModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialColumnModel.h; sourceTree = "<group>"; };
 		12A8E7151B05C76300766D01 /* SpecialColumnModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialColumnModel.m; sourceTree = "<group>"; };
 		12A8E7171B05CA2E00766D01 /* SpecialColumnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialColumnView.h; sourceTree = "<group>"; };
@@ -1386,7 +1363,6 @@
 		12A8E71B1B05EE3D00766D01 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
 		12A8E71D1B05FD9500766D01 /* ReviewerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewerModel.h; sourceTree = "<group>"; };
 		12A8E71E1B05FD9500766D01 /* ReviewerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewerModel.m; sourceTree = "<group>"; };
-
 		12E9AAFF1B0499D00084490E /* SquareVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareVC.h; sourceTree = "<group>"; };
 		12E9AB001B0499D00084490E /* SquareVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareVC.m; sourceTree = "<group>"; };
 		12E9AB031B0499D00084490E /* ADModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADModel.h; sourceTree = "<group>"; };
@@ -2833,7 +2809,23 @@
 		BC7F9E881B0485FA00900595 /* subscription_pop.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subscription_pop.9.png; sourceTree = "<group>"; };
 		BC7FA3071B04AC1100900595 /* CXScrollViewBarBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXScrollViewBarBtn.h; sourceTree = "<group>"; };
 		BC7FA3081B04AC1100900595 /* CXScrollViewBarBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXScrollViewBarBtn.m; sourceTree = "<group>"; };
-
+		BC8042BF1B0582E500831527 /* CXCmtVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtVC.h; sourceTree = "<group>"; };
+		BC8042C01B0582E500831527 /* CXCmtVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtVC.m; sourceTree = "<group>"; };
+		BC8042C21B058D9700831527 /* CXCmtModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtModel.h; sourceTree = "<group>"; };
+		BC8042C31B058D9700831527 /* CXCmtModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtModel.m; sourceTree = "<group>"; };
+		BC8042C51B05900100831527 /* CXCmtCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtCell.h; sourceTree = "<group>"; };
+		BC8042C61B05900100831527 /* CXCmtCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtCell.m; sourceTree = "<group>"; };
+		BC8042CA1B05992A00831527 /* CXCmtFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtFrameModel.h; sourceTree = "<group>"; };
+		BC8042CB1B05992A00831527 /* CXCmtFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtFrameModel.m; sourceTree = "<group>"; };
+		BC8042CD1B05D2AA00831527 /* CXCmtTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtTableHeaderView.h; sourceTree = "<group>"; };
+		BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtTableHeaderView.m; sourceTree = "<group>"; };
+		BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CXCmtTableHeaderView.xib; sourceTree = "<group>"; };
+		BC8042D21B05F1B800831527 /* NSString+CXDataStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CXDataStr.h"; sourceTree = "<group>"; };
+		BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CXDataStr.m"; sourceTree = "<group>"; };
+		BC8FD37C1B05DB2A0085D159 /* LYLCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLCButton.h; sourceTree = "<group>"; };
+		BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLCButton.m; sourceTree = "<group>"; };
+		BC8FD3801B05E7200085D159 /* TimeIntervalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeIntervalTool.h; sourceTree = "<group>"; };
+		BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeIntervalTool.m; sourceTree = "<group>"; };
 		BCA98F6B1B058E96005E26BF /* SFPathMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPathMap.h; sourceTree = "<group>"; };
 		BCA98F6C1B058E96005E26BF /* SFPathMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPathMap.m; sourceTree = "<group>"; };
 		BCA98F6E1B058ED0005E26BF /* SFItinerary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFItinerary.h; sourceTree = "<group>"; };
@@ -2865,41 +2857,6 @@
 		BCCE49991B05892100982593 /* SFTourDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SFTourDayCell.xib; path = ../model/SFTourDayCell.xib; sourceTree = "<group>"; };
 		BCCE499C1B058DE800982593 /* SFTourDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourDay.h; sourceTree = "<group>"; };
 		BCCE499D1B058DE800982593 /* SFTourDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourDay.m; sourceTree = "<group>"; };
-		BC8042BF1B0582E500831527 /* CXCmtVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtVC.h; sourceTree = "<group>"; };
-		BC8042C01B0582E500831527 /* CXCmtVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtVC.m; sourceTree = "<group>"; };
-		BC8042C21B058D9700831527 /* CXCmtModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtModel.h; sourceTree = "<group>"; };
-		BC8042C31B058D9700831527 /* CXCmtModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtModel.m; sourceTree = "<group>"; };
-		BC8042C51B05900100831527 /* CXCmtCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtCell.h; sourceTree = "<group>"; };
-		BC8042C61B05900100831527 /* CXCmtCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtCell.m; sourceTree = "<group>"; };
-		BC8042CA1B05992A00831527 /* CXCmtFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtFrameModel.h; sourceTree = "<group>"; };
-		BC8042CB1B05992A00831527 /* CXCmtFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtFrameModel.m; sourceTree = "<group>"; };
-		BC8042CD1B05D2AA00831527 /* CXCmtTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtTableHeaderView.h; sourceTree = "<group>"; };
-		BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtTableHeaderView.m; sourceTree = "<group>"; };
-		BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CXCmtTableHeaderView.xib; sourceTree = "<group>"; };
-		BC8042D21B05F1B800831527 /* NSString+CXDataStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CXDataStr.h"; sourceTree = "<group>"; };
-		BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CXDataStr.m"; sourceTree = "<group>"; };
-		BC8FD37C1B05DB2A0085D159 /* LYLCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLCButton.h; sourceTree = "<group>"; };
-		BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLCButton.m; sourceTree = "<group>"; };
-		BC8FD3801B05E7200085D159 /* TimeIntervalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeIntervalTool.h; sourceTree = "<group>"; };
-		BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeIntervalTool.m; sourceTree = "<group>"; };
-
-		BC8FD37C1B05DB2A0085D159 /* LYLCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLCButton.h; sourceTree = "<group>"; };
-		BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLCButton.m; sourceTree = "<group>"; };
-		BC8FD3801B05E7200085D159 /* TimeIntervalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeIntervalTool.h; sourceTree = "<group>"; };
-		BC8FD3811B05E7200085D159 /* TimeIntervalTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeIntervalTool.m; sourceTree = "<group>"; };
-
-
-		BC8042CD1B05D2AA00831527 /* CXCmtTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtTableHeaderView.h; sourceTree = "<group>"; };
-		BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtTableHeaderView.m; sourceTree = "<group>"; };
-		BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CXCmtTableHeaderView.xib; sourceTree = "<group>"; };
-
-		BC8042CD1B05D2AA00831527 /* CXCmtTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCmtTableHeaderView.h; sourceTree = "<group>"; };
-		BC8042CE1B05D2AA00831527 /* CXCmtTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCmtTableHeaderView.m; sourceTree = "<group>"; };
-		BC8042D01B05D2C100831527 /* CXCmtTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CXCmtTableHeaderView.xib; sourceTree = "<group>"; };
-
-		BC8042D21B05F1B800831527 /* NSString+CXDataStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CXDataStr.h"; sourceTree = "<group>"; };
-		BC8042D31B05F1B800831527 /* NSString+CXDataStr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CXDataStr.m"; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -6093,11 +6050,8 @@
 				BC7F99DB1B04801F00900595 /* SFCityType.m in Sources */,
 				BC7F99DA1B04801F00900595 /* SFListTactickController.m in Sources */,
 				BC7F99AF1B04801F00900595 /* MJMethod.m in Sources */,
-
 				BCA98F6D1B058E96005E26BF /* SFPathMap.m in Sources */,
-
 				12A8E7161B05C76300766D01 /* SpecialColumnModel.m in Sources */,
-
 				BC7F99C61B04801F00900595 /* UIImage+WebP.m in Sources */,
 				12E9AB291B0499D00084490E /* MoreThemeCollectionCell.m in Sources */,
 				BC7F99E91B04801F00900595 /* SFSearchDisplayModule.m in Sources */,
@@ -6105,12 +6059,9 @@
 				BC7F99A11B04801F00900595 /* AFNTool.m in Sources */,
 				BC7F99AB1B04801F00900595 /* MyMD5.m in Sources */,
 				BC629A8C1B0496C3006FD0C0 /* SFProduct.m in Sources */,
-
 				BCA98F901B05B9C9005E26BF /* SFTourDayTitleView.m in Sources */,
 				BCCE499E1B058DE800982593 /* SFTourDay.m in Sources */,
-
 				BC8042D41B05F1B800831527 /* NSString+CXDataStr.m in Sources */,
-
 				BC7F99DF1B04801F00900595 /* SFCityTypeHeadLocality.m in Sources */,
 				BC7F99991B04801F00900595 /* MainTabBarController.m in Sources */,
 				BC3905051B06E43F00EA6C5F /* MedalCell.m in Sources */,
@@ -6329,6 +6280,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZaiLuShang2/Header.h";
 				INFOPLIST_FILE = ZaiLuShang2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -6340,6 +6292,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZaiLuShang2/Header.h";
 				INFOPLIST_FILE = ZaiLuShang2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

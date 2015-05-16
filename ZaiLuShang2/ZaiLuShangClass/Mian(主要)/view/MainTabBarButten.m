@@ -29,8 +29,8 @@
         self.titleLabel.font = [UIFont systemFontOfSize:11];
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
         
-        [self setTitleColor:[UIColor colorWithWhite:140/255.0 alpha:1] forState:UIControlStateNormal];
-        [self setTitleColor:GXColor(240, 120, 90) forState:UIControlStateSelected];
+        [self setTitleColor:GXColor(144, 184, 208) forState:UIControlStateNormal];
+        [self setTitleColor:GXColor(51, 165, 251) forState:UIControlStateSelected];
         
         BadgeButten *badgeButten = [[BadgeButten alloc] init];
         self.badgeButten = badgeButten;

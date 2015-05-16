@@ -47,16 +47,16 @@
 - (void)createVC
 {
     SquareVC *frist = [[SquareVC alloc]init];
-    [self addVC:frist title:@"广场" image:@"" selImage:@""];
+    [self addVC:frist title:@"广场" image:@"tab_home_48_off" selImage:@"tab_home_48_on"];
     
     HotTopicVC *second = [[HotTopicVC alloc] init];
-    [self addVC:second title:@"热门" image:@"" selImage:@""];
+    [self addVC:second title:@"热门" image:@"tab_profile_48_off" selImage:@"tab_profile_48_on"];
     
     SearchVC *third = [[SearchVC alloc] init];
-    [self addVC:third title:@"搜索" image:@"" selImage:@""];
+    [self addVC:third title:@"搜索" image:@"tab_search_48_off" selImage:@"tab_search_48_on"];
     
     PersonVC *fourth = [[PersonVC alloc] init];
-    [self addVC:fourth title:@"个人" image:@"" selImage:@""];
+    [self addVC:fourth title:@"个人" image:@"tab_feed_48_off" selImage:@"tab_feed_48_on"];
     
     
 }
