@@ -17,6 +17,8 @@
 #import "LYAttentionModel.h"
 #import "TripCell.h"
 #import "LYAttention.h"
+#import "MedalCell.h"
+#import "LYAchievement.h"
 
 #define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=0&fetchNewer=1&length=40&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
 
@@ -37,6 +39,7 @@
     [self createTitleView];
     
     [self requestData];
+    
 }
 
 - (void)createTitleView
@@ -59,7 +62,7 @@
  */
 - (void)requestData {
     [RequestTool GET:ZLS_PERSON_URL parameters:nil success:^(id responseObject) {
-        NSLog(@"数据请求成功");
+        NSLog(@"数据请求成功, 开始解析数据...");
         if (_dataArray == nil) {
             _dataArray = [[NSMutableArray alloc] init];
         }
@@ -142,9 +145,9 @@
                     [model setValuesForKeysWithDictionary:smallDict];
                     
                     LYAchv *ach = [[LYAchv alloc] init];
-                    [ach setValuesForKeysWithDictionary:smallDict[@"achv"]];
+                    [ach setValuesForKeysWithDictionary:smallDict[@"item"][@"achv"]];
                     LYOwner *owner = [[LYOwner alloc] init];
-                    [owner setValuesForKeysWithDictionary:smallDict[@"achv"][@"user"]];
+                    [owner setValuesForKeysWithDictionary:smallDict[@"item"][@"achv"][@"user"]];
                     ach.user = owner;
                     
                     model.item = ach;
@@ -163,27 +166,53 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return _dataArray.count;
+   
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // 还需要判断model的类型选择不同的cell,后续增加上
-    LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:_dataArray[3]];
-    TripCell *cell = [[TripCell alloc] initWithLYAttention:att];
-    cell.delegate = self;
-    return cell;
+    id heihei = _dataArray[indexPath.row];
+    if ([heihei class] == [LYAttentionModel class]) {
+        LYAttentionModel *haha = (LYAttentionModel *)_dataArray[indexPath.row];
+        if ([haha.item class] == [LYRec class]) {
+            LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:haha];
+            TripCell *cell = [[TripCell alloc] initWithLYAttention:att];
+            return cell;
+        } else {
+            LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:haha];
+            MedalCell *cell = [[MedalCell alloc] initWithLYAttention:ach];
+            return cell;
+        }
+    } else {
+        // 第三种,未完待续
+        return [[UITableViewCell alloc] init];
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 500;
+    id heihei = _dataArray[indexPath.row];
+    if ([heihei class] == [LYAttentionModel class]) {
+        LYAttentionModel *haha = (LYAttentionModel *)_dataArray[indexPath.row];
+        if ([haha.item class] == [LYRec class]) {
+            LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:haha];
+            return att.cellHeight;
+        } else {
+            LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:haha];
+            return ach.cellHeight;
+        }
+    } else {
+        // 第三种,未完待续
+        return 0;
+    }
 }
 
-#pragma mark - 事件的回调方法
-- (void)iconTapped:(UITapGestureRecognizer *)tgr {
-    NSLog(@"点击了头像");
-}
-- (void)titleTapped:(UITapGestureRecognizer *)tgr {
-    NSLog(@"点击了标题");
-}
-- (void)igTapped:(UITapGestureRecognizer *)tgr {
-    NSLog(@"点击了图片");
-}
+#pragma mark - cell事件代理方法
+//- (void)iconTapped:(UITapGestureRecognizer *)tgr {
+//    NSLog(@"点击了头像");
+//}
+//- (void)titleTapped:(UITapGestureRecognizer *)tgr {
+//    NSLog(@"点击了标题");
+//}
+//- (void)igTapped:(UITapGestureRecognizer *)tgr {
+//    NSLog(@"点击了图片");
+//}
 @end
