@@ -39,7 +39,7 @@
     if (cityTypeHead) {
         _cityTypeHead = cityTypeHead;
         SFCityTypeHeadLocality * cityTypeHeadLocality = cityTypeHead.cityTypeHeadLocality;
-        self.label.text = [NSString stringWithFormat:@"%d人去过/%d人想去",cityTypeHeadLocality.visitedCnt,cityTypeHeadLocality.wantCnt];
+        self.label.text = [NSString stringWithFormat:@"%ld人去过/%ld人想去",cityTypeHeadLocality.visitedCnt,cityTypeHeadLocality.wantCnt];
         NSArray  * array =cityTypeHead.tip_users;
         SFCityTypeHeadTipUser * cityTypeHeadTipUser1 = array[0];
         SFCityTypeHeadTipUser * cityTypeHeadTipUser2 = array[1];

@@ -26,7 +26,6 @@
 #define URL @"http://app6.117go.com/demo27/php/stickerAction.php?submit=getSceneryHome&sceneryid=%ld&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
 @interface SFSceneryListVC ()<UITableViewDataSource,UITableViewDelegate,SFStickerCellDelegate>
 {
-//    SFCityType * _cityType;
     SFSceneryObjModel * sceneryObjModel;
     UITableView * _tableView;
 }
@@ -97,7 +96,15 @@
     if (nil ==_dataArray) {
         _dataArray = [[NSMutableArray alloc]init];
     }
-    [RequestTool GET:[NSString stringWithFormat:URL,self.displayModule.itemid] parameters:nil success:^(id responseObject) {
+    
+    NSUInteger sceneryid;
+    if (self.displayModule) {
+        sceneryid =self.displayModule.itemid;
+    }else if (self.cityTypeListModel){
+        sceneryid =self.cityTypeListModel.id;
+    }
+    
+    [RequestTool GET:[NSString stringWithFormat:URL,sceneryid] parameters:nil success:^(id responseObject) {
         
         NSDictionary * resultDic =responseObject[@"obj"];
         sceneryObjModel = [[SFSceneryObjModel alloc]init];
@@ -238,13 +245,13 @@
     }
 }
 
-
--(void)stickerCell:(SFStickerCell *)stickerCell withID:(NSInteger)locid withSign:(NSString *)sign
+-(void)stickerCell:(SFStickerCell *)stickerCell withID:(NSInteger)locid withTitle:(NSString *)title withSign:(NSString *)sign
 {
     if ([sign isEqualToString:@"tour"]) {
         //游记
         SFTourListVC * tourListVC = [[SFTourListVC alloc]init];
-        tourListVC.locid =locid;
+        tourListVC.sceneryid =locid;
+        tourListVC.tag =title;
         tourListVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:tourListVC animated:YES];
     }

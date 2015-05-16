@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @class SFCityTypeListModel;
 @interface SFSceneryTypeFivtyCollectionViewCell : UICollectionViewCell
 @property (nonatomic,strong) SFCityTypeListModel * cityTypeListModel;

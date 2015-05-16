@@ -9,6 +9,8 @@
 #import "SFSceneryTypeFivtyCell.h"
 #import "SFSearchModel.h"
 #import "SFSceneryTypeFivtyCollectionViewCell.h"
+#import "SFCityTypeListModel.h"
+#import "SFSceneryListVC.h"
 @interface SFSceneryTypeFivtyCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -67,6 +69,13 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    SFCityTypeListModel * cityTypeListModel = self.searchModel.listArray[indexPath.row];
+    SFSceneryListVC * listVC = [[SFSceneryListVC alloc]init];
+    listVC.hidesBottomBarWhenPushed = YES;
+    listVC.cityTypeListModel =cityTypeListModel;
+    if ([self.delegate respondsToSelector:@selector(sceneryTypeFivtyCell:pushController:)]) {
+        [self.delegate sceneryTypeFivtyCell:self pushController:listVC];
+    }
+
 }
 @end

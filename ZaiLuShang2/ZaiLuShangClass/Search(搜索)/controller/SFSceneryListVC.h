@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SFSearchDisplayModule;
+@class SFSearchDisplayModule,SFCityTypeListModel;
 @interface SFSceneryListVC : UIViewController
 @property (nonatomic,strong) SFSearchDisplayModule * displayModule;
+@property (nonatomic,strong) SFCityTypeListModel *cityTypeListModel;
 @end

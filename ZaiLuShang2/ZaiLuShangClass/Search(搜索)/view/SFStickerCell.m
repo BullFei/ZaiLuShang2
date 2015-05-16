@@ -115,11 +115,12 @@
 {
     //游记
     
-    if ([self.delegate respondsToSelector:@selector(stickerCell:withID:withSign:)]) {
+    if ([self.delegate respondsToSelector:@selector(stickerCell:withID:withTitle:withSign:)]) {
         if (self.cityTypeHead&&self.cityTypeHead.cityTypeHeadLocality.tourCnt>0) {
-            [self.delegate stickerCell:self withID:self.cityTypeHead.cityTypeHeadLocality.id withSign:@"tour"];
+            [self.delegate stickerCell:self withID:self.cityTypeHead.cityTypeHeadLocality.id withTitle:self.cityTypeHead.cityTypeHeadLocality.dispname withSign:@"tour"];
+
         }else if (self.sceneryObjModel&&self.sceneryObjModel.scenery.tourCnt>0){
-            [self.delegate stickerCell:self withID:self.sceneryObjModel.scenery.id withSign:@"tour"];
+            [self.delegate stickerCell:self withID:self.sceneryObjModel.scenery.id withTitle:self.sceneryObjModel.scenery.name withSign:@"tour"];
             
         }
         
