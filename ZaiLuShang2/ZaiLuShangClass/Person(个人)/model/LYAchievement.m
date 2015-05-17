@@ -61,8 +61,10 @@
     CGFloat medalX = CGRectGetMaxX(self.ig) + LYZLS_BLANK_WIDTH;
     CGFloat medalY = igY;
     NSString *medalString = ach.title;
-    CGSize medalSize = [medalString sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:LYZLS_TEXTSIZE], NSFontAttributeName, nil]];
-    self.medal = (CGRect){{medalX, medalY}, medalSize};
+        CGSize medalSize = [medalString sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:LYZLS_TEXTSIZE], NSFontAttributeName, nil]];
+        self.medal = (CGRect){{medalX, medalY}, medalSize};
+    
+    
     
     // 获得勋章条件
     CGFloat conditionX = medalX;

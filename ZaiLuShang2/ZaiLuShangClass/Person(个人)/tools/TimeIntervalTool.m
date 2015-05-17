@@ -27,16 +27,15 @@
     NSTimeInterval nowInterval = [now timeIntervalSince1970];
     NSTimeInterval sometimeInterval = [sometime timeIntervalSince1970];
     NSTimeInterval realInterval = nowInterval - sometimeInterval;
-    NSLog(@"%f", realInterval);
     
     if (realInterval < 3600) {
         return @"刚刚";
     } else if (realInterval >= 3600 && realInterval < 24 * 3600) {
         NSInteger n = (int)realInterval / 3600;
-        return [NSString stringWithFormat:@"%d小时前", n];
+        return [NSString stringWithFormat:@"%ld小时前", (long)n];
     } else if (realInterval >= 24 * 3600 && realInterval < 10 * 24 * 3600) {
         NSInteger n = (int)realInterval / (24 * 3600);
-        return [NSString stringWithFormat:@"%d天前", n+1];
+        return [NSString stringWithFormat:@"%ld天前", n+1];
     } else {
         NSDateFormatter *shortFormatter = [[NSDateFormatter alloc] init];
         [shortFormatter setDateFormat:@"MM.dd"];

@@ -8,6 +8,7 @@
 
 #import "JingXuanCell.h"
 #import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
 #import "SFImageView.h"
 #import "Header.h"
 @interface  JingXuanCell ()
@@ -46,7 +47,9 @@
         UINib *nib =[UINib nibWithNibName:@"jingxuancell" bundle:nil];
         [tableview registerNib:nib forCellReuseIdentifier:cellId];
         NSArray * objs=[nib instantiateWithOwner:self options:nil];
+//        cell = [[[NSBundle mainBundle] loadNibNamed:@"jingxuancell" owner:nil options:nil] lastObject];
         cell =objs.lastObject;
+        
     }
     return cell;
     
@@ -74,14 +77,26 @@
         UIImageView * userHeadView =[[UIImageView alloc]initWithFrame:CGRectMake(13, 13, 30, 30)];
         userHeadView.layer.cornerRadius =15;
         userHeadView.layer.masksToBounds =YES;
-        NSString * headURL =[NSString stringWithFormat:@"%@%s%@",commentModel.user.picdomain,SMALL_HEAD,commentModel.user.avatar];
+        NSString * headURL =[NSString stringWithFormat:@"%@%@%@",commentModel.user.picdomain,SMALL_HEAD,commentModel.user.avatar];
         [userHeadView sd_setImageWithURL:[NSURL URLWithString:headURL]];
         [view addSubview:userHeadView];
         
         UILabel * userNameAndCommentLabel =[[UILabel alloc]initWithFrame:CGRectMake(56,0 , SCREEN_WIDTH-56-13, 56)];
         userNameAndCommentLabel.numberOfLines =2;
         userNameAndCommentLabel.font =TextFont_15;
-        userNameAndCommentLabel.text =[NSString stringWithFormat:@"%@: %@",commentModel.user.nickname,commentModel.words];
+        
+       NSString * str =[NSString stringWithFormat:@"%@: %@",commentModel.user.nickname,commentModel.words];
+        NSMutableAttributedString * attrStr=[[NSMutableAttributedString alloc]initWithString:str];
+         NSRange range =[str rangeOfString:commentModel.words];
+        [attrStr addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:range];
+        userNameAndCommentLabel.attributedText =attrStr;
+       
+        
+        
+        
+        
+        
+//        userNameAndCommentLabel.text =[NSString stringWithFormat:@"%@: %@",commentModel.user.nickname,commentModel.words];
         [view addSubview:userNameAndCommentLabel];
         
         UIControl * ctrl =[[UIControl alloc]initWithFrame:view.bounds];
@@ -101,14 +116,21 @@
         UIImageView * userHeadView =[[UIImageView alloc]initWithFrame:CGRectMake(13, 13, 30, 30)];
         userHeadView.layer.cornerRadius =15;
         userHeadView.layer.masksToBounds =YES;
-        NSString * headURL =[NSString stringWithFormat:@"%@%s%@",commentModel.user.picdomain,SMALL_HEAD,commentModel.user.avatar];
+        NSString * headURL =[NSString stringWithFormat:@"%@%@%@",commentModel.user.picdomain,SMALL_HEAD,commentModel.user.avatar];
         [userHeadView sd_setImageWithURL:[NSURL URLWithString:headURL]];
         [view addSubview:userHeadView];
         
         UILabel * userNameAndCommentLabel =[[UILabel alloc]initWithFrame:CGRectMake(56,0 , SCREEN_WIDTH-56-13, 56)];
         userNameAndCommentLabel.numberOfLines =2;
         userNameAndCommentLabel.font =TextFont_15;
-        userNameAndCommentLabel.text =[NSString stringWithFormat:@"%@: %@",commentModel.user.nickname,commentModel.words];
+        
+       
+        NSString * str =[NSString stringWithFormat:@"%@: %@",commentModel.user.nickname,commentModel.words];
+        NSMutableAttributedString * attrStr=[[NSMutableAttributedString alloc]initWithString:str];
+        NSRange range =[str rangeOfString:commentModel.words];
+        [attrStr addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:range];
+        userNameAndCommentLabel.attributedText =attrStr;
+//       userNameAndCommentLabel.text =[NSString stringWithFormat:@"%@: %@",commentModel.user.nickname,commentModel.words];
         [view addSubview:userNameAndCommentLabel];
         
         UIControl * ctrl =[[UIControl alloc]initWithFrame:view.bounds];
@@ -123,14 +145,20 @@
         UIImageView * userHeadView =[[UIImageView alloc]initWithFrame:CGRectMake(13, 13, 30, 30)];
         userHeadView.layer.cornerRadius =15;
         userHeadView.layer.masksToBounds =YES;
-        NSString * headURL =[NSString stringWithFormat:@"%@%s%@",commentModel.user.picdomain,SMALL_HEAD,commentModel.user.avatar];
+        NSString * headURL =[NSString stringWithFormat:@"%@%@%@",commentModel.user.picdomain,SMALL_HEAD,commentModel.user.avatar];
         [userHeadView sd_setImageWithURL:[NSURL URLWithString:headURL]];
         [view addSubview:userHeadView];
         
         UILabel * userNameAndCommentLabel =[[UILabel alloc]initWithFrame:CGRectMake(56,0 , SCREEN_WIDTH-56-13, 56)];
         userNameAndCommentLabel.numberOfLines =2;
         userNameAndCommentLabel.font =TextFont_15;
-        userNameAndCommentLabel.text =[NSString stringWithFormat:@"%@: %@",commentModel.user.nickname,commentModel.words];
+        
+        NSString * str =[NSString stringWithFormat:@"%@: %@",commentModel.user.nickname,commentModel.words];
+        NSMutableAttributedString * attrStr=[[NSMutableAttributedString alloc]initWithString:str];
+        NSRange range =[str rangeOfString:commentModel.words];
+        [attrStr addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:range];
+        userNameAndCommentLabel.attributedText =attrStr;
+//        userNameAndCommentLabel.text =[NSString stringWithFormat:@"%@: %@",commentModel.user.nickname,commentModel.words];
         [view addSubview:userNameAndCommentLabel];
         
         UIControl * ctrl =[[UIControl alloc]initWithFrame:view.bounds];
@@ -147,6 +175,16 @@
 //动态效果
 -(void)refreshCommentsScrollView
 {
+    [UIView animateWithDuration:0.6 animations:^{
+        CGPoint pp =_commentsScrollView.contentOffset;
+        pp.y += 56;
+        _commentsScrollView.contentOffset =pp;
+        
+
+    }];
+    if (_commentsScrollView.contentOffset.y>=_commentsScrollView.contentSize.height-56) {
+        _commentsScrollView.contentOffset =CGPointMake(0, 56) ;
+    }
     
 }
 -(void)setJingXuanModel:(JingXuanModel *)jingXuanModel
@@ -160,6 +198,14 @@
     _titleLabel.text =_jingXuanModel.title;
     _collectionCountLabel.text =_jingXuanModel.likeCnt;
     _pictureCountLabel.text =_jingXuanModel.cntP;
+    
+    //AuthorButton
+   
+    NSString * str =[NSString stringWithFormat:@"%@%@%@",_jingXuanModel.owner.picdomain,BIG_HEAD,_jingXuanModel.owner.avatar];
+     NSLog(@"~~~%@",str);
+    _authorButton.layer.cornerRadius =_authorButton.frame.size.width/2;
+    _authorButton.layer.masksToBounds =YES;
+    [_authorButton sd_setBackgroundImageWithURL:[NSURL URLWithString:str] forState:UIControlStateNormal];
     //评论部分
     if (isLoadData==NO&&jingXuanModel!=nil) {
         [self initCommentsScrollView];
@@ -176,5 +222,6 @@
 
     // Configure the view for the selected state
 }
+
 
 @end

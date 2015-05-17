@@ -23,7 +23,7 @@
 @property (nonatomic, copy) NSString *items;
 
 /**
- *  此处可能有两种类型,故而用id类型
+ *  此处可能有3种类型,故而用id类型
  */
 @property (nonatomic, strong) id item;
 

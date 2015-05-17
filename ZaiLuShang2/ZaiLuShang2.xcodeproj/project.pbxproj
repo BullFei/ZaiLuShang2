@@ -52,11 +52,20 @@
 
 		BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7030A81B084EE50040551B /* LYMultiPicture.m */; };
 
+
+		BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7030A81B084EE50040551B /* LYMultiPicture.m */; };
+
+
 		BC6430841B07509C0079FB12 /* CXNewFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6430831B07509C0079FB12 /* CXNewFeature.m */; };
 		BC6430891B0750C90079FB12 /* 5S开机引导-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6430851B0750C90079FB12 /* 5S开机引导-1.png */; };
 		BC64308A1B0750C90079FB12 /* 5S开机引导-2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6430861B0750C90079FB12 /* 5S开机引导-2.png */; };
 		BC64308B1B0750C90079FB12 /* 5S开机引导-3.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6430871B0750C90079FB12 /* 5S开机引导-3.png */; };
 		BC64308C1B0750C90079FB12 /* 5S开机引导-4.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6430881B0750C90079FB12 /* 5S开机引导-4.png */; };
+
+		BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7030A81B084EE50040551B /* LYMultiPicture.m */; };
+
+
+		BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7030A81B084EE50040551B /* LYMultiPicture.m */; };
 
 		BC7F98721B047FD100900595 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7F98711B047FD100900595 /* main.m */; };
 		BC7F98771B047FD100900595 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7F98761B047FD100900595 /* Images.xcassets */; };
@@ -1356,6 +1365,7 @@
 		BCCE499A1B05892100982593 /* SFTourDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCE49981B05892100982593 /* SFTourDayCell.m */; };
 		BCCE499B1B05892100982593 /* SFTourDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCE49991B05892100982593 /* SFTourDayCell.xib */; };
 		BCCE499E1B058DE800982593 /* SFTourDay.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCE499D1B058DE800982593 /* SFTourDay.m */; };
+		BCD760811B087E27002BF3B5 /* LYPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD760801B087E27002BF3B5 /* LYPhotoView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1449,12 +1459,21 @@
 		BC7030A71B084EE50040551B /* LYMultiPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMultiPicture.h; sourceTree = "<group>"; };
 		BC7030A81B084EE50040551B /* LYMultiPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMultiPicture.m; sourceTree = "<group>"; };
 
+
 		BC6430821B07509C0079FB12 /* CXNewFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXNewFeature.h; sourceTree = "<group>"; };
 		BC6430831B07509C0079FB12 /* CXNewFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXNewFeature.m; sourceTree = "<group>"; };
 		BC6430851B0750C90079FB12 /* 5S开机引导-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5S开机引导-1.png"; sourceTree = "<group>"; };
 		BC6430861B0750C90079FB12 /* 5S开机引导-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5S开机引导-2.png"; sourceTree = "<group>"; };
 		BC6430871B0750C90079FB12 /* 5S开机引导-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5S开机引导-3.png"; sourceTree = "<group>"; };
 		BC6430881B0750C90079FB12 /* 5S开机引导-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5S开机引导-4.png"; sourceTree = "<group>"; };
+
+		BC7030A71B084EE50040551B /* LYMultiPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMultiPicture.h; sourceTree = "<group>"; };
+		BC7030A81B084EE50040551B /* LYMultiPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMultiPicture.m; sourceTree = "<group>"; };
+
+
+		BC7030A71B084EE50040551B /* LYMultiPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMultiPicture.h; sourceTree = "<group>"; };
+		BC7030A81B084EE50040551B /* LYMultiPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMultiPicture.m; sourceTree = "<group>"; };
+
 
 		BC7F986C1B047FD100900595 /* ZaiLuShang2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZaiLuShang2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7F98701B047FD100900595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2891,6 +2910,8 @@
 		BCCE49991B05892100982593 /* SFTourDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SFTourDayCell.xib; path = ../model/SFTourDayCell.xib; sourceTree = "<group>"; };
 		BCCE499C1B058DE800982593 /* SFTourDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourDay.h; sourceTree = "<group>"; };
 		BCCE499D1B058DE800982593 /* SFTourDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourDay.m; sourceTree = "<group>"; };
+		BCD7607F1B087E27002BF3B5 /* LYPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPhotoView.h; sourceTree = "<group>"; };
+		BCD760801B087E27002BF3B5 /* LYPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYPhotoView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3471,6 +3492,8 @@
 				BC3905041B06E43F00EA6C5F /* MedalCell.m */,
 				BC3948A41B08239700DF3D5B /* MultiPictureCell.h */,
 				BC3948A51B08239700DF3D5B /* MultiPictureCell.m */,
+				BCD7607F1B087E27002BF3B5 /* LYPhotoView.h */,
+				BCD760801B087E27002BF3B5 /* LYPhotoView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -6129,6 +6152,7 @@
 				BC7F99C11B04801F00900595 /* SDWebImageManager.m in Sources */,
 				BC7F999F1B04801F00900595 /* AFHTTPSessionManager.m in Sources */,
 				BC7F99EA1B04801F00900595 /* SFSearchModel.m in Sources */,
+				BCD760811B087E27002BF3B5 /* LYPhotoView.m in Sources */,
 				BC7F99A01B04801F00900595 /* AFNetworkReachabilityManager.m in Sources */,
 				BCA98F821B059806005E26BF /* SFLocation.m in Sources */,
 				BC7F99F81B04801F00900595 /* SFSearchCountryCell.m in Sources */,

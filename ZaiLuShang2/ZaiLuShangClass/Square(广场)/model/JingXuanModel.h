@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "ReviewerModel.h"
 @interface JingXuanModel : NSObject
 @property (nonatomic,copy)NSString * title;
 @property (nonatomic,copy)NSString * picdomain;
@@ -17,4 +17,5 @@
 @property (nonatomic,strong)NSArray * cmt;//评论model的数组
 //@property (nonatomic,copy)发布者（用户）model
 //@property (nonatomic,copy)评论者（用户）model
+@property (nonatomic,strong)ReviewerModel *  owner;
 @end

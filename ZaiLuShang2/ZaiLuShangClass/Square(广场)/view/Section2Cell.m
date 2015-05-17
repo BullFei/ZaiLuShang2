@@ -39,7 +39,7 @@
     
    
     //CGRectMake(0, 0, 375, 88*2+8)
-    _collectionView =[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, 375, 88*2+8) collectionViewLayout:layout];
+    _collectionView =[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, (88*2+8)*SCREEN_WIDTH/320) collectionViewLayout:layout];
     _collectionView.delegate =self;
     _collectionView.dataSource =self;
     _collectionView.backgroundColor =[UIColor whiteColor];
@@ -59,7 +59,7 @@
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(183, 88);
+    return CGSizeMake(157*SCREEN_WIDTH/320, 88*SCREEN_WIDTH/320);
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {

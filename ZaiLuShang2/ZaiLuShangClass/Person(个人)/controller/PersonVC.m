@@ -19,8 +19,10 @@
 #import "LYAttention.h"
 #import "MedalCell.h"
 #import "LYAchievement.h"
+#import "LYMultiPicture.h"
+#import "MultiPictureCell.h"
 
-#define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=0&fetchNewer=1&length=60&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
+#define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=0&fetchNewer=1&length=40&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
 
 @interface PersonVC ()<UITableViewDataSource, UITableViewDelegate, TripCellDelegate>
 
@@ -68,26 +70,36 @@
         }
         // 请求结果转化为字典对象
         NSDictionary *dict = (NSDictionary *)responseObject;
+        // 解析数据
         for (NSDictionary *smallDict in dict[@"obj"][@"list"]) {
             // 开始解析数据
             // 判断数据是何种类型
+            
+            // 最外层的数据类型是相同的
+            LYAttentionModel *mainModel = [[LYAttentionModel alloc] init];
+            [mainModel setValuesForKeysWithDictionary:smallDict];
+            
+            
             NSDictionary *tempDict = smallDict[@"item"];
             if (tempDict.allValues.count != 1) {
-                // 如果@"item"键对应的值不为1,说明是第三种情况
-                LYItem *lyit = [[LYItem alloc] init];
+                // 如果@"item"键对应的值不为1,说明是第三种情况 LYItme
                 
+                LYItem *lyit = [[LYItem alloc] init];
                 lyit.piccnt = tempDict[@"piccnt"];
                 
                 LYOwner *owner = [[LYOwner alloc] init];
                 [owner setValuesForKeysWithDictionary:tempDict[@"user"]];
                 lyit.user = owner;
                 
+                
                 LYTour *tour = [[LYTour alloc] init];
                 [tour setValuesForKeysWithDictionary:tempDict[@"tour"]];
+                
                 LYOwner *sowner = [[LYOwner alloc] init];
                 [sowner setValuesForKeysWithDictionary:tempDict[@"tour"][@"owner"]];
+                
                 tour.owner = sowner;
-                lyit.tour = tour;
+                
                 
                 // 评论
                 NSMutableArray *comments = [[NSMutableArray alloc] init];
@@ -109,16 +121,19 @@
                     rec.owner = on;
                     [records addObject:rec];
                 }
-                [_dataArray addObject:lyit];
+                
+                tour.records = records;
+                lyit.tour = tour;
+                
+                mainModel.item = lyit;
+                
+                [_dataArray addObject:mainModel];
             } else {
                 if ([tempDict.allKeys.lastObject isEqualToString:@"rec"]) {
-                    // 对应的是rec
-                    LYAttentionModel *model = [[LYAttentionModel alloc] init];
-                    [model setValuesForKeysWithDictionary:smallDict];
+                    // 对应的是LYRec
                     
                     LYRec *rec = [[LYRec alloc] init];
                     [rec setValuesForKeysWithDictionary:smallDict[@"item"][@"rec"]];
-                    model.item = rec;
                     
                     LYOwner *owner = [[LYOwner alloc] init];
                     [owner setValuesForKeysWithDictionary:smallDict[@"item"][@"rec"][@"owner"]];
@@ -137,12 +152,11 @@
                     }
                     rec.comments = array;
                     
-                    [_dataArray addObject:model];
+                    mainModel.item = rec;
+                    [_dataArray addObject:mainModel];
                     
                 } else {
                     // 对应的是arhv
-                    LYAttentionModel *model = [[LYAttentionModel alloc] init];
-                    [model setValuesForKeysWithDictionary:smallDict];
                     
                     LYAchv *ach = [[LYAchv alloc] init];
                     [ach setValuesForKeysWithDictionary:smallDict[@"item"][@"achv"]];
@@ -150,12 +164,13 @@
                     [owner setValuesForKeysWithDictionary:smallDict[@"item"][@"achv"][@"user"]];
                     ach.user = owner;
                     
-                    model.item = ach;
+                    mainModel.item = ach;
                     
-                    [_dataArray addObject:model];
+                    [_dataArray addObject:mainModel];
                 }
             }
         }
+        // 刷新表格
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         NSLog(@"数据请求失败");
@@ -171,38 +186,36 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // 还需要判断model的类型选择不同的cell,后续增加上
-    id heihei = _dataArray[indexPath.row];
-    if ([heihei class] == [LYAttentionModel class]) {
-        LYAttentionModel *haha = (LYAttentionModel *)_dataArray[indexPath.row];
-        if ([haha.item class] == [LYRec class]) {
-            LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:haha];
-            TripCell *cell = [[TripCell alloc] initWithLYAttention:att];
-            cell.delegate = self;
-            return cell;
-        } else {
-            LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:haha];
-            MedalCell *cell = [[MedalCell alloc] initWithLYAttention:ach];
-            return cell;
-        }
+    LYAttentionModel *heihei = _dataArray[indexPath.row];
+    id haha = heihei.item;
+    
+    if (([haha class] == [LYAchv class]) == YES)
+    {
+        LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:heihei];
+        MedalCell *cell = [[MedalCell alloc] initWithLYAttention:ach];
+        return cell;
+    } else if (([haha class] == [LYRec class]) == YES) {
+        LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:heihei];
+        TripCell *cell = [[TripCell alloc] initWithLYAttention:att];
+        return cell;
     } else {
-        // 第三种,未完待续
-        return [[UITableViewCell alloc] init];
+        // 九宫格图片类型
+        LYMultiPicture *mp = [[LYMultiPicture alloc] initWithLYAttentionModel:heihei];
+        MultiPictureCell *cell = [[MultiPictureCell alloc] initWithLYMultiPicture:mp];
+        return cell;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    id heihei = _dataArray[indexPath.row];
-    if ([heihei class] == [LYAttentionModel class]) {
-        LYAttentionModel *haha = (LYAttentionModel *)_dataArray[indexPath.row];
-        if ([haha.item class] == [LYRec class]) {
-            LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:haha];
-            return att.cellHeight;
-        } else {
-            LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:haha];
-            return ach.cellHeight;
-        }
+    LYAttentionModel *heihei = _dataArray[indexPath.row];
+    id haha = heihei.item;
+    if ([haha class] == [LYRec class]) {
+        LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:heihei];
+        return att.cellHeight;
+    } else if ([haha class] == [LYAchv class]) {
+        LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:heihei];
+        return ach.cellHeight;
     } else {
-        // 第三种,未完待续
-        return 0;
+        return 300;
     }
 }
 

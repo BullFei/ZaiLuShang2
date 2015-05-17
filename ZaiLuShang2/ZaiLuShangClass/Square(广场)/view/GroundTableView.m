@@ -16,6 +16,8 @@
 #import "Section2Cell.h"
 #import "TripTopicCell.h"
 #import "MoreThemeCell.h"
+
+
 @implementation GroundTableView
 {
     UITableView * _tableView;
@@ -79,17 +81,18 @@
     _tableView.delegate =self;
     _tableView.dataSource =self;
     _tableView.bounces =NO;
+    
     [self createSpecialColumnViews];
     [self addSubview:_tableView];
 }
 -(void)createADView
 {
-     adview =[ADView createADViewWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, 200)];
+     adview =[ADView createADViewWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, 200*_tableView.frame.size.width/320)];
     adview.tag = 1;
 }
 -(void)createSpecialColumnViews
 {
-    CGRect rect =CGRectMake(0, 0, SCREEN_WIDTH, 30) ;
+    CGRect rect =CGRectMake(0, 0, SCREEN_WIDTH, 30/320*SCREEN_WIDTH) ;
     if (scv1==nil) {
         scv1 =[SpecialColumnView getSpecialColumnViewWithFrame:rect];
     }
@@ -125,7 +128,7 @@
     }
     else
     {
-        return 30;
+        return 30*SCREEN_WIDTH/320;
     }
 }
 
@@ -134,19 +137,19 @@
 {
     switch (indexPath.section) {
         case 0:
-            return 200;
+            return 200*SCREEN_WIDTH/320;
             break;
         case 1:
-            return 233;
+            return 230*SCREEN_WIDTH/320;
             break;
         case 2:
-            return 88*2+8;
+            return (88*2+8)*SCREEN_WIDTH/320;
             break;
         case 3:
-            return 80*3;
+            return 80*3*SCREEN_WIDTH/320;
             break;
         case 4:
-            return 80*4+3*7;
+            return (80*4+3*7)*SCREEN_WIDTH/320;
             break;
         default:
             return 0;
@@ -209,17 +212,18 @@
         case 0:
         {
             static NSString * cellId =@"AD";
-            UITableViewCell * cell =[tableView dequeueReusableCellWithIdentifier:cellId];
+             UITableViewCell * cell =[tableView dequeueReusableCellWithIdentifier:cellId];
             if (!cell) {
                 
                cell =[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+                cell.selectionStyle=UITableViewCellSelectionStyleNone;
                 [self createADView];
                 [cell.contentView addSubview:adview];
 
                 
             }
             
-            NSLog(@"~~~~%@",self.ADModelArray);
+//            NSLog(@"~~~~%@",self.ADModelArray);
                 adview.ADModelArray =self.ADModelArray;
 
             
@@ -234,6 +238,8 @@
         case 1:
         {
             JingXuanCell * cell =[JingXuanCell GetJingXuanCellWithTableView:tableView];
+            cell.tag = GROUND_JINGXUANCELL_INITTAG+indexPath.row;
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
             JingXuanModel * mm =[_JingXuanModelArray objectAtIndex:indexPath.row];
            // NSLog(@"~~~%@",mm.cmt);
             NSArray * tempArr;
@@ -249,6 +255,7 @@
         case 2:
         {
             Section2Cell  * cell =[Section2Cell  getSection2ViewWithTableView:tableView];
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
             cell.Section2ItemModelArray =_Section2ItemModelArray;
             return cell;
             break;
@@ -257,6 +264,7 @@
         {
             
             TripTopicCell * cell =[TripTopicCell getTripTopicCellWithTableView:tableView];
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
             cell.TripTopicModelArray = _TripTopicModelArray;
             return cell;
             break;
@@ -264,6 +272,7 @@
         case 4:
         {
             MoreThemeCell * cell =[MoreThemeCell getMoreThemeCellWithTableView:tableView];
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
             cell.moreThemeModelArray =_MoreThemeModelArray;
             return cell;
             break;
