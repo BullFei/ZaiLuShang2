@@ -94,7 +94,7 @@
     NSString *str = [NSString stringWithFormat:@"%@%@%@", user.picdomain, SMALL_HEAD, user.avatar];
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:str] placeholderImage:[UIImage imageNamed:@"icon_user_line_48_white"]];
     self.nameLabel.text = user.nickname;
-    self.timeLabel.attributedText = [cmtModel.timestamp toDataStr];
+    self.timeLabel.text = [cmtModel.timestamp toDataStr];
     self.text.text = cmtModel.words;
     
     self.iconView.layer.cornerRadius = self.iconView.frame.size.width/2;

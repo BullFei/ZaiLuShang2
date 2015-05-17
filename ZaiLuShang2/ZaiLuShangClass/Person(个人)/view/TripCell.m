@@ -93,7 +93,7 @@
     [self.title addGestureRecognizer:tapTitle];
     
     // 图片
-    if (rec.picfile != nil) {
+    if (rec.picfile.length != 0) {
         self.ig = [[UIImageView alloc] initWithFrame:self.attFrame.ig];
         // 拼接URL
         self.ig.backgroundColor = [UIColor cyanColor];
@@ -160,11 +160,11 @@
     }
     
     // 评论,如果有的话,
-    if (rec.comments != nil) {
-        // 添加分割线
-//        UILabel *sep1 = [[UILabel alloc] initWithFrame:CGRectMake(self.ig.frame.origin.x, CGRectGetMaxY(self.likeButton.frame) + 2 * 5, SCREEN_HEIGHT - self.icon.frame.size.width - 2*5, 1)];
-//        sep1.backgroundColor = [UIColor lightGrayColor];
-//        [self.contentView addSubview:sep1];
+    if (rec.comments.count != 0) {
+//         添加分割线
+        UILabel *sep1 = [[UILabel alloc] initWithFrame:CGRectMake(self.author.frame.origin.x, CGRectGetMaxY(self.likeButton.frame) + 2 * 5, SCREEN_HEIGHT - self.icon.frame.size.width - 2*5, 0.5)];
+        sep1.backgroundColor = [UIColor lightGrayColor];
+        [self.contentView addSubview:sep1];
         
         // 头像
         LYComment *cmt1 = rec.comments[0];
@@ -181,18 +181,59 @@
         self.commentContent1 = [[UILabel alloc] init];
         self.commentContent1.frame = self.attFrame.commentContent1;
         self.commentContent1.text = cnt;
+        self.commentContent1.numberOfLines = 0;
         self.commentContent1.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
         [self.contentView addSubview:self.commentContent1];
         
-        
+        // 第二个评论,如果有的话
+        if (rec.comments.count >= 2) {
+            // 添加一条分割线
+//            UILabel *sep2 = [[UILabel alloc] initWithFrame:CGRectMake(self.author.frame.origin.x, CGRectGetMaxY(self.commentatorIcon1.frame) + 2 * 5, SCREEN_HEIGHT - self.icon.frame.size.width - 2*5, 0.5)];
+//            sep2.backgroundColor = [UIColor lightGrayColor];
+//            [self.contentView addSubview:sep2];
+            
+            // 第二个评论的头像
+            LYComment *cmt2 = rec.comments[1];
+            self.commentatorIcon2 = [[UIImageView alloc] init];
+            self.commentatorIcon2.frame = self.attFrame.commentatorIcon2;
+            self.commentatorIcon2.layer.cornerRadius = self.attFrame.commentatorIcon1.size.width/2;
+            self.commentatorIcon2.layer.masksToBounds = YES;
+            
+            NSString *url = [NSString stringWithFormat:@"%@%@%@", cmt2.user.picdomain,SMALL_HEAD, cmt2.user.avatar];
+            [self.commentatorIcon2 sd_setImageWithURL:[NSURL URLWithString:url]];
+            [self.contentView addSubview:self.commentatorIcon2];
+            
+            // 第二个评论的内容
+            NSString *cnt2 = [NSString stringWithFormat:@"%@:%@",cmt2.user.nickname, cmt2.words];
+            self.commentContent2 = [[UILabel alloc] init];
+            self.commentContent2.frame = self.attFrame.commmentContent2;
+            self.commentContent2.text = cnt2;
+            self.commentContent2.numberOfLines = 0;
+            self.commentContent2.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
+            [self.contentView addSubview:self.commentContent2];
+            
+            //如果评论大于2条的话 添加一个"阅读全部(多少条)评论"的button
+            if (rec.cntcmt.integerValue != 2) {
+                UIButton *buttonMore = [[UIButton alloc] init];
+                buttonMore.frame = CGRectMake(self.author.frame.origin.x, CGRectGetMaxY(self.commentatorIcon2.frame) + 2 * 5, 150, 20);
+                UIImage *more = [UIImage imageNamed:@"icon_more_gray_32"];
+                NSData *moreData = UIImagePNGRepresentation(more);
+                more = [UIImage imageWithData:moreData scale:2];
+                [buttonMore setImage:more forState:UIControlStateNormal];
+                [buttonMore setTitle:[NSString stringWithFormat:@"阅读全部%@条评论", rec.cntcmt] forState:UIControlStateNormal];
+                [buttonMore setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+                buttonMore.titleLabel.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
+                [buttonMore addTarget:self action:@selector(readMoreComments:) forControlEvents:UIControlEventTouchUpInside];
+                [self.contentView addSubview:buttonMore];
+            }
+        }
     }
-    
-    
-    
-    
-    
 }
-
+#pragma mark - 事件的方法
+// 阅读更多评论
+- (void)readMoreComments:(UIButton *)btn {
+    NSLog(@"阅读更多评论");
+}
 // 头像被点击的方法
 - (void)iconAction:(UITapGestureRecognizer *)tgr {
     [self.delegate performSelector:@selector(iconTapped:) withObject:tgr];

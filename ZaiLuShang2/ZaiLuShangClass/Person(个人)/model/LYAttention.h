@@ -50,8 +50,8 @@
 @property (nonatomic, assign) CGRect commentatorIcon1;
 @property (nonatomic, assign) CGRect commentatorIcon2;
 
-@property (nonatomic, assign) CGRect  commentContent1;
-@property (nonatomic, assign) CGRect  commmentContent2;
+@property (nonatomic, assign) CGRect commentContent1;
+@property (nonatomic, assign) CGRect commmentContent2;
 
 /**
  *  用数据模型来初始化一个frame模型

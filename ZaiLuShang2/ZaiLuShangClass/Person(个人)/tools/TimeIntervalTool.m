@@ -34,11 +34,9 @@
     } else if (realInterval >= 3600 && realInterval < 24 * 3600) {
         NSInteger n = (int)realInterval / 3600;
         return [NSString stringWithFormat:@"%d小时前", n];
-    } else if (realInterval >= 24 * 3600 && realInterval < 48 * 3600) {
-        return @"昨天";
-    } else if (realInterval >= 48 * 3600 && realInterval < 10 * 24 * 3600) {
+    } else if (realInterval >= 24 * 3600 && realInterval < 10 * 24 * 3600) {
         NSInteger n = (int)realInterval / (24 * 3600);
-        return [NSString stringWithFormat:@"%d天前", n];
+        return [NSString stringWithFormat:@"%d天前", n+1];
     } else {
         NSDateFormatter *shortFormatter = [[NSDateFormatter alloc] init];
         [shortFormatter setDateFormat:@"MM.dd"];
