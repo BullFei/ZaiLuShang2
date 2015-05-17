@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-@class CXCollectViewCellModel;
 
 @interface CXImageDescView : UIView
-@property (nonatomic ,strong) CXCollectViewCellModel *model;
+@property (nonatomic ,strong) id model;
 
 @property (nonatomic ,weak) SFImageView *imageView;
 
-- (void)setModel:(CXCollectViewCellModel *)model isLoadImage:(BOOL)is;
+- (void)setModel:(id)model isLoadImage:(BOOL)is;
 
-- (void)setModel:(CXCollectViewCellModel *)model isLoadImage:(BOOL)is success:(void (^)())success;
+- (void)setModel:(id)model isLoadImage:(BOOL)is success:(void (^)())success;
 @end
