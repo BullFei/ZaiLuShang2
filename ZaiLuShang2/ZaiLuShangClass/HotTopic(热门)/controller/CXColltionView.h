@@ -7,6 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#import "RequestTool.h"
+#import "CXCollectionVCell.h"
+#import "CXCollectViewCellModel.h"
+#import "MBProgressHUD+MJ.h"
+#import "MJExtension.h"
+#import "CXPhotoVC.h"
+#import "MJRefresh.h"
 @class MJRefreshFooterView;
 @class MJRefreshHeaderView;
 
@@ -19,7 +27,9 @@
 
 @property (nonatomic, copy) NSString *url;
 
+@property (nonatomic ,strong) NSMutableArray *dataArr;
 
 
+- (void)requestDataSuccess:(void (^)(id responseObject))success failure:(void (^)())failure;
 
 @end

@@ -23,7 +23,7 @@
 // cell到边界的距离
 #define INTERVAL_CELL_BORDER 8
 // cell到cell的距离
-#define INTERVAL_CELL_CELL 6
+#define INTERVAL_CELL_CELL 4
 // cell内部view到cell边界的距离
 #define INTERVAL_VIEW_CELL 8
 // CELL比例

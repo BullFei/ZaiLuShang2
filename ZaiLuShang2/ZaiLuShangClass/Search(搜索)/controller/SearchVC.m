@@ -116,7 +116,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int num =[[_dataArray[section] listArray] count];
+    NSUInteger num =[[_dataArray[section] listArray] count];
     if (num>1) {
         return num*0.5;
     }

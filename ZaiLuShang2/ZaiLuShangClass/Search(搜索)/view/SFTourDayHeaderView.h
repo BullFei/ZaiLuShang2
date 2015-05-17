@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SFTourDayInfo;
+@class SFTourDayInfo,SFTourDayHeaderView;
+@protocol SFTourDayHeaderViewDelegate <NSObject>
+
+-(void)tourDayHeaderView:(SFTourDayHeaderView*)view height:(CGFloat)height;
+
+@end
 @interface SFTourDayHeaderView : UIView
 +(SFTourDayHeaderView *)headerView;
 @property (nonatomic,strong) SFTourDayInfo * tourDayInfo;
+@property (nonatomic,assign) id<SFTourDayHeaderViewDelegate> delegate;
+
+
 
 @end

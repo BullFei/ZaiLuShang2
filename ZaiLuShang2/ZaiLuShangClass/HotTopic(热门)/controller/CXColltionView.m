@@ -7,13 +7,6 @@
 //
 
 #import "CXColltionView.h"
-#import "RequestTool.h"
-#import "CXCollectionVCell.h"
-#import "CXCollectViewCellModel.h"
-#import "MBProgressHUD+MJ.h"
-#import "MJExtension.h"
-#import "CXPhotoVC.h"
-#import "MJRefresh.h"
 
 
 #define ITEM_INTERVAL INTERVAL_CELL_CELL
@@ -23,7 +16,7 @@
 
 @interface CXColltionView () <UICollectionViewDelegate, UICollectionViewDataSource, MJRefreshBaseViewDelegate>
 
-@property (nonatomic ,strong) NSMutableArray *dataArr;
+
 
 @end
 

@@ -9,6 +9,7 @@
 #import "CXPhotoVC.h"
 #import "CXscrollView.h"
 #import "CXCmtVC.h"
+#import "LoginVC.h"
 
 #define BOTTEM_HEIGHT 49
 
@@ -36,9 +37,11 @@
 
 - (void)scrollViweBarCmtButtenClick:(CXCollectionVCellModel *)model
 {
-    CXCmtVC *vc = [[CXCmtVC alloc] init];
-    vc.model = model;
-    [self.navigationController pushViewController:vc animated:YES];
+//    CXCmtVC *vc = [[CXCmtVC alloc] init];
+//    vc.model = model;
+//    [self.navigationController pushViewController:vc animated:YES];
+    LoginVC *vc = [[LoginVC alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated

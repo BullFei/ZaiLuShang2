@@ -37,13 +37,14 @@
 #import "SFTourListVC.h"
 #import "SFDetailTactickController.h"
 #import "SFSceneryListVC.h"
+#import "SFNormalWebViewVC.h"
 #define  TITLE_TYPE 88 //标题
 #define TYPE_50  50 //旅行地
 #define TYPE_4  4 //精彩游记
 #define TYPE_102  102 //相关体验
 #define  TACTICK_TYPE 90 //攻略
 #define  MAIN_URL @"http://app6.117go.com/demo27/php/interestAction.php?submit=localityHome&locid=%ld&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
-@interface SFListCityVC ()<UITableViewDelegate,UITableViewDataSource,SFStickerCellDelegate,SFSceneryTypeFivtyCellDelegate>
+@interface SFListCityVC ()<UITableViewDelegate,UITableViewDataSource,SFStickerCellDelegate,SFSceneryTypeFivtyCellDelegate,SFExctingTourCellDelegate,SFProductCellDelegate,SFHeaderViewDelegate>
 {
     SFCityType * _cityType;
     SFCityTypeHead * cityTypeHead;
@@ -60,6 +61,7 @@
     [self createTableView];
     [self loadData];
     self.view.backgroundColor = [UIColor whiteColor];
+    
 }
 #pragma mark -创建nav
 -(void)createNav{
@@ -246,13 +248,14 @@
 {
     SFHeaderView * headerView = [SFHeaderView headerView];
     headerView.cityTypeHead = cityTypeHead;
+    headerView.delegate =self;
     _tableView.tableHeaderView =headerView;
 }
 
 #pragma mark -创建tableview
 -(void)createTableView
 {
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [self.view addSubview:_tableView];
     _tableView.delegate =self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -318,11 +321,13 @@
             //精彩游记
             SFExctingTourCell * cell =[SFExctingTourCell cellWithTableView:tableView];
             cell.searchModel =searchModel;
+            cell.delegate = self;
             return cell;
         }else if (TYPE_102==searchModel.type){
             //相关体验
             SFProductCell * cell = [SFProductCell cellWithTableView:tableView];
             cell.searchModel =searchModel;
+            cell.delegate = self;
             return cell;
         }
         return nil;
@@ -370,6 +375,11 @@
             vc.searchModel =searchModel;
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
+        }else if (TITLE_TYPE==searchModel.type){
+            SFNormalWebViewVC * vc = [[SFNormalWebViewVC alloc]init];
+            vc.url =[[[searchModel listArray]firstObject]link];
+            vc.message =[[[searchModel listArray]firstObject]title];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }
 }
@@ -389,6 +399,21 @@
 
 #pragma mark -旅行地
 -(void)sceneryTypeFivtyCell:(SFSceneryTypeFivtyCell *)cell pushController:(UIViewController *)controller
+{
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)exctingTourCell:(SFExctingTourCell *)cell pushController:(UIViewController *)controller
+{
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)productCell:(SFProductCell *)cell pushController:(UIViewController *)controller
+{
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)headerView:(SFHeaderView *)headerView pushController:(UIViewController *)controller
 {
     [self.navigationController pushViewController:controller animated:YES];
 }

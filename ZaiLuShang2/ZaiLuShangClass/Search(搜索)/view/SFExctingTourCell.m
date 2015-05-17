@@ -11,7 +11,6 @@
 #import "SFTour.h"
 #import "SFCityTypeHeadTipUser.h"
 #import "UIImageView+WebCache.h"
-#import "SFUserIconView.h"
 #import "SFTourDayVC.h"
 #define LEFT_TAG 10
 #define RIGHT_TAG 20
@@ -20,8 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *rightBgImageView;
 @property (weak, nonatomic) IBOutlet UIButton *rightBtn;
 @property (weak, nonatomic) IBOutlet UIButton *leftBtn;
-@property (weak, nonatomic) IBOutlet SFUserIconView *leftIconView;
-@property (weak, nonatomic) IBOutlet SFUserIconView *rightIconView;
+@property (weak, nonatomic) IBOutlet UIImageView *leftIconView;
+@property (weak, nonatomic) IBOutlet UIImageView *rightIconView;
 @property (weak, nonatomic) IBOutlet UILabel *leftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightLabel;
 
@@ -47,19 +46,19 @@
         NSArray * array  = _searchModel.listArray;
         SFTour * leftTour = array[0];
         
-        [self.leftBgImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/f1400/%@",leftTour.picdomain,leftTour.coverpic]] placeholderImage:nil];
+        [self.leftBgImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/b300/%@",leftTour.picdomain,leftTour.coverpic]] placeholderImage:nil];
         
         self.leftLabel.text =leftTour.title;
         
         SFCityTypeHeadTipUser * leftOwner =leftTour.cityTypeHeadTipUser;
-        self.leftIconView.user =leftOwner;
+        [self.leftIconView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/ava/%@",leftOwner.picdomain,leftOwner.avatar]] placeholderImage:nil];
         
         SFTour * rightTour = array[1];
-        [self.rightBgImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/f1400/%@",rightTour.picdomain,rightTour.coverpic]] placeholderImage:nil];
+        [self.rightBgImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/b300/%@",rightTour.picdomain,rightTour.coverpic]] placeholderImage:nil];
         self.rightLabel.text =rightTour.title;
         
         SFCityTypeHeadTipUser * rightOwn  =rightTour.cityTypeHeadTipUser;
-        self.rightIconView.user =rightOwn;
+        [self.rightIconView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/ava/%@",rightOwn.picdomain,rightOwn.avatar]] placeholderImage:nil];
 
     }
 }
@@ -69,6 +68,9 @@
     [super layoutSubviews];
     [self.rightBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.leftBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.leftIconView.layer.cornerRadius = self.leftIconView.frame.size.width*0.5;
+    self.leftIconView.layer.masksToBounds = YES;
 }
 
 -(void)btnClick:(UIButton *)btn
@@ -90,6 +92,8 @@
     
     }
     
+
 }
+
 
 @end
