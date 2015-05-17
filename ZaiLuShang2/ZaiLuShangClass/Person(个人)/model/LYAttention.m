@@ -16,7 +16,7 @@
 #define LYZLS_BLANK_WIDTH 5
 #define LYZLS_BUTTON_HEIGHT 20
 #define LYZLS_BUTTON_WIDTH 56
-#define LYZLS_TEXTSIZE 12
+#define LYZLS_TEXTSIZE 13
 
 @implementation LYAttention
 
@@ -142,7 +142,13 @@
             self.cellHeight = CGRectGetMaxY(self.commentatorIcon2) + 2 * LYZLS_BLANK_WIDTH;
             // 评论的数量不止2条的话
             if (rec.cntcmt.integerValue != 2) {
-                self.cellHeight = CGRectGetMaxY(self.commentatorIcon2) + 20 + 4 * LYZLS_BLANK_WIDTH;
+                if (CGRectGetMaxY(self.commmentContent2) > CGRectGetMaxY(self.commentatorIcon2)) {
+                    // 第二条评论的最大Y值如果大于头像的Y值,以评论内容为准
+                    self.cellHeight = CGRectGetMaxY(self.commmentContent2) + 20 + 4 * LYZLS_BLANK_WIDTH;
+                } else {
+                    self.cellHeight = CGRectGetMaxY(self.commentatorIcon2) + 20 + 4 * LYZLS_BLANK_WIDTH;
+                }
+                
 //                self.cellHeight += 20 + 2*LYZLS_BLANK_WIDTH;
             }
         }

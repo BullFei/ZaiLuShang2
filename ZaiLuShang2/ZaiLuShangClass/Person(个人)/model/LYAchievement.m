@@ -13,7 +13,7 @@
 
 #define LYZLS_ICON_WIDTH 102
 #define LYZLS_BLANK_WIDTH 5
-#define LYZLS_TEXTSIZE 12
+#define LYZLS_TEXTSIZE 13
 #define LYZLS_MEDAL_WIDTH 88
 
 @implementation LYAchievement

@@ -20,7 +20,7 @@
 #import "MedalCell.h"
 #import "LYAchievement.h"
 
-#define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=0&fetchNewer=1&length=40&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
+#define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=0&fetchNewer=1&length=60&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
 
 @interface PersonVC ()<UITableViewDataSource, UITableViewDelegate, TripCellDelegate>
 
@@ -177,6 +177,7 @@
         if ([haha.item class] == [LYRec class]) {
             LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:haha];
             TripCell *cell = [[TripCell alloc] initWithLYAttention:att];
+            cell.delegate = self;
             return cell;
         } else {
             LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:haha];
@@ -206,13 +207,16 @@
 }
 
 #pragma mark - cell事件代理方法
-//- (void)iconTapped:(UITapGestureRecognizer *)tgr {
-//    NSLog(@"点击了头像");
-//}
-//- (void)titleTapped:(UITapGestureRecognizer *)tgr {
-//    NSLog(@"点击了标题");
-//}
-//- (void)igTapped:(UITapGestureRecognizer *)tgr {
-//    NSLog(@"点击了图片");
-//}
+- (void)iconTapped:(UITapGestureRecognizer *)tgr {
+    NSLog(@"点击了头像");
+}
+- (void)titleTapped:(UITapGestureRecognizer *)tgr {
+    NSLog(@"点击了标题");
+}
+- (void)igTapped:(UITapGestureRecognizer *)tgr {
+    NSLog(@"点击了图片");
+}
+- (void)contentTapped:(UITapGestureRecognizer *)tgr {
+    NSLog(@"点击了内容中的链接");
+}
 @end
