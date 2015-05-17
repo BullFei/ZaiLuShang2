@@ -14,6 +14,7 @@
 #import "SFCityTypeHeaderPath.h"
 #import "SFCityTypeListModel.h"
 #import "SFSceneryObjModel.h"
+#import "SFPhotoVC.h"
 @interface SFHeaderView ()
 @property (weak, nonatomic) IBOutlet UIView *titleView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -21,10 +22,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 - (IBAction)smallBtnClick:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *smallBtn;
+//@property (weak, nonatomic) IBOutlet UIButton *smallBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImge;
-- (IBAction)photoBtnClick:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *photoBtn;
+//- (IBAction)photoBtnClick:(id)sender;
+//@property (weak, nonatomic) IBOutlet UIButton *photoBtn;
 
 @end
 
@@ -41,7 +42,8 @@
         _cityTypeHead =cityTypeHead;
         SFCityTypeHeaderPicShow * cityTypeHeaderPicShow =cityTypeHead.cityTypeHeadLocality.cityTypeHeaderPicShow;
         NSString * url = [NSString stringWithFormat:@"%@/f1400/%@",cityTypeHeaderPicShow.picdomain,cityTypeHeaderPicShow.picfile];
-        [self.photoImge sd_setImageWithURL:[NSURL URLWithString:url]];
+        [self.photoImge sd_setImageWithURL:[NSURL URLWithString:url]placeholderImage:[UIImage imageNamed:@"bg_pic_placeholder"]];
+        
         
         self.titleLabel.text =cityTypeHead.cityTypeHeadLocality.dispname;
         self.englishLabel.text =cityTypeHead.cityTypeHeadLocality.dispname_en;
@@ -83,9 +85,22 @@
 
 
 - (IBAction)smallBtnClick:(id)sender {
+    SFPhotoVC * vc = [[SFPhotoVC alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    if (self.sceneryObjModel) {
+         vc.ID =self.sceneryObjModel.scenery.id;
+    }else if(self.cityTypeHead.cityTypeHeadLocality.id){
+        vc.ID =self.cityTypeHead.cityTypeHeadLocality.id;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(headerView:pushController:)]) {
+        [self.delegate headerView:self pushController:vc];
+    }
+   
 }
-- (IBAction)photoBtnClick:(id)sender {
-}
+//- (IBAction)photoBtnClick:(id)sender {
+//    
+//}
 
 - (void)willMoveToSuperview:(UIView *)newSuperview
 {

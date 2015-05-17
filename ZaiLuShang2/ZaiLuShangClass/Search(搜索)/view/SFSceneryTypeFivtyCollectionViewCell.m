@@ -29,7 +29,7 @@
         self.titleLabel.text =cityTypeListModel.name;
         
         SFCityTypeHeaderPicShow * cityTypeHeaderPicShow =cityTypeListModel.cityTypeHeaderPicShow;
-        NSString * url = [NSString stringWithFormat:@"%@/f1400/%@",cityTypeHeaderPicShow.picdomain,cityTypeHeaderPicShow.picfile];
+        NSString * url = [NSString stringWithFormat:@"%@/b300/%@",cityTypeHeaderPicShow.picdomain,cityTypeHeaderPicShow.picfile];
         [self.photoView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil];
     }
 }

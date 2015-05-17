@@ -24,14 +24,14 @@
 -(void)createNav{
     self.navigationItem.title = [[self.searchModel.listArray firstObject] title
                                  ];
-    UIButton * moreBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [moreBtn setImage:[UIImage imageNamed:@"icon_more_white_40"] forState:UIControlStateNormal];
-    UIBarButtonItem * moreItem = [[UIBarButtonItem alloc]initWithCustomView:moreBtn];
-    UIButton * shareBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [shareBtn setImage:[UIImage imageNamed:@"icon_share_line_white_40"] forState:UIControlStateNormal];
-    UIBarButtonItem * sharItem = [[UIBarButtonItem alloc]initWithCustomView:shareBtn];
-    
-    self.navigationItem.rightBarButtonItems =@[moreItem,sharItem];
+//    UIButton * moreBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+//    [moreBtn setImage:[UIImage imageNamed:@"icon_more_white_40"] forState:UIControlStateNormal];
+//    UIBarButtonItem * moreItem = [[UIBarButtonItem alloc]initWithCustomView:moreBtn];
+//    UIButton * shareBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+//    [shareBtn setImage:[UIImage imageNamed:@"icon_share_line_white_40"] forState:UIControlStateNormal];
+//    UIBarButtonItem * sharItem = [[UIBarButtonItem alloc]initWithCustomView:shareBtn];
+//    
+//    self.navigationItem.rightBarButtonItems =@[moreItem,sharItem];
     
     UIButton * backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
      [backBtn setImage:[UIImage imageNamed:@"nav_back_48_white"] forState:UIControlStateNormal];

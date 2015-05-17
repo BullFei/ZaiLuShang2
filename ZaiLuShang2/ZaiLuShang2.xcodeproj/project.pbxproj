@@ -1343,6 +1343,8 @@
 		BCA98F8D1B05A914005E26BF /* SFOwner.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F8C1B05A914005E26BF /* SFOwner.m */; };
 		BCA98F901B05B9C9005E26BF /* SFTourDayTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA98F8F1B05B9C9005E26BF /* SFTourDayTitleView.m */; };
 		BCA98F921B05B9E3005E26BF /* SFTourDayTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA98F911B05B9E3005E26BF /* SFTourDayTitleView.xib */; };
+		BCCAEEB51B086E120047CC75 /* SFNormalWebViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCAEEB41B086E120047CC75 /* SFNormalWebViewVC.m */; };
+		BCCAEEB81B0884930047CC75 /* SFPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCAEEB71B0884930047CC75 /* SFPhotoVC.m */; };
 		BCCE49961B0587A500982593 /* SFTourDayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCE49951B0587A500982593 /* SFTourDayVC.m */; };
 		BCCE499A1B05892100982593 /* SFTourDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCE49981B05892100982593 /* SFTourDayCell.m */; };
 		BCCE499B1B05892100982593 /* SFTourDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCE49991B05892100982593 /* SFTourDayCell.xib */; };
@@ -2861,6 +2863,10 @@
 		BCA98F8E1B05B9C9005E26BF /* SFTourDayTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourDayTitleView.h; sourceTree = "<group>"; };
 		BCA98F8F1B05B9C9005E26BF /* SFTourDayTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourDayTitleView.m; sourceTree = "<group>"; };
 		BCA98F911B05B9E3005E26BF /* SFTourDayTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTourDayTitleView.xib; sourceTree = "<group>"; };
+		BCCAEEB31B086E120047CC75 /* SFNormalWebViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNormalWebViewVC.h; sourceTree = "<group>"; };
+		BCCAEEB41B086E120047CC75 /* SFNormalWebViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNormalWebViewVC.m; sourceTree = "<group>"; };
+		BCCAEEB61B0884930047CC75 /* SFPhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPhotoVC.h; sourceTree = "<group>"; };
+		BCCAEEB71B0884930047CC75 /* SFPhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPhotoVC.m; sourceTree = "<group>"; };
 		BCCE49941B0587A500982593 /* SFTourDayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTourDayVC.h; sourceTree = "<group>"; };
 		BCCE49951B0587A500982593 /* SFTourDayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourDayVC.m; sourceTree = "<group>"; };
 		BCCE49971B05892100982593 /* SFTourDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFTourDayCell.h; path = ../model/SFTourDayCell.h; sourceTree = "<group>"; };
@@ -3442,6 +3448,10 @@
 				BC21D4721B04D4C900B80A46 /* SFTourListVC.m */,
 				BCCE49941B0587A500982593 /* SFTourDayVC.h */,
 				BCCE49951B0587A500982593 /* SFTourDayVC.m */,
+				BCCAEEB31B086E120047CC75 /* SFNormalWebViewVC.h */,
+				BCCAEEB41B086E120047CC75 /* SFNormalWebViewVC.m */,
+				BCCAEEB61B0884930047CC75 /* SFPhotoVC.h */,
+				BCCAEEB71B0884930047CC75 /* SFPhotoVC.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -6115,8 +6125,10 @@
 				BCA98F791B059521005E26BF /* SFTourDayInfo.m in Sources */,
 				BC629A951B0497F6006FD0C0 /* AttributedLabel.m in Sources */,
 				BC7F99CF1B04801F00900595 /* LYAchv.m in Sources */,
+				BCCAEEB51B086E120047CC75 /* SFNormalWebViewVC.m in Sources */,
 				BC7F99ED1B04801F00900595 /* SFTour.m in Sources */,
 				BC7F99EB1B04801F00900595 /* SFTactick.m in Sources */,
+				BCCAEEB81B0884930047CC75 /* SFPhotoVC.m in Sources */,
 				BC7F99A61B04801F00900595 /* AFURLSessionManager.m in Sources */,
 				BC7F99B91B04801F00900595 /* MJRefreshHeaderView.m in Sources */,
 				BC7F99B61B04801F00900595 /* MJRefreshBaseView.m in Sources */,

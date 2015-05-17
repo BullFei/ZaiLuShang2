@@ -62,28 +62,26 @@
         textSize =[TextSizeTools sizeWithString: self.tourDayInfo.foreword withMaxSize:CGSizeMake(SCREEN_WIDTH-16-16, MAXFLOAT) withFont:TextFont_15];
     }
     
-//    height=height+20+textSize.height+20;
-//    frame.size.height =height;
-//    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, frame.size.height);
-
-    
-    
     //更改图片大小
     CGRect bgImageFrame =self.bgImageView.frame;
     bgImageFrame.size.height = SCREEN_WIDTH*HUANGJINGSHU;
     self.bgImageView.frame =bgImageFrame;
     //更改view大小
-    CGFloat height = self.bgImageView.frame.size.height+textSize.height;
-    CGRect frame = self.frame;
-    frame.size.height =height;
-    frame.size.width = SCREEN_WIDTH;
-    self.frame = frame;
+    CGFloat height = self.bgImageView.frame.size.height+textSize.height+20;
+    
+    self.frame = CGRectMake(0, -height, SCREEN_WIDTH, height);
     
     self.iconImageView.layer.cornerRadius = self.iconImageView.frame.size.width*0.5;
     self.iconImageView.layer.masksToBounds = YES;
-
+    
+    self.textImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.textImageView.layer.borderWidth = 1;
+    
+    if ([self.delegate respondsToSelector:@selector(tourDayHeaderView:height:)]) {
+        [self.delegate tourDayHeaderView:self height:height];
+    }
+    
 }
-
 - (IBAction)iconClick:(id)sender {
 }
 @end
