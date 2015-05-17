@@ -34,7 +34,7 @@
         self.tabBarController.tabBar.hidden = YES;
         // 自定义back
         UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(00, 0, 40, 30)];
-        btn.backgroundColor = CXColorP(200, 200, 200, 0.6);
+        btn.backgroundColor = CXColorP(100, 100, 100, 1);
         [btn setImage:[UIImage imageNamed:@"nav_back_48_white"] forState:UIControlStateNormal];
         btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [btn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];

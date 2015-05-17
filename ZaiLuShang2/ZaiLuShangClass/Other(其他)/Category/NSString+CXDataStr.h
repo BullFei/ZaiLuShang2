@@ -10,6 +10,6 @@
 
 @interface NSString (CXDataStr)
 
-- (NSMutableAttributedString *)toDataStr;
+- (NSString *)toDataStr;
 
 @end

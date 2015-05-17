@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainTabBarController.h"
+#import "CXNewFeature.h"
 @interface AppDelegate ()
 
 @end
@@ -20,7 +21,18 @@
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     _window.backgroundColor = [UIColor whiteColor];
     
-    _window.rootViewController = [[MainTabBarController alloc] init];
+    // 判断是否去新特性
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *pre = [user objectForKey:@"CFBundleVersion"];
+    NSString *cur = [NSBundle mainBundle].infoDictionary[@"CFBundleVersion"];
+    if ([pre isEqualToString:cur]) {
+        self.window.rootViewController = [[MainTabBarController alloc] init];;
+    } else {
+        self.window.rootViewController = [[CXNewFeature alloc] init];
+        [user setObject:cur forKey:@"CFBundleVersion"];
+        [user synchronize];
+    }
+    
     [_window makeKeyAndVisible];
     return YES;
 }

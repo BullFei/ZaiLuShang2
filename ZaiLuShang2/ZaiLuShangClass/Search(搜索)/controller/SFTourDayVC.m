@@ -152,20 +152,19 @@
         
         
         NSArray * recoreds =self.tourDayInfo.records;
-        for (SFRecord *recored in recoreds) {
+        for (SFTourDayCustomeModel * model in _dataArray) {
             NSMutableArray * array = [[NSMutableArray alloc]init];
-            for (SFTourDayCustomeModel * model in _dataArray) {
+            for (SFRecord *recored in recoreds) {
                 NSString * recordStr = [recored.timestamp componentsSeparatedByString:@" "][0];
                 NSString * itineraryDate =model.itinerary.date;
                 if ([recordStr isEqualToString:itineraryDate]) {
                     [array addObject:recored];
-                     model.tourDayInfoArray =array;
-                    break;
+                    
                 }
-              
             }
-           
+            model.tourDayInfoArray =array;
         }
+       
     }
 }
 
@@ -173,7 +172,8 @@
 {
     SFTourDayHeaderView * headerView =[SFTourDayHeaderView headerView];
     headerView.tourDayInfo = self.tourDayInfo;
-    //_collectionView.contentInset = UIEdgeInsetsMake(headerView.frame.size.height, 0, 0, 0);
+   // _collectionView.contentInset = UIEdgeInsetsMake(headerView.frame.size.height-20, 0, 0, 0);
+    //[self.view addSubview:headerView];
     [_collectionView addSubview:headerView];
     NSLog(@"%@",NSStringFromCGRect(headerView.frame));
     //collectionView

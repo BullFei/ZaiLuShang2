@@ -48,7 +48,7 @@
     [self.photoView sd_setImageWithURL:[NSURL URLWithString:photo] placeholderImage:[UIImage imageNamed:@"bg_pic_placeholder_small.9"]];
     
     self.nameLabel.text = user.nickname;
-    self.timeLabel.attributedText = [model.timestamp toDataStr];
+    self.timeLabel.text = [model.timestamp toDataStr];
     self.wordLabel.text = model.words;
 }
 

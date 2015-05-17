@@ -48,13 +48,7 @@
         self.dateLabel.text = [NSString stringWithFormat:@"%@|%@",tourDayInfo.startdate,tourDayInfo.days];
         self.tagLabel.text =tourDayInfo.tags;
         
-        //textimageview
-        CGRect frame = self.textImageView.frame;
-        frame.size.height = textSize.height+20;
-        self.textImageView.frame = frame;
-        
-        //textview
-        self.textView.frame = CGRectMake(frame.origin.x+8, frame.origin.y+10, frame.size.width-16, frame.size.height-20);
+       
         self.textView.text =tourDayInfo.foreword;
     }
     
@@ -63,32 +57,33 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    CGRect frame = self.frame;
-    CGFloat height = SCREEN_WIDTH*HUANGJINGSHU;
+    
     if (self.tourDayInfo) {
         textSize =[TextSizeTools sizeWithString: self.tourDayInfo.foreword withMaxSize:CGSizeMake(SCREEN_WIDTH-16-16, MAXFLOAT) withFont:TextFont_15];
-        height=height+20+textSize.height+20+20;
-        frame.size.height =height;
-        self.frame = CGRectMake(0, 0, SCREEN_WIDTH, frame.size.height);
     }
+    
+//    height=height+20+textSize.height+20;
+//    frame.size.height =height;
+//    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, frame.size.height);
+
+    
+    
+    //更改图片大小
+    CGRect bgImageFrame =self.bgImageView.frame;
+    bgImageFrame.size.height = SCREEN_WIDTH*HUANGJINGSHU;
+    self.bgImageView.frame =bgImageFrame;
+    //更改view大小
+    CGFloat height = self.bgImageView.frame.size.height+textSize.height;
+    CGRect frame = self.frame;
+    frame.size.height =height;
+    frame.size.width = SCREEN_WIDTH;
+    self.frame = frame;
     
     self.iconImageView.layer.cornerRadius = self.iconImageView.frame.size.width*0.5;
     self.iconImageView.layer.masksToBounds = YES;
+
 }
 
--(void)willRemoveSubview:(UIView *)subview
-{
-    CGRect frame = self.frame;
-    CGFloat height = SCREEN_WIDTH*HUANGJINGSHU;
-    if (self.tourDayInfo) {
-        textSize =[TextSizeTools sizeWithString: self.tourDayInfo.foreword withMaxSize:CGSizeMake(SCREEN_WIDTH-16-16, MAXFLOAT) withFont:TextFont_15];
-        height=height+20+textSize.height+20+20;
-        frame.size.height =height;
-        self.frame = CGRectMake(0, 0, SCREEN_WIDTH, frame.size.height);
-        NSLog(@"%@",NSStringFromCGRect(self.frame));
-    }
-    
-}
 - (IBAction)iconClick:(id)sender {
 }
 @end
