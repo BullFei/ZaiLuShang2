@@ -4,8 +4,12 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
+=======
+
+>>>>>>> Stashed changes
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "No"
@@ -22,7 +26,10 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
+<<<<<<< Updated upstream
 >>>>>>> origin/master
+=======
+>>>>>>> Stashed changes
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"

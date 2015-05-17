@@ -10,9 +10,11 @@
 
 #import "GroundTableView.h"
 #import "ADView.h"
+#import "JingXuanCell.h"
 
 #import "AFNetworking.h"
 #import "MJExtension.h"
+#import "RequestTool.h"
 
 #import "ADModel.h"
 #import "JingXuanModel.h"
@@ -49,6 +51,7 @@
     [self createTimer];
     [self initDataArray];
     [self createData];
+    CXLog(@"%f", CGW(self.view));
     // Do any additional setup after loading the view.
 }
 
@@ -65,6 +68,7 @@
 
 -(void)createData
 {
+//    [RequestTool GET:<#(NSString *)#> parameters:<#(id)#> success:<#^(id responseObject)success#> failure:<#^(NSError *error)failure#>];
     AFHTTPRequestOperationManager * manager =[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes =[NSSet setWithObjects:@"application/json",@"text/html",@"text/plain",nil];
     [manager GET:GROUND_URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -168,14 +172,24 @@
 }
 -(void)createTimer
 {
-    _timer =[NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
+    _timer =[NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
 }
 
 -(void)refresh
 {
    ADView * adv =(id)[self.view viewWithTag:1];
+    UIScrollView * sv =[adv getSCrollView];
+   
+    if (sv.isDragging==NO&&sv.isDecelerating==NO) {
+        [adv refresh];
+    }
     
-    [adv refresh];
+    for (int i =0; i<5; i++) {
+        JingXuanCell * jxc =(id)[self.view viewWithTag:GROUND_JINGXUANCELL_INITTAG+i];
+        [jxc refreshCommentsScrollView];
+    }
+    
+   // [adv refresh];
     
 }
 

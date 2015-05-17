@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "ReviewerModel.h"
 @interface Section2ItemModel : NSObject
 @property (nonatomic,copy)NSString * title;
 @property (nonatomic,copy)NSString * picdomain;
 @property (nonatomic,copy)NSString * coverpic;
-
+@property (nonatomic,strong)ReviewerModel * owner;
 @end
