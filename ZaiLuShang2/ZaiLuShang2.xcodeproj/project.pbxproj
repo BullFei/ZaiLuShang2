@@ -40,17 +40,22 @@
 		BC32E0B91B04928D001B6804 /* LYAttention.m in Sources */ = {isa = PBXBuildFile; fileRef = BC32E0B81B04928D001B6804 /* LYAttention.m */; };
 		BC3905051B06E43F00EA6C5F /* MedalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3905041B06E43F00EA6C5F /* MedalCell.m */; };
 		BC3905081B06E63A00EA6C5F /* LYAchievement.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3905071B06E63A00EA6C5F /* LYAchievement.m */; };
+		BC3948A61B08239700DF3D5B /* MultiPictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3948A51B08239700DF3D5B /* MultiPictureCell.m */; };
 		BC629A8C1B0496C3006FD0C0 /* SFProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = BC629A891B0496C3006FD0C0 /* SFProduct.m */; };
 		BC629A8D1B0496C3006FD0C0 /* SFSceneryObjModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC629A8B1B0496C3006FD0C0 /* SFSceneryObjModel.m */; };
 		BC629A911B0496DF006FD0C0 /* SFProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC629A8F1B0496DF006FD0C0 /* SFProductCell.m */; };
 		BC629A921B0496DF006FD0C0 /* SFProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC629A901B0496DF006FD0C0 /* SFProductCell.xib */; };
 		BC629A951B0497F6006FD0C0 /* AttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC629A941B0497F6006FD0C0 /* AttributedLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BC629A981B049883006FD0C0 /* SFSceneryListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BC629A971B049883006FD0C0 /* SFSceneryListVC.m */; };
+<<<<<<< HEAD
+		BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7030A81B084EE50040551B /* LYMultiPicture.m */; };
+=======
 		BC6430841B07509C0079FB12 /* CXNewFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6430831B07509C0079FB12 /* CXNewFeature.m */; };
 		BC6430891B0750C90079FB12 /* 5S开机引导-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6430851B0750C90079FB12 /* 5S开机引导-1.png */; };
 		BC64308A1B0750C90079FB12 /* 5S开机引导-2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6430861B0750C90079FB12 /* 5S开机引导-2.png */; };
 		BC64308B1B0750C90079FB12 /* 5S开机引导-3.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6430871B0750C90079FB12 /* 5S开机引导-3.png */; };
 		BC64308C1B0750C90079FB12 /* 5S开机引导-4.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6430881B0750C90079FB12 /* 5S开机引导-4.png */; };
+>>>>>>> origin/master
 		BC7F98721B047FD100900595 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7F98711B047FD100900595 /* main.m */; };
 		BC7F98771B047FD100900595 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7F98761B047FD100900595 /* Images.xcassets */; };
 		BC7F98861B047FD100900595 /* ZaiLuShang2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7F98851B047FD100900595 /* ZaiLuShang2Tests.m */; };
@@ -1422,6 +1427,8 @@
 		BC3905041B06E43F00EA6C5F /* MedalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedalCell.m; sourceTree = "<group>"; };
 		BC3905061B06E63A00EA6C5F /* LYAchievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYAchievement.h; sourceTree = "<group>"; };
 		BC3905071B06E63A00EA6C5F /* LYAchievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYAchievement.m; sourceTree = "<group>"; };
+		BC3948A41B08239700DF3D5B /* MultiPictureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiPictureCell.h; sourceTree = "<group>"; };
+		BC3948A51B08239700DF3D5B /* MultiPictureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiPictureCell.m; sourceTree = "<group>"; };
 		BC629A881B0496C3006FD0C0 /* SFProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFProduct.h; sourceTree = "<group>"; };
 		BC629A891B0496C3006FD0C0 /* SFProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFProduct.m; sourceTree = "<group>"; };
 		BC629A8A1B0496C3006FD0C0 /* SFSceneryObjModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSceneryObjModel.h; sourceTree = "<group>"; };
@@ -1433,12 +1440,17 @@
 		BC629A941B0497F6006FD0C0 /* AttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedLabel.m; sourceTree = "<group>"; };
 		BC629A961B049883006FD0C0 /* SFSceneryListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSceneryListVC.h; sourceTree = "<group>"; };
 		BC629A971B049883006FD0C0 /* SFSceneryListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSceneryListVC.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
+		BC7030A71B084EE50040551B /* LYMultiPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMultiPicture.h; sourceTree = "<group>"; };
+		BC7030A81B084EE50040551B /* LYMultiPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMultiPicture.m; sourceTree = "<group>"; };
+=======
 		BC6430821B07509C0079FB12 /* CXNewFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXNewFeature.h; sourceTree = "<group>"; };
 		BC6430831B07509C0079FB12 /* CXNewFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXNewFeature.m; sourceTree = "<group>"; };
 		BC6430851B0750C90079FB12 /* 5S开机引导-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5S开机引导-1.png"; sourceTree = "<group>"; };
 		BC6430861B0750C90079FB12 /* 5S开机引导-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5S开机引导-2.png"; sourceTree = "<group>"; };
 		BC6430871B0750C90079FB12 /* 5S开机引导-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5S开机引导-3.png"; sourceTree = "<group>"; };
 		BC6430881B0750C90079FB12 /* 5S开机引导-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5S开机引导-4.png"; sourceTree = "<group>"; };
+>>>>>>> origin/master
 		BC7F986C1B047FD100900595 /* ZaiLuShang2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZaiLuShang2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7F98701B047FD100900595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC7F98711B047FD100900595 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -3400,6 +3412,8 @@
 				BC32E0B81B04928D001B6804 /* LYAttention.m */,
 				BC3905061B06E63A00EA6C5F /* LYAchievement.h */,
 				BC3905071B06E63A00EA6C5F /* LYAchievement.m */,
+				BC7030A71B084EE50040551B /* LYMultiPicture.h */,
+				BC7030A81B084EE50040551B /* LYMultiPicture.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -3415,6 +3429,8 @@
 				BC8FD37D1B05DB2A0085D159 /* LYLCButton.m */,
 				BC3905031B06E43F00EA6C5F /* MedalCell.h */,
 				BC3905041B06E43F00EA6C5F /* MedalCell.m */,
+				BC3948A41B08239700DF3D5B /* MultiPictureCell.h */,
+				BC3948A51B08239700DF3D5B /* MultiPictureCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -6076,6 +6092,7 @@
 				BCA98F821B059806005E26BF /* SFLocation.m in Sources */,
 				BC7F99F81B04801F00900595 /* SFSearchCountryCell.m in Sources */,
 				12E9AB361B04C45D0084490E /* MoreThemeModel.m in Sources */,
+				BC3948A61B08239700DF3D5B /* MultiPictureCell.m in Sources */,
 				BC7F99D01B04801F00900595 /* LYAttentionModel.m in Sources */,
 				BC7F99981B04801F00900595 /* MainNavigationC.m in Sources */,
 				BC7F99CD1B04801F00900595 /* TextSizeTools.m in Sources */,
@@ -6184,6 +6201,7 @@
 				BC7F99911B04801F00900595 /* CXCollectionVCellModel.m in Sources */,
 				12E9AB251B0499D00084490E /* GroundTableView.m in Sources */,
 				BC7F99941B04801F00900595 /* CXCollectionVCell.m in Sources */,
+				BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */,
 				BC7F99DE1B04801F00900595 /* SFCityTypeHeaderPicShow.m in Sources */,
 				BC7F99EE1B04801F00900595 /* SFCityWantedCell.m in Sources */,
 				BC7F99D81B04801F00900595 /* SFDetailTactickController.m in Sources */,

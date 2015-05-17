@@ -16,6 +16,7 @@
 - (void)iconTapped:(UITapGestureRecognizer *)tgr;
 - (void)titleTapped:(UITapGestureRecognizer *)tgr;
 - (void)igTapped:(UITapGestureRecognizer *)tgr;
+- (void)contentTapped:(UITapGestureRecognizer *)tgr;
 
 @end
 
