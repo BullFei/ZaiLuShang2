@@ -13,13 +13,12 @@
 #import "TimeIntervalTool.h"
 #import "LYComment.h"
 
-#define LYZLS_TEXTSIZE 12
+#define LYZLS_TEXTSIZE 13
 
 @implementation TripCell
 - (instancetype)initWithLYAttention:(LYAttention *)attention {
     if (self = [super init]) {
         self.attFrame = attention;
-        
         [self configUI];
     }
     return self;
@@ -111,8 +110,27 @@
     self.contentLabel = [[UILabel alloc] init];
     self.contentLabel.frame = self.attFrame.content;
     self.contentLabel.numberOfLines = 0;
-    self.contentLabel.text = rec.words;
-    self.contentLabel.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
+    
+    // 判断正文内容有无超级链接网址
+    NSString *act = rec.words;
+    if (act != nil) {
+        NSRange range = [act rangeOfString:@"http"];
+        if (range.location != NSNotFound) { // 正文中有超级链接
+            NSMutableAttributedString *mas = [[NSMutableAttributedString alloc] initWithString:act];
+            [mas addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(range.location, act.length - range.location)];
+            [mas addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:LYZLS_TEXTSIZE] range:NSMakeRange(0, act.length)];
+            self.contentLabel.attributedText = mas;
+            
+            //添加手势
+            self.contentLabel.userInteractionEnabled = YES;
+            UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(websiteAction:)];
+            [self.contentLabel addGestureRecognizer:tgr];
+        } else {
+            // 正文中没有超级链接
+            self.contentLabel.text = act;
+            self.contentLabel.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
+        }
+    }
     [self.contentView addSubview:self.contentLabel];
     
     // 两个按钮
@@ -215,7 +233,12 @@
             //如果评论大于2条的话 添加一个"阅读全部(多少条)评论"的button
             if (rec.cntcmt.integerValue != 2) {
                 UIButton *buttonMore = [[UIButton alloc] init];
-                buttonMore.frame = CGRectMake(self.author.frame.origin.x, CGRectGetMaxY(self.commentatorIcon2.frame) + 2 * 5, 150, 20);
+                // 判断这个按钮的相对谁的位置(评论文字过长的话就以评论为准,比较短的话就以头像为准)
+                if (CGRectGetMaxY(self.commentContent2.frame) > CGRectGetMaxY(self.commentatorIcon2.frame)) {
+                    buttonMore.frame = CGRectMake(self.author.frame.origin.x, CGRectGetMaxY(self.commentContent2.frame) + 2 * 5, 150, 20);
+                } else {
+                    buttonMore.frame = CGRectMake(self.author.frame.origin.x, CGRectGetMaxY(self.commentatorIcon2.frame) + 2 * 5, 150, 20);
+                }
                 UIImage *more = [UIImage imageNamed:@"icon_more_gray_32"];
                 NSData *moreData = UIImagePNGRepresentation(more);
                 more = [UIImage imageWithData:moreData scale:2];
@@ -245,5 +268,9 @@
 // 图片被点击的方法
 - (void)igAction:(UITapGestureRecognizer *)tgr {
     [self.delegate performSelector:@selector(igTapped:) withObject:tgr];
+}
+// 正文内容如果含有链接的话的方法
+- (void)websiteAction:(UITapGestureRecognizer *)tgr {
+    [self.delegate performSelector:@selector(contentTapped:) withObject:tgr];
 }
 @end

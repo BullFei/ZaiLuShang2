@@ -102,7 +102,6 @@
                 <outlet property="englishLabel" destination="4Xb-Ui-Btr" id="1RV-dr-mvI"/>
                 <outlet property="nameLabel" destination="XHU-Qs-oIc" id="Fv3-Ny-Wpu"/>
                 <outlet property="photoImge" destination="ME1-xJ-oJ0" id="fum-Tw-GF1"/>
-                <outlet property="smallBtn" destination="u1u-Lm-dNu" id="ipi-R2-He9"/>
                 <outlet property="titleLabel" destination="F8b-Ff-eon" id="Ly7-Zi-f7u"/>
                 <outlet property="titleView" destination="RC6-51-MCK" id="9p8-fW-2zH"/>
             </connections>

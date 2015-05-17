@@ -11,7 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "TimeIntervalTool.h"
 
-#define LYZLS_TEXTSIZE 12
+#define LYZLS_TEXTSIZE 13
 
 @implementation MedalCell
 

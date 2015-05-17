@@ -15,21 +15,56 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V6F-kR-VBN">
                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" fixedFrame="YES" image="icon_location_white_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="19F-qc-Z3K">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="icon_location_white_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="19F-qc-Z3K">
                         <rect key="frame" x="8" y="47" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="Pnn-ed-YtQ"/>
+                            <constraint firstAttribute="width" constant="15" id="ghv-cQ-eha"/>
+                            <constraint firstAttribute="height" constant="15" id="nbk-l4-A54"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Pnn-ed-YtQ"/>
+                            </mask>
+                        </variation>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_note_white_34.png" translatesAutoresizingMaskIntoConstraints="NO" id="VVI-a4-2Vz">
-                        <rect key="frame" x="28" y="47" width="15" height="15"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_note_white_34.png" translatesAutoresizingMaskIntoConstraints="NO" id="VVI-a4-2Vz">
+                        <rect key="frame" x="31" y="49" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="7xR-zj-ld2"/>
+                            <constraint firstAttribute="width" constant="15" id="9tH-md-Sd5"/>
+                            <constraint firstAttribute="height" constant="15" id="fj7-75-7w3"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7xR-zj-ld2"/>
+                            </mask>
+                        </variation>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstItem="V6F-kR-VBN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4Yu-Xc-ckY"/>
+                <constraint firstAttribute="bottom" secondItem="19F-qc-Z3K" secondAttribute="bottom" constant="8" id="FhY-32-BZi"/>
+                <constraint firstItem="19F-qc-Z3K" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="KHU-Gi-BB4"/>
                 <constraint firstItem="V6F-kR-VBN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RfC-d8-ogY"/>
+                <constraint firstItem="19F-qc-Z3K" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="ZGs-kK-NjQ"/>
+                <constraint firstAttribute="trailing" secondItem="VVI-a4-2Vz" secondAttribute="trailing" constant="19" id="e6q-kh-nDA"/>
+                <constraint firstItem="VVI-a4-2Vz" firstAttribute="leading" secondItem="19F-qc-Z3K" secondAttribute="trailing" constant="8" id="ed9-10-M6G"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VVI-a4-2Vz" secondAttribute="trailing" constant="24" id="emd-Sw-XGx"/>
+                <constraint firstItem="VVI-a4-2Vz" firstAttribute="leading" secondItem="19F-qc-Z3K" secondAttribute="trailing" constant="8" symbolic="YES" id="fI6-Ak-d9s"/>
+                <constraint firstAttribute="bottom" secondItem="VVI-a4-2Vz" secondAttribute="bottom" constant="6" id="iAa-v0-BKS"/>
                 <constraint firstAttribute="bottom" secondItem="V6F-kR-VBN" secondAttribute="bottom" id="lwv-nq-7ib"/>
                 <constraint firstAttribute="trailing" secondItem="V6F-kR-VBN" secondAttribute="trailing" id="wCm-M2-eS5"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="KHU-Gi-BB4"/>
+                    <exclude reference="e6q-kh-nDA"/>
+                    <exclude reference="ed9-10-M6G"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="bgImageView" destination="V6F-kR-VBN" id="aZ6-jp-UX2"/>
             </connections>

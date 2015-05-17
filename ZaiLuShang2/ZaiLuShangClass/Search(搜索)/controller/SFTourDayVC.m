@@ -27,10 +27,10 @@
 #define ITEM_COUNT 3
 #define ITEM_WIDTH (CGW(self.view) - (ITEM_COUNT-1)*ITEM_INTERVAL)/ITEM_COUNT
 #define ITEM_HEIGHT ITEM_WIDTH
-@interface SFTourDayVC ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface SFTourDayVC ()<UICollectionViewDataSource,UICollectionViewDelegate,SFTourDayHeaderViewDelegate>
 {
     UICollectionView * _collectionView;
-    //SFTourDay * tourDay;
+    SFTourDayHeaderView * headerView;
    
 }
 @property (strong,nonatomic)NSMutableArray * dataArray;
@@ -40,11 +40,13 @@
 
 @implementation SFTourDayVC
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createNav];
     [self createCollectionView];
     [self loadData];
+   
 }
 
 -(SFTourDay *)tourDay
@@ -100,8 +102,8 @@
     [_collectionView registerNib:[UINib nibWithNibName:@"SFTourDayCell" bundle:nil] forCellWithReuseIdentifier:@"tourDayCell"];
     
     //注册头
-//    [_collectionView registerNib:[UINib nibWithNibName:@"SFTourDayTitleView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-//             withReuseIdentifier:@"headerView"];
+    [_collectionView registerNib:[UINib nibWithNibName:@"SFTourDayTitleView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+             withReuseIdentifier:@"headerView"];
 }
 #pragma mark - 加载数据
 -(void)loadData
@@ -152,31 +154,29 @@
         
         
         NSArray * recoreds =self.tourDayInfo.records;
-        for (SFRecord *recored in recoreds) {
+        for (SFTourDayCustomeModel * model in _dataArray) {
             NSMutableArray * array = [[NSMutableArray alloc]init];
-            for (SFTourDayCustomeModel * model in _dataArray) {
+            for (SFRecord *recored in recoreds) {
                 NSString * recordStr = [recored.timestamp componentsSeparatedByString:@" "][0];
                 NSString * itineraryDate =model.itinerary.date;
                 if ([recordStr isEqualToString:itineraryDate]) {
                     [array addObject:recored];
-                     model.tourDayInfoArray =array;
-                    break;
+                    
                 }
-              
             }
-           
+            model.tourDayInfoArray =array;
         }
+       
     }
 }
 
 -(void)createHeaderView
 {
-    SFTourDayHeaderView * headerView =[SFTourDayHeaderView headerView];
+    headerView =[SFTourDayHeaderView headerView];
     headerView.tourDayInfo = self.tourDayInfo;
-    //_collectionView.contentInset = UIEdgeInsetsMake(headerView.frame.size.height, 0, 0, 0);
+    headerView.delegate =self;
     [_collectionView addSubview:headerView];
-    NSLog(@"%@",NSStringFromCGRect(headerView.frame));
-    //collectionView
+
 }
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -197,18 +197,27 @@
     return cell;
 }
 
-/*
+
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionReusableView *reusableview = nil;
     if (kind == UICollectionElementKindSectionHeader) {
         //头
         SFTourDayTitleView * tourDayTitleView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerView" forIndexPath:indexPath];
-        tourDayTitleView.itinerary = _dataArray[indexPath.section];
-        reusableview = tourDayTitleView;
+        SFTourDayCustomeModel * model = _dataArray[indexPath.section];;
+        tourDayTitleView.itinerary =model.itinerary;
+       
+         return tourDayTitleView;
     }
-    return reusableview;
+    return nil;
 }
-*/
+
+
+-(void)tourDayHeaderView:(SFTourDayHeaderView *)view height:(CGFloat)height
+{
+    _collectionView.contentInset = UIEdgeInsetsMake(height, 0, 0, 0);
+    _collectionView.contentOffset = CGPointMake(0, -height-64);
+}
+
+
 
 @end

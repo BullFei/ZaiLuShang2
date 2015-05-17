@@ -16,13 +16,17 @@
 #import "SFSceneryCellTableViewCell.h"
 #import "SFSearchCountryCell.h"
 #import "SFDetailTactickController.h"
+#import "SFSceneryListVC.h"
+#import "SFListCityVC.h"
 #define  TITLE_TYPE 88 //标题
 #define  TACTICK_TYPE 90 //攻略
 #define  OTHER_TYPE 18 //其他
 #define  SHOW_TYPE_SECENER  @"tag_2_1"
 #define  SHOW_TYPE_COUNTRY  @"tag_2_3"
-#define URL @"http://app6.117go.com/demo27/php/interestAction.php?submit=getDiscoverDir&pid=%d&length=10&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
-@interface SFListTactickController ()
+#define PUSH_TYPE_2  2//有图
+#define PUSH_TYPE_3  3//无图
+#define URL @"http://app6.117go.com/demo27/php/interestAction.php?submit=getDiscoverDir&pid=%ld&length=10&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
+@interface SFListTactickController ()<SFSceneryCellTableViewCellDelegate,SFSearchCountryCellDelegate>
 {
     NSInteger pid;
 }
@@ -35,6 +39,7 @@
     [super viewDidLoad];
     [self loadData];
     [self createNav];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
 }
 #pragma mark -创建nav
@@ -120,11 +125,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    int num =[[_dataArray[section] listArray] count];
-    if (num>1) {
-        return num*0.5;
-    }
-    return num;
+      return 1;
 }
 
 
@@ -141,19 +142,37 @@
             //风景
             NSArray * displayModelArray =model.listArray;
             SFSceneryCellTableViewCell * cell =[SFSceneryCellTableViewCell cellWithTableView:tableView];
-            SFSearchDisplayModule * displayModelLeft =displayModelArray[2*indexPath.row];
-            SFSearchDisplayModule * displayModelRight =displayModelArray[2*indexPath.row+1];
-            cell.displayModuleLeft =displayModelLeft;
-            cell.displayModuleRight =displayModelRight;
+            cell.deleagte = self;
+            if (displayModelArray.count==1) {
+                 SFSearchDisplayModule * displayModelLeft =displayModelArray[2*indexPath.row];
+                cell.displayModuleLeft =displayModelLeft;
+            }else{
+                SFSearchDisplayModule * displayModelLeft =displayModelArray[2*indexPath.row];
+                cell.displayModuleLeft =displayModelLeft;
+                SFSearchDisplayModule * displayModelRight =displayModelArray[2*indexPath.row+1];
+                
+                cell.displayModuleRight =displayModelRight;
+            }
+            
+           
+            
             return cell;
         }else if ([SHOW_TYPE_COUNTRY isEqualToString:model.showType]){
             //国家
             SFSearchCountryCell * cell = [SFSearchCountryCell cellWithTableView:tableView];
+            cell.delegate = self;
+           
             NSArray * displayModelArray =model.listArray;
-            SFSearchDisplayModule * displayModelLeft =displayModelArray[2*indexPath.row];
-            SFSearchDisplayModule * displayModelRight =displayModelArray[2*indexPath.row+1];
-            cell.displayModuleLeft =displayModelLeft;
-            cell.displayModuleRight =displayModelRight;
+            if (displayModelArray.count==1) {
+                SFSearchDisplayModule * displayModelLeft =displayModelArray[2*indexPath.row];
+                cell.displayModuleLeft =displayModelLeft;
+            }else{
+                SFSearchDisplayModule * displayModelLeft =displayModelArray[2*indexPath.row];
+                SFSearchDisplayModule * displayModelRight =displayModelArray[2*indexPath.row+1];
+                cell.displayModuleLeft =displayModelLeft;
+                cell.displayModuleRight =displayModelRight;
+            }
+            
             return cell;
             
         }
@@ -192,6 +211,36 @@
         [self.navigationController pushViewController:detailTactickController animated:YES];
     }
 }
+
+
+#pragma mark - 代理方法  五月推荐
+-(void)sceneryCellTableViewCellPushController:(SFSceneryCellTableViewCell *)sceneryCellTableViewCell withSearchDisplayModule:(SFSearchDisplayModule *)searchModule
+{
+    if (PUSH_TYPE_2 ==searchModule.type) {
+        //有图模型
+        SFListCityVC * listVC = [[SFListCityVC alloc]init];
+        listVC.displayModule =searchModule;
+        listVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:listVC animated:YES];
+    }else if(PUSH_TYPE_3 == searchModule.type){
+        //无图
+        SFSceneryListVC * listVC = [[SFSceneryListVC alloc]init];
+        listVC.displayModule =searchModule;
+        listVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:listVC animated:YES];
+    }
+    
+}
+
+-(void)searchCountryCellPushController:(SFSearchCountryCell *)searchCountryCell withSearchDisplayModule:(SFSearchDisplayModule *)searchModule
+{
+    SFListCityVC * listVC = [[SFListCityVC alloc]init];
+    listVC.displayModule =searchModule;
+    listVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:listVC animated:YES];
+}
+
+
 
 
 @end

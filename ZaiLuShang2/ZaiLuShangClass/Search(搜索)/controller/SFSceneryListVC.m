@@ -24,7 +24,7 @@
 #import "SFWantPeopleVC.h"
 #import "SFTourListVC.h"
 #define URL @"http://app6.117go.com/demo27/php/stickerAction.php?submit=getSceneryHome&sceneryid=%ld&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
-@interface SFSceneryListVC ()<UITableViewDataSource,UITableViewDelegate,SFStickerCellDelegate>
+@interface SFSceneryListVC ()<UITableViewDataSource,UITableViewDelegate,SFStickerCellDelegate,SFHeaderViewDelegate>
 {
     SFSceneryObjModel * sceneryObjModel;
     UITableView * _tableView;
@@ -38,7 +38,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self createNav];
-    [self createBottomView];
+    //[self createBottomView];
     [self createTableView];
     [self loadData];
     
@@ -60,7 +60,7 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+/*
 -(void)createBottomView
 {
     UIView * bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49)];
@@ -89,7 +89,7 @@
     }
     
 }
-
+*/
 #pragma mark - 加载数据
 -(void)loadData
 {
@@ -180,13 +180,14 @@
 {
     SFHeaderView * headerView = [SFHeaderView headerView];
     headerView.sceneryObjModel = sceneryObjModel;
+    headerView.delegate = self;
     _tableView.tableHeaderView =headerView;
 }
 
 #pragma mark -创建tableview
 -(void)createTableView
 {
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-49) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
     [self.view addSubview:_tableView];
     _tableView.delegate =self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -255,6 +256,11 @@
         tourListVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:tourListVC animated:YES];
     }
+}
+
+-(void)headerView:(SFHeaderView *)headerView pushController:(UIViewController *)controller
+{
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 

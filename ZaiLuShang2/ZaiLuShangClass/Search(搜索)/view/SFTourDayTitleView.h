@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class SFItinerary;
-@interface SFTourDayTitleView : UIView
+@interface SFTourDayTitleView : UICollectionReusableView
 @property (nonatomic,strong) SFItinerary * itinerary;
 
 +(SFTourDayTitleView *)titleView;
