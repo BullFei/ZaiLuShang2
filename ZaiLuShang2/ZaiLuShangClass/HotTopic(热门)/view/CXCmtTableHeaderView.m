@@ -19,8 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *wordLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *wordImageView;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
 
 @end
 
@@ -29,9 +29,6 @@
 + (CXCmtTableHeaderView *)tableHeaderView
 {
     CXCmtTableHeaderView *view = [[[NSBundle mainBundle] loadNibNamed:@"CXCmtTableHeaderView" owner:nil options:nil] lastObject];
-    UIImage *image = [UIImage imageNamed:@"bg_map_pic.9"];
-    view.wordImageView.image = [image stretchableImageWithLeftCapWidth:CGW(view.wordImageView)/2 topCapHeight:CGH(view.wordImageView)/2];
-    view.wordLabel.textAlignment = NSTextAlignmentCenter;
     return view;
 }
 
@@ -49,7 +46,10 @@
     
     self.nameLabel.text = user.nickname;
     self.timeLabel.text = [model.timestamp toDataStr];
-    self.wordLabel.text = model.words;
+    self.textView.text = model.words;
+    if (model.words.length == 0) {
+        self.textView.text = @"他(她)什么也没留下。";
+    }
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview

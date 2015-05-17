@@ -14,6 +14,7 @@
 #import "CXCollectionVCell.h"
 #import "CXCollectViewCellModel.h"
 #import "RequestTool.h"
+#import "LoginVC.h"
 
 #define STARTTIME_DELAY 2
 #define IMAGEVIEW_COUNT 3
@@ -412,21 +413,27 @@
 
 - (void)zhan:(CXScrollViewBarBtn *)btn
 {
-    btn.selected = !btn.selected;
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    dict[@"submit"] = @"addLike";
-    dict[@"itemtype"] = @"1";
-    dict[@"isadd"] = @"1";
-    dict[@"v"] = @"a6.1.0";
-    dict[@"vc"] = @"anzhuo";
-    dict[@"vd"] = @"f7393db54aeaedec";
-    dict[@"token"] = @"27f3f6568d2faf418538f66d72330a23";
+//    btn.selected = !btn.selected;
+//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//    dict[@"submit"] = @"addLike";
+//    dict[@"itemtype"] = @"1";
+//    dict[@"isadd"] = @"1";
+//    dict[@"v"] = @"a6.1.0";
+//    dict[@"vc"] = @"anzhuo";
+//    dict[@"vd"] = @"f7393db54aeaedec";
+//    dict[@"token"] = @"27f3f6568d2faf418538f66d72330a23";
+//    
+//    [RequestTool POST:@"http://app6.117go.com/demo27/php/formAction.php" parameters:dict success:^(id responseObject) {
+//        NSLog(@"%@", responseObject);
+//    } failure:^(NSError *error) {
+//        NSLog(@"%@", error);
+//    }];
+//    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+//    NSString *str = [user objectForKey:@"isLogin"];
+//    if (str.length == 0) {
+//        
+//    }
     
-    [RequestTool POST:@"http://app6.117go.com/demo27/php/formAction.php" parameters:dict success:^(id responseObject) {
-        NSLog(@"%@", responseObject);
-    } failure:^(NSError *error) {
-        NSLog(@"%@", error);
-    }];
 }
 
 - (void)comment:(CXScrollViewBarBtn *)btn

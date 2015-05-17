@@ -95,11 +95,6 @@
     header.delegate = self;
     self.header = header;
     
-//    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
-//    footer.scrollView = view;
-//    footer.delegate = self;
-//    self.footer = footer;
-    
 }
 
 - (void)dealloc
