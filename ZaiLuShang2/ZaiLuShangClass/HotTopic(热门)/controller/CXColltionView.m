@@ -35,18 +35,29 @@
     
     [self createCollectionView];
     
-    // 开始刷新
-    [self.header beginRefreshing];
+    
 }
 
 - (void)setUrl:(NSString *)url
 {
     _url = url;
+    
+    
+    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
+    footer.scrollView = self.collectionView;
+    footer.delegate = self;
+    self.footer = footer;
+    
+    // 开始刷新
+    [self.header beginRefreshing];
 }
 
 - (void)setOtherUrl:(NSString *)otherUrl
 {
     _otherUrl = otherUrl;
+    
+    // 开始刷新
+    [self.header beginRefreshing];
 }
 
 // 数据请求
@@ -86,10 +97,6 @@
     header.delegate = self;
     self.header = header;
     
-    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
-    footer.scrollView = view;
-    footer.delegate = self;
-    self.footer = footer;
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"CXCollectionVCell" bundle:nil] forCellWithReuseIdentifier:@"CXCollectionVCell"];
 }
@@ -116,6 +123,8 @@
 - (void)refreshHeaderViewSuccess:(void (^)())success failure:(void (^)())failure
 {
     [self requestDataSuccess:^(id responseObject) {
+        
+        [self.dataArr removeAllObjects];
         
         if (self.url.length > 0) {
             NSArray *arr = [CXCollectViewCellModel objectArrayWithKeyValuesArray:responseObject[@"obj"]];
