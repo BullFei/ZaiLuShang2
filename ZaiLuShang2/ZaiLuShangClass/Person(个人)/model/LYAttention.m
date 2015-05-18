@@ -16,7 +16,6 @@
 #define LYZLS_BLANK_WIDTH 5
 #define LYZLS_BUTTON_HEIGHT 20
 #define LYZLS_BUTTON_WIDTH 56
-#define LYZLS_TEXTSIZE 13
 
 @implementation LYAttention
 
@@ -44,13 +43,13 @@
     
     // 标题分为三部分, 作者,  干了什么, 标题
     NSString *authorString = rec.owner.nickname;
-    CGSize authorSize = [authorString sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:LYZLS_TEXTSIZE], NSFontAttributeName, nil]];
+    CGSize authorSize = [authorString sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:TextFont_15, NSFontAttributeName, nil]];
     self.author = (CGRect){{authorX, authorY}, authorSize};
     
     NSString *eventString = @"更新了游记";
     CGFloat eventX = CGRectGetMaxX(self.author) + LYZLS_BLANK_WIDTH;
     CGFloat eventY = authorY;
-    CGSize eventSize = [eventString sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:LYZLS_TEXTSIZE], NSFontAttributeName, nil]];
+    CGSize eventSize = [eventString sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:TextFont_15, NSFontAttributeName, nil]];
     self.event = (CGRect){{eventX, eventY}, eventSize};
     
 
@@ -58,7 +57,7 @@
     NSString *titleString = rec.tourtitle;
     CGFloat titleX = authorX;
     CGFloat titleY = CGRectGetMaxY(self.author) + LYZLS_BLANK_WIDTH;
-    CGSize titleSize = [titleString boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 2*LYZLS_BLANK_WIDTH - self.icon.size.width, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:LYZLS_TEXTSIZE] forKey:NSFontAttributeName] context:nil].size;
+    CGSize titleSize = [titleString boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 2*LYZLS_BLANK_WIDTH - self.icon.size.width, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:TextFont_15 forKey:NSFontAttributeName] context:nil].size;
     self.titleName = (CGRect){{titleX, titleY}, titleSize};
     
     // 图片 先检测是否有图片
@@ -83,7 +82,7 @@
     // 标题的Y最大值,加上图片的高度,加上两个空白行的距离==内容的Y值
     CGFloat contentY = CGRectGetMaxY(self.titleName) + self.ig.size.height + 2 * LYZLS_BLANK_WIDTH;
     // 计算content的Size
-    CGSize contentSize = [rec.words boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 4*LYZLS_BLANK_WIDTH - self.icon.size.width, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:LYZLS_TEXTSIZE] forKey:NSFontAttributeName] context:nil].size;
+    CGSize contentSize = [rec.words boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 4*LYZLS_BLANK_WIDTH - self.icon.size.width, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:TextFont_15 forKey:NSFontAttributeName] context:nil].size;
     self.content = (CGRect){{contentX, contentY}, contentSize};
     
     // 两个按钮
@@ -104,7 +103,7 @@
     
     // 创建于
     NSString *ct = [TimeIntervalTool timeIntervalFromTimeString:self.lyam.timestamp];
-    CGSize ctSize = [ct sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:LYZLS_TEXTSIZE], NSFontAttributeName, nil]];
+    CGSize ctSize = [ct sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:TextFont_15, NSFontAttributeName, nil]];
     CGFloat ctX = SCREEN_WIDTH - 2*LYZLS_BLANK_WIDTH - ctSize.width;
     CGFloat ctY = cmtY;
     self.createAt = (CGRect){{ctX, ctY}, ctSize};
@@ -122,7 +121,7 @@
         LYComment *commentModel1 = rec.comments[0];
         NSString *cnt = [NSString stringWithFormat:@"%@:%@",commentModel1.user.nickname, commentModel1.words];
         // 计算size
-        CGSize size1 = [cnt boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 4*LYZLS_BLANK_WIDTH - self.icon.size.width - self.icon.size.width/2, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:LYZLS_TEXTSIZE] forKey:NSFontAttributeName] context:nil].size;
+        CGSize size1 = [cnt boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 4*LYZLS_BLANK_WIDTH - self.icon.size.width - self.icon.size.width/2, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:TextFont_15 forKey:NSFontAttributeName] context:nil].size;
         self.commentContent1 = (CGRect){{CGRectGetMaxX(self.commentatorIcon1) + 2*LYZLS_BLANK_WIDTH, self.commentatorIcon1.origin.y}, size1 };
         
         // 如果运行到此处,cell的高度会改变
@@ -130,26 +129,41 @@
         
         // 第二个评论, 如果评论数量大于等于2的话
         if (rec.comments.count >= 2) {
-            // 第二个评论的头像的frame
-            self.commentatorIcon2 = CGRectMake(authorX, CGRectGetMaxY(self.commentatorIcon1) + 4 * LYZLS_BLANK_WIDTH, LYZLS_ICON_WIDTH/4, LYZLS_ICON_WIDTH/4);
             // 第二个评论内容拼接
             LYComment *commentModel2 = rec.comments[1];
             NSString *cnt1 = [NSString stringWithFormat:@"%@:%@",commentModel2.user.nickname, commentModel2.words];
+            
+            // 第二个评论的头像的frame
+            self.commentatorIcon2 = CGRectMake(authorX, CGRectGetMaxY(self.commentatorIcon1) + 4 * LYZLS_BLANK_WIDTH, LYZLS_ICON_WIDTH/4, LYZLS_ICON_WIDTH/4);
+            
             // 计算Size
-            CGSize size2 = [cnt1 boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 4*LYZLS_BLANK_WIDTH - self.icon.size.width - self.icon.size.width/2, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:LYZLS_TEXTSIZE] forKey:NSFontAttributeName] context:nil].size;
+            CGSize size2 = [cnt1 boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 4*LYZLS_BLANK_WIDTH - self.icon.size.width - self.icon.size.width/2, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:TextFont_15 forKey:NSFontAttributeName] context:nil].size;
             
             self.commmentContent2 = (CGRect){{CGRectGetMaxX(self.commentatorIcon2) + 2*LYZLS_BLANK_WIDTH, self.commentatorIcon2.origin.y}, size2 };
-            self.cellHeight = CGRectGetMaxY(self.commentatorIcon2) + 2 * LYZLS_BLANK_WIDTH;
-            // 评论的数量不止2条的话
+            
+            // 第一条评论的内容越过了头像的话, 第二个评论的Y值就要以内容为准
+            if (CGRectGetMaxY(self.commentContent1) > CGRectGetMaxY(self.commentatorIcon1)) {
+                // 第二个评论的头像的frame
+                self.commentatorIcon2 = CGRectMake(authorX, CGRectGetMaxY(self.commentContent1) + 4 * LYZLS_BLANK_WIDTH, LYZLS_ICON_WIDTH/4, LYZLS_ICON_WIDTH/4);
+                self.commmentContent2 = (CGRect){{CGRectGetMaxX(self.commentatorIcon1) + 2*LYZLS_BLANK_WIDTH, self.commentatorIcon2.origin.y}, size2 };
+            }
+            
+            
+            // 根据内容的大小计算以头像还是内容为标准
+            if (CGRectGetMaxY(self.commmentContent2) > CGRectGetMaxY(self.commentatorIcon2)) {
+                self.cellHeight = CGRectGetMaxY(self.commmentContent2) + 2 * LYZLS_BLANK_WIDTH;
+            } else {
+                self.cellHeight = CGRectGetMaxY(self.commentatorIcon2) + 2 * LYZLS_BLANK_WIDTH;
+            }
+            
+            // 评论的数量不止2条的话,追加一个"阅读更多评论"的Size.height
             if (rec.cntcmt.integerValue != 2) {
                 if (CGRectGetMaxY(self.commmentContent2) > CGRectGetMaxY(self.commentatorIcon2)) {
-                    // 第二条评论的最大Y值如果大于头像的Y值,以评论内容为准
+                    // 第二条评论的内容的最大Y值如果大于头像的Y值,以评论内容为准
                     self.cellHeight = CGRectGetMaxY(self.commmentContent2) + 20 + 4 * LYZLS_BLANK_WIDTH;
                 } else {
                     self.cellHeight = CGRectGetMaxY(self.commentatorIcon2) + 20 + 4 * LYZLS_BLANK_WIDTH;
                 }
-                
-//                self.cellHeight += 20 + 2*LYZLS_BLANK_WIDTH;
             }
         }
     }

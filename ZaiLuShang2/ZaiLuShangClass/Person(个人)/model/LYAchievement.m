@@ -13,7 +13,6 @@
 
 #define LYZLS_ICON_WIDTH 102
 #define LYZLS_BLANK_WIDTH 5
-#define LYZLS_TEXTSIZE 13
 #define LYZLS_MEDAL_WIDTH 88
 
 @implementation LYAchievement
@@ -42,14 +41,14 @@
     CGFloat authorY = iconY;
     // 作者名字
     NSString *nickname = owner.nickname;
-    CGSize authorSize = [nickname sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:LYZLS_TEXTSIZE], NSFontAttributeName, nil]];
+    CGSize authorSize = [nickname sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:TextFont_15, NSFontAttributeName, nil]];
     self.author = (CGRect){{authorX, authorY}, authorSize};
     
     // 获得勋章
     NSString *eventString = @"获得勋章";
     CGFloat eventX = CGRectGetMaxX(self.author) + LYZLS_BLANK_WIDTH;
     CGFloat eventY = authorY;
-    CGSize eventSize = [eventString sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:LYZLS_TEXTSIZE], NSFontAttributeName, nil]];
+    CGSize eventSize = [eventString sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:TextFont_15, NSFontAttributeName, nil]];
     self.event = (CGRect){{eventX, eventY}, eventSize};
     
     // 勋章图案
@@ -61,7 +60,7 @@
     CGFloat medalX = CGRectGetMaxX(self.ig) + LYZLS_BLANK_WIDTH;
     CGFloat medalY = igY;
     NSString *medalString = ach.title;
-        CGSize medalSize = [medalString sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:LYZLS_TEXTSIZE], NSFontAttributeName, nil]];
+        CGSize medalSize = [medalString sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:TextFont_15, NSFontAttributeName, nil]];
         self.medal = (CGRect){{medalX, medalY}, medalSize};
     
     
@@ -75,12 +74,12 @@
         con = [con stringByAppendingString:conditionString];
     }
     // 获得条件有可能会占据多行空间
-    CGSize conditionSize = [con boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 4*LYZLS_BLANK_WIDTH - self.icon.size.width - self.ig.size.width, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:LYZLS_TEXTSIZE] forKey:NSFontAttributeName] context:nil].size;
+    CGSize conditionSize = [con boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 4*LYZLS_BLANK_WIDTH - self.icon.size.width - self.ig.size.width, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:TextFont_15 forKey:NSFontAttributeName] context:nil].size;
     self.condition = (CGRect){{conditionX, conditionY}, conditionSize};
     
     //  创建时间
     NSString *tttt = [TimeIntervalTool timeIntervalFromTimeString:self.lyam.timestamp];
-    CGSize createAtSize = [tttt sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:LYZLS_TEXTSIZE], NSFontAttributeName, nil]];
+    CGSize createAtSize = [tttt sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:TextFont_15, NSFontAttributeName, nil]];
     CGFloat createAtX = SCREEN_WIDTH - 2*LYZLS_BLANK_WIDTH - createAtSize.width;
     CGFloat createAtY = CGRectGetMaxY(self.condition) + 3 * LYZLS_BLANK_WIDTH;
     self.createAt = (CGRect){{createAtX, createAtY}, createAtSize};

@@ -6,28 +6,35 @@
 //  Copyright (c) 2015年 qianfeng. All rights reserved.
 //
 
-#import "PersonVC.h"
-#import "RequestTool.h"
-#import "LYItem.h"
-#import "LYOwner.h"
+
 #import "LYRec.h"
+#import "LYItem.h"
 #import "LYAchv.h"
 #import "LYTour.h"
-#import "LYComment.h"
-#import "LYAttentionModel.h"
+#import "LYOwner.h"
+#import "PersonVC.h"
 #import "TripCell.h"
-#import "LYAttention.h"
 #import "MedalCell.h"
+#import "LYComment.h"
+#import "MJRefresh.h"
+#import "LYAttention.h"
+#import "RequestTool.h"
 #import "LYAchievement.h"
 #import "LYMultiPicture.h"
+#import "LYAttentionModel.h"
 #import "MultiPictureCell.h"
 
-#define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=0&fetchNewer=1&length=40&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
+#define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=%@&fetchNewer=1&length=20&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
 
-@interface PersonVC ()<UITableViewDataSource, UITableViewDelegate, TripCellDelegate>
+@interface PersonVC ()<UITableViewDataSource, UITableViewDelegate, TripCellDelegate, MJRefreshBaseViewDelegate>
 
 @property (nonatomic ,weak) UITableView *tableView;
-@property (nonatomic,strong) NSMutableArray * dataArray;
+@property (nonatomic,strong) NSMutableArray *dataArray;
+@property (nonatomic, weak) MJRefreshHeaderView *headerView;
+@property (nonatomic, weak) MJRefreshFooterView *footerView;
+
+@property (nonatomic, copy) NSString *startId;
+@property (nonatomic, assign) BOOL hasMore;
 
 @end
 
@@ -36,14 +43,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initStartId];
+    
     [self createTableView];
     
     [self createTitleView];
     
-    [self requestData];
+    [self requestDataWithStartId:self.startId];
     
 }
-
+- (void)initStartId {
+    self.startId = @"0";
+    self.hasMore = NO;
+}
 - (void)createTitleView
 {
 
@@ -57,13 +69,26 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    // 头
+    MJRefreshHeaderView *h = [MJRefreshHeaderView header];
+    h.scrollView = self.tableView;
+    self.headerView = h;
+    h.delegate = self;
+    
+    // 尾
+    MJRefreshFooterView *f = [MJRefreshFooterView footer];
+    f.scrollView = self.tableView;
+    self.footerView = f;
+    f.delegate = self;
+    
     self.tableView.separatorColor = [UIColor lightGrayColor];
 }
 /**
  *  请求数据,解析数据
  */
-- (void)requestData {
-    [RequestTool GET:ZLS_PERSON_URL parameters:nil success:^(id responseObject) {
+- (void)requestDataWithStartId:(NSString *)startId {
+    NSString *requestURL = [NSString stringWithFormat:ZLS_PERSON_URL, startId];
+    [RequestTool GET:requestURL parameters:nil success:^(id responseObject) {
         NSLog(@"数据请求成功, 开始解析数据...");
         if (_dataArray == nil) {
             _dataArray = [[NSMutableArray alloc] init];
@@ -72,6 +97,8 @@
         NSDictionary *dict = (NSDictionary *)responseObject;
         // 解析数据
         for (NSDictionary *smallDict in dict[@"obj"][@"list"]) {
+            self.startId = dict[@"obj"][@"start"];
+            self.hasMore = (BOOL)dict[@"obj"][@"hasMore"];
             // 开始解析数据
             // 判断数据是何种类型
             
@@ -171,6 +198,10 @@
             }
         }
         // 刷新表格
+        
+        [self.headerView endRefreshing];
+        [self.footerView endRefreshing];
+        
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         NSLog(@"数据请求失败");
@@ -185,16 +216,17 @@
    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // 还需要判断model的类型选择不同的cell,后续增加上
     LYAttentionModel *heihei = _dataArray[indexPath.row];
     id haha = heihei.item;
     
     if (([haha class] == [LYAchv class]) == YES)
     {
+        // LYAch
         LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:heihei];
         MedalCell *cell = [[MedalCell alloc] initWithLYAttention:ach];
         return cell;
     } else if (([haha class] == [LYRec class]) == YES) {
+        // LYRec
         LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:heihei];
         TripCell *cell = [[TripCell alloc] initWithLYAttention:att];
         return cell;
@@ -215,7 +247,8 @@
         LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:heihei];
         return ach.cellHeight;
     } else {
-        return 300;
+        LYMultiPicture *mp = [[LYMultiPicture alloc] initWithLYAttentionModel:heihei];
+        return mp.cellHeight;
     }
 }
 
@@ -231,5 +264,26 @@
 }
 - (void)contentTapped:(UITapGestureRecognizer *)tgr {
     NSLog(@"点击了内容中的链接");
+}
+#pragma mark - MJ刷新方法
+- (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView {
+    if ([refreshView class] == [MJRefreshHeaderView class]) {
+        [_dataArray removeAllObjects];
+        _dataArray = nil;
+        [self requestDataWithStartId:@"0"];
+    } else {
+        // 判断
+        if (self.hasMore == NO) {
+            // 没有更多数据就直接返回
+            return;
+        }
+        [self requestDataWithStartId:self.startId];
+    }
+}
+- (void)refreshViewEndRefreshing:(MJRefreshBaseView *)refreshView {
+    
+}
+- (void)refreshView:(MJRefreshBaseView *)refreshView stateChange:(MJRefreshState)state {
+    
 }
 @end

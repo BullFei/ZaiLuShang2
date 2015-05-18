@@ -9,8 +9,8 @@
 #import "MultiPictureCell.h"
 #import "UIImageView+WebCache.h"
 #import "LYTour.h"
+#import "TimeIntervalTool.h"
 
-#define LYZLS_TEXTSIZE 13
 
 @implementation MultiPictureCell
 
@@ -41,7 +41,7 @@
     self.author = [[UILabel alloc] init];
     self.author.frame = self.mp.author;
     self.author.textColor = [UIColor blueColor];
-    self.author.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
+    self.author.font = TextFont_15;
     self.author.text = owner.nickname;
     self.author.userInteractionEnabled = YES;
     [self.contentView addSubview:self.author];
@@ -51,13 +51,13 @@
     UILabel *eveLabel = [[UILabel alloc] init];
     eveLabel.frame = self.mp.event;
     eveLabel.textColor = [UIColor blackColor];
-    eveLabel.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
+    eveLabel.font = TextFont_15;
     eveLabel.text = eventString;
     [self.contentView addSubview:eveLabel];
     
     // 标题
     self.title = [[UILabel alloc] init];
-    self.title.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
+    self.title.font = TextFont_15;
     self.title.frame = self.mp.title;
     self.title.numberOfLines = 0;
     self.title.textColor = [UIColor blueColor];
@@ -79,5 +79,15 @@
     self.photo.imageURLS = urlArray;
     [self.photo configImages];
     [self.contentView addSubview:self.photo];
+    
+    // 创建时间
+     NSString *time = [TimeIntervalTool timeIntervalFromTimeString:self.mp.informationModel.timestamp];
+    self.createAt = [[UILabel alloc] init];
+    self.createAt.frame = self.mp.createAt;
+    self.createAt.font = TextFont_15;
+    self.createAt.text = time;
+    self.createAt.textColor = [UIColor lightGrayColor];
+    [self.contentView addSubview:self.createAt];
+    
 }
 @end
