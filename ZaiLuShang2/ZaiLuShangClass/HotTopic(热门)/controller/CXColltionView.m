@@ -53,7 +53,7 @@
 - (void)requestDataSuccess:(void (^)(id responseObject))success failure:(void (^)())failure
 {
     
-    [RequestTool GET:self.url parameters:nil success:^(id responseObject) {
+    [RequestTool GET:(self.url.length == 0 ? self.otherUrl : self.url) parameters:nil success:^(id responseObject) {
 //        NSLog(@"%@", responseObject);
         if (success) {
             success(responseObject);
