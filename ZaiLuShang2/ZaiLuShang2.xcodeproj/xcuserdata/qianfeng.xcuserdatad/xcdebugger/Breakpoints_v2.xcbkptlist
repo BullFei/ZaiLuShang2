@@ -6,6 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< Updated upstream
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -16,6 +17,18 @@
             startingLineNumber = "132"
             endingLineNumber = "132"
             landmarkName = "-refreshHeaderViewSuccess:failure:"
+=======
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZaiLuShangClass/HotTopic(&#x70ed;&#x95e8;)/controller/CXColltionView.m"
+            timestampString = "453608678.451913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-setOtherUrl:"
+>>>>>>> Stashed changes
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
