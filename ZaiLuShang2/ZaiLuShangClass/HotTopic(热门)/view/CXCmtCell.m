@@ -88,6 +88,8 @@
     self.timeLabel.frame = model.timeF;
     self.text.frame = model.textLabelF;
     
+    self.bottemView.frame = CGRectMake(self.text.frame.origin.x, model.cellH-1, CGW(self), 1);
+    
     CXCmtModel *cmtModel = model.cmtModel;
     CXCollectionVCellOwnerModel *user = cmtModel.user;
     
@@ -98,6 +100,8 @@
     self.text.text = cmtModel.words;
     
     self.iconView.layer.cornerRadius = self.iconView.frame.size.width/2;
+    
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -107,7 +111,7 @@
 - (void)willMoveToSuperview:(UIView *)newSuperview
 {
     [super willMoveToSuperview:newSuperview];
-    self.bottemView.frame = CGRectMake(self.text.frame.origin.x, CGH(self)-1, CGW(self), 1);
+    
 }
 
 @end
