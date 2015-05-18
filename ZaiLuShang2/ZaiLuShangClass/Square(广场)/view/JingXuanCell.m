@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *authorButton;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *commentsScrollView;
+@property (weak, nonatomic) IBOutlet UILabel *viewCountLabel;
 
 @end
 @implementation JingXuanCell
@@ -196,8 +197,27 @@
     [_contentImageView sd_setImageWithURL:[NSURL URLWithString:contentPURL]];
     
     _titleLabel.text =_jingXuanModel.title;
-    _collectionCountLabel.text =_jingXuanModel.likeCnt;
-    _pictureCountLabel.text =_jingXuanModel.cntP;
+    
+    NSString * likestr =_jingXuanModel.likeCnt;
+    if ([likestr integerValue]/1000>0) {
+        _collectionCountLabel.text =[NSString stringWithFormat:@"%ldK",[likestr integerValue]/1000 ];
+    }else{
+        _collectionCountLabel.text =_jingXuanModel.likeCnt;
+    }
+    NSString * cntPstr =_jingXuanModel.cntP;
+    if ([cntPstr integerValue]/1000>0) {
+        _collectionCountLabel.text =[NSString stringWithFormat:@"%ldK",[cntPstr integerValue]/1000 ];
+    }else{
+       _pictureCountLabel.text =_jingXuanModel.cntP;
+    }
+    
+    NSString * viewCntstr =_jingXuanModel.viewCnt;
+    if ([viewCntstr integerValue]/1000>0) {
+        _collectionCountLabel.text =[NSString stringWithFormat:@"%ldK",[viewCntstr integerValue]/1000 ];
+    }else{
+        _viewCountLabel.text =_jingXuanModel.viewCnt;
+    }
+    
     
     //AuthorButton
    

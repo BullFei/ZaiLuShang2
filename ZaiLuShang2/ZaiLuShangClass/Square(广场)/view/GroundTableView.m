@@ -89,21 +89,45 @@
 {
      adview =[ADView createADViewWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, 200*_tableView.frame.size.width/320)];
     adview.tag = 1;
+    __weak GroundTableView * view =self;
+    adview.pushBlock=^(NSString * url){
+        view.ADViewPushBlock(url);
+    };
 }
 -(void)createSpecialColumnViews
 {
-    CGRect rect =CGRectMake(0, 0, SCREEN_WIDTH, 30/320*SCREEN_WIDTH) ;
+    CGRect rect =CGRectMake(0, 0, SCREEN_WIDTH, 30*SCREEN_WIDTH/320) ;
+    __weak GroundTableView * selfView =self;
     if (scv1==nil) {
         scv1 =[SpecialColumnView getSpecialColumnViewWithFrame:rect];
+        scv1.tag =GROUND_SPECIALCOLUMNVIEW_INIT_TAG;
+        scv1.JingXuanPushBlock=^{
+            selfView.JingXuanHeadViewPushBlock();
+        };
     }
     if (scv2==nil) {
         scv2 =[SpecialColumnView getSpecialColumnViewWithFrame:rect];
+        scv2.tag =GROUND_SPECIALCOLUMNVIEW_INIT_TAG+1;
+        scv2.Section2PushBlock =^(NSString * link){
+            selfView.Section2HeadViewPushBlock(link);
+    
+        };
     }
     if (scv3==nil) {
         scv3 =[SpecialColumnView getSpecialColumnViewWithFrame:rect];
+        scv3.tag =GROUND_SPECIALCOLUMNVIEW_INIT_TAG+2;
+        scv3.TripTopicPushBlock =^(NSString * link){
+            selfView.TripTopicHeadViewPushBlock(link);
+            
+        };
     }
     if (scv4==nil) {
         scv4 =[SpecialColumnView getSpecialColumnViewWithFrame:rect];
+        scv4.tag =GROUND_SPECIALCOLUMNVIEW_INIT_TAG+3;
+        scv4.MoreThemePushBlock=^{
+            selfView.MoreThemeHeadViewPushBlock();
+        };
+        
     }
     
 }
@@ -170,6 +194,7 @@
             {
                 SpecialColumnModel * mm =[_SpecialColumnModelArray objectAtIndex:0];
                 scv1.specialColumnModel =mm;
+                
                 return scv1;
                 break;
             }
@@ -255,6 +280,9 @@
         case 2:
         {
             Section2Cell  * cell =[Section2Cell  getSection2ViewWithTableView:tableView];
+            cell.section2ItemPushBlock=^(Section2ItemModel *mm){
+                self.section2ItemPushBlock(mm);
+            };
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
             cell.Section2ItemModelArray =_Section2ItemModelArray;
             return cell;
@@ -280,6 +308,28 @@
             
         default:
             return nil;
+            break;
+    }
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section) {
+        case 1:
+        {
+            JingXuanModel * mm =[_JingXuanModelArray objectAtIndex:indexPath.row];
+            self.JingXuanCellPushBlock(mm);
+            break;
+        }
+        case 2:
+            //collection
+            break;
+        case 3:
+            //collection
+            break;
+        case 4:
+            //collection
+            break;
+        default:
             break;
     }
 }

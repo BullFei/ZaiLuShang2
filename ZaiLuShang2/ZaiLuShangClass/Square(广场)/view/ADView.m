@@ -11,6 +11,8 @@
 //#define SCROLLVIEW_INIT_TAG 1
 //#define PAGECONTROL_INIT_TAG 2
 #import "UIButton+WebCache.h"
+
+#import "ZYCADWebViewController.h"
 @implementation ADView
 {
     UIScrollView * _scrollView;
@@ -48,6 +50,8 @@
     ADModel * admfirst =[ADModelArray firstObject];
     UIButton * buttonlast =(id)[self viewWithTag:BUTTON_INIT_TAG+totalPage+1];
     [buttonlast sd_setBackgroundImageWithURL:[NSURL URLWithString:admfirst.img_large] forState:UIControlStateNormal];
+    
+    
     NSInteger i =1;
     for (ADModel * model in ADModelArray) {
         UIButton * button =(id)[self viewWithTag:i+BUTTON_INIT_TAG];
@@ -127,7 +131,20 @@
 }
 -(void)ADbuttonClick:(UIButton *)button
 {
-    NSLog(@"~~%ld",button.tag);
+    //NSLog(@"~~%ld",button.tag);
+    if (button.tag==BUTTON_INIT_TAG||button.tag==BUTTON_INIT_TAG+totalPage+1) {
+        return;
+    }
+    ADModel * mm =[_ADModelArray objectAtIndex:button.tag-BUTTON_INIT_TAG-1];
+    
+    NSString * url = mm.onclick[@"info"];
+    if (![url hasPrefix:@"http"]) {
+        return;
+    }
+    //CXLog(@"~~~%@",url);
+    //这里为什么一直内存泄露。。。
+    self.pushBlock(url);
+    
 }
 
 #pragma mark 时间刷新

@@ -49,6 +49,7 @@
     [self.contentView addSubview:_collectionView];
     
 }
+
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
@@ -72,6 +73,12 @@
     
     
 }
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    Section2ItemModel * mm =[_Section2ItemModelArray objectAtIndex:indexPath.item];
+    self.section2ItemPushBlock(mm);
+}
+
 
 
 

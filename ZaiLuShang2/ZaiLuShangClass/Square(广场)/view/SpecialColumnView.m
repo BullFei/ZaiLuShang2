@@ -22,6 +22,7 @@
     _specialColumnModel =specialColumnModel;
     _titleLabel.text =_specialColumnModel.title;
     _wordsLabel.text =_specialColumnModel.words;
+    
 }
 +(SpecialColumnView *)getSpecialColumnViewWithFrame:(CGRect)frame
 {
@@ -34,24 +35,51 @@
         _leftImageLabel =[[UILabel alloc]initWithFrame:CGRectMake(8,3 , 5, 24)];
         _leftImageLabel.backgroundColor =[UIColor redColor];
         [self addSubview:_leftImageLabel];
+        
         _titleLabel =[[UILabel alloc]initWithFrame:CGRectMake(15, 3, 100,24 )];
+        _titleLabel.font =[UIFont systemFontOfSize:15];
         [self addSubview:_titleLabel];
+        
         _wordsLabel =[[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-130, 3, 100, 24)];
+        _wordsLabel.textAlignment =NSTextAlignmentRight;
+        _wordsLabel.font =[UIFont systemFontOfSize:15];
         [self addSubview:_wordsLabel];
+        
         _rightImageView =[[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-30, 0, 30, 30)];
         _rightImageView.image =[UIImage imageNamed:@"icon_arrows_right"];
         [self addSubview:_rightImageView];
         self.userInteractionEnabled =YES;
         _ctrl =[[UIControl alloc]initWithFrame:self.bounds];
-        [_ctrl addTarget:self action:@selector(controlClick) forControlEvents:UIControlEventTouchUpInside];
+        [_ctrl addTarget:self action:@selector(controlClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_ctrl];
         
     }
     return self;
 }
--(void)controlClick
+-(void)controlClick:(UIControl *)ctrl
 {
-    NSLog(@"~~~~%@",_ctrl);
+    switch (ctrl.superview.tag) {
+        case GROUND_SPECIALCOLUMNVIEW_INIT_TAG:
+            self.JingXuanPushBlock();
+            break;
+        case GROUND_SPECIALCOLUMNVIEW_INIT_TAG+1:
+            self.Section2PushBlock(_specialColumnModel.link);
+            break;
+        case GROUND_SPECIALCOLUMNVIEW_INIT_TAG+2:
+        {
+           
+            self.TripTopicPushBlock(_specialColumnModel.link);
+        
+            break;
+        }
+        case GROUND_SPECIALCOLUMNVIEW_INIT_TAG+3:
+            self.MoreThemePushBlock();
+            break;
+        default:
+            break;
+    }
+    //NSLog(@"~~~~%@",_ctrl);
+    
 }
 /*
 // Only override drawRect: if you perform custom drawing.
