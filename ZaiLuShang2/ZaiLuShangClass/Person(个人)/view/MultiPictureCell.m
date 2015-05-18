@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "LYTour.h"
 #import "TimeIntervalTool.h"
+#import "LYWebViewController.h"
 
 
 @implementation MultiPictureCell
@@ -34,17 +35,25 @@
     self.icon.layer.cornerRadius = 102/4;
     self.icon.layer.masksToBounds = YES;
     NSString *url = [NSString stringWithFormat:@"%@%@%@", owner.picdomain, SMALL_HEAD, owner.avatar];
-    [self.icon sd_setImageWithURL:[NSURL URLWithString:url]];
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"bg_pic_placeholder_small.9"]];
     [self.contentView addSubview:self.icon];
+    // 给头像添加手势
+    self.icon.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tgrIcon = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(iconTapped:)];
+    [self.icon addGestureRecognizer:tgrIcon];
     
-    // 标题
+    
+    // 作者
     self.author = [[UILabel alloc] init];
     self.author.frame = self.mp.author;
     self.author.textColor = [UIColor blueColor];
     self.author.font = TextFont_15;
     self.author.text = owner.nickname;
-    self.author.userInteractionEnabled = YES;
     [self.contentView addSubview:self.author];
+    // 给作者添加手势
+    self.author.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tgrAuthor = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(iconTapped:)];
+    [self.author addGestureRecognizer:tgrAuthor];
     
     // 动作
     NSString *eventString = [NSString stringWithFormat:@"上传了%@个记录到游记", iiii.piccnt];
@@ -63,11 +72,18 @@
     self.title.textColor = [UIColor blueColor];
     self.title.text = tour.title;
     [self.contentView addSubview:self.title];
+    // 给标题添加手势
+    self.title.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tgrTitle = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTappedByController:)];
+    [self.title addGestureRecognizer:tgrTitle];
+    
     
     
     // 九宫格图片
     self.photo = [[LYPhotoView alloc] init];
     self.photo.frame = self.mp.photoView;
+    // 设置代理
+    self.photo.delegate = self;
     self.photo.imageCount = iiii.piccnt.integerValue;
     
     // 拼接URL地址
@@ -88,6 +104,13 @@
     self.createAt.text = time;
     self.createAt.textColor = [UIColor lightGrayColor];
     [self.contentView addSubview:self.createAt];
-    
 }
+- (void)iconTapped:(UITapGestureRecognizer *)tgr {
+    [self.delegate performSelector:@selector(pictureCell:iconTapped:) withObject:self withObject:tgr];
+}
+#pragma mark - LYPhotoViewDelegate
+- (void)imageTappedByController:(UITapGestureRecognizer *)tgr {
+    [self.delegate performSelector:@selector(pictureCell:imageTapped:) withObject:self withObject:tgr];
+}
+
 @end

@@ -32,7 +32,7 @@
     self.icon.layer.cornerRadius = 102/4;
     self.icon.layer.masksToBounds = YES;
     NSString *url = [NSString stringWithFormat:@"%@%@%@", owner.picdomain, SMALL_HEAD, owner.avatar];
-    [self.icon sd_setImageWithURL:[NSURL URLWithString:url]];
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"bg_pic_placeholder_small.9"]];
     [self.contentView addSubview:self.icon];
     
     // 标题

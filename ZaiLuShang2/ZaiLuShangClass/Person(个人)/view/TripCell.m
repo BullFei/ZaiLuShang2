@@ -44,18 +44,18 @@
     self.icon.layer.cornerRadius = 102/4;
     self.icon.layer.masksToBounds = YES;
     // 从网络上加载头像
-    [self.icon sd_setImageWithURL:[NSURL URLWithString:url]];
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"bg_pic_placeholder_small.9"]];
     // 添加到cell中
     [self.contentView addSubview:self.icon];
     
-    // 添加事件
+    // 添加头像点击事件
     UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(iconAction:)];
     self.icon.userInteractionEnabled = YES;
     [self.icon addGestureRecognizer:tgr];
     
     
     /*==================================================================================*/
-    // 标题
+    // 作者
     self.author = [[UILabel alloc] init];
     self.author.frame = self.attFrame.author;
     self.author.textColor = [UIColor blueColor];
@@ -96,7 +96,7 @@
         // 拼接URL
         self.ig.backgroundColor = [UIColor cyanColor];
         NSString *imageURL = [NSString stringWithFormat:@"%@%@%@",rec.picdomain, BIG_IMAGE, rec.picfile];
-        [self.ig sd_setImageWithURL:[NSURL URLWithString:imageURL]];
+        [self.ig sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"bg_pic_placeholder_small.9"]];
         [self.contentView addSubview:self.ig];
         
         // 给图片添加事件
@@ -258,15 +258,15 @@
 }
 // 头像被点击的方法
 - (void)iconAction:(UITapGestureRecognizer *)tgr {
-    [self.delegate performSelector:@selector(iconTapped:) withObject:tgr];
+    [self.delegate performSelector:@selector(tripCell:iconTapped:) withObject:self withObject:tgr];
 }
 // 标题被点击的方法
 - (void)titleAction:(UITapGestureRecognizer *)tgr {
-    [self.delegate performSelector:@selector(titleTapped:) withObject:tgr];
+    [self.delegate performSelector:@selector(tripCell:titleTapped:) withObject:self withObject:tgr];
 }
 // 图片被点击的方法
 - (void)igAction:(UITapGestureRecognizer *)tgr {
-    [self.delegate performSelector:@selector(igTapped:) withObject:tgr];
+    [self.delegate performSelector:@selector(tripCell:imageTapped:) withObject:self withObject:tgr];
 }
 // 正文内容如果含有链接的话的方法
 - (void)websiteAction:(UITapGestureRecognizer *)tgr {
