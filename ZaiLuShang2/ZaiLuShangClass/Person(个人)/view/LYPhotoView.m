@@ -11,7 +11,7 @@
 
 #define LYZLS_IMAGE_INTERVAL 5
 #define LYZLS_ICON_WIDTH 102
-#define LYZLS_IMAGE_WIDTH ((SCREEN_WIDTH - 4 * LYZLS_IMAGE_INTERVAL - (LYZLS_ICON_WIDTH/2))/3)
+#define LYZLS_IMAGE_WIDTH ((self.frame.size.width - 2 * LYZLS_IMAGE_INTERVAL)/3)
 #define LYZLS_IMAGE_TAG 100
 
 
@@ -19,7 +19,8 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor cyanColor];
+        self.backgroundColor = [UIColor clearColor];
+        
     }
     return self;
 }

@@ -11,7 +11,6 @@
 #import "UIImageView+WebCache.h"
 #import "TimeIntervalTool.h"
 
-#define LYZLS_TEXTSIZE 13
 
 @implementation MedalCell
 
@@ -40,7 +39,7 @@
     self.author = [[UILabel alloc] init];
     self.author.frame = self.achFrame.author;
     self.author.textColor = [UIColor blueColor];
-    self.author.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
+    self.author.font = TextFont_15;
     self.author.text = owner.nickname;
     self.author.userInteractionEnabled = YES;
     [self.contentView addSubview:self.author];
@@ -50,7 +49,7 @@
     UILabel *eveLabel = [[UILabel alloc] init];
     eveLabel.frame = self.achFrame.event;
     eveLabel.textColor = [UIColor blackColor];
-    eveLabel.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
+    eveLabel.font = TextFont_15;
     eveLabel.text = eve;
     [self.contentView addSubview:eveLabel];
     
@@ -64,7 +63,7 @@
     self.medal = [[UILabel alloc] init];
     self.medal.frame = self.achFrame.medal;
     self.medal.textColor = [UIColor blackColor];
-    self.medal.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
+    self.medal.font = TextFont_15;
     self.medal.text = ach.title;
     [self.contentView addSubview:self.medal];
     
@@ -76,7 +75,7 @@
     }
     self.condition = [[UILabel alloc] init];
     self.condition.frame = self.achFrame.condition;
-    self.condition.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
+    self.condition.font = TextFont_15;
     self.condition.text = con;
     self.condition.numberOfLines = 0;
     self.condition.textColor = [UIColor blackColor];
@@ -85,7 +84,7 @@
     // 创建时间
     self.createAt = [[UILabel alloc] init];
     self.createAt.frame = self.achFrame.createAt;
-    self.createAt.font = [UIFont systemFontOfSize:LYZLS_TEXTSIZE];
+    self.createAt.font = TextFont_15;
     self.createAt.textColor = [UIColor lightGrayColor];
     self.createAt.text = [TimeIntervalTool timeIntervalFromTimeString:self.achFrame.lyam.timestamp];
     [self.contentView addSubview:self.createAt];
