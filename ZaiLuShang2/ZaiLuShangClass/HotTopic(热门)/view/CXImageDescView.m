@@ -91,19 +91,29 @@
     self.imageView.frame = CGRectMake(0, (CGH(self)-height)/2, width, height);
 }
 
-- (void)setModel:(CXCollectViewCellModel *)model isLoadImage:(BOOL)is
+- (void)setModel:(id)model isLoadImage:(BOOL)is
 {
     [self setModel:model isLoadImage:is success:nil];
 }
 
-- (void)setModel:(CXCollectViewCellModel *)model isLoadImage:(BOOL)is success:(void (^)())success
+- (void)setModel:(id)model isLoadImage:(BOOL)is success:(void (^)())success
 {
-    
-    
-    _model = model;
     // 模型
-    CXCollectionVCellModel *cellmodel = model.pic;
-    CXCollectionVCellOwnerModel *owner = cellmodel.owner;
+    CXCollectViewCellModel *viewModel;
+    CXCollectionVCellModel *cellmodel;
+    CXCollectionVCellOwnerModel *owner;
+
+    if ([model isKindOfClass:[CXCollectViewCellModel class]]) {
+        viewModel = model;
+        cellmodel = viewModel.pic;
+    } else if ([model isKindOfClass:[CXCollectionVCellModel class]]) {
+        cellmodel = model;
+    }
+    owner = cellmodel.owner;
+    
+//    // 模型
+//    CXCollectionVCellModel *cellmodel = model.pic;
+//    CXCollectionVCellOwnerModel *owner = cellmodel.owner;
     // 图片
     NSString *str = [NSString stringWithFormat:@"%@f1400/%@", cellmodel.picdomain, cellmodel.picfile];
     if (is) {

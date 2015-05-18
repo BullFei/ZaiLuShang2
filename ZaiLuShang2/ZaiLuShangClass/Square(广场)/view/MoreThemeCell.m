@@ -35,7 +35,7 @@
     [layout setMinimumInteritemSpacing:0];
     [layout setMinimumLineSpacing:7];
     
-    _collectionView =[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, 375, 80*4+3*7) collectionViewLayout:layout];
+    _collectionView =[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, (80*4+3*7)*SCREEN_WIDTH/320) collectionViewLayout:layout];
     _collectionView.delegate =self;
     _collectionView.dataSource =self;
     _collectionView.backgroundColor =[UIColor whiteColor];
@@ -55,7 +55,7 @@
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  CGSizeMake(184, 80);
+    return  CGSizeMake(157*SCREEN_WIDTH/320, 80*SCREEN_WIDTH/320);
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {

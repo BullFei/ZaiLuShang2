@@ -438,8 +438,15 @@
 
 - (void)comment:(CXScrollViewBarBtn *)btn
 {
-    CXCollectViewCellModel *model = self.imageUrls[self.currentPageIndex];
-    CXCollectionVCellModel *cellmodel = model.pic;
+    CXCollectViewCellModel *model;
+    CXCollectionVCellModel *cellmodel;
+    if ([[self.imageUrls firstObject] isKindOfClass:[CXCollectViewCellModel class]]) {
+        model = self.imageUrls[self.currentPageIndex];
+        cellmodel = model.pic;
+    } else if ([[self.imageUrls firstObject] isKindOfClass:[CXCollectionVCellModel class]]) {
+        cellmodel = self.imageUrls[self.currentPageIndex];
+    }
+
     if ([self.delegate respondsToSelector:@selector(scrollViweBarCmtButtenClick:)]) {
         [self.delegate scrollViweBarCmtButtenClick:cellmodel];
     }
@@ -489,9 +496,16 @@
 
 - (void)setComAndZhan
 {
+    CXCollectViewCellModel *model;
+    CXCollectionVCellModel *cellmodel;
+    if ([[self.imageUrls firstObject] isKindOfClass:[CXCollectViewCellModel class]]) {
+        model = self.imageUrls[self.currentPageIndex];
+        cellmodel = model.pic;
+    } else if ([[self.imageUrls firstObject] isKindOfClass:[CXCollectionVCellModel class]]) {
+        cellmodel = self.imageUrls[self.currentPageIndex];
+    }
+    
     [self.barBtnArr[4] setSelected:NO];
-    CXCollectViewCellModel *model = self.imageUrls[self.currentPageIndex];
-    CXCollectionVCellModel *cellmodel = model.pic;
     NSString *like = [cellmodel.likeCnt isEqualToString:@"0"]?@"赞":cellmodel.likeCnt;
     NSString *cmt = [cellmodel.cntcmt isEqualToString:@"0"]?@"评论":cellmodel.cntcmt;
     [self.barBtnArr[0] setTitle:like forState:UIControlStateNormal];

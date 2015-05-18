@@ -12,4 +12,6 @@
 +(ADView *)createADViewWithFrame:(CGRect)frame;
 @property (nonatomic,weak)NSArray * ADModelArray;
 -(void)refresh;
+-(UIScrollView *)getSCrollView;
+
 @end

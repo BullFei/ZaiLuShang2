@@ -26,6 +26,7 @@
 @property (nonatomic ,weak) MJRefreshFooterView *footer;
 
 @property (nonatomic, copy) NSString *url;
+@property (nonatomic, copy) NSString *otherUrl;
 
 @property (nonatomic ,strong) NSMutableArray *dataArr;
 

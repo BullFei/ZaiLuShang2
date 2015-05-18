@@ -13,4 +13,5 @@
 +(JingXuanCell *)GetJingXuanCellWithTableView:(UITableView *)tableview;
 @property (nonatomic,weak)JingXuanModel * jingXuanModel;
 @property (nonatomic,weak)NSArray * CommentModelArray;
+-(void)refreshCommentsScrollView;
 @end

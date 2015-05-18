@@ -8,6 +8,7 @@
 
 #import "Section2CollectionCell.h"
 #import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
 @interface Section2CollectionCell()
 @property (weak, nonatomic) IBOutlet UIButton *authorButton;
 
@@ -44,6 +45,12 @@
     NSString * contentURL =[NSString stringWithFormat:@"%@f1400/%@",_section2ItemModel.picdomain,_section2ItemModel.coverpic];
     [_contentImageView sd_setImageWithURL:[NSURL URLWithString:contentURL]];
     _titleLabel.text =_section2ItemModel.title;
+    //作者button
+    NSString * str =[NSString stringWithFormat:@"%@%@%@",_section2ItemModel.owner.picdomain,BIG_HEAD,_section2ItemModel.owner.avatar];
+    _authorButton.layer.cornerRadius =_authorButton.frame.size.width/2;
+    _authorButton.layer.masksToBounds =YES;
+
+    [_authorButton sd_setBackgroundImageWithURL:[NSURL URLWithString:str] forState:UIControlStateNormal];
     
 }
 @end

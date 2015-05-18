@@ -8,19 +8,28 @@
 
 #import "ADView.h"
 #define BUTTON_INIT_TAG 100
-#define SCROLLVIEW_INIT_TAG 1
-#define PAGECONTROL_INIT_TAG 2
+//#define SCROLLVIEW_INIT_TAG 1
+//#define PAGECONTROL_INIT_TAG 2
 #import "UIButton+WebCache.h"
 @implementation ADView
 {
     UIScrollView * _scrollView;
     UIPageControl * _pageControl;
-    NSInteger totalPage;
+    NSInteger totalPage; //总页数
     BOOL isLoadData;//是否已经加载数据
+    //NSTimer * _timer;
 }
+//-(void)dealloc
+//{
+//    if (_timer) {
+//        [_timer invalidate];
+//    }
+//}
+
+
 -(void)setADModelArray:(NSArray *)ADModelArray
 {
-   
+    
     _ADModelArray =ADModelArray;
     if (isLoadData==NO&&ADModelArray!=nil) {
         totalPage =_ADModelArray.count;
@@ -50,12 +59,17 @@
 {
     return [[self alloc]initWithFrame:frame];
 }
+-(UIScrollView *)getSCrollView
+{
+    return _scrollView;
+}
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self=[super initWithFrame:frame]) {
-//        
-       [self createScrollView];
-        [self createPageControl];
+//
+        //[self createTimer];
+       //[self createScrollView];
+        //[self createPageControl];
         //[self createButton];
     }
     return  self;
@@ -120,14 +134,27 @@
 -(void)refresh
 {
     CGPoint pp =_scrollView.contentOffset;
-    pp.x +=375;
+    pp.x +=SCREEN_WIDTH;
     _scrollView.contentOffset =pp;
-    [self scrollViewDidEndDecelerating:_scrollView];
+    [self redirectScrollViewContentOffset:_scrollView];
+    //[self scrollViewDidEndDecelerating:_scrollView];
 }
+//-(void)createTimer
+//{
+//    _timer =[NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
+//    [_timer setFireDate:[NSDate distantFuture]];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [_timer setFireDate:[NSDate distantPast]];
+//    });
+//}
 
 
 #pragma mark UIScrollViewDelegate
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    //[_timer setFireDate:[NSDate distantFuture]];
+}
+-(void)redirectScrollViewContentOffset:(UIScrollView *)scrollView
 {
     if (scrollView.contentOffset.x==0) {
         [scrollView setContentOffset:CGPointMake(totalPage*self.frame.size.width, 0)];
@@ -141,6 +168,14 @@
     {
         _pageControl.currentPage =scrollView.contentOffset.x/self.frame.size.width-1;
     }
+}
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self redirectScrollViewContentOffset:scrollView];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [_timer setFireDate:[NSDate distantPast]];
+//    });
+    //[_timer setFireDate:[NSDate distantPast]];
 }
 
 /*

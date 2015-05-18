@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#define GROUND_JINGXUANCELL_INITTAG 10
 @interface GroundTableView : UIView <UITableViewDataSource,UITableViewDelegate>
 +(GroundTableView *)createTableViewWithFrame:(CGRect)frame;
 @property (nonatomic,weak)NSArray * ADModelArray;
