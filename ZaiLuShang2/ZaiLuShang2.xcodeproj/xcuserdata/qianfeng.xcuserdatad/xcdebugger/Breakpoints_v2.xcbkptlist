@@ -4,39 +4,67 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> Stashed changes
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZaiLuShangClass/Search(&#x641c;&#x7d22;)/controller/SFPhotoVC.m"
+            timestampString = "453608403.79415"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZaiLuShangClass/HotTopic(&#x70ed;&#x95e8;)/controller/CXColltionView.m"
+            timestampString = "453608624.85296"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "-refreshHeaderViewSuccess:failure:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZaiLuShangClass/Search(&#x641c;&#x7d22;)/controller/SFTourDayVC.m"
-            timestampString = "453527330.69789"
+            filePath = "ZaiLuShangClass/HotTopic(&#x70ed;&#x95e8;)/controller/CXColltionView.m"
+            timestampString = "453608678.451913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "-createCollectionView"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-setOtherUrl:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-<<<<<<< Updated upstream
->>>>>>> origin/master
-=======
->>>>>>> Stashed changes
-         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            scope = "0"
-            stopOnStyle = "0">
+            filePath = "ZaiLuShangClass/HotTopic(&#x70ed;&#x95e8;)/controller/CXColltionView.m"
+            timestampString = "453608717.884751"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "-refreshViewBeginRefreshing:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
