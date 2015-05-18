@@ -193,7 +193,7 @@
             self.time.fireDate = [NSDate distantPast];
             self.loginBtn.enabled = NO;
         }
-        
+        NSLog(@"%@", responseObject);
     } failure:^(NSError *error) {
         
     }];

@@ -34,19 +34,19 @@
     [super viewDidLoad];
     
     [self createCollectionView];
+    
+    // 开始刷新
+    [self.header beginRefreshing];
 }
 
 - (void)setUrl:(NSString *)url
 {
     _url = url;
-    // 开始刷新
-    [self.header beginRefreshing];
 }
 
 - (void)setOtherUrl:(NSString *)otherUrl
 {
     _otherUrl = otherUrl;
-    [self.header beginRefreshing];
 }
 
 // 数据请求
