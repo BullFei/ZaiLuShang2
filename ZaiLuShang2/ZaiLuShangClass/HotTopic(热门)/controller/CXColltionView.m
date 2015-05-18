@@ -34,19 +34,37 @@
     [super viewDidLoad];
     
     [self createCollectionView];
+    
+    
 }
 
 - (void)setUrl:(NSString *)url
 {
     _url = url;
+    
+    
+    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
+    footer.scrollView = self.collectionView;
+    footer.delegate = self;
+    self.footer = footer;
+    
     // 开始刷新
     [self.header beginRefreshing];
 }
+
+- (void)setOtherUrl:(NSString *)otherUrl
+{
+    _otherUrl = otherUrl;
+    
+    // 开始刷新
+    [self.header beginRefreshing];
+}
+
 // 数据请求
 - (void)requestDataSuccess:(void (^)(id responseObject))success failure:(void (^)())failure
 {
     
-    [RequestTool GET:self.url parameters:nil success:^(id responseObject) {
+    [RequestTool GET:(self.url.length == 0 ? self.otherUrl : self.url) parameters:nil success:^(id responseObject) {
 //        NSLog(@"%@", responseObject);
         if (success) {
             success(responseObject);
@@ -79,10 +97,6 @@
     header.delegate = self;
     self.header = header;
     
-    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
-    footer.scrollView = view;
-    footer.delegate = self;
-    self.footer = footer;
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"CXCollectionVCell" bundle:nil] forCellWithReuseIdentifier:@"CXCollectionVCell"];
 }
@@ -110,9 +124,18 @@
 {
     [self requestDataSuccess:^(id responseObject) {
         
-        NSArray *arr = [CXCollectViewCellModel objectArrayWithKeyValuesArray:responseObject[@"obj"]];
-        for (int i = arr.count-1; i >= 0 ; i--) {
-            [self.dataArr insertObject:arr[i] atIndex:0];
+        [self.dataArr removeAllObjects];
+        
+        if (self.url.length > 0) {
+            NSArray *arr = [CXCollectViewCellModel objectArrayWithKeyValuesArray:responseObject[@"obj"]];
+            for (int i = arr.count-1; i >= 0 ; i--) {
+                [self.dataArr insertObject:arr[i] atIndex:0];
+            }
+        } else if (self.otherUrl.length > 0) {
+            NSArray *arr = [CXCollectionVCellModel objectArrayWithKeyValuesArray:responseObject[@"obj"][@"list"]];
+            for (int i = arr.count-1; i >= 0 ; i--) {
+                [self.dataArr insertObject:arr[i] atIndex:0];
+            }
         }
         
         [self.collectionView reloadData];
@@ -130,9 +153,17 @@
 - (void)refreshFooterViewSuccess:(void (^)())success failure:(void (^)())failure
 {
     [self requestDataSuccess:^(id responseObject) {
-        NSArray *arr = [CXCollectViewCellModel objectArrayWithKeyValuesArray:responseObject[@"obj"]];
-        [self.dataArr addObjectsFromArray:arr];
+        if (self.url.length > 0) {
+            NSArray *arr = [CXCollectViewCellModel objectArrayWithKeyValuesArray:responseObject[@"obj"]];
+            [self.dataArr addObjectsFromArray:arr];
+        } else if (self.otherUrl.length > 0) {
+            NSArray *arr = [CXCollectionVCellModel objectArrayWithKeyValuesArray:responseObject[@"obj"][@"list"]];
+            [self.dataArr addObjectsFromArray:arr];
+        }
+       
+        
         [self.collectionView reloadData];
+        
         if (success) {
             success();
         }
@@ -155,8 +186,14 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CXCollectionVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CXCollectionVCell" forIndexPath:indexPath];
-    CXCollectViewCellModel *model = self.dataArr[indexPath.row];
-    cell.model = model.pic;
+    
+    if ([[self.dataArr firstObject] isKindOfClass:[CXCollectViewCellModel class]]) {
+        CXCollectViewCellModel *model = self.dataArr[indexPath.row];
+        cell.model = model.pic;
+    } else if ([[self.dataArr firstObject] isKindOfClass:[CXCollectionVCellModel class]]) {
+        cell.model = self.dataArr[indexPath.row];
+    }
+    
     return cell;
 }
 

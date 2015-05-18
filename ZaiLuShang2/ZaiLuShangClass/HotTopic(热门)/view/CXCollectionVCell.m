@@ -13,6 +13,7 @@
 @interface CXCollectionVCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
+@property (weak, nonatomic) IBOutlet UILabel *cmtLabel;
 
 
 @end
@@ -26,6 +27,7 @@
 - (void)setModel:(CXCollectionVCellModel *)model
 {
     _model = model;
+    self.cmtLabel.text = model.cntcmt;
     NSString *str = [NSString stringWithFormat:@"%@b300/%@", model.picdomain, model.picfile];
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:str] placeholderImage:[UIImage imageNamed:@"bg_pic_placeholder_small.9"]];
 }

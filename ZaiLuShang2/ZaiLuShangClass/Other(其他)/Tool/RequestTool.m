@@ -77,10 +77,21 @@
     }];
 }
 
-- (id)dataToDict:(NSData *)data
+
++ (void)AFNGET:(NSString *)URLString parameters:(id)parameters success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure
 {
-    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    [AFNTool GET:URLString parameters:parameters success:^(id responseObject) {
+        
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 }
+
 
 
 @end

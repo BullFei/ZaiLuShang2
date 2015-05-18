@@ -10,7 +10,16 @@
 #import "LYPhotoView.h"
 #import "LYMultiPicture.h"
 
-@interface MultiPictureCell : RootTableViewCell
+@class MultiPictureCell;
+
+@protocol MultiPictureCellDelegate <NSObject>
+
+- (void)pictureCell:(MultiPictureCell *)cell imageTapped:(UITapGestureRecognizer *)tgr;
+- (void)pictureCell:(MultiPictureCell *)cell iconTapped:(UITapGestureRecognizer *)tgr;
+
+@end
+
+@interface MultiPictureCell : RootTableViewCell<LYPhotoViewDelegate>
 
 // cell拥有一个frame模型
 @property (nonatomic, strong) LYMultiPicture *mp;
@@ -20,6 +29,8 @@
 @property (nonatomic, strong) UILabel *title;
 @property (nonatomic, strong) LYPhotoView *photo;
 @property (nonatomic, strong) UILabel *createAt;
+
+@property (nonatomic) id<MultiPictureCellDelegate>delegate;
 
 - (instancetype)initWithLYMultiPicture:(LYMultiPicture *)mp;
 @end
