@@ -71,6 +71,22 @@
     
     self.leftIconView.layer.cornerRadius = self.leftIconView.frame.size.width*0.5;
     self.leftIconView.layer.masksToBounds = YES;
+    
+    self.rightIconView.layer.cornerRadius = self.leftIconView.frame.size.width*0.5;
+    self.rightIconView.layer.masksToBounds = YES;
+
+    
+    
+    //添加手势  头像
+    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(leftIconClick)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    [self.leftIconView addGestureRecognizer:tapGestureRecognizer];
+    
+    UITapGestureRecognizer * rightGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(rightIconClick)];
+    rightGestureRecognizer.numberOfTapsRequired = 1;
+    [self.rightIconView addGestureRecognizer:rightGestureRecognizer];
+    
+    
 }
 
 -(void)btnClick:(UIButton *)btn
@@ -93,6 +109,16 @@
     }
     
 
+}
+
+-(void)leftIconClick
+{
+    
+}
+
+-(void)rightIconClick
+{
+    
 }
 
 
