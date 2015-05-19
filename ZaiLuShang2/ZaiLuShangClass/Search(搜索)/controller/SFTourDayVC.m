@@ -21,6 +21,8 @@
 #import "SFTourDayHeaderView.h"
 #import "SFTourDayCell.h"
 #import "SFTourDayTitleView.h"
+#import "CXPhotoVC.h"
+#import "CXCollectionVCellModel.h"
 #define DAY_URL @"http://app6.117go.com/demo27/php/tourAction.php?submit=getTourItinerary4&tourid=%@&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
 #define RECORF_URL @"http://app6.117go.com/demo27/php/formAction.php?submit=getATour2&tourid=%@&ID2=0&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
 #define ITEM_INTERVAL INTERVAL_CELL_CELL
@@ -36,6 +38,7 @@
 @property (strong,nonatomic)NSMutableArray * dataArray;
 @property (strong,nonatomic) SFTourDay * tourDay;
 @property (strong,nonatomic) SFTourDayInfo * tourDayInfo;
+@property (strong,nonatomic)NSMutableArray * dataArr;
 @end
 
 @implementation SFTourDayVC
@@ -63,6 +66,14 @@
         _tourDayInfo = [[SFTourDayInfo alloc]init];
     }
     return _tourDayInfo;
+}
+
+-(NSMutableArray *)dataArr
+{
+    if (nil ==_dataArr) {
+        _dataArr = [[NSMutableArray alloc]init];
+    }
+    return _dataArr;
 }
 
 #pragma mark -创建nav
@@ -119,6 +130,12 @@
         
         [RequestTool GET:[NSString stringWithFormat:RECORF_URL,self.tour.id] parameters:nil success:^(id responseObject) {
             self.tourDayInfo = [SFTourDayInfo objectWithKeyValues:responseObject[@"obj"]];
+            
+            
+            NSArray *arr = [CXCollectionVCellModel objectArrayWithKeyValuesArray:responseObject[@"obj"][@"records"]];
+            [self.dataArr addObjectsFromArray:arr];
+
+            
             
             [self combineData];
             
@@ -216,6 +233,14 @@
 {
     _collectionView.contentInset = UIEdgeInsetsMake(height, 0, 0, 0);
     _collectionView.contentOffset = CGPointMake(0, -height-64);
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CXPhotoVC *vc= [[CXPhotoVC alloc] init];
+    vc.dataArr = self.dataArr;
+    vc.indexPath = indexPath;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

@@ -40,6 +40,7 @@
     [self loadData];
     [self createNav];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tabBarController.hidesBottomBarWhenPushed = YES;
     
 }
 #pragma mark -创建nav
