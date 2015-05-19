@@ -17,9 +17,9 @@
 }
 
 
-- (void)dealloc
-{
-    [self.header free];
-}
+//- (void)dealloc
+//{
+//    [self.header free];
+//}
 
 @end

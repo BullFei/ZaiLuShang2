@@ -25,10 +25,11 @@
 #import "MultiPictureCell.h"
 #import "LYWebViewController.h"
 #import "MBProgressHUD+MJ.h"
+#import "MedalViewController.h"
 
 #define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=%@&fetchNewer=1&length=20&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
 
-@interface PersonVC ()<UITableViewDataSource, UITableViewDelegate, TripCellDelegate, MJRefreshBaseViewDelegate, MultiPictureCellDelegate>
+@interface PersonVC ()<UITableViewDataSource, UITableViewDelegate, TripCellDelegate, MJRefreshBaseViewDelegate, MultiPictureCellDelegate, MedalCellDelegate>
 
 @property (nonatomic ,weak) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
@@ -233,6 +234,7 @@
         // LYAch
         LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:heihei];
         MedalCell *cell = [[MedalCell alloc] initWithLYAttention:ach];
+        cell.delegate = self;
         return cell;
     } else if (([haha class] == [LYRec class]) == YES) {
         // LYRec
@@ -264,51 +266,83 @@
 }
 
 #pragma mark - tripCell事件代理方法
+// 头像和作者被点击的事件
 - (void)tripCell:(TripCell *)cell iconTapped:(UITapGestureRecognizer *)tgr {
-    LYRec *rec = (LYRec *)cell.attFrame.lyam.item;
-    LYWebViewController *wvc = [[LYWebViewController alloc] init];
-    wvc.userid = rec.userid;
-    wvc.pageType = WebViewPageTypeUser;
-    wvc.navigationItem.title = rec.owner.nickname;
+    LYWebViewController *wvc = [self controllerWithCell:cell andType:WebViewPageTypeUser];
     [self presentViewController:wvc animated:YES completion:nil];
 }
+// 标题被点击的事件
 - (void)tripCell:(TripCell *)cell titleTapped:(UITapGestureRecognizer *)tgr {
-    LYRec *rec = (LYRec *)cell.attFrame.lyam.item;
-    LYWebViewController *wvc = [[LYWebViewController alloc] init];
-    wvc.tourid = rec.tourid;
-    wvc.pageType = WebViewPageTypeTour;
-    wvc.navigationItem.title = rec.tourtitle;
+    LYWebViewController *wvc = [self controllerWithCell:cell andType:WebViewPageTypeTour];
     [self presentViewController:wvc animated:YES completion:nil];
 }
+// 图片被点击的事件
 - (void)tripCell:(TripCell *)cell imageTapped:(UITapGestureRecognizer *)tgr {
-    LYRec *rec = (LYRec *)cell.attFrame.lyam.item;
-    LYWebViewController *wvc = [[LYWebViewController alloc] init];
-    wvc.tourid = rec.tourid;
-    wvc.pageType = WebViewPageTypeTour;
-    wvc.navigationItem.title = rec.tourtitle;
+    LYWebViewController *wvc = [self controllerWithCell:cell andType:WebViewPageTypeTour];
     [self presentViewController:wvc animated:YES completion:nil];
+}
+
+- (void)readMoreButtonClicked:(TripCell *)cell {
+    CXLog(@"mmmmmmmm");
 }
 - (void)contentTapped:(UITapGestureRecognizer *)tgr {
-    NSLog(@"点击了内容中的链接");
+    CXLog(@"点击了内容中的链接");
 }
 #pragma mark - MultiPictureCellDelegate
+// 九宫格图片被点击
 - (void)pictureCell:(MultiPictureCell *)cell imageTapped:(UITapGestureRecognizer *)tgr {
     UIImageView *iv = (UIImageView *)tgr.view;
     NSLog(@"%lu", (long)iv.tag);
-    LYWebViewController *wvc = [[LYWebViewController alloc] init];
-    wvc.pageType = WebViewPageTypeTour;
-    LYItem *item = cell.mp.informationModel.item;
-    wvc.tourid = item.tour.id;
-    wvc.navigationItem.title = item.tour.title;
-    [self presentViewController:wvc animated:YES completion:nil];}
-- (void)pictureCell:(MultiPictureCell *)cell iconTapped:(UITapGestureRecognizer *)tgr {
-    LYWebViewController *wvc = [[LYWebViewController alloc] init];
-    LYItem *item = cell.mp.informationModel.item;
-    wvc.userid = item.user.userid;
-    wvc.pageType = WebViewPageTypeUser;
-    wvc.navigationItem.title = item.user.nickname;
-    [self presentViewController:wvc animated:YES completion:nil];
     
+    LYWebViewController *wvc = [self controllerWithCell:cell andType:WebViewPageTypeTour];
+    [self presentViewController:wvc animated:YES completion:nil];
+}
+
+// 九宫格头像被点击
+- (void)pictureCell:(MultiPictureCell *)cell iconTapped:(UITapGestureRecognizer *)tgr {
+    LYWebViewController *wvc = [self controllerWithCell:cell andType:WebViewPageTypeUser];
+    [self presentViewController:wvc animated:YES completion:nil];
+}
+/**
+ *  返回一个viewcontroller
+ *
+ *  @param cell 传入一个cell
+ *  @param type 这个Viewcontroller将要展示的类型(tour,还是user)
+ *
+ *  @return 返回一个viewcontroller
+ */
+- (LYWebViewController *)controllerWithCell:(UITableViewCell *)cell andType:(webPageType)type{
+    LYWebViewController *wv = [[LYWebViewController alloc] init];
+    if ([cell class] == [TripCell class]) {
+        
+        TripCell *aCell = (TripCell *)cell;
+        LYRec *rec = (LYRec *)aCell.attFrame.lyam.item;
+        
+        if (type == WebViewPageTypeTour) {
+            wv.tourid = rec.tourid;
+            wv.pageType = WebViewPageTypeTour;
+        } else {
+            wv.userid = rec.userid;
+            wv.pageType = WebViewPageTypeUser;
+        }
+    } else if ([cell class] == [MultiPictureCell class]) {
+        MultiPictureCell *aCell = (MultiPictureCell *)cell;
+        LYItem *item = aCell.mp.informationModel.item;
+        if (type == WebViewPageTypeTour) {
+            wv.pageType = WebViewPageTypeTour;
+            wv.tourid = item.tour.id;
+        } else {
+            wv.userid = item.user.userid;
+            wv.pageType = WebViewPageTypeUser;
+        }
+    } else {
+        MedalCell *aCell = (MedalCell *)cell;
+        LYAchv *ach = (LYAchv *)aCell.achFrame.lyam.item;
+        wv.pageType = WebViewPageTypeUser;
+        wv.userid = ach.userid;
+        
+    }
+    return wv;
 }
 #pragma mark - MJ刷新方法
 - (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView {
@@ -326,9 +360,18 @@
     }
 }
 - (void)refreshViewEndRefreshing:(MJRefreshBaseView *)refreshView {
-    NSLog(@"正如我心中爱你美丽,又怎能装作嘴上四大皆空");
+    CXLog(@"正如我心中爱你美丽,又怎能装作嘴上四大皆空");
 }
 - (void)refreshView:(MJRefreshBaseView *)refreshView stateChange:(MJRefreshState)state {
     
+}
+#pragma mark - MedalCellDelegate
+- (void)medalCell:(MedalCell *)cell iconTapped:(UITapGestureRecognizer *)tgr {
+    LYWebViewController *wv = [self controllerWithCell:cell andType:WebViewPageTypeUser];
+    [self presentViewController:wv animated:YES completion:nil];
+}
+- (void)medalCell:(MedalCell *)cell medalTapped:(UITapGestureRecognizer *)tgr {
+    MedalViewController *mvc = [[MedalViewController alloc] init];
+    [self.navigationController pushViewController:mvc animated:YES];
 }
 @end

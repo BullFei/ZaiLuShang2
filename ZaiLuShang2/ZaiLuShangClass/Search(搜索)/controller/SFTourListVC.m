@@ -161,9 +161,10 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SFTourListCell * cell = [SFTourListCell cellWithTableView:tableView];
-    cell.tour = _dataArray[indexPath.row];
-    return cell;
+        SFTourListCell * cell = [SFTourListCell cellWithTableView:tableView];
+        cell.tour = _dataArray[indexPath.row];
+        return cell;
+    
 }
 
 

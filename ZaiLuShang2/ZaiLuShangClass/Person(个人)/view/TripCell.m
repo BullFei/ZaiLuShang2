@@ -163,6 +163,8 @@
     }
     [self.commentButton setImage:cmtImage forState:UIControlStateNormal];
     [self.contentView addSubview:self.commentButton];
+    // 评论按钮事件
+    [self.commentButton addTarget:self action:@selector(readMoreComments) forControlEvents:UIControlEventTouchUpInside];
     
     // 创建时间
     if (self.attFrame.lyam.timestamp != nil) {
@@ -245,7 +247,7 @@
                 [buttonMore setTitle:[NSString stringWithFormat:@"阅读全部%@条评论", rec.cntcmt] forState:UIControlStateNormal];
                 [buttonMore setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
                 buttonMore.titleLabel.font = TextFont_15;
-                [buttonMore addTarget:self action:@selector(readMoreComments:) forControlEvents:UIControlEventTouchUpInside];
+                [buttonMore addTarget:self action:@selector(readMoreComments) forControlEvents:UIControlEventTouchUpInside];
                 [self.contentView addSubview:buttonMore];
             }
         }
@@ -253,8 +255,8 @@
 }
 #pragma mark - 事件的方法
 // 阅读更多评论
-- (void)readMoreComments:(UIButton *)btn {
-    NSLog(@"阅读更多评论");
+- (void)readMoreComments {
+    [self.delegate performSelector:@selector(readMoreButtonClicked:) withObject:self];
 }
 // 头像被点击的方法
 - (void)iconAction:(UITapGestureRecognizer *)tgr {
