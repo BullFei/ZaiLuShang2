@@ -29,7 +29,6 @@
 - (void)createWebView {
     _wv = [[UIWebView alloc] initWithFrame:self.view.bounds];
     _wv.userInteractionEnabled = YES;
-    _wv.scrollView.bounces = NO;
     _wv.delegate = self;
     
     NSURL *url;

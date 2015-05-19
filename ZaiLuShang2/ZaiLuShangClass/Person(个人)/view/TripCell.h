@@ -18,6 +18,7 @@
 - (void)tripCell:(TripCell *)cell iconTapped:(UITapGestureRecognizer *)tgr;
 - (void)tripCell:(TripCell *)cell titleTapped:(UITapGestureRecognizer *)tgr;
 - (void)tripCell:(TripCell *)cell imageTapped:(UITapGestureRecognizer *)tgr;
+- (void)readMoreButtonClicked:(TripCell *)cell;
 - (void)contentTapped:(UITapGestureRecognizer *)tgr;
 
 @end

@@ -35,7 +35,11 @@
     [self.icon sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"bg_pic_placeholder_small.9"]];
     [self.contentView addSubview:self.icon];
     
-    // 标题
+    self.icon.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tgrIcon = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(iconTapped:)];
+    [self.icon addGestureRecognizer:tgrIcon];
+    
+    // 作者
     self.author = [[UILabel alloc] init];
     self.author.frame = self.achFrame.author;
     self.author.textColor = [UIColor blueColor];
@@ -43,6 +47,10 @@
     self.author.text = owner.nickname;
     self.author.userInteractionEnabled = YES;
     [self.contentView addSubview:self.author];
+    
+    self.author.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tgrAuthor = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(iconTapped:)];
+    [self.author addGestureRecognizer:tgrAuthor];
     
     // 事件
     NSString *eve = @"获得勋章";
@@ -56,8 +64,11 @@
     // 勋章图
     self.ig = [[UIImageView alloc] init];
     self.ig.frame = self.achFrame.ig;
-    [self.ig sd_setImageWithURL:[NSURL URLWithString:ach.pic_mini]];
+    [self.ig sd_setImageWithURL:[NSURL URLWithString:ach.pic_mini] placeholderImage:[UIImage imageNamed:@"bg_pic_placeholder_small.9"]];
     [self.contentView addSubview:self.ig];
+    self.ig.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tgrIg = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(medalTapped:)];
+    [self.ig addGestureRecognizer:tgrIg];
     
     // 勋章头衔
     self.medal = [[UILabel alloc] init];
@@ -66,7 +77,7 @@
     self.medal.font = TextFont_15;
     self.medal.text = ach.title;
     [self.contentView addSubview:self.medal];
-    
+
     // 获得条件
     NSString *con = @"获得条件:";
     NSString *de = ach.desc;
@@ -88,8 +99,14 @@
     self.createAt.textColor = [UIColor lightGrayColor];
     self.createAt.text = [TimeIntervalTool timeIntervalFromTimeString:self.achFrame.lyam.timestamp];
     [self.contentView addSubview:self.createAt];
-    
-    
-    
+}
+
+// 头像和作者
+- (void)iconTapped:(UITapGestureRecognizer *)tgr {
+    [self.delegate performSelector:@selector(medalCell:iconTapped:) withObject:self withObject:tgr];
+}
+- (void)medalTapped:(UITapGestureRecognizer *)tgr {
+    CXLog(@">>>>>>>>>>>>>>>");
+    [self.delegate performSelector:@selector(medalCell:medalTapped:) withObject:self withObject:tgr];
 }
 @end
