@@ -6,28 +6,38 @@
 //  Copyright (c) 2015年 qianfeng. All rights reserved.
 //
 
-#import "PersonVC.h"
-#import "RequestTool.h"
-#import "LYItem.h"
-#import "LYOwner.h"
+
 #import "LYRec.h"
+#import "LYItem.h"
 #import "LYAchv.h"
 #import "LYTour.h"
-#import "LYComment.h"
-#import "LYAttentionModel.h"
+#import "LYOwner.h"
+#import "PersonVC.h"
 #import "TripCell.h"
-#import "LYAttention.h"
 #import "MedalCell.h"
+#import "LYComment.h"
+#import "MJRefresh.h"
+#import "LYAttention.h"
+#import "RequestTool.h"
 #import "LYAchievement.h"
 #import "LYMultiPicture.h"
+#import "LYAttentionModel.h"
 #import "MultiPictureCell.h"
+#import "LYWebViewController.h"
+#import "MBProgressHUD+MJ.h"
+#import "MedalViewController.h"
 
-#define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=0&fetchNewer=1&length=40&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
+#define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=%@&fetchNewer=1&length=20&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
 
-@interface PersonVC ()<UITableViewDataSource, UITableViewDelegate, TripCellDelegate>
+@interface PersonVC ()<UITableViewDataSource, UITableViewDelegate, TripCellDelegate, MJRefreshBaseViewDelegate, MultiPictureCellDelegate, MedalCellDelegate>
 
 @property (nonatomic ,weak) UITableView *tableView;
-@property (nonatomic,strong) NSMutableArray * dataArray;
+@property (nonatomic,strong) NSMutableArray *dataArray;
+@property (nonatomic, weak) MJRefreshHeaderView *headerView;
+@property (nonatomic, weak) MJRefreshFooterView *footerView;
+
+@property (nonatomic, copy) NSString *startId;
+@property (nonatomic, assign) BOOL hasMore;
 
 @end
 
@@ -36,17 +46,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initStartId];
+    
     [self createTableView];
     
-    [self createTitleView];
+//    [self createTitleView];
     
-    [self requestData];
+    [self requestDataWithStartId:self.startId];
     
+    [MBProgressHUD showMessage:@"正在加载数据"];
 }
-
+- (void)initStartId {
+    self.startId = @"0";
+    self.hasMore = NO;
+}
 - (void)createTitleView
 {
-
+    UISegmentedControl *sc = [[UISegmentedControl alloc] initWithItems:@[@"关注", @"动态"]];
+    sc.frame = CGRectMake(0, 0, 140, 30);
+    sc.selectedSegmentIndex = 0;
+    [sc addTarget:self action:@selector(indexChanged:) forControlEvents:UIControlEventValueChanged];
+    self.navigationItem.titleView = sc;
+}
+- (void)indexChanged:(UISegmentedControl *)sc {
+    
 }
 - (void)createTableView
 {
@@ -57,13 +80,26 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    // 头
+    MJRefreshHeaderView *h = [MJRefreshHeaderView header];
+    h.scrollView = self.tableView;
+    self.headerView = h;
+    h.delegate = self;
+    
+    // 尾
+    MJRefreshFooterView *f = [MJRefreshFooterView footer];
+    f.scrollView = self.tableView;
+    self.footerView = f;
+    f.delegate = self;
+    
     self.tableView.separatorColor = [UIColor lightGrayColor];
 }
 /**
  *  请求数据,解析数据
  */
-- (void)requestData {
-    [RequestTool GET:ZLS_PERSON_URL parameters:nil success:^(id responseObject) {
+- (void)requestDataWithStartId:(NSString *)startId {
+    NSString *requestURL = [NSString stringWithFormat:ZLS_PERSON_URL, startId];
+    [RequestTool GET:requestURL parameters:nil success:^(id responseObject) {
         NSLog(@"数据请求成功, 开始解析数据...");
         if (_dataArray == nil) {
             _dataArray = [[NSMutableArray alloc] init];
@@ -72,13 +108,15 @@
         NSDictionary *dict = (NSDictionary *)responseObject;
         // 解析数据
         for (NSDictionary *smallDict in dict[@"obj"][@"list"]) {
+            // 给刷新标记赋值
+            self.startId = dict[@"obj"][@"start"];
+            self.hasMore = (BOOL)dict[@"obj"][@"hasMore"];
+            
             // 开始解析数据
             // 判断数据是何种类型
-            
             // 最外层的数据类型是相同的
             LYAttentionModel *mainModel = [[LYAttentionModel alloc] init];
             [mainModel setValuesForKeysWithDictionary:smallDict];
-            
             
             NSDictionary *tempDict = smallDict[@"item"];
             if (tempDict.allValues.count != 1) {
@@ -91,7 +129,6 @@
                 [owner setValuesForKeysWithDictionary:tempDict[@"user"]];
                 lyit.user = owner;
                 
-                
                 LYTour *tour = [[LYTour alloc] init];
                 [tour setValuesForKeysWithDictionary:tempDict[@"tour"]];
                 
@@ -99,7 +136,6 @@
                 [sowner setValuesForKeysWithDictionary:tempDict[@"tour"][@"owner"]];
                 
                 tour.owner = sowner;
-                
                 
                 // 评论
                 NSMutableArray *comments = [[NSMutableArray alloc] init];
@@ -170,6 +206,11 @@
                 }
             }
         }
+        // 刷新动作结束
+        [self.headerView endRefreshing];
+        [self.footerView endRefreshing];
+        // hide
+        [MBProgressHUD hideHUD];
         // 刷新表格
         [self.tableView reloadData];
     } failure:^(NSError *error) {
@@ -182,26 +223,30 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _dataArray.count;
-   
+    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // 还需要判断model的类型选择不同的cell,后续增加上
     LYAttentionModel *heihei = _dataArray[indexPath.row];
     id haha = heihei.item;
     
     if (([haha class] == [LYAchv class]) == YES)
     {
+        // LYAch
         LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:heihei];
         MedalCell *cell = [[MedalCell alloc] initWithLYAttention:ach];
+        cell.delegate = self;
         return cell;
     } else if (([haha class] == [LYRec class]) == YES) {
+        // LYRec
         LYAttention *att = [[LYAttention alloc] initWithLYAttentionModel:heihei];
         TripCell *cell = [[TripCell alloc] initWithLYAttention:att];
+        cell.delegate = self;
         return cell;
     } else {
         // 九宫格图片类型
         LYMultiPicture *mp = [[LYMultiPicture alloc] initWithLYAttentionModel:heihei];
         MultiPictureCell *cell = [[MultiPictureCell alloc] initWithLYMultiPicture:mp];
+        cell.delegate = self;
         return cell;
     }
 }
@@ -215,21 +260,118 @@
         LYAchievement *ach = [[LYAchievement alloc] initWithLYAttentionModel:heihei];
         return ach.cellHeight;
     } else {
-        return 300;
+        LYMultiPicture *mp = [[LYMultiPicture alloc] initWithLYAttentionModel:heihei];
+        return mp.cellHeight;
     }
 }
 
-#pragma mark - cell事件代理方法
-- (void)iconTapped:(UITapGestureRecognizer *)tgr {
-    NSLog(@"点击了头像");
+#pragma mark - tripCell事件代理方法
+// 头像和作者被点击的事件
+- (void)tripCell:(TripCell *)cell iconTapped:(UITapGestureRecognizer *)tgr {
+    LYWebViewController *wvc = [self controllerWithCell:cell andType:WebViewPageTypeUser];
+    [self presentViewController:wvc animated:YES completion:nil];
 }
-- (void)titleTapped:(UITapGestureRecognizer *)tgr {
-    NSLog(@"点击了标题");
+// 标题被点击的事件
+- (void)tripCell:(TripCell *)cell titleTapped:(UITapGestureRecognizer *)tgr {
+    LYWebViewController *wvc = [self controllerWithCell:cell andType:WebViewPageTypeTour];
+    [self presentViewController:wvc animated:YES completion:nil];
 }
-- (void)igTapped:(UITapGestureRecognizer *)tgr {
-    NSLog(@"点击了图片");
+// 图片被点击的事件
+- (void)tripCell:(TripCell *)cell imageTapped:(UITapGestureRecognizer *)tgr {
+    LYWebViewController *wvc = [self controllerWithCell:cell andType:WebViewPageTypeTour];
+    [self presentViewController:wvc animated:YES completion:nil];
+}
+
+- (void)readMoreButtonClicked:(TripCell *)cell {
+    CXLog(@"mmmmmmmm");
 }
 - (void)contentTapped:(UITapGestureRecognizer *)tgr {
-    NSLog(@"点击了内容中的链接");
+    CXLog(@"点击了内容中的链接");
+}
+#pragma mark - MultiPictureCellDelegate
+// 九宫格图片被点击
+- (void)pictureCell:(MultiPictureCell *)cell imageTapped:(UITapGestureRecognizer *)tgr {
+    UIImageView *iv = (UIImageView *)tgr.view;
+    NSLog(@"%lu", (long)iv.tag);
+    
+    LYWebViewController *wvc = [self controllerWithCell:cell andType:WebViewPageTypeTour];
+    [self presentViewController:wvc animated:YES completion:nil];
+}
+
+// 九宫格头像被点击
+- (void)pictureCell:(MultiPictureCell *)cell iconTapped:(UITapGestureRecognizer *)tgr {
+    LYWebViewController *wvc = [self controllerWithCell:cell andType:WebViewPageTypeUser];
+    [self presentViewController:wvc animated:YES completion:nil];
+}
+/**
+ *  返回一个viewcontroller
+ *
+ *  @param cell 传入一个cell
+ *  @param type 这个Viewcontroller将要展示的类型(tour,还是user)
+ *
+ *  @return 返回一个viewcontroller
+ */
+- (LYWebViewController *)controllerWithCell:(UITableViewCell *)cell andType:(webPageType)type{
+    LYWebViewController *wv = [[LYWebViewController alloc] init];
+    if ([cell class] == [TripCell class]) {
+        
+        TripCell *aCell = (TripCell *)cell;
+        LYRec *rec = (LYRec *)aCell.attFrame.lyam.item;
+        
+        if (type == WebViewPageTypeTour) {
+            wv.tourid = rec.tourid;
+            wv.pageType = WebViewPageTypeTour;
+        } else {
+            wv.userid = rec.userid;
+            wv.pageType = WebViewPageTypeUser;
+        }
+    } else if ([cell class] == [MultiPictureCell class]) {
+        MultiPictureCell *aCell = (MultiPictureCell *)cell;
+        LYItem *item = aCell.mp.informationModel.item;
+        if (type == WebViewPageTypeTour) {
+            wv.pageType = WebViewPageTypeTour;
+            wv.tourid = item.tour.id;
+        } else {
+            wv.userid = item.user.userid;
+            wv.pageType = WebViewPageTypeUser;
+        }
+    } else {
+        MedalCell *aCell = (MedalCell *)cell;
+        LYAchv *ach = (LYAchv *)aCell.achFrame.lyam.item;
+        wv.pageType = WebViewPageTypeUser;
+        wv.userid = ach.userid;
+        
+    }
+    return wv;
+}
+#pragma mark - MJ刷新方法
+- (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView {
+    if ([refreshView class] == [MJRefreshHeaderView class]) {
+        [_dataArray removeAllObjects];
+        _dataArray = nil;
+        [self requestDataWithStartId:@"0"];
+    } else {
+        // 判断
+        if (self.hasMore == NO) {
+            // 没有更多数据就直接返回
+            return;
+        }
+        [self requestDataWithStartId:self.startId];
+    }
+}
+- (void)refreshViewEndRefreshing:(MJRefreshBaseView *)refreshView {
+    CXLog(@"正如我心中爱你美丽,又怎能装作嘴上四大皆空");
+}
+- (void)refreshView:(MJRefreshBaseView *)refreshView stateChange:(MJRefreshState)state {
+    
+}
+#pragma mark - MedalCellDelegate
+- (void)medalCell:(MedalCell *)cell iconTapped:(UITapGestureRecognizer *)tgr {
+    LYWebViewController *wv = [self controllerWithCell:cell andType:WebViewPageTypeUser];
+    [self presentViewController:wv animated:YES completion:nil];
+}
+- (void)medalCell:(MedalCell *)cell medalTapped:(UITapGestureRecognizer *)tgr {
+    MedalViewController *mvc = [[MedalViewController alloc] init];
+    [self.navigationController pushViewController:mvc animated:YES];
 }
 @end

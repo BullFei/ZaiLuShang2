@@ -53,7 +53,7 @@
     [self addVC:second title:@"热门" image:@"tab_profile_48_off" selImage:@"tab_profile_48_on"];
     
     SearchVC *third = [[SearchVC alloc] init];
-    [self addVC:third title:@"搜索" image:@"tab_search_48_off" selImage:@"tab_search_48_on"];
+    [self addVC:third title:@"发现" image:@"tab_search_48_off" selImage:@"tab_search_48_on"];
     
     PersonVC *fourth = [[PersonVC alloc] init];
     [self addVC:fourth title:@"个人" image:@"tab_feed_48_off" selImage:@"tab_feed_48_on"];

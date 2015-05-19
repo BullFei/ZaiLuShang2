@@ -23,6 +23,13 @@
 #import "MoreThemeModel.h"
 #import "SpecialColumnModel.h"
 
+#import "ZYCADWebViewController.h"
+#import "ZYCJingXuanListViewController.h"
+#import "ZYCSubjectListViewController.h"
+#import "ZYCTripTopicListViewController.h"
+#import "ZYCMoreThemeListViewController.h"
+#import "SFTourDayVC.h"
+
 #define  GROUND_URL @"http://app6.117go.com/demo27/php/interestAction.php?submit=getPlaza&length=20&vc=anzhuo&vd=f7393db54aeaedec&token=27f3f6568d2faf418538f66d72330a23&v=a6.1.0"
 @interface SquareVC ()
 {
@@ -169,6 +176,60 @@
 {
    _groundTableView =[GroundTableView createTableViewWithFrame:self.view.bounds];
     [self.view addSubview:_groundTableView];
+    
+    __weak SquareVC * svc =self;
+    _groundTableView.ADViewPushBlock=^(NSString * url){
+        
+        ZYCADWebViewController * advc =[[ZYCADWebViewController alloc]init];
+        advc.ADWebUrl =url;
+        [svc.navigationController pushViewController:advc animated:YES];
+
+    };
+    _groundTableView.JingXuanHeadViewPushBlock=^{
+        ZYCJingXuanListViewController * jxlvc =[[ZYCJingXuanListViewController alloc]init];
+        jxlvc.hidesBottomBarWhenPushed =YES;
+        [svc.navigationController pushViewController:jxlvc animated:YES];
+    };
+    _groundTableView.Section2HeadViewPushBlock=^(NSString * link){
+        ZYCSubjectListViewController * slvc=[[ZYCSubjectListViewController alloc]init];
+        slvc.link =link;
+        slvc.hidesBottomBarWhenPushed =YES;
+        [svc.navigationController pushViewController:slvc animated:YES];
+        
+    };
+    _groundTableView.TripTopicHeadViewPushBlock=^(NSString * link){
+        ZYCTripTopicListViewController * ttlvc =[[ZYCTripTopicListViewController alloc]init];
+        ttlvc.link =link;
+        ttlvc.hidesBottomBarWhenPushed =YES;
+        [svc.navigationController pushViewController:ttlvc animated:YES];
+    };
+    _groundTableView.MoreThemeHeadViewPushBlock =^{
+        ZYCMoreThemeListViewController * mtlvc =[[ZYCMoreThemeListViewController alloc]init];
+       // mtlvc.link =link;
+        mtlvc.hidesBottomBarWhenPushed =YES;
+        [svc.navigationController pushViewController:mtlvc animated:YES];
+        
+    };
+    _groundTableView.JingXuanCellPushBlock=^(JingXuanModel * mm){
+        SFTourDayVC * tdvc =[[SFTourDayVC alloc]init];
+        tdvc.tour =mm;
+        tdvc.hidesBottomBarWhenPushed =YES;
+        [svc.navigationController pushViewController:tdvc animated:YES];
+    };
+    
+    _groundTableView.section2ItemPushBlock=^(Section2ItemModel *mm){
+        SFTourDayVC * tdvc =[[SFTourDayVC alloc]init];
+        tdvc.tour =mm;
+        tdvc.hidesBottomBarWhenPushed =YES;
+        [svc.navigationController pushViewController:tdvc animated:YES];
+    };
+//    ADView * adv =(id)[self.view viewWithTag:1];
+//    
+//    adv.pushBlock=^(NSString * url){
+//        //ZYCADWebViewController * advc =[[ZYCADWebViewController alloc]init];
+//        //advc.ADWebUrl =url;
+//        //[self.navigationController pushViewController:advc animated:YES];
+//    };
 }
 -(void)createTimer
 {

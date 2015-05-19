@@ -13,4 +13,5 @@
 @property (nonatomic,strong)NSNumber * stickercnt;
 @property (nonatomic,copy)NSString  * picdomain;
 @property (nonatomic,copy)NSString * coverpic;
+//@property (nonatomic,copy)NSString * link;
 @end

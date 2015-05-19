@@ -86,7 +86,7 @@
             self.countLabel.text = @"请输入11位手机号码";
             [self addShockAnimation:self.countLabel];
         } else {
-                    }
+        }
     }
     if (textField == self.passWordTextField) {
     }
@@ -140,19 +140,79 @@
     dict[@"vd"] = @"f7393db54aeaedec";
     
     [RequestTool POST:@"http://app6.117go.com/demo27/php/loginAction.php" parameters:dict success:^(id responseObject) {
-        NSLog(@"%@", responseObject);
-        self.countLabel.text = responseObject[@"msg"];
+//        NSLog(@"%@", responseObject);
+        if (responseObject[@"OK"] == 0) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:IS_LOGIN];
+            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"obj"][@"token"] forKey:TOKEN];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        [self back];
     } failure:^(NSError *error) {
         
     }];
 }
 
 - (IBAction)resgistClick:(UIButton *)sender {
+    
+    if ([self.countLabel.text isEqualToString:@"OK"]) {
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        dict[@"phonecode"] = @"86";
+        dict[@"v"] = @"a6.1.0";
+        dict[@"vd"] = @"f7393db54aeaedec";
+        dict[@"vc"] = @"anzhuo";
+        dict[@"submit"] = @"register";
+        dict[@"token"] = @"";
+        dict[@"mobile"] = self.countTextField.text;
+        dict[@"code"] = self.yanzhengTextField.text;
+        dict[@"username"] = self.countTextField.text;
+        dict[@"nickname"] = [NSString stringWithFormat:@"行在路上%@",self.countTextField.text];
+        dict[@"password"] = self.passWordTextField.text;
+        
+        [self addXuanZhuanAnimation:self.loadImageView];
+        self.loadImageView.hidden = NO;
+        
+        [RequestTool POST:@"http://app6.117go.com/demo27/php/loginAction.php" parameters:dict success:^(id responseObject) {
+            self.countLabel.text = responseObject[@"msg"];
+            [self.loadImageView.layer removeAllAnimations];
+            [self.loadImageView setHidden:YES];
+            
+            
+            NSLog(@"%@", responseObject);
+        } failure:^(NSError *error) {
+            
+        }];
+
+    }
+    
     if (self.yanzhengBtn.hidden == YES) {
         self.yanzhengBtn.hidden = NO;
         self.yanzhengBtn.enabled = YES;
     } else {
         
+        [self addXuanZhuanAnimation:self.loadImageView];
+        self.loadImageView.hidden = NO;
+        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        dict[@"phonecode"] = @"86";
+        dict[@"v"] = @"a6.1.0";
+        dict[@"vd"] = @"f7393db54aeaedec";
+        dict[@"vc"] = @"anzhuo";
+        dict[@"submit"] = @"checkMobileCode";
+        dict[@"token"] = @"";
+        dict[@"mobile"] = self.countTextField.text;
+        dict[@"code"] = self.yanzhengTextField.text;
+        
+        [RequestTool POST:@"http://app6.117go.com/demo27/php/loginAction.php" parameters:dict success:^(id responseObject) {
+            self.countLabel.text = responseObject[@"msg"];
+            [self.loadImageView.layer removeAllAnimations];
+            [self.loadImageView setHidden:YES];
+            
+            
+            NSLog(@"%@", responseObject);
+        } failure:^(NSError *error) {
+            
+        }];
+
     }
 }
 
@@ -187,13 +247,14 @@
         [self.loadImageView setHidden:YES];
         
         if ([self.countLabel.text isEqualToString:@"sent"]) {
+            self.countLabel.text = @"验证码已发送";
             self.yanzhengTextField.hidden = NO;
             self.yanzhengBtn.enabled = NO;
             [self.yanzhengBtn setTitle:@"稍后重发" forState:UIControlStateDisabled];
             self.time.fireDate = [NSDate distantPast];
             self.loginBtn.enabled = NO;
         }
-        NSLog(@"%@", responseObject);
+//        NSLog(@"%@", responseObject);
     } failure:^(NSError *error) {
         
     }];

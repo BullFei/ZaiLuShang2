@@ -37,11 +37,11 @@
 
 - (void)scrollViweBarCmtButtenClick:(CXCollectionVCellModel *)model
 {
-//    CXCmtVC *vc = [[CXCmtVC alloc] init];
-//    vc.model = model;
-//    [self.navigationController pushViewController:vc animated:YES];
-    LoginVC *vc = [[LoginVC alloc] init];
-    [self presentViewController:vc animated:YES completion:nil];
+    CXCmtVC *vc = [[CXCmtVC alloc] init];
+    vc.model = model;
+    [self.navigationController pushViewController:vc animated:YES];
+//    LoginVC *vc = [[LoginVC alloc] init];
+//    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated

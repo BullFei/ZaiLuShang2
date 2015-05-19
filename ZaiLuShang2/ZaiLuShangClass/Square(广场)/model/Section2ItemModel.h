@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "ReviewerModel.h"
-@interface Section2ItemModel : NSObject
+#import "SFTour.h"
+@interface Section2ItemModel :SFTour
 @property (nonatomic,copy)NSString * title;
 @property (nonatomic,copy)NSString * picdomain;
 @property (nonatomic,copy)NSString * coverpic;

@@ -11,4 +11,5 @@
 @interface ADModel : NSObject
 @property (nonatomic,copy)NSString * img_large;//图片URL
 @property (nonatomic,strong)NSDictionary * onclick;//点击图片事件
+
 @end

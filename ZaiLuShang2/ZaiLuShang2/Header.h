@@ -75,5 +75,5 @@
 #define TextFont_17 [UIFont systemFontOfSize:17]
 #define TextFont_15 [UIFont systemFontOfSize:15]
 
-
-
+#define IS_LOGIN @"IS_LOGIN"
+#define TOKEN @"TOKEN"

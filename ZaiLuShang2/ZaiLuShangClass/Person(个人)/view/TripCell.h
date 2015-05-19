@@ -11,11 +11,14 @@
 #import "LYAttention.h"
 #import "LYLCButton.h"
 
+@class TripCell;
+
 @protocol TripCellDelegate <NSObject>
 
-- (void)iconTapped:(UITapGestureRecognizer *)tgr;
-- (void)titleTapped:(UITapGestureRecognizer *)tgr;
-- (void)igTapped:(UITapGestureRecognizer *)tgr;
+- (void)tripCell:(TripCell *)cell iconTapped:(UITapGestureRecognizer *)tgr;
+- (void)tripCell:(TripCell *)cell titleTapped:(UITapGestureRecognizer *)tgr;
+- (void)tripCell:(TripCell *)cell imageTapped:(UITapGestureRecognizer *)tgr;
+- (void)readMoreButtonClicked:(TripCell *)cell;
 - (void)contentTapped:(UITapGestureRecognizer *)tgr;
 
 @end

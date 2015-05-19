@@ -7,10 +7,10 @@
 //
 
 #import "LYMultiPicture.h"
+#import "TimeIntervalTool.h"
 
 #define LYZLS_ICON_WIDTH 102
 #define LYZLS_BLANK_WIDTH 5
-#define LYZLS_TEXTSIZE 13
 #define LYZLS_IMAGE_WIDTH ((SCREEN_WIDTH - 4 * LYZLS_BLANK_WIDTH - (LYZLS_ICON_WIDTH/2))/3)
 
 @implementation LYMultiPicture
@@ -41,21 +41,21 @@
     CGFloat authorY = iconY;
     // 作者名字
     NSString *nickname = owner.nickname;
-    CGSize authorSize = [nickname sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:LYZLS_TEXTSIZE], NSFontAttributeName, nil]];
+    CGSize authorSize = [nickname sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:TextFont_15, NSFontAttributeName, nil]];
     self.author = (CGRect){{authorX, authorY}, authorSize};
     
     // 动作
     NSString *eventString = [NSString stringWithFormat:@"上传了%@个记录到游记", iiii.piccnt];
     CGFloat eventX = CGRectGetMaxX(self.author) + LYZLS_BLANK_WIDTH;
     CGFloat eventY = authorY;
-    CGSize eventSize = [eventString sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:LYZLS_TEXTSIZE], NSFontAttributeName, nil]];
+    CGSize eventSize = [eventString sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:TextFont_15, NSFontAttributeName, nil]];
     self.event = (CGRect){{eventX, eventY}, eventSize};
     
     // 标题另起一行
     NSString *titleString = tour.title;
     CGFloat titleX = authorX;
     CGFloat titleY = CGRectGetMaxY(self.author) + LYZLS_BLANK_WIDTH;
-    CGSize titleSize = [titleString boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 2*LYZLS_BLANK_WIDTH - self.icon.size.width, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:LYZLS_TEXTSIZE] forKey:NSFontAttributeName] context:nil].size;
+    CGSize titleSize = [titleString boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 2*LYZLS_BLANK_WIDTH - self.icon.size.width, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:TextFont_15 forKey:NSFontAttributeName] context:nil].size;
     self.title = (CGRect){{titleX, titleY}, titleSize};
     
     // 图片预览
@@ -64,9 +64,24 @@
     CGFloat pictureW = SCREEN_WIDTH - LYZLS_ICON_WIDTH/2 - 4 * LYZLS_BLANK_WIDTH;
     // 计算出图片的行数
     NSInteger pictureLineCount = (iiii.piccnt.integerValue + 2)/3;
-    CGFloat pictureH = pictureLineCount * (LYZLS_BLANK_WIDTH + LYZLS_IMAGE_WIDTH);
+    
+    // 计算photoView的高度
+    CGFloat pictureH;
+    if (pictureLineCount > 3) {
+        pictureH = 3 * (LYZLS_BLANK_WIDTH + LYZLS_IMAGE_WIDTH);
+    } else {
+        pictureH = pictureLineCount * (LYZLS_BLANK_WIDTH + LYZLS_IMAGE_WIDTH);
+    }
     self.photoView = CGRectMake(pictureX, pictureY, pictureW, pictureH);
     
+    NSString *time = [TimeIntervalTool timeIntervalFromTimeString:self.informationModel.timestamp];
+    CGSize timeSize = [time sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:TextFont_15, NSFontAttributeName, nil]];
+    CGFloat timeX = SCREEN_WIDTH - 2 * LYZLS_BLANK_WIDTH - timeSize.width;
+    CGFloat timeY = CGRectGetMaxY(self.photoView) + 2 * LYZLS_BLANK_WIDTH;
+    self.createAt = (CGRect){{timeX, timeY}, timeSize};
+    
+    
+    self.cellHeight = CGRectGetMaxY(self.createAt) + 2 * LYZLS_BLANK_WIDTH;
 }
 
 @end
