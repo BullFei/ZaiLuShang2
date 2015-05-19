@@ -136,9 +136,17 @@
     self.likeButton = [[LYLCButton alloc] init];
     self.likeButton.frame = self.attFrame.likeCnt;
     // 将图片处理为缩小版
-    UIImage *likeImage = [UIImage imageNamed:@"icon_like_line_red_24"];
-    NSData *likeData = UIImagePNGRepresentation(likeImage);
-    likeImage = [UIImage imageWithData:likeData scale:2];
+    UIImage *likeImage;
+    NSData *likeData;
+    if (rec.isLiked == NO) {
+        likeImage = [UIImage imageNamed:@"icon_like_line_red_24"];
+        likeData = UIImagePNGRepresentation(likeImage);
+        likeImage = [UIImage imageWithData:likeData scale:2];
+    } else {
+        likeImage = [UIImage imageNamed:@"icon_like_32_red"];
+        likeData = UIImagePNGRepresentation(likeImage);
+        likeImage = [UIImage imageWithData:likeData scale:2];
+    }
     
     if (rec.likeCnt.intValue == 0) {
         self.likeButton.imageView.contentMode = UIViewContentModeCenter;
@@ -147,6 +155,7 @@
     }
     [self.likeButton setImage:likeImage forState:UIControlStateNormal];
     [self.contentView addSubview:self.likeButton];
+    [self.likeButton addTarget:self action:@selector(loveyou:) forControlEvents:UIControlEventTouchUpInside];
     
     
     self.commentButton = [[LYLCButton alloc] init];
@@ -273,5 +282,9 @@
 // 正文内容如果含有链接的话的方法
 - (void)websiteAction:(UITapGestureRecognizer *)tgr {
     [self.delegate performSelector:@selector(contentTapped:) withObject:tgr];
+}
+// 喜欢按钮点击后
+- (void)loveyou:(UIButton *)button {
+    [self.delegate performSelector:@selector(tripCell:showYourLove:) withObject:self withObject:button];
 }
 @end

@@ -10,4 +10,7 @@
 
 @interface MedalViewController : UIViewController
 
+
+@property (nonatomic, strong) NSString *userid;
+
 @end

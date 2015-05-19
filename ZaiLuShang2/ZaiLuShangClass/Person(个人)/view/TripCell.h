@@ -19,6 +19,7 @@
 - (void)tripCell:(TripCell *)cell titleTapped:(UITapGestureRecognizer *)tgr;
 - (void)tripCell:(TripCell *)cell imageTapped:(UITapGestureRecognizer *)tgr;
 - (void)readMoreButtonClicked:(TripCell *)cell;
+- (void)tripCell:(TripCell *)cell showYourLove:(UIButton *)button;
 - (void)contentTapped:(UITapGestureRecognizer *)tgr;
 
 @end

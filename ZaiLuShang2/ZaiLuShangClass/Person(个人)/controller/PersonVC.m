@@ -50,7 +50,7 @@
     
     [self createTableView];
     
-//    [self createTitleView];
+    //    [self createTitleView];
     
     [self requestDataWithStartId:self.startId];
     
@@ -211,10 +211,12 @@
         [self.footerView endRefreshing];
         // hide
         [MBProgressHUD hideHUD];
+        [MBProgressHUD showSuccess:@"数据请求成功"];
         // 刷新表格
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         NSLog(@"数据请求失败");
+        [MBProgressHUD showError:@"请求数据失败"];
     }];
 }
 #pragma mark - tableView代理方法
@@ -285,6 +287,41 @@
 - (void)readMoreButtonClicked:(TripCell *)cell {
     CXLog(@"mmmmmmmm");
 }
+// 点击了喜欢按钮
+- (void)tripCell:(TripCell *)cell showYourLove:(UIButton *)button {
+    LYRec *rec = (LYRec *)cell.attFrame.lyam.item;
+    BOOL isLiked = rec.isLiked;
+    // 不喜欢
+    UIImage *unLike = [UIImage imageNamed:@"icon_like_line_red_24"];
+    NSData *unData = UIImagePNGRepresentation(unLike);
+    unLike = [UIImage imageWithData:unData scale:2];
+    // 喜欢
+    UIImage *image = [UIImage imageNamed:@"icon_like_32_red"];
+    NSData *data = UIImagePNGRepresentation(image);
+    image = [UIImage imageWithData:data scale:2];
+    if (!isLiked) {
+        [UIView beginAnimations:nil context:nil];
+        UIImage *an = [UIImage imageNamed:@"icon_like_red_140"];
+        UIImageView *iv = [[UIImageView alloc] initWithImage:an];
+        iv.center = self.view.center;
+        iv.bounds = CGRectMake(0, 0, 70, 70);
+        [self.view addSubview:iv];
+        [button setImage:image forState:UIControlStateNormal];
+        [button setTitle:[NSString stringWithFormat:@"%d", (button.currentTitle.integerValue + 1)] forState:UIControlStateNormal];
+        [UIView commitAnimations];
+        rec.isLiked = YES;
+        [self performSelector:@selector(dismissImageView:) withObject:iv afterDelay:1];
+    } else {
+        [button setImage:unLike forState:UIControlStateNormal];
+        [button setTitle:[NSString stringWithFormat:@"%d", (button.currentTitle.integerValue - 1)] forState:UIControlStateNormal];
+        rec.isLiked = NO;
+    }
+}
+- (void)dismissImageView:(UIImageView *)iv {
+    [UIView beginAnimations:nil context:nil];
+    [iv removeFromSuperview];
+    [UIView commitAnimations];
+}
 - (void)contentTapped:(UITapGestureRecognizer *)tgr {
     CXLog(@"点击了内容中的链接");
 }
@@ -340,7 +377,6 @@
         LYAchv *ach = (LYAchv *)aCell.achFrame.lyam.item;
         wv.pageType = WebViewPageTypeUser;
         wv.userid = ach.userid;
-        
     }
     return wv;
 }
@@ -372,6 +408,9 @@
 }
 - (void)medalCell:(MedalCell *)cell medalTapped:(UITapGestureRecognizer *)tgr {
     MedalViewController *mvc = [[MedalViewController alloc] init];
+    LYAchv *ach = cell.achFrame.lyam.item;
+    mvc.userid = cell.achFrame.lyam.userid;
+    mvc.navigationItem.title = [NSString stringWithFormat:@"%@获得的勋章", ach.user.nickname];
     [self.navigationController pushViewController:mvc animated:YES];
 }
 @end
