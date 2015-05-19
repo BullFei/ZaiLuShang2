@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "SpecialColumnModel.h"
+#define GROUND_SPECIALCOLUMNVIEW_INIT_TAG 200
 @interface SpecialColumnView : UIView
 +(SpecialColumnView *)getSpecialColumnViewWithFrame:(CGRect)frame;
 @property (nonatomic,weak)SpecialColumnModel * specialColumnModel;
+@property (nonatomic,copy)void(^JingXuanPushBlock)(void);
+@property (nonatomic,copy)void(^Section2PushBlock)(NSString * link);
+@property (nonatomic,copy)void(^TripTopicPushBlock)(NSString * link);
+
+
+@property (nonatomic,copy)void(^MoreThemePushBlock)(void);
 @end

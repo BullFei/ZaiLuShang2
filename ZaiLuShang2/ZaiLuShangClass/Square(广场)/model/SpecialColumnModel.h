@@ -11,4 +11,5 @@
 @interface SpecialColumnModel : NSObject
 @property (nonatomic,copy)NSString * title;
 @property (nonatomic,copy)NSString * words;
+@property (nonatomic,copy)NSString * link;
 @end

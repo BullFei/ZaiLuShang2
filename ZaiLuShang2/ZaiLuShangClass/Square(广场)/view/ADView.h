@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ADModel.h"
+
+
 @interface ADView : UIView <UIScrollViewDelegate>
+
 +(ADView *)createADViewWithFrame:(CGRect)frame;
 @property (nonatomic,weak)NSArray * ADModelArray;
 -(void)refresh;
 -(UIScrollView *)getSCrollView;
-
+@property (nonatomic,copy)void(^pushBlock)(NSString *);
 @end
