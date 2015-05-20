@@ -51,52 +51,12 @@
 		BC629A921B0496DF006FD0C0 /* SFProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC629A901B0496DF006FD0C0 /* SFProductCell.xib */; };
 		BC629A951B0497F6006FD0C0 /* AttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC629A941B0497F6006FD0C0 /* AttributedLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BC629A981B049883006FD0C0 /* SFSceneryListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BC629A971B049883006FD0C0 /* SFSceneryListVC.m */; };
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
-
-		BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7030A81B084EE50040551B /* LYMultiPicture.m */; };
-
-		BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7030A81B084EE50040551B /* LYMultiPicture.m */; };
-
-
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 		BC6430841B07509C0079FB12 /* CXNewFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6430831B07509C0079FB12 /* CXNewFeature.m */; };
 		BC6430891B0750C90079FB12 /* 5S开机引导-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6430851B0750C90079FB12 /* 5S开机引导-1.png */; };
 		BC64308A1B0750C90079FB12 /* 5S开机引导-2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6430861B0750C90079FB12 /* 5S开机引导-2.png */; };
 		BC64308B1B0750C90079FB12 /* 5S开机引导-3.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6430871B0750C90079FB12 /* 5S开机引导-3.png */; };
 		BC64308C1B0750C90079FB12 /* 5S开机引导-4.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6430881B0750C90079FB12 /* 5S开机引导-4.png */; };
-<<<<<<< HEAD
 		BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7030A81B084EE50040551B /* LYMultiPicture.m */; };
-=======
-
-		BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7030A81B084EE50040551B /* LYMultiPicture.m */; };
-
->>>>>>> origin/master
-		BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7030A81B084EE50040551B /* LYMultiPicture.m */; };
-
-		BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7030A81B084EE50040551B /* LYMultiPicture.m */; };
-
-		BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7030A81B084EE50040551B /* LYMultiPicture.m */; };
-
-
-
-		BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7030A81B084EE50040551B /* LYMultiPicture.m */; };
-
-
-		BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7030A81B084EE50040551B /* LYMultiPicture.m */; };
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 		BC7F98721B047FD100900595 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7F98711B047FD100900595 /* main.m */; };
 		BC7F98771B047FD100900595 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7F98761B047FD100900595 /* Images.xcassets */; };
 		BC7F98861B047FD100900595 /* ZaiLuShang2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7F98851B047FD100900595 /* ZaiLuShang2Tests.m */; };
@@ -1402,6 +1362,12 @@
 		BCCE499B1B05892100982593 /* SFTourDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCE49991B05892100982593 /* SFTourDayCell.xib */; };
 		BCCE499E1B058DE800982593 /* SFTourDay.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCE499D1B058DE800982593 /* SFTourDay.m */; };
 		BCD760811B087E27002BF3B5 /* LYPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD760801B087E27002BF3B5 /* LYPhotoView.m */; };
+		BCFFD6B41B0B3F95009DE8F6 /* LYCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFFD6B31B0B3F95009DE8F6 /* LYCommentsViewController.m */; };
+		BCFFD6B81B0B6176009DE8F6 /* CommentHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFFD6B61B0B6176009DE8F6 /* CommentHeaderCell.m */; };
+		BCFFD6B91B0B6176009DE8F6 /* CommentHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFFD6B71B0B6176009DE8F6 /* CommentHeaderCell.xib */; };
+		BCFFD6BC1B0B6B28009DE8F6 /* IconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFFD6BB1B0B6B28009DE8F6 /* IconCell.m */; };
+		BCFFD6BF1B0C31B3009DE8F6 /* CommentContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFFD6BE1B0C31B3009DE8F6 /* CommentContentCell.m */; };
+		BCFFD6C21B0C338F009DE8F6 /* LYCommentFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFFD6C11B0C338F009DE8F6 /* LYCommentFrameModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1477,16 +1443,10 @@
 		BC3905071B06E63A00EA6C5F /* LYAchievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYAchievement.m; sourceTree = "<group>"; };
 		BC3948A41B08239700DF3D5B /* MultiPictureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiPictureCell.h; sourceTree = "<group>"; };
 		BC3948A51B08239700DF3D5B /* MultiPictureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiPictureCell.m; sourceTree = "<group>"; };
-
 		BC3B9FD81B09C77100B2DFCE /* LYWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYWebViewController.h; sourceTree = "<group>"; };
 		BC3B9FD91B09C77100B2DFCE /* LYWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYWebViewController.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 		BC3B9FDB1B0A1AB400B2DFCE /* MedalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedalViewController.h; sourceTree = "<group>"; };
 		BC3B9FDC1B0A1AB400B2DFCE /* MedalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedalViewController.m; sourceTree = "<group>"; };
-
 		BC4949FD1B08316A00889411 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		BC4949FE1B08316A00889411 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		BC4949FF1B08316A00889411 /* LoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
@@ -1501,12 +1461,6 @@
 		BC629A941B0497F6006FD0C0 /* AttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedLabel.m; sourceTree = "<group>"; };
 		BC629A961B049883006FD0C0 /* SFSceneryListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSceneryListVC.h; sourceTree = "<group>"; };
 		BC629A971B049883006FD0C0 /* SFSceneryListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSceneryListVC.m; sourceTree = "<group>"; };
-
-
-		BC7030A71B084EE50040551B /* LYMultiPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMultiPicture.h; sourceTree = "<group>"; };
-		BC7030A81B084EE50040551B /* LYMultiPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMultiPicture.m; sourceTree = "<group>"; };
-
-
 		BC6430821B07509C0079FB12 /* CXNewFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXNewFeature.h; sourceTree = "<group>"; };
 		BC6430831B07509C0079FB12 /* CXNewFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXNewFeature.m; sourceTree = "<group>"; };
 		BC6430851B0750C90079FB12 /* 5S开机引导-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5S开机引导-1.png"; sourceTree = "<group>"; };
@@ -1515,25 +1469,6 @@
 		BC6430881B0750C90079FB12 /* 5S开机引导-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5S开机引导-4.png"; sourceTree = "<group>"; };
 		BC7030A71B084EE50040551B /* LYMultiPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMultiPicture.h; sourceTree = "<group>"; };
 		BC7030A81B084EE50040551B /* LYMultiPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMultiPicture.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
-		BC7030A71B084EE50040551B /* LYMultiPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMultiPicture.h; sourceTree = "<group>"; };
-		BC7030A81B084EE50040551B /* LYMultiPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMultiPicture.m; sourceTree = "<group>"; };
-
-		BC7030A71B084EE50040551B /* LYMultiPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMultiPicture.h; sourceTree = "<group>"; };
-		BC7030A81B084EE50040551B /* LYMultiPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMultiPicture.m; sourceTree = "<group>"; };
-
-
-		BC7030A71B084EE50040551B /* LYMultiPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMultiPicture.h; sourceTree = "<group>"; };
-		BC7030A81B084EE50040551B /* LYMultiPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMultiPicture.m; sourceTree = "<group>"; };
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 		BC7F986C1B047FD100900595 /* ZaiLuShang2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZaiLuShang2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7F98701B047FD100900595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC7F98711B047FD100900595 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -2983,6 +2918,17 @@
 		BCCE499D1B058DE800982593 /* SFTourDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTourDay.m; sourceTree = "<group>"; };
 		BCD7607F1B087E27002BF3B5 /* LYPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPhotoView.h; sourceTree = "<group>"; };
 		BCD760801B087E27002BF3B5 /* LYPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYPhotoView.m; sourceTree = "<group>"; };
+		BCFFD6B21B0B3F95009DE8F6 /* LYCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYCommentsViewController.h; sourceTree = "<group>"; };
+		BCFFD6B31B0B3F95009DE8F6 /* LYCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYCommentsViewController.m; sourceTree = "<group>"; };
+		BCFFD6B51B0B6176009DE8F6 /* CommentHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentHeaderCell.h; sourceTree = "<group>"; };
+		BCFFD6B61B0B6176009DE8F6 /* CommentHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentHeaderCell.m; sourceTree = "<group>"; };
+		BCFFD6B71B0B6176009DE8F6 /* CommentHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentHeaderCell.xib; sourceTree = "<group>"; };
+		BCFFD6BA1B0B6B27009DE8F6 /* IconCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconCell.h; sourceTree = "<group>"; };
+		BCFFD6BB1B0B6B28009DE8F6 /* IconCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconCell.m; sourceTree = "<group>"; };
+		BCFFD6BD1B0C31B3009DE8F6 /* CommentContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentContentCell.h; sourceTree = "<group>"; };
+		BCFFD6BE1B0C31B3009DE8F6 /* CommentContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentContentCell.m; sourceTree = "<group>"; };
+		BCFFD6C01B0C338F009DE8F6 /* LYCommentFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYCommentFrameModel.h; sourceTree = "<group>"; };
+		BCFFD6C11B0C338F009DE8F6 /* LYCommentFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYCommentFrameModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3535,6 +3481,8 @@
 				BC3B9FD91B09C77100B2DFCE /* LYWebViewController.m */,
 				BC3B9FDB1B0A1AB400B2DFCE /* MedalViewController.h */,
 				BC3B9FDC1B0A1AB400B2DFCE /* MedalViewController.m */,
+				BCFFD6B21B0B3F95009DE8F6 /* LYCommentsViewController.h */,
+				BCFFD6B31B0B3F95009DE8F6 /* LYCommentsViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -3562,6 +3510,8 @@
 				BC3905071B06E63A00EA6C5F /* LYAchievement.m */,
 				BC7030A71B084EE50040551B /* LYMultiPicture.h */,
 				BC7030A81B084EE50040551B /* LYMultiPicture.m */,
+				BCFFD6C01B0C338F009DE8F6 /* LYCommentFrameModel.h */,
+				BCFFD6C11B0C338F009DE8F6 /* LYCommentFrameModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -3581,6 +3531,13 @@
 				BC3948A51B08239700DF3D5B /* MultiPictureCell.m */,
 				BCD7607F1B087E27002BF3B5 /* LYPhotoView.h */,
 				BCD760801B087E27002BF3B5 /* LYPhotoView.m */,
+				BCFFD6B51B0B6176009DE8F6 /* CommentHeaderCell.h */,
+				BCFFD6B61B0B6176009DE8F6 /* CommentHeaderCell.m */,
+				BCFFD6B71B0B6176009DE8F6 /* CommentHeaderCell.xib */,
+				BCFFD6BA1B0B6B27009DE8F6 /* IconCell.h */,
+				BCFFD6BB1B0B6B28009DE8F6 /* IconCell.m */,
+				BCFFD6BD1B0C31B3009DE8F6 /* CommentContentCell.h */,
+				BCFFD6BE1B0C31B3009DE8F6 /* CommentContentCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -5588,6 +5545,7 @@
 				BC7F9EDE1B0485FA00900595 /* guide_bg1.png in Resources */,
 				BC7FA2451B0485FB00900595 /* icon_tag_life_white_40.png in Resources */,
 				BC7F9F701B0485FA00900595 /* umeng_example_xp_admanage.png in Resources */,
+				BCFFD6B91B0B6176009DE8F6 /* CommentHeaderCell.xib in Resources */,
 				BC7F9ED71B0485FA00900595 /* filter_f3.png in Resources */,
 				BC7FA1701B0485FB00900595 /* icon_eye_white_40.png in Resources */,
 				BC7FA2C61B0485FB00900595 /* progressbar_indeterminate_holo2.png in Resources */,
@@ -6264,6 +6222,7 @@
 				BC83A8551B09C4C400CE7C0B /* ZYCSubjectListViewController.m in Sources */,
 				12A8E7161B05C76300766D01 /* SpecialColumnModel.m in Sources */,
 				BC7F99C61B04801F00900595 /* UIImage+WebP.m in Sources */,
+				BCFFD6C21B0C338F009DE8F6 /* LYCommentFrameModel.m in Sources */,
 				12E9AB291B0499D00084490E /* MoreThemeCollectionCell.m in Sources */,
 				BC7F99E91B04801F00900595 /* SFSearchDisplayModule.m in Sources */,
 				BC7F99E31B04801F00900595 /* SFCityTypeListModel.m in Sources */,
@@ -6280,7 +6239,9 @@
 				12E9AB211B0499D00084490E /* ADModel.m in Sources */,
 				12E9AB281B0499D00084490E /* MoreThemeCell.m in Sources */,
 				BC7F99AA1B04801F00900595 /* MBProgressHUD.m in Sources */,
+				BCFFD6BF1B0C31B3009DE8F6 /* CommentContentCell.m in Sources */,
 				BC7F9A001B04801F00900595 /* SFUserIconView.m in Sources */,
+				BCFFD6B81B0B6176009DE8F6 /* CommentHeaderCell.m in Sources */,
 				BC7F99B01B04801F00900595 /* MJType.m in Sources */,
 				BC7F99D61B04801F00900595 /* TripCell.m in Sources */,
 				BC7F998F1B04801F00900595 /* CXPhotoVC.m in Sources */,
@@ -6317,6 +6278,7 @@
 				12A8E71F1B05FD9500766D01 /* ReviewerModel.m in Sources */,
 				BC7F99AE1B04801F00900595 /* MJMember.m in Sources */,
 				BC7F99B11B04801F00900595 /* MJTypeEncoding.m in Sources */,
+				BCFFD6BC1B0B6B28009DE8F6 /* IconCell.m in Sources */,
 				12E9AB201B0499D00084490E /* SquareVC.m in Sources */,
 				BC7F99BC1B04801F00900595 /* SDImageCache.m in Sources */,
 				BC7F99EC1B04801F00900595 /* SFTactickBanners.m in Sources */,
@@ -6362,6 +6324,7 @@
 				BC7F99941B04801F00900595 /* CXCollectionVCell.m in Sources */,
 				BC7030A91B084EE50040551B /* LYMultiPicture.m in Sources */,
 				BC7F99DE1B04801F00900595 /* SFCityTypeHeaderPicShow.m in Sources */,
+				BCFFD6B41B0B3F95009DE8F6 /* LYCommentsViewController.m in Sources */,
 				BC7F99EE1B04801F00900595 /* SFCityWantedCell.m in Sources */,
 				BC7F99D81B04801F00900595 /* SFDetailTactickController.m in Sources */,
 				BC7F99921B04801F00900595 /* CXCollectionVCellOwnerModel.m in Sources */,

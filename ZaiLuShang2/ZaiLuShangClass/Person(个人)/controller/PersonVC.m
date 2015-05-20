@@ -26,8 +26,9 @@
 #import "LYWebViewController.h"
 #import "MBProgressHUD+MJ.h"
 #import "MedalViewController.h"
+#import "LYCommentsViewController.h"
 
-#define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=%@&fetchNewer=1&length=20&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
+#define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=%@&fetchNewer=1&length=40&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
 
 @interface PersonVC ()<UITableViewDataSource, UITableViewDelegate, TripCellDelegate, MJRefreshBaseViewDelegate, MultiPictureCellDelegate, MedalCellDelegate>
 
@@ -49,8 +50,6 @@
     [self initStartId];
     
     [self createTableView];
-    
-    //    [self createTitleView];
     
     [self requestDataWithStartId:self.startId];
     
@@ -92,7 +91,7 @@
     self.footerView = f;
     f.delegate = self;
     
-    self.tableView.separatorColor = [UIColor lightGrayColor];
+    self.tableView.separatorColor = [UIColor clearColor];
 }
 /**
  *  请求数据,解析数据
@@ -213,6 +212,7 @@
         [MBProgressHUD hideHUD];
         [MBProgressHUD showSuccess:@"数据请求成功"];
         // 刷新表格
+        self.tableView.separatorColor = [UIColor lightGrayColor];
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         NSLog(@"数据请求失败");
@@ -285,7 +285,15 @@
 }
 
 - (void)readMoreButtonClicked:(TripCell *)cell {
-    CXLog(@"mmmmmmmm");
+    LYRec *rec = (LYRec *)cell.attFrame.lyam.item;
+    LYCommentsViewController *cvc = [[LYCommentsViewController alloc] init];
+    cvc.itemid = cell.attFrame.lyam.itemid;
+    cvc.iconURL = [NSString stringWithFormat:@"%@%@%@", rec.picdomain, SMALL_IMAGE, rec.picfile];
+    cvc.headTitle = rec.words;
+    cvc.createAt = rec.timestamp;
+    cvc.navigationItem.title = @"所有回复";
+    [self.navigationController pushViewController:cvc animated:YES];
+    
 }
 // 点击了喜欢按钮
 - (void)tripCell:(TripCell *)cell showYourLove:(UIButton *)button {
