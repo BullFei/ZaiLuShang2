@@ -12,4 +12,6 @@
 
 +(TripTopicCell *)getTripTopicCellWithTableView:(UITableView *)tableview;
 @property (nonatomic,weak)NSArray * TripTopicModelArray;
+
+@property (nonatomic,copy)void (^TripTopicItemPushBlock)(NSString * tagid);
 @end

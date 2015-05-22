@@ -66,7 +66,9 @@
 {
     
      Section2CollectionCell * itemCell = [Section2CollectionCell getSection2CollectionCellWithCollectionView:collectionView cellForItemAtIndexPath:indexPath];
-    
+    itemCell.authorButtonPushBlock=^(NSString * userid,NSInteger page){
+        self.authorButtonPushBlock(userid,page);
+    };
     Section2ItemModel * mm =[_Section2ItemModelArray objectAtIndex:indexPath.row];
     itemCell.section2ItemModel =mm;
     return itemCell;

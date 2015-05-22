@@ -26,8 +26,9 @@
 #import "LYWebViewController.h"
 #import "MBProgressHUD+MJ.h"
 #import "MedalViewController.h"
+#import "LYCommentsViewController.h"
 
-#define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=%@&fetchNewer=1&length=20&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
+#define ZLS_PERSON_URL @"http://app6.117go.com/demo27/php/userDynamic.php?submit=getMyDynamic&startId=%@&fetchNewer=1&length=40&vc=anzhuo&vd=63f8563b8e3d7949&token=35e49d0b0a2ace978e30bb1acaa7684b&v=a6.1.0"
 
 @interface PersonVC ()<UITableViewDataSource, UITableViewDelegate, TripCellDelegate, MJRefreshBaseViewDelegate, MultiPictureCellDelegate, MedalCellDelegate>
 
@@ -49,8 +50,6 @@
     [self initStartId];
     
     [self createTableView];
-    
-//    [self createTitleView];
     
     [self requestDataWithStartId:self.startId];
     
@@ -92,7 +91,7 @@
     self.footerView = f;
     f.delegate = self;
     
-    self.tableView.separatorColor = [UIColor lightGrayColor];
+    self.tableView.separatorColor = [UIColor clearColor];
 }
 /**
  *  请求数据,解析数据
@@ -211,10 +210,13 @@
         [self.footerView endRefreshing];
         // hide
         [MBProgressHUD hideHUD];
+        [MBProgressHUD showSuccess:@"数据请求成功"];
         // 刷新表格
+        self.tableView.separatorColor = [UIColor lightGrayColor];
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         NSLog(@"数据请求失败");
+        [MBProgressHUD showError:@"请求数据失败"];
     }];
 }
 #pragma mark - tableView代理方法
@@ -283,7 +285,50 @@
 }
 
 - (void)readMoreButtonClicked:(TripCell *)cell {
-    CXLog(@"mmmmmmmm");
+    LYRec *rec = (LYRec *)cell.attFrame.lyam.item;
+    LYCommentsViewController *cvc = [[LYCommentsViewController alloc] init];
+    cvc.itemid = cell.attFrame.lyam.itemid;
+    cvc.iconURL = [NSString stringWithFormat:@"%@%@%@", rec.picdomain, SMALL_IMAGE, rec.picfile];
+    cvc.headTitle = rec.words;
+    cvc.createAt = rec.timestamp;
+    cvc.navigationItem.title = @"所有回复";
+    [self.navigationController pushViewController:cvc animated:YES];
+    
+}
+// 点击了喜欢按钮
+- (void)tripCell:(TripCell *)cell showYourLove:(UIButton *)button {
+    LYRec *rec = (LYRec *)cell.attFrame.lyam.item;
+    BOOL isLiked = rec.isLiked;
+    // 不喜欢
+    UIImage *unLike = [UIImage imageNamed:@"icon_like_line_red_24"];
+    NSData *unData = UIImagePNGRepresentation(unLike);
+    unLike = [UIImage imageWithData:unData scale:2];
+    // 喜欢
+    UIImage *image = [UIImage imageNamed:@"icon_like_32_red"];
+    NSData *data = UIImagePNGRepresentation(image);
+    image = [UIImage imageWithData:data scale:2];
+    if (!isLiked) {
+        [UIView beginAnimations:nil context:nil];
+        UIImage *an = [UIImage imageNamed:@"icon_like_red_140"];
+        UIImageView *iv = [[UIImageView alloc] initWithImage:an];
+        iv.center = self.view.center;
+        iv.bounds = CGRectMake(0, 0, 70, 70);
+        [self.view addSubview:iv];
+        [button setImage:image forState:UIControlStateNormal];
+        [button setTitle:[NSString stringWithFormat:@"%d", (button.currentTitle.integerValue + 1)] forState:UIControlStateNormal];
+        [UIView commitAnimations];
+        rec.isLiked = YES;
+        [self performSelector:@selector(dismissImageView:) withObject:iv afterDelay:1];
+    } else {
+        [button setImage:unLike forState:UIControlStateNormal];
+        [button setTitle:[NSString stringWithFormat:@"%d", (button.currentTitle.integerValue - 1)] forState:UIControlStateNormal];
+        rec.isLiked = NO;
+    }
+}
+- (void)dismissImageView:(UIImageView *)iv {
+    [UIView beginAnimations:nil context:nil];
+    [iv removeFromSuperview];
+    [UIView commitAnimations];
 }
 - (void)contentTapped:(UITapGestureRecognizer *)tgr {
     CXLog(@"点击了内容中的链接");
@@ -340,7 +385,6 @@
         LYAchv *ach = (LYAchv *)aCell.achFrame.lyam.item;
         wv.pageType = WebViewPageTypeUser;
         wv.userid = ach.userid;
-        
     }
     return wv;
 }
@@ -372,6 +416,9 @@
 }
 - (void)medalCell:(MedalCell *)cell medalTapped:(UITapGestureRecognizer *)tgr {
     MedalViewController *mvc = [[MedalViewController alloc] init];
+    LYAchv *ach = cell.achFrame.lyam.item;
+    mvc.userid = cell.achFrame.lyam.userid;
+    mvc.navigationItem.title = [NSString stringWithFormat:@"%@获得的勋章", ach.user.nickname];
     [self.navigationController pushViewController:mvc animated:YES];
 }
 @end

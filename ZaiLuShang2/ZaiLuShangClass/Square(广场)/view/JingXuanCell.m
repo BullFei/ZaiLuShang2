@@ -11,6 +11,8 @@
 #import "UIButton+WebCache.h"
 #import "SFImageView.h"
 #import "Header.h"
+
+#import "LYWebViewController.h"
 @interface  JingXuanCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *contentImageView;
 
@@ -171,7 +173,7 @@
 }
 -(void)controlClick
 {
-    NSLog(@"????");
+   // NSLog(@"????");
 }
 //动态效果
 -(void)refreshCommentsScrollView
@@ -222,15 +224,24 @@
     //AuthorButton
    
     NSString * str =[NSString stringWithFormat:@"%@%@%@",_jingXuanModel.owner.picdomain,BIG_HEAD,_jingXuanModel.owner.avatar];
-     NSLog(@"~~~%@",str);
+    // NSLog(@"~~~%@",str);
     _authorButton.layer.cornerRadius =_authorButton.frame.size.width/2;
     _authorButton.layer.masksToBounds =YES;
     [_authorButton sd_setBackgroundImageWithURL:[NSURL URLWithString:str] forState:UIControlStateNormal];
+    [_authorButton addTarget:self action:@selector(authorButtonClick) forControlEvents:UIControlEventTouchUpInside];
     //评论部分
     if (isLoadData==NO&&jingXuanModel!=nil) {
         [self initCommentsScrollView];
         isLoadData =YES;
     }
+    
+}
+-(void)authorButtonClick
+{
+//    LYWebViewController * wvc =[[LYWebViewController alloc]init];
+//    wvc.userid = _jingXuanModel.owner.userid;
+//    wvc.pageType=WebViewPageTypeUser;
+    self.authorButtonPushBlock(_jingXuanModel.owner.userid,WebViewPageTypeUser);
     
 }
 - (void)awakeFromNib {

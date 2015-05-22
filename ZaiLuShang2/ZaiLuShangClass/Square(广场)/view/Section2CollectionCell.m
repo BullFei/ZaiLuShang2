@@ -49,10 +49,16 @@
     NSString * str =[NSString stringWithFormat:@"%@%@%@",_section2ItemModel.owner.picdomain,BIG_HEAD,_section2ItemModel.owner.avatar];
     _authorButton.layer.cornerRadius =_authorButton.frame.size.width/2;
     _authorButton.layer.masksToBounds =YES;
-
+    
     [_authorButton sd_setBackgroundImageWithURL:[NSURL URLWithString:str] forState:UIControlStateNormal];
+    [_authorButton addTarget:self action:@selector(authorButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
 }
+-(void)authorButtonClick
+{
+    self.authorButtonPushBlock(_section2ItemModel.owner.userid,0);
+}
+
 @end
 
 

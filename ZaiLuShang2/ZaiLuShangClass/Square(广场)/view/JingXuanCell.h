@@ -13,5 +13,6 @@
 +(JingXuanCell *)GetJingXuanCellWithTableView:(UITableView *)tableview;
 @property (nonatomic,weak)JingXuanModel * jingXuanModel;
 @property (nonatomic,weak)NSArray * CommentModelArray;
+@property (nonatomic,copy)void(^authorButtonPushBlock)(NSString *, NSInteger webPageType );
 -(void)refreshCommentsScrollView;
 @end

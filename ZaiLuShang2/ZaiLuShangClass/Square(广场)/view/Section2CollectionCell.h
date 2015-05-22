@@ -12,4 +12,5 @@
 
 +(Section2CollectionCell *)getSection2CollectionCellWithCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 @property (nonatomic,weak)Section2ItemModel * section2ItemModel;
+@property (nonatomic,copy)void(^authorButtonPushBlock)(NSString *,NSInteger page);
 @end

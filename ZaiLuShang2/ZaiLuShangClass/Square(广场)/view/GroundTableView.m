@@ -265,6 +265,10 @@
             JingXuanCell * cell =[JingXuanCell GetJingXuanCellWithTableView:tableView];
             cell.tag = GROUND_JINGXUANCELL_INITTAG+indexPath.row;
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            cell.authorButtonPushBlock=^(NSString * userid,NSInteger page){
+                self.JingXuanCellAuthouButtonPushBlock(userid,page);
+                
+            };
             JingXuanModel * mm =[_JingXuanModelArray objectAtIndex:indexPath.row];
            // NSLog(@"~~~%@",mm.cmt);
             NSArray * tempArr;
@@ -283,6 +287,10 @@
             cell.section2ItemPushBlock=^(Section2ItemModel *mm){
                 self.section2ItemPushBlock(mm);
             };
+            cell.authorButtonPushBlock=^(NSString * userid,NSInteger page)
+            {
+                self.authorButtonPushBlock(userid,page);
+            };
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
             cell.Section2ItemModelArray =_Section2ItemModelArray;
             return cell;
@@ -294,6 +302,9 @@
             TripTopicCell * cell =[TripTopicCell getTripTopicCellWithTableView:tableView];
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
             cell.TripTopicModelArray = _TripTopicModelArray;
+            cell.TripTopicItemPushBlock =^(NSString * tagid){
+                self.tripTopicItemPushBlock(tagid);
+            };
             return cell;
             break;
         }
@@ -302,6 +313,9 @@
             MoreThemeCell * cell =[MoreThemeCell getMoreThemeCellWithTableView:tableView];
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
             cell.moreThemeModelArray =_MoreThemeModelArray;
+            cell.MoreThemeItemPushBlock=^(NSString * subjectid){
+                self.MoreThemeItemPushBlock(subjectid);
+            };
             return cell;
             break;
         }

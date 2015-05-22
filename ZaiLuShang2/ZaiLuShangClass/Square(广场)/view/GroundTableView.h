@@ -26,6 +26,11 @@
 @property (nonatomic,copy)void(^MoreThemeHeadViewPushBlock)(void);
 
 @property (nonatomic,copy)void(^JingXuanCellPushBlock)(JingXuanModel *);
+@property (nonatomic,copy)void(^JingXuanCellAuthouButtonPushBlock)(NSString *,NSInteger page);
 @property (nonatomic,copy)void(^section2ItemPushBlock)(Section2ItemModel *);
+@property (nonatomic,copy)void(^authorButtonPushBlock)(NSString *,NSInteger page);
+
+@property (nonatomic,copy)void(^tripTopicItemPushBlock)(NSString *);
+@property (nonatomic,copy)void(^MoreThemeItemPushBlock)(NSString *);
 //@property (nonatomic,weak)NSArray * CommentModelArray;
 @end

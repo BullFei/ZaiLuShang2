@@ -67,6 +67,13 @@
     
     
 }
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    //MoreThemeModel *  mm =[_moreThemeModelArray objectAtIndex:indexPath.item];
+   // NSNumberFormatter * nf =[[NSNumberFormatter alloc]init];
+    
+    //self.MoreThemeItemPushBlock([nf stringFromNumber:mm.subjectid]);
+}
 
 +(MoreThemeCell *)getMoreThemeCellWithTableView:(UITableView *)tableview
 {

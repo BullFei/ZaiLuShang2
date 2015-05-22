@@ -15,6 +15,7 @@
 
 #import "TripTopicCollectionCell.h"
 
+#import "ZYCTourTopicDetialViewController.h"
 #define ZYC_GROUND_TRIPTOPICLIST_URL @"http://app6.117go.com/demo27/php/interestAction.php?submit=getDiscoverDir&pid=%@&length=%ld&vc=baiduapp&vd=dd549b57e2892849&token=09d3a335855d5a0c144055725a8a004e&v=a6.1.0" //参数pid,length
 @interface ZYCTripTopicListViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,MJRefreshBaseViewDelegate>
 {
@@ -188,6 +189,16 @@
     TripTopicModel * mm =[_dataArray objectAtIndex:indexPath.row];
     itemCell.tripTopicModel =mm;
     return itemCell;
+}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    TripTopicModel *  ttm =[_dataArray objectAtIndex:indexPath.row];
+    ZYCTourTopicDetialViewController * ttdvc =[[ZYCTourTopicDetialViewController alloc]init];
+    NSNumberFormatter * nf =[[NSNumberFormatter alloc]init];
+    NSString * ss =[nf stringFromNumber:ttm.tag_id];
+    ttdvc.tagid = ss;
+    [self.navigationController pushViewController:ttdvc animated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {

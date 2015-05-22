@@ -11,4 +11,5 @@
 @interface MoreThemeCell : UITableViewCell
 +(MoreThemeCell *)getMoreThemeCellWithTableView:(UITableView *)tableview;
 @property (nonatomic,weak)NSArray * moreThemeModelArray;
+@property (nonatomic,copy)void (^MoreThemeItemPushBlock)(NSString *);
 @end

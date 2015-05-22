@@ -69,6 +69,13 @@
     itemCell.tripTopicModel =mm;
     return itemCell;
 }
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    TripTopicModel * ttm =[_TripTopicModelArray objectAtIndex:indexPath.item];
+    NSNumberFormatter * nf =[[NSNumberFormatter alloc]init];
+    NSString * tagid =[nf stringFromNumber:ttm.tag_id];
+    self.TripTopicItemPushBlock(tagid);
+}
 //-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 //{
 //    return UIEdgeInsetsMake(5, 5, 5, 5);
