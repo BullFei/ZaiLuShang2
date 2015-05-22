@@ -12,6 +12,7 @@
 #import "SFCityTypeHeadTipUser.h"
 #import "UIImageView+WebCache.h"
 #import "SFTourDayVC.h"
+#import "LYWebViewController.h"
 #define LEFT_TAG 10
 #define RIGHT_TAG 20
 @interface SFExctingTourCell()
@@ -82,8 +83,9 @@
     tapGestureRecognizer.numberOfTapsRequired = 1;
     [self.leftIconView addGestureRecognizer:tapGestureRecognizer];
     
-    UITapGestureRecognizer * rightGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(rightIconClick)];
-    rightGestureRecognizer.numberOfTapsRequired = 1;
+    
+    UILongPressGestureRecognizer * rightGestureRecognizer = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(rightIconClick)];
+    //rightGestureRecognizer.numberOfTapsRequired = 1;
     [self.rightIconView addGestureRecognizer:rightGestureRecognizer];
     
     
@@ -113,12 +115,24 @@
 
 -(void)leftIconClick
 {
-    
+    if ([self.delegate respondsToSelector:@selector(iconPushController:)]) {
+        LYWebViewController *vc = [[LYWebViewController alloc]init];
+        SFCityTypeHeadTipUser * leftOwner =self.searchModel.listArray[0];
+        vc.userid = leftOwner.userid;
+        vc.pageType = WebViewPageTypeUser;
+        [self.delegate iconPushController:vc];
+    }
 }
 
 -(void)rightIconClick
 {
-    
+    if ([self.delegate respondsToSelector:@selector(iconPushController:)]) {
+        LYWebViewController *vc = [[LYWebViewController alloc]init];
+        SFCityTypeHeadTipUser * rightOwner =self.searchModel.listArray[1];
+        vc.userid = rightOwner.userid;
+        vc.pageType = WebViewPageTypeUser;
+        [self.delegate iconPushController:vc];
+    }
 }
 
 

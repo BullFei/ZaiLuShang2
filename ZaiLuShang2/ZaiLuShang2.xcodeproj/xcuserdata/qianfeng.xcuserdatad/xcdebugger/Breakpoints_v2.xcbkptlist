@@ -6,34 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-<<<<<<< HEAD
-=======
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZaiLuShangClass/HotTopic(&#x70ed;&#x95e8;)/controller/CXColltionView.m"
-            timestampString = "453609928.168986"
+            filePath = "ZaiLuShangClass/Search(&#x641c;&#x7d22;)/view/SFExctingTourCell.m"
+            timestampString = "453953200.893029"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "-refreshHeaderViewSuccess:failure:"
-
->>>>>>> origin/master
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZaiLuShangClass/HotTopic(&#x70ed;&#x95e8;)/controller/CXColltionView.m"
-            timestampString = "453608678.451913"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-<<<<<<< HEAD
-            landmarkName = "-setUrl:"
-=======
-            landmarkName = "-setOtherUrl:"
->>>>>>> origin/master
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "-rightIconClick"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

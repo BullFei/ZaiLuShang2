@@ -28,6 +28,8 @@
     [webView setOpaque:YES];
     [webView setScalesPageToFit:YES];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
+     
+    //self.navigationController.navigationBar.translucent=YES;
     
 }
 

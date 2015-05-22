@@ -11,6 +11,7 @@
 @protocol SFTourDayHeaderViewDelegate <NSObject>
 
 -(void)tourDayHeaderView:(SFTourDayHeaderView*)view height:(CGFloat)height;
+-(void)tourDayHeaderView:(SFTourDayHeaderView *)view pushController:(UIViewController *)controller;
 
 @end
 @interface SFTourDayHeaderView : UIView

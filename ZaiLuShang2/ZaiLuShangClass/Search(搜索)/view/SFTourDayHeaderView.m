@@ -10,6 +10,7 @@
 #import "SFTourDayInfo.h"
 #import "UIImageView+WebCache.h"
 #import "SFOwner.h"
+#import "LYWebViewController.h"
 @interface SFTourDayHeaderView ()
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 
@@ -83,5 +84,14 @@
     
 }
 - (IBAction)iconClick:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(tourDayHeaderView:pushController:)]) {
+        LYWebViewController *vc = [[LYWebViewController alloc]init];
+        SFTourDayInfo * tourDayInfo =self.tourDayInfo;
+        vc.userid = tourDayInfo.owner.userid;
+        vc.pageType = WebViewPageTypeUser;
+        [self.delegate tourDayHeaderView:self pushController:vc];
+
+    }
+    
 }
 @end

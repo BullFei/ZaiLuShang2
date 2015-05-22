@@ -12,6 +12,8 @@
 
 -(void)exctingTourCell:(SFExctingTourCell *)cell pushController:(UIViewController *)controller;
 
+-(void)iconPushController:(UIViewController *)controller;
+
 @end
 @interface SFExctingTourCell : UITableViewCell
 +(SFExctingTourCell *)cellWithTableView:(UITableView *)tableView;

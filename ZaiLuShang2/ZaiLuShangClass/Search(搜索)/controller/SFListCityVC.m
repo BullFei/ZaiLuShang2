@@ -410,10 +410,16 @@
 
 -(void)productCell:(SFProductCell *)cell pushController:(UIViewController *)controller
 {
-    [self.navigationController pushViewController:controller animated:YES];
+    [self presentViewController:controller animated:YES completion:nil];
+    
 }
 
 -(void)headerView:(SFHeaderView *)headerView pushController:(UIViewController *)controller
+{
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)iconPushController:(UIViewController *)controller
 {
     [self.navigationController pushViewController:controller animated:YES];
 }

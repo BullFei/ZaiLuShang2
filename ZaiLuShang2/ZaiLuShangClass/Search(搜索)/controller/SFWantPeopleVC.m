@@ -15,6 +15,7 @@
 #import "MJRefresh.h"
 #import "SFUserListCell.h"
 #import "MBProgressHUD+MJ.h"
+#import "LYWebViewController.h"
 #define LENGTH 20
 #define WANT_URL @"http://app6.117go.com/demo27/php/discoverAction.php?submit=getCheckUserList506&checktype=%@&itemtype=40&itemid=%ld&length=%ld&vc=anzhuo&vd=a1c9d9b8a69b4bf4&token=5aa634ad2fd021650587afa999fdd184&v=a6.1.0"
 @interface SFWantPeopleVC ()<MJRefreshBaseViewDelegate>
@@ -212,7 +213,10 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    LYWebViewController *vc = [[LYWebViewController alloc]init];
+    vc.pageType = WebViewPageTypeUser;
+    vc.userid =[_dataArray[indexPath.row] userid];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end

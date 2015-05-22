@@ -243,6 +243,11 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+-(void)tourDayHeaderView:(SFTourDayHeaderView *)view pushController:(UIViewController *)controller
+{
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
 
 
 @end

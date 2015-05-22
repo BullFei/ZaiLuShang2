@@ -18,4 +18,5 @@
 @property (nonatomic,strong) SFSearchModel * searchModel;
 @property (nonatomic,assign)id<SFProductCellDelegate> delegate;
 +(SFProductCell *)cellWithTableView:(UITableView *)tableView;
+
 @end
