@@ -13,4 +13,5 @@
 @property (nonatomic,copy)NSString *  name;
 @property (nonatomic,copy)NSString * intro;
 @property (nonatomic,copy)NSString * picdomain;
+
 @end

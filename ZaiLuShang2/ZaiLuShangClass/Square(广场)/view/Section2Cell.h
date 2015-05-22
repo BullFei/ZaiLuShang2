@@ -14,4 +14,5 @@
 +(Section2Cell *)getSection2ViewWithTableView:(UITableView *)tableview;
 @property (nonatomic,weak)NSArray * Section2ItemModelArray;
 @property (nonatomic,copy)void(^section2ItemPushBlock)(Section2ItemModel *);
+@property (nonatomic,copy)void(^authorButtonPushBlock)(NSString *,NSInteger);
 @end

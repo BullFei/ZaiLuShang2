@@ -29,6 +29,9 @@
 #import "ZYCTripTopicListViewController.h"
 #import "ZYCMoreThemeListViewController.h"
 #import "SFTourDayVC.h"
+#import "LYWebViewController.h"
+#import "ZYCMoreSubjectListViewController.h"
+#import "ZYCTourTopicDetialViewController.h"
 
 #define  GROUND_URL @"http://app6.117go.com/demo27/php/interestAction.php?submit=getPlaza&length=20&vc=anzhuo&vd=f7393db54aeaedec&token=27f3f6568d2faf418538f66d72330a23&v=a6.1.0"
 @interface SquareVC ()
@@ -190,6 +193,12 @@
         jxlvc.hidesBottomBarWhenPushed =YES;
         [svc.navigationController pushViewController:jxlvc animated:YES];
     };
+    _groundTableView.JingXuanCellAuthouButtonPushBlock=^(NSString *userid,NSInteger page){
+        LYWebViewController * wvc =[[LYWebViewController alloc]init];
+        wvc.userid =userid;
+        wvc.pageType=page;
+        [svc.navigationController pushViewController:wvc animated:YES];
+    };
     _groundTableView.Section2HeadViewPushBlock=^(NSString * link){
         ZYCSubjectListViewController * slvc=[[ZYCSubjectListViewController alloc]init];
         slvc.link =link;
@@ -223,6 +232,29 @@
         tdvc.hidesBottomBarWhenPushed =YES;
         [svc.navigationController pushViewController:tdvc animated:YES];
     };
+    _groundTableView.authorButtonPushBlock=^(NSString *userid,NSInteger page)
+    {
+        LYWebViewController * wvc =[[LYWebViewController alloc]init];
+        wvc.userid =userid;
+        wvc.pageType=page;
+        wvc.hidesBottomBarWhenPushed =YES;
+        [svc.navigationController pushViewController:wvc animated:YES];
+    };
+    _groundTableView.tripTopicItemPushBlock=^(NSString * tagid){
+        ZYCTourTopicDetialViewController * ttdvc=[[ZYCTourTopicDetialViewController alloc]init];
+        ttdvc.tagid =tagid;
+        ttdvc.hidesBottomBarWhenPushed =YES;
+        [svc.navigationController pushViewController:ttdvc animated:YES];
+        
+        
+    };
+    
+    _groundTableView.MoreThemeItemPushBlock=^(NSString *subjectid){
+        ZYCMoreSubjectListViewController *mslvc =[[ZYCMoreSubjectListViewController alloc]init];
+        mslvc.subjectid =subjectid;
+        [svc.navigationController pushViewController:mslvc animated:YES];
+    };
+    
 //    ADView * adv =(id)[self.view viewWithTag:1];
 //    
 //    adv.pushBlock=^(NSString * url){
