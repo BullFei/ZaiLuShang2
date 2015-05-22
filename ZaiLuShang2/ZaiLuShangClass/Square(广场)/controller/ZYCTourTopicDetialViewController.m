@@ -185,6 +185,14 @@
 //刷新HeadView
 -(void)refreshHeadView
 {
+    
+    if (_dataModel.coverpic==nil||[_dataModel.coverpic isEqualToString:@""]) {
+        _tableView.contentInset =UIEdgeInsetsMake(0, 0, 0, 0);
+        _tableView.contentOffset =CGPointZero;
+        
+        return;
+    }
+    [self createFrexibleImageView];
     NSString * imageUrlStr =[NSString stringWithFormat:@"%@%@%@",_dataModel.picdomain,BIG_IMAGE,_dataModel.coverpic];
     [_headView sd_setImageWithURL:[NSURL URLWithString:imageUrlStr]];
     _titleLabel.text =_dataModel.name;
@@ -206,7 +214,7 @@
     _tableView.delegate =self;
     _tableView.dataSource =self;
     
-    //_tableView.tableHeaderView =_headLabel;
+    _tableView.tableHeaderView =nil;
     [self.view addSubview:_tableView];
     
 }
@@ -224,6 +232,10 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return self.cellHeight;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -264,7 +276,7 @@
     //[self createNav];
     //[self createHeadLabel];
     [self createTableView];
-    [self createFrexibleImageView];
+    //[self createFrexibleImageView];
     [self createRefreshing];
     [self loadFirstData];
     // Do any additional setup after loading the view.
